@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ja"><head>
+<html lang="ja" style="scroll-behavior:smooth"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>zeimee | 税理士の、AIスタッフ。</title>
@@ -86,6 +86,9 @@
             background-color: #fef8f3;
             color: #0a0a0a;
         }
+        [id] {
+            scroll-margin-top: 100px;
+        }
     </style>
 </head>
 <body class="font-body selection:bg-primary selection:text-white">
@@ -93,10 +96,10 @@
 <nav class="fixed top-0 w-full z-50 bg-[#fef8f3]/80 backdrop-blur-[20px] flex justify-between items-center px-8 py-6 max-w-full">
 <div class="text-2xl font-bold tracking-tighter text-[#0a0a0a] font-headline">zeimee</div>
 <div class="hidden md:flex items-center space-x-12">
-<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#0a0a0a] border-b-2 border-[#0a0a0a] pb-1" href="#">Product</a>
-<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#">Features</a>
-<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#">Security</a>
-<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#">Pricing</a>
+<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#product">Product</a>
+<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#features">Features</a>
+<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#security">Security</a>
+<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#pricing">Pricing</a>
 </div>
 <button onclick="document.querySelector('#hero-waitlist input').focus()" class="bg-primary text-on-primary px-6 py-2 text-[0.75rem] font-bold uppercase tracking-[0.12em] hover:bg-secondary transition-colors duration-200">ウェイトリスト登録</button>
 </nav>
@@ -196,7 +199,7 @@
 </div>
 </section>
 <!-- Features Section -->
-<section class="py-24 px-8 md:px-16">
+<section id="features" class="py-24 px-8 md:px-16">
 <div class="mb-16">
 <span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary">Key Features</span>
 </div>
@@ -224,7 +227,7 @@
 </div>
 </section>
 <!-- Product View Section -->
-<section class="py-24 px-8 md:px-16 bg-surface-container-low overflow-hidden">
+<section id="product" class="py-24 px-8 md:px-16 bg-surface-container-low overflow-hidden">
 <div class="mb-16 text-center">
 <span class="font-label text-[0.75rem] uppercase tracking-[0.5em] text-secondary">Product</span>
 </div>
@@ -268,7 +271,7 @@
 <p class="mt-12 text-secondary font-jp-serif">全ての操作はコマンドメニューとショートカットから。エンジニアのように高速な記帳体験を。</p>
 </section>
 <!-- Security Section -->
-<section class="py-24 px-8 md:px-16 bg-surface-container">
+<section id="security" class="py-24 px-8 md:px-16 bg-surface-container">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 <div>
 <span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary block mb-8">Security</span>
@@ -312,7 +315,7 @@
 </div>
 </section>
 <!-- Pricing Section -->
-<section class="py-24 px-8 md:px-16">
+<section id="pricing" class="py-24 px-8 md:px-16">
 <div class="text-center mb-16">
 <span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary">Pricing</span>
 </div>
