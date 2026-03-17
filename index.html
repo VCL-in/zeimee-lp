@@ -99,24 +99,20 @@
 <a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#product">Product</a>
 <a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#features">Features</a>
 <a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#security">Security</a>
-<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#pricing">Pricing</a>
+<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#contact">Contact</a>
 </div>
-<button onclick="document.querySelector('#hero-waitlist input').focus()" class="bg-primary text-on-primary px-6 py-2 text-[0.75rem] font-bold uppercase tracking-[0.12em] hover:bg-secondary transition-colors duration-200">ウェイトリスト登録</button>
+<a href="#contact" class="bg-primary text-on-primary px-6 py-2 text-[0.75rem] font-bold tracking-[0.12em] hover:bg-secondary transition-colors duration-200 no-underline">お問い合わせ</a>
 </nav>
 <!-- Hero Section -->
 <section class="pt-40 pb-24 px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center overflow-hidden">
 <div class="space-y-8">
-<p class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary">A.I. Staff for Tax Accountants</p>
-<h1 class="text-[3.5rem] md:text-[5rem] font-headline leading-[1.1] font-bold">税理士の、<br/><span class="italic font-jp-serif font-normal">AIスタッフ。</span></h1>
+<p class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary">税理士事務所向けAI記帳プラットフォーム</p>
+<h1 class="text-[3.5rem] md:text-[5rem] font-headline leading-[1.1] font-bold">記帳工数を、<br/><span class="italic font-jp-serif font-normal">最大70%削減。</span></h1>
 <p class="text-lg text-secondary max-w-md font-jp-serif">zeimeeは、税理士事務所の労働集約的な記帳業務を、AIが自律的に実行するプラットフォームです。</p>
-<form id="hero-waitlist" class="flex flex-col sm:flex-row gap-3 pt-4 max-w-lg" action="https://formsubmit.co/vclab.jp@gmail.com" method="POST">
-<input type="hidden" name="_subject" value="zeimee ウェイトリスト新規登録"/>
-<input type="hidden" name="_captcha" value="false"/>
-<input type="hidden" name="_next" value="https://zeimee.vercel.app/"/>
-<input type="email" name="email" required placeholder="メールアドレスを入力" class="flex-1 px-6 py-4 border border-outline-variant bg-white text-primary font-body text-sm focus:outline-none focus:border-primary"/>
-<button type="submit" class="bg-primary text-white px-8 py-4 font-bold tracking-widest whitespace-nowrap hover:bg-secondary transition-colors">ウェイトリスト登録</button>
-</form>
-<p class="text-[0.75rem] text-secondary mt-2 font-jp-serif">事前登録で優先的にご案内します。</p>
+<div class="flex flex-col sm:flex-row gap-3 pt-4">
+<a href="#contact" class="bg-primary text-white px-10 py-4 font-bold tracking-widest text-center hover:bg-secondary transition-colors">無料で相談する</a>
+<a href="#features" class="border border-primary px-10 py-4 font-bold tracking-widest text-center hover:bg-surface-container transition-colors">詳しく見る</a>
+</div>
 </div>
 <div class="relative">
 <div class="bg-surface-container-low border border-outline-variant shadow-2xl p-2 relative z-10 overflow-hidden">
@@ -314,56 +310,80 @@
 <span class="text-2xl font-bold font-headline grayscale italic">Yayoi <span class="text-xs not-italic font-sans opacity-50 ml-2">Coming Soon</span></span>
 </div>
 </section>
-<!-- Pricing Section -->
-<section id="pricing" class="py-24 px-8 md:px-16">
+<!-- Beta Partner Section -->
+<section class="py-24 px-8 md:px-16 bg-surface-container-low text-center">
+<div class="mb-8">
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] bg-primary text-white px-4 py-1">Beta Program</span>
+</div>
+<h2 class="text-3xl md:text-4xl font-headline font-bold mb-6">ベータ版導入パートナー募集中</h2>
+<p class="text-secondary font-jp-serif max-w-2xl mx-auto mb-4">現在、zeimeeはベータ版として限定的に提供しています。<br/>導入パートナーとして、開発チームと直接連携しながら最適な記帳AIを一緒に創りませんか。</p>
+<div class="flex flex-wrap justify-center gap-8 mt-12 max-w-3xl mx-auto">
+<div class="flex items-start gap-3 text-left">
+<span class="material-symbols-outlined text-primary">star</span>
+<div>
+<p class="font-bold text-sm">優先的な機能リクエスト</p>
+<p class="text-[0.75rem] text-secondary font-jp-serif">貴事務所のワークフローに合わせた優先開発</p>
+</div>
+</div>
+<div class="flex items-start gap-3 text-left">
+<span class="material-symbols-outlined text-primary">savings</span>
+<div>
+<p class="font-bold text-sm">特別料金でのご提供</p>
+<p class="text-[0.75rem] text-secondary font-jp-serif">正式リリース後も継続する特別プラン</p>
+</div>
+</div>
+<div class="flex items-start gap-3 text-left">
+<span class="material-symbols-outlined text-primary">support_agent</span>
+<div>
+<p class="font-bold text-sm">専任サポート</p>
+<p class="text-[0.75rem] text-secondary font-jp-serif">開発チームによる導入・運用の直接支援</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-24 px-8 md:px-16">
+<div class="max-w-2xl mx-auto">
 <div class="text-center mb-16">
-<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary">Pricing</span>
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary">Contact</span>
+<h2 class="text-3xl font-headline font-bold mt-4">お問い合わせ</h2>
+<p class="text-secondary font-jp-serif mt-4">デモのご依頼・導入のご相談など、お気軽にお問い合わせください。</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant border border-outline-variant">
-<div class="bg-surface p-12">
-<p class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary mb-4">Starter</p>
-<p class="text-4xl font-headline mb-8">¥30,000<span class="text-sm font-sans text-secondary">/mo</span></p>
-<ul class="space-y-4 text-sm font-jp-serif mb-12">
-<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>50社まで</li>
-<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>基本AI機能</li>
-<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>メールサポート</li>
-</ul>
-<button class="w-full border border-primary py-4 font-bold uppercase tracking-widest text-sm hover:bg-primary hover:text-white transition-all">Select Plan</button>
+<form action="https://formsubmit.co/vclab.jp@gmail.com" method="POST" class="space-y-6">
+<input type="hidden" name="_subject" value="zeimee LP お問い合わせ"/>
+<input type="hidden" name="_captcha" value="false"/>
+<input type="hidden" name="_next" value="https://zeimee-lp.vercel.app/"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label text-[0.7rem] uppercase tracking-widest text-secondary mb-2">事務所名</label>
+<input type="text" name="company" required class="w-full px-4 py-3 border-b border-outline-variant bg-transparent text-primary focus:outline-none focus:border-primary"/>
 </div>
-<div class="bg-white p-12 relative">
-<div class="absolute top-0 right-0 bg-primary text-white text-[10px] px-4 py-1 uppercase tracking-tighter">Most Popular</div>
-<p class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary mb-4">Professional</p>
-<p class="text-4xl font-headline mb-8">¥80,000<span class="text-sm font-sans text-secondary">/mo</span></p>
-<ul class="space-y-4 text-sm font-jp-serif mb-12">
-<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>150社まで</li>
-<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>全AI機能解放</li>
-<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>チャットサポート</li>
-</ul>
-<button class="w-full bg-primary text-white py-4 font-bold uppercase tracking-widest text-sm hover:bg-secondary transition-all">Select Plan</button>
+<div>
+<label class="block font-label text-[0.7rem] uppercase tracking-widest text-secondary mb-2">お名前</label>
+<input type="text" name="name" required class="w-full px-4 py-3 border-b border-outline-variant bg-transparent text-primary focus:outline-none focus:border-primary"/>
 </div>
-<div class="bg-surface p-12">
-<p class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary mb-4">Enterprise</p>
-<p class="text-4xl font-headline mb-8 italic">Custom</p>
-<ul class="space-y-4 text-sm font-jp-serif mb-12">
-<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>社数無制限</li>
-<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>専用カスタマイズ</li>
-<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>24/7優先サポート</li>
-</ul>
-<button class="w-full border border-primary py-4 font-bold uppercase tracking-widest text-sm hover:bg-primary hover:text-white transition-all">Contact Us</button>
 </div>
+<div>
+<label class="block font-label text-[0.7rem] uppercase tracking-widest text-secondary mb-2">メールアドレス</label>
+<input type="email" name="email" required class="w-full px-4 py-3 border-b border-outline-variant bg-transparent text-primary focus:outline-none focus:border-primary"/>
+</div>
+<div>
+<label class="block font-label text-[0.7rem] uppercase tracking-widest text-secondary mb-2">電話番号（任意）</label>
+<input type="tel" name="phone" class="w-full px-4 py-3 border-b border-outline-variant bg-transparent text-primary focus:outline-none focus:border-primary"/>
+</div>
+<div>
+<label class="block font-label text-[0.7rem] uppercase tracking-widest text-secondary mb-2">お問い合わせ内容</label>
+<textarea name="message" rows="4" class="w-full px-4 py-3 border-b border-outline-variant bg-transparent text-primary focus:outline-none focus:border-primary resize-none" placeholder="デモのご希望、ご質問など"></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-4 font-bold tracking-widest hover:bg-secondary transition-colors">送信する</button>
+</form>
 </div>
 </section>
 <!-- Final CTA -->
 <section class="py-32 px-8 md:px-16 bg-[#0a0a0a] text-white text-center">
 <h2 class="text-4xl md:text-6xl font-headline mb-12 font-bold leading-tight">記帳代行を、<br/><span class="italic font-jp-serif font-normal">レビューだけにしよう。</span></h2>
-<form class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto" action="https://formsubmit.co/vclab.jp@gmail.com" method="POST">
-<input type="hidden" name="_subject" value="zeimee ウェイトリスト新規登録"/>
-<input type="hidden" name="_captcha" value="false"/>
-<input type="hidden" name="_next" value="https://zeimee.vercel.app/"/>
-<input type="email" name="email" required placeholder="メールアドレスを入力" class="flex-1 px-6 py-5 border border-secondary/30 bg-white/10 text-white placeholder-secondary font-body text-sm focus:outline-none focus:border-white"/>
-<button type="submit" class="bg-white text-primary px-10 py-5 font-bold tracking-[0.2em] hover:bg-surface-container-highest transition-colors whitespace-nowrap">ウェイトリスト登録</button>
-</form>
-<p class="mt-6 text-secondary text-sm font-jp-serif">事前登録で優先的にご案内します。無料。</p>
+<a href="#contact" class="inline-block bg-white text-primary px-16 py-6 font-bold tracking-[0.2em] hover:bg-surface-container-highest transition-colors no-underline">無料で相談する</a>
+<p class="mt-8 text-secondary text-sm font-jp-serif">デモのご依頼・導入のご相談はお気軽にどうぞ。</p>
 </section>
 <!-- Footer -->
 <footer class="bg-[#0a0a0a] text-[#fef8f3] border-t border-secondary/20">
@@ -372,21 +392,27 @@
 <div class="text-3xl font-bold tracking-tighter text-[#fef8f3] font-headline mb-4">zeimee</div>
 <p class="text-[#ece7e2]/40 text-sm font-jp-serif">AIが創る、税理士業務の新しいスタンダード。</p>
 </div>
-<div class="grid grid-cols-2 gap-12 md:gap-24">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-16">
+<div class="space-y-4 flex flex-col">
+<p class="font-label text-[0.65rem] uppercase tracking-[0.2em] text-secondary mb-2">運営会社</p>
+<p class="text-[#ece7e2]/60 text-[0.875rem]">株式会社VCL</p>
+<p class="text-[#ece7e2]/40 text-[0.75rem]">東京都渋谷区</p>
+<p class="text-[#ece7e2]/40 text-[0.75rem]">vclab.jp@gmail.com</p>
+</div>
 <div class="space-y-4 flex flex-col">
 <p class="font-label text-[0.65rem] uppercase tracking-[0.2em] text-secondary mb-2">Legal</p>
 <a class="text-[#ece7e2]/60 hover:text-white text-[0.875rem] transition-opacity" href="#">Privacy Policy</a>
 <a class="text-[#ece7e2]/60 hover:text-white text-[0.875rem] transition-opacity" href="#">Terms of Service</a>
 </div>
 <div class="space-y-4 flex flex-col">
-<p class="font-label text-[0.65rem] uppercase tracking-[0.2em] text-secondary mb-2">Company</p>
-<a class="text-[#ece7e2]/60 hover:text-white text-[0.875rem] transition-opacity" href="#">Contact</a>
-<a class="text-[#ece7e2]/60 hover:text-white text-[0.875rem] transition-opacity underline underline-offset-4" href="#">Security Whitepaper</a>
+<p class="font-label text-[0.65rem] uppercase tracking-[0.2em] text-secondary mb-2">Product</p>
+<a class="text-[#ece7e2]/60 hover:text-white text-[0.875rem] transition-opacity" href="#contact">お問い合わせ</a>
+<a class="text-[#ece7e2]/60 hover:text-white text-[0.875rem] transition-opacity" href="#security">セキュリティ</a>
 </div>
 </div>
 </div>
 <div class="px-12 pb-8 text-center text-[0.65rem] uppercase tracking-widest text-[#ece7e2]/20">
-            © 2024 zeimee AI. All rights reserved.
+            © 2026 株式会社VCL. All rights reserved.
         </div>
 </footer>
 </body></html>
