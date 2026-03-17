@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>zeimee | 税理士の、AIスタッフ。</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@100..900&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Serif+JP:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-primary": "#c9c6c5",
+                        "outline": "#777777",
+                        "surface": "#fef8f3",
+                        "on-surface": "#1d1b19",
+                        "surface-bright": "#fef8f3",
+                        "on-tertiary": "#e2e2e2",
+                        "on-primary-container": "#ffffff",
+                        "surface-container-highest": "#e6e2dd",
+                        "surface-dim": "#ded9d4",
+                        "on-secondary-fixed": "#1f1b17",
+                        "surface-container-low": "#f8f3ee",
+                        "on-tertiary-fixed-variant": "#e2e2e2",
+                        "secondary": "#635d58",
+                        "primary-fixed": "#5f5e5e",
+                        "on-error-container": "#410002",
+                        "secondary-container": "#dbd3cd",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#ffffff",
+                        "on-secondary-container": "#1f1b17",
+                        "inverse-on-surface": "#f5f0eb",
+                        "on-secondary-fixed-variant": "#3f3b36",
+                        "on-surface-variant": "#474747",
+                        "surface-tint": "#5f5e5e",
+                        "tertiary-fixed-dim": "#474747",
+                        "tertiary-container": "#747474",
+                        "secondary-fixed-dim": "#b1aaa4",
+                        "tertiary": "#3b3b3b",
+                        "error": "#ba1a1a",
+                        "primary": "#000000",
+                        "outline-variant": "#c6c6c6",
+                        "on-primary-fixed-variant": "#e5e2e1",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#ffffff",
+                        "on-primary": "#e5e2e1",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#3c3b3b",
+                        "background": "#fef8f3",
+                        "primary-fixed-dim": "#474646",
+                        "on-tertiary-container": "#ffffff",
+                        "tertiary-fixed": "#5e5e5e",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#32302d",
+                        "surface-container-high": "#ece7e2",
+                        "secondary-fixed": "#cdc5bf",
+                        "on-background": "#1d1b19",
+                        "surface-container": "#f2ede8",
+                        "surface-variant": "#e6e2dd"
+                    },
+                    fontFamily: {
+                        "headline": ["Playfair Display", "serif"],
+                        "jp-serif": ["Noto Serif JP", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fef8f3;
+            color: #0a0a0a;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-[#fef8f3]/80 backdrop-blur-[20px] flex justify-between items-center px-8 py-6 max-w-full">
+<div class="text-2xl font-bold tracking-tighter text-[#0a0a0a] font-headline">zeimee</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#0a0a0a] border-b-2 border-[#0a0a0a] pb-1" href="#">Product</a>
+<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#">Features</a>
+<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#">Security</a>
+<a class="font-['Newsreader'] uppercase tracking-[0.12em] text-[0.75rem] text-[#635d58] hover:text-[#0a0a0a] transition-colors duration-200" href="#">Pricing</a>
+</div>
+<button onclick="document.querySelector('#hero-waitlist input').focus()" class="bg-primary text-on-primary px-6 py-2 text-[0.75rem] font-bold uppercase tracking-[0.12em] hover:bg-secondary transition-colors duration-200">ウェイトリスト登録</button>
+</nav>
+<!-- Hero Section -->
+<section class="pt-40 pb-24 px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center overflow-hidden">
+<div class="space-y-8">
+<p class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary">A.I. Staff for Tax Accountants</p>
+<h1 class="text-[3.5rem] md:text-[5rem] font-headline leading-[1.1] font-bold">税理士の、<br/><span class="italic font-jp-serif font-normal">AIスタッフ。</span></h1>
+<p class="text-lg text-secondary max-w-md font-jp-serif">zeimeeは、税理士事務所の労働集約的な記帳業務を、AIが自律的に実行するプラットフォームです。</p>
+<form id="hero-waitlist" class="flex flex-col sm:flex-row gap-3 pt-4 max-w-lg" action="https://formsubmit.co/vclab.jp@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="zeimee ウェイトリスト新規登録"/>
+<input type="hidden" name="_captcha" value="false"/>
+<input type="hidden" name="_next" value="https://zeimee.vercel.app/"/>
+<input type="email" name="email" required placeholder="メールアドレスを入力" class="flex-1 px-6 py-4 border border-outline-variant bg-white text-primary font-body text-sm focus:outline-none focus:border-primary"/>
+<button type="submit" class="bg-primary text-white px-8 py-4 font-bold tracking-widest whitespace-nowrap hover:bg-secondary transition-colors">ウェイトリスト登録</button>
+</form>
+<p class="text-[0.75rem] text-secondary mt-2 font-jp-serif">事前登録で優先的にご案内します。</p>
+</div>
+<div class="relative">
+<div class="bg-surface-container-low border border-outline-variant shadow-2xl p-2 relative z-10 overflow-hidden">
+<video class="w-full h-auto block" autoplay loop muted playsinline>
+<source src="screenshots/demo-4x.mp4" type="video/mp4"/>
+<img class="w-full h-auto" src="screenshots/clean-dashboard.png" alt="zeimee dashboard"/>
+</video>
+</div>
+<div class="absolute -bottom-8 -left-8 w-64 h-64 bg-surface-container-high -z-0"></div>
+</div>
+</section>
+<!-- Problem Section -->
+<section class="py-24 px-8 md:px-16 bg-surface">
+<div class="mb-16">
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] bg-primary text-white px-4 py-1">The Problem</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0.5 bg-outline-variant border border-outline-variant">
+<div class="bg-surface p-12 flex flex-col justify-center">
+<h3 class="text-5xl font-headline mb-4">60歳超</h3>
+<p class="text-[0.75rem] uppercase tracking-widest text-secondary font-bold">Tax Accountant Age</p>
+<p class="mt-4 text-sm font-jp-serif">業界の過半数が60歳以上。深刻な後継者不足。</p>
+</div>
+<div class="bg-surface p-12 flex flex-col justify-center">
+<h3 class="text-5xl font-headline mb-4">5.61%</h3>
+<p class="text-[0.75rem] uppercase tracking-widest text-secondary font-bold">Staff Shortage</p>
+<p class="mt-4 text-sm font-jp-serif">有効求人倍率の高止まり。採用コストの増大。</p>
+</div>
+<div class="bg-surface p-12 flex flex-col justify-center">
+<h3 class="text-5xl font-headline mb-4">2.31倍</h3>
+<p class="text-[0.75rem] uppercase tracking-widest text-secondary font-bold">Work Load</p>
+<p class="mt-4 text-sm font-jp-serif">インボイス・電子帳簿保存法による業務量増。</p>
+</div>
+<div class="bg-surface p-12 flex flex-col justify-center">
+<h3 class="text-5xl font-headline mb-4">1.4倍</h3>
+<p class="text-[0.75rem] uppercase tracking-widest text-secondary font-bold">Labor Cost</p>
+<p class="mt-4 text-sm font-jp-serif">年々上昇する人件費。収益構造の限界。</p>
+</div>
+</div>
+</section>
+<!-- Before/After Section -->
+<section class="py-24 px-8 md:px-16 bg-surface-container-low">
+<div class="mb-16">
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] border-l-4 border-primary pl-4">Before / After</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant border border-outline-variant">
+<div class="bg-white p-12">
+<h4 class="font-headline text-2xl mb-8 uppercase tracking-widest">Legacy Workflow</h4>
+<ul class="space-y-6">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-4">close</span>
+<p class="font-jp-serif">紙の領収書を手入力し、一つずつ確認する作業</p>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-4">close</span>
+<p class="font-jp-serif">属人的な判断による仕訳ミスの発生と修正</p>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-4">close</span>
+<p class="font-jp-serif">月次報告が翌月中旬以降になる遅延</p>
+</li>
+</ul>
+</div>
+<div class="bg-primary text-white p-12">
+<h4 class="font-headline text-2xl mb-8 uppercase tracking-widest">zeimee AI Era</h4>
+<ul class="space-y-6">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-surface-container-highest mr-4">check</span>
+<p class="font-jp-serif">AIが99%の精度で自動読み取り・自動仕訳</p>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-surface-container-highest mr-4">check</span>
+<p class="font-jp-serif">標準化されたAIエンジンによる均一な品質</p>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-surface-container-highest mr-4">check</span>
+<p class="font-jp-serif">リアルタイムな試算表作成と経営アドバイス</p>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-24 px-8 md:px-16">
+<div class="mb-16">
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary">Key Features</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="group">
+<p class="font-headline text-4xl text-secondary/20 group-hover:text-primary transition-colors mb-4">01</p>
+<h5 class="text-xl font-bold font-jp-serif mb-4">仕訳の自動分類</h5>
+<p class="text-sm font-jp-serif leading-relaxed text-secondary">過去の履歴と独自の学習データに基づき、最適な勘定科目をAIが自律的に提案します。</p>
+</div>
+<div class="group">
+<p class="font-headline text-4xl text-secondary/20 group-hover:text-primary transition-colors mb-4">02</p>
+<h5 class="text-xl font-bold font-jp-serif mb-4">証憑のAI読み取り</h5>
+<p class="text-sm font-jp-serif leading-relaxed text-secondary">最新のLLM技術を活用し、文字化けや傾きのあるレシートも高精度に構造化データへ変換。</p>
+</div>
+<div class="group">
+<p class="font-headline text-4xl text-secondary/20 group-hover:text-primary transition-colors mb-4">03</p>
+<h5 class="text-xl font-bold font-jp-serif mb-4">銀行明細の自動消込</h5>
+<p class="text-sm font-jp-serif leading-relaxed text-secondary">入出金明細と発行済み請求書をAIがマッチング。複雑な合算入金も自動で紐付けます。</p>
+</div>
+<div class="group">
+<p class="font-headline text-4xl text-secondary/20 group-hover:text-primary transition-colors mb-4">04</p>
+<h5 class="text-xl font-bold font-jp-serif mb-4">月次チェック自動化</h5>
+<p class="text-sm font-jp-serif leading-relaxed text-secondary">重複仕訳や異常値、前年同月との不自然な乖離をAIが検知。監査時間を大幅に短縮。</p>
+</div>
+</div>
+</section>
+<!-- Product View Section -->
+<section class="py-24 px-8 md:px-16 bg-surface-container-low overflow-hidden">
+<div class="mb-16 text-center">
+<span class="font-label text-[0.75rem] uppercase tracking-[0.5em] text-secondary">Product</span>
+</div>
+<div class="max-w-6xl mx-auto space-y-12">
+<div class="bg-white p-2 border border-outline-variant shadow-xl">
+<img class="w-full" data-alt="zeimee review interface" src="screenshots/clean-review.png"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white p-6 border border-outline-variant">
+<p class="font-label text-[0.65rem] uppercase tracking-widest text-secondary mb-4">Worklist View</p>
+<img class="w-full h-32 object-cover mb-4" data-alt="zeimee worklist view" src="screenshots/clean-dashboard.png"/>
+<p class="text-sm font-bold font-jp-serif">ワークリスト</p>
+</div>
+<div class="bg-white p-6 border border-outline-variant">
+<p class="font-label text-[0.65rem] uppercase tracking-widest text-secondary mb-4">Focus Mode</p>
+<img class="w-full h-32 object-cover mb-4" data-alt="zeimee focus mode" src="screenshots/clean-focus-mode.png"/>
+<p class="text-sm font-bold font-jp-serif">フォーカスモード</p>
+</div>
+<div class="bg-white p-6 border border-outline-variant">
+<p class="font-label text-[0.65rem] uppercase tracking-widest text-secondary mb-4">Monthly Report</p>
+<img class="w-full h-32 object-cover mb-4" data-alt="zeimee monthly report" src="screenshots/clean-monthly.png"/>
+<p class="text-sm font-bold font-jp-serif">月次レポート</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Keyboard Driven Section -->
+<section class="py-24 px-8 md:px-16 text-center">
+<div class="mb-16">
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary">Keyboard Driven</span>
+</div>
+<h2 class="text-3xl font-headline italic mb-12">マウスに触れる時間を、最小限に。</h2>
+<div class="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+<div class="px-6 py-4 border-2 border-primary font-mono text-2xl font-bold bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">A</div>
+<div class="px-6 py-4 border-2 border-primary font-mono text-2xl font-bold bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">R</div>
+<div class="px-6 py-4 border-2 border-primary font-mono text-2xl font-bold bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">S</div>
+<div class="px-6 py-4 border-2 border-primary font-mono text-2xl font-bold bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">J</div>
+<div class="px-6 py-4 border-2 border-primary font-mono text-2xl font-bold bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">K</div>
+<div class="px-8 py-4 border-2 border-primary font-mono text-2xl font-bold bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">⌘K</div>
+</div>
+<p class="mt-12 text-secondary font-jp-serif">全ての操作はコマンドメニューとショートカットから。エンジニアのように高速な記帳体験を。</p>
+</section>
+<!-- Security Section -->
+<section class="py-24 px-8 md:px-16 bg-surface-container">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary block mb-8">Security</span>
+<h2 class="text-4xl font-headline font-bold mb-8">信頼される、<br/>堅牢なインフラ。</h2>
+<div class="space-y-12">
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-3xl">database</span>
+<div>
+<p class="font-bold mb-2">国内データセンター保管</p>
+<p class="text-sm text-secondary font-jp-serif">お客様の重要なデータは全て日本国内のティア4データセンターにて管理されています。</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-3xl">enhanced_encryption</span>
+<div>
+<p class="font-bold mb-2">256bit AES暗号化</p>
+<p class="text-sm text-secondary font-jp-serif">通信および保存データの全てに、銀行レベルの強固な暗号化を適用しています。</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-3xl">privacy_tip</span>
+<div>
+<p class="font-bold mb-2">AIプライバシー保護</p>
+<p class="text-sm text-secondary font-jp-serif">AIの学習にお客様のデータが利用されることはありません。オプトアウトを標準適用。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="aspect-square bg-white border border-outline-variant p-12 flex items-center justify-center grayscale">
+<span class="material-symbols-outlined text-[12rem] text-secondary/10">verified_user</span>
+</div>
+</div>
+</section>
+<!-- Integrations Section -->
+<section class="py-24 px-8 md:px-16 text-center border-y border-outline-variant">
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary mb-12 block">Integrations</span>
+<div class="flex flex-wrap justify-center gap-16 items-center opacity-70">
+<span class="text-2xl font-bold font-headline grayscale">freee</span>
+<span class="text-2xl font-bold font-headline grayscale">Money Forward</span>
+<span class="text-2xl font-bold font-headline grayscale italic">Yayoi <span class="text-xs not-italic font-sans opacity-50 ml-2">Coming Soon</span></span>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-24 px-8 md:px-16">
+<div class="text-center mb-16">
+<span class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary">Pricing</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant border border-outline-variant">
+<div class="bg-surface p-12">
+<p class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary mb-4">Starter</p>
+<p class="text-4xl font-headline mb-8">¥30,000<span class="text-sm font-sans text-secondary">/mo</span></p>
+<ul class="space-y-4 text-sm font-jp-serif mb-12">
+<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>50社まで</li>
+<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>基本AI機能</li>
+<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>メールサポート</li>
+</ul>
+<button class="w-full border border-primary py-4 font-bold uppercase tracking-widest text-sm hover:bg-primary hover:text-white transition-all">Select Plan</button>
+</div>
+<div class="bg-white p-12 relative">
+<div class="absolute top-0 right-0 bg-primary text-white text-[10px] px-4 py-1 uppercase tracking-tighter">Most Popular</div>
+<p class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary mb-4">Professional</p>
+<p class="text-4xl font-headline mb-8">¥80,000<span class="text-sm font-sans text-secondary">/mo</span></p>
+<ul class="space-y-4 text-sm font-jp-serif mb-12">
+<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>150社まで</li>
+<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>全AI機能解放</li>
+<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>チャットサポート</li>
+</ul>
+<button class="w-full bg-primary text-white py-4 font-bold uppercase tracking-widest text-sm hover:bg-secondary transition-all">Select Plan</button>
+</div>
+<div class="bg-surface p-12">
+<p class="font-label text-[0.75rem] uppercase tracking-[0.2em] text-secondary mb-4">Enterprise</p>
+<p class="text-4xl font-headline mb-8 italic">Custom</p>
+<ul class="space-y-4 text-sm font-jp-serif mb-12">
+<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>社数無制限</li>
+<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>専用カスタマイズ</li>
+<li class="flex items-center"><span class="material-symbols-outlined text-sm mr-2">check</span>24/7優先サポート</li>
+</ul>
+<button class="w-full border border-primary py-4 font-bold uppercase tracking-widest text-sm hover:bg-primary hover:text-white transition-all">Contact Us</button>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-32 px-8 md:px-16 bg-[#0a0a0a] text-white text-center">
+<h2 class="text-4xl md:text-6xl font-headline mb-12 font-bold leading-tight">記帳代行を、<br/><span class="italic font-jp-serif font-normal">レビューだけにしよう。</span></h2>
+<form class="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto" action="https://formsubmit.co/vclab.jp@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="zeimee ウェイトリスト新規登録"/>
+<input type="hidden" name="_captcha" value="false"/>
+<input type="hidden" name="_next" value="https://zeimee.vercel.app/"/>
+<input type="email" name="email" required placeholder="メールアドレスを入力" class="flex-1 px-6 py-5 border border-secondary/30 bg-white/10 text-white placeholder-secondary font-body text-sm focus:outline-none focus:border-white"/>
+<button type="submit" class="bg-white text-primary px-10 py-5 font-bold tracking-[0.2em] hover:bg-surface-container-highest transition-colors whitespace-nowrap">ウェイトリスト登録</button>
+</form>
+<p class="mt-6 text-secondary text-sm font-jp-serif">事前登録で優先的にご案内します。無料。</p>
+</section>
+<!-- Footer -->
+<footer class="bg-[#0a0a0a] text-[#fef8f3] border-t border-secondary/20">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center px-12 py-16 w-full max-w-7xl mx-auto">
+<div class="mb-12 md:mb-0">
+<div class="text-3xl font-bold tracking-tighter text-[#fef8f3] font-headline mb-4">zeimee</div>
+<p class="text-[#ece7e2]/40 text-sm font-jp-serif">AIが創る、税理士業務の新しいスタンダード。</p>
+</div>
+<div class="grid grid-cols-2 gap-12 md:gap-24">
+<div class="space-y-4 flex flex-col">
+<p class="font-label text-[0.65rem] uppercase tracking-[0.2em] text-secondary mb-2">Legal</p>
+<a class="text-[#ece7e2]/60 hover:text-white text-[0.875rem] transition-opacity" href="#">Privacy Policy</a>
+<a class="text-[#ece7e2]/60 hover:text-white text-[0.875rem] transition-opacity" href="#">Terms of Service</a>
+</div>
+<div class="space-y-4 flex flex-col">
+<p class="font-label text-[0.65rem] uppercase tracking-[0.2em] text-secondary mb-2">Company</p>
+<a class="text-[#ece7e2]/60 hover:text-white text-[0.875rem] transition-opacity" href="#">Contact</a>
+<a class="text-[#ece7e2]/60 hover:text-white text-[0.875rem] transition-opacity underline underline-offset-4" href="#">Security Whitepaper</a>
+</div>
+</div>
+</div>
+<div class="px-12 pb-8 text-center text-[0.65rem] uppercase tracking-widest text-[#ece7e2]/20">
+            © 2024 zeimee AI. All rights reserved.
+        </div>
+</footer>
+</body></html>
