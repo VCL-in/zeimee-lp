@@ -517,16 +517,15 @@ function Footer() {
 
 function Logo({ light = false }: { light?: boolean }) {
   return (
-    <Link href="/lp" className="flex items-center gap-2.5">
-      <span className={`grid size-5 grid-cols-2 gap-0.5 ${light ? "text-white" : "text-[#202936]"}`}>
-        <span className="bg-current" />
-        <span className="bg-current" />
-        <span className="bg-current" />
-        <span className="bg-current" />
-      </span>
-      <span className={`text-[22px] font-extrabold ${light ? "text-white" : "text-[#202936]"}`}>
-        Zeimee
-      </span>
+    <Link href="/lp" className="inline-flex items-center">
+      <Image
+        src="/lp/zeimee-logo.png"
+        alt="Zeimee"
+        width={145}
+        height={30}
+        className={`h-[28px] w-auto ${light ? "[filter:brightness(0)_invert(1)]" : ""}`}
+        priority={!light}
+      />
     </Link>
   );
 }
