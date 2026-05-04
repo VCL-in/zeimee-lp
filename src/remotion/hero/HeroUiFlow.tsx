@@ -28,50 +28,39 @@ const slides = [
   },
 ];
 
-function smooth(frame: number, input: [number, number], output: [number, number]) {
+function fade(frame: number, input: [number, number], output: [number, number]) {
   return interpolate(frame, input, output, {
-    easing: Easing.bezier(0.16, 1, 0.3, 1),
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 }
 
-function rangeOpacity(frame: number, start: number, end: number, fade = 28) {
-  const intro = interpolate(frame, [start, start + fade], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const outro = interpolate(frame, [end - fade, end], [1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  return Math.min(intro, outro);
-}
-
-function loopPromptOpacity(frame: number) {
-  if (frame < 250) {
+function promptOpacity(frame: number, index: number) {
+  if (index === 0) {
+    if (frame < 232) {
+      return 1;
+    }
+    if (frame < 250) {
+      return fade(frame, [232, 250], [1, 0]);
+    }
+    if (frame < 818) {
+      return 0;
+    }
+    if (frame < 836) {
+      return fade(frame, [818, 836], [0, 1]);
+    }
     return 1;
   }
 
-  if (frame < 300) {
-    return interpolate(frame, [250, 300], [1, 0], {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    });
+  if (index === 1) {
+    const intro = fade(frame, [248, 266], [0, 1]);
+    const outro = fade(frame, [532, 550], [1, 0]);
+    return Math.min(intro, outro);
   }
 
-  if (frame < 820) {
-    return 0;
-  }
-
-  if (frame < 870) {
-    return interpolate(frame, [820, 870], [0, 1], {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    });
-  }
-
-  return 1;
+  const intro = fade(frame, [548, 566], [0, 1]);
+  const outro = fade(frame, [800, 820], [1, 0]);
+  return Math.min(intro, outro);
 }
 
 function Background() {
@@ -108,17 +97,12 @@ function Background() {
 
 function PromptPill() {
   const frame = useCurrentFrame();
-  const prompts = [
-    { text: slides[0].prompt, start: 0, end: 300, loopIn: true },
-    { text: slides[1].prompt, start: 300, end: 600 },
-    { text: slides[2].prompt, start: 600, end: 870 },
-  ];
 
   return (
     <>
-      {prompts.map((prompt) => (
+      {slides.map((slide, index) => (
         <div
-          key={prompt.text}
+          key={slide.prompt}
           style={{
             position: "absolute",
             left: 260,
@@ -133,16 +117,11 @@ function PromptPill() {
             lineHeight: 1.18,
             fontWeight: 700,
             letterSpacing: 0,
-            opacity: prompt.loopIn
-              ? loopPromptOpacity(frame)
-              : rangeOpacity(frame, prompt.start, prompt.end, 30),
-            transform: `translateY(${
-              prompt.loopIn ? 0 : smooth(frame, [prompt.start, prompt.start + 40], [14, 0])
-            }px)`,
+            opacity: promptOpacity(frame, index),
             textShadow: "0 18px 48px rgba(0, 0, 0, 0.34)",
           }}
         >
-          {prompt.text}
+          {slide.prompt}
         </div>
       ))}
     </>
