@@ -37,29 +37,29 @@ function fade(frame: number, input: [number, number], output: [number, number]) 
 
 function promptOpacity(frame: number, index: number) {
   if (index === 0) {
-    if (frame < 232) {
+    if (frame < 240) {
       return 1;
     }
-    if (frame < 250) {
-      return fade(frame, [232, 250], [1, 0]);
+    if (frame < 258) {
+      return fade(frame, [240, 258], [1, 0]);
     }
-    if (frame < 818) {
+    if (frame < 826) {
       return 0;
     }
-    if (frame < 836) {
-      return fade(frame, [818, 836], [0, 1]);
+    if (frame < 844) {
+      return fade(frame, [826, 844], [0, 1]);
     }
     return 1;
   }
 
   if (index === 1) {
-    const intro = fade(frame, [248, 266], [0, 1]);
-    const outro = fade(frame, [532, 550], [1, 0]);
+    const intro = fade(frame, [256, 274], [0, 1]);
+    const outro = fade(frame, [540, 558], [1, 0]);
     return Math.min(intro, outro);
   }
 
-  const intro = fade(frame, [548, 566], [0, 1]);
-  const outro = fade(frame, [800, 820], [1, 0]);
+  const intro = fade(frame, [556, 574], [0, 1]);
+  const outro = fade(frame, [810, 828], [1, 0]);
   return Math.min(intro, outro);
 }
 
