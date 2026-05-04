@@ -11,6 +11,7 @@ const fontFamily = "'LINE Seed JP'";
 const slideWidth = 1660;
 const slideHeight = 840;
 const slideStep = 1740;
+const carouselLeft = (1920 - slideWidth) / 2;
 
 const slides = [
   {
@@ -52,7 +53,7 @@ function Background() {
     <AbsoluteFill
       style={{
         background:
-          "radial-gradient(circle at 18% 16%, rgba(31, 94, 255, 0.34), transparent 28%), radial-gradient(circle at 78% 18%, rgba(42, 213, 255, 0.22), transparent 30%), linear-gradient(135deg, #040817 0%, #07162c 44%, #0a2542 100%)",
+          "radial-gradient(circle at 18% 12%, rgba(17, 85, 204, 0.18), transparent 28%), radial-gradient(circle at 82% 16%, rgba(255, 255, 255, 0.08), transparent 30%), linear-gradient(135deg, #202936 0%, #202936 54%, #1b2430 100%)",
       }}
     >
       <div
@@ -60,19 +61,19 @@ function Background() {
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0) 42%, rgba(255,255,255,0.04))",
+            "linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0) 42%, rgba(255,255,255,0.025))",
         }}
       />
       <div
         style={{
           position: "absolute",
           inset: 0,
-          opacity: 0.2,
+          opacity: 0.08,
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
           backgroundSize: "96px 96px",
           maskImage:
-            "radial-gradient(circle at center, rgba(0,0,0,0.9), transparent 72%)",
+            "radial-gradient(circle at center, rgba(0,0,0,0.82), transparent 72%)",
         }}
       />
     </AbsoluteFill>
@@ -104,7 +105,7 @@ function PromptPill() {
             fontFamily,
             fontSize: 54,
             lineHeight: 1.18,
-            fontWeight: 900,
+            fontWeight: 700,
             letterSpacing: 0,
             opacity: prompt.loopIn
               ? Math.max(
@@ -183,7 +184,7 @@ function UiCarousel() {
     <div
       style={{
         position: "absolute",
-        left: 180,
+        left: carouselLeft,
         top: 198,
         width: slideWidth,
         height: slideHeight,

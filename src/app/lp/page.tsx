@@ -162,7 +162,7 @@ function Hero() {
     <section className="relative overflow-hidden bg-white">
       <div className="mx-auto max-w-[1240px] px-5 pb-16 pt-16 lg:pb-20 lg:pt-20">
         <div className="mx-auto max-w-[920px] text-center">
-          <h1 className="text-[36px] font-extrabold leading-[1.35] tracking-normal text-[#202936] sm:text-[48px] lg:text-[58px]">
+          <h1 className="text-[36px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[48px] lg:text-[58px]">
             税理士の手作業を、
             <br className="hidden sm:block" />
             AIで限りなくゼロへ。
@@ -197,18 +197,18 @@ function Hero() {
 
 function HeroVisual() {
   return (
-    <div className="mx-auto mt-14 max-w-[1040px] overflow-hidden rounded-[18px] bg-[#07162c] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.10),0_28px_70px_rgba(32,41,54,0.16)] lg:mt-16">
+    <div className="mx-auto mt-14 max-w-[1040px] overflow-hidden rounded-[18px] bg-[#202936] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.10),0_28px_70px_rgba(32,41,54,0.16)] lg:mt-16">
       <video
         className="block aspect-video w-full object-cover motion-reduce:hidden"
         autoPlay
         loop
         muted
         playsInline
-        poster="/images/hero-ui-flow-poster.jpg?v=loop-large-ui-v1"
+        poster="/images/hero-ui-flow-poster.jpg?v=cta-bg-balanced-v1"
         preload="metadata"
         aria-hidden="true"
       >
-        <source src="/videos/hero-ui-flow-hq.mp4?v=loop-large-ui-v1" type="video/mp4" />
+        <source src="/videos/hero-ui-flow-hq.mp4?v=cta-bg-balanced-v1" type="video/mp4" />
       </video>
       <Image
         src="/images/hero-ui-flow-poster.jpg"
