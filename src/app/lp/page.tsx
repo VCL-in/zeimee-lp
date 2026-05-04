@@ -160,19 +160,19 @@ function Header() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="mx-auto max-w-[1240px] px-5 pb-16 pt-16 lg:pb-20 lg:pt-20">
+      <div className="mx-auto max-w-[1240px] px-5 pb-14 pt-10 lg:pb-[72px] lg:pt-12">
         <div className="mx-auto max-w-[920px] text-center">
-          <h1 className="text-[36px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[48px] lg:text-[58px]">
+          <h1 className="text-[25px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[34px] lg:text-[41px]">
             税理士の手作業を、
             <br className="hidden sm:block" />
             AIで限りなくゼロへ。
           </h1>
-          <p className="mx-auto mt-7 max-w-[720px] text-[16px] font-bold leading-8 text-[#5c6675] sm:text-[18px]">
+          <p className="mx-auto mt-5 max-w-[620px] text-[12px] font-bold leading-6 text-[#5c6675] sm:text-[13px] sm:leading-7">
             記帳・証憑・消込・月次チェックをAIが自動処理。
             <br className="hidden sm:block" />
             税理士はToDoを確認するだけで、月次業務を前に進められます。
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href={consultationHref}
               className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-[8px] bg-[#202936] px-8 text-[15px] font-extrabold text-white shadow-[0_10px_22px_rgba(32,41,54,0.18)] sm:w-auto"
@@ -197,7 +197,7 @@ function Hero() {
 
 function HeroVisual() {
   return (
-    <div className="mx-auto mt-14 max-w-[1040px] overflow-hidden rounded-[18px] bg-[#202936] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.10),0_28px_70px_rgba(32,41,54,0.16)] lg:mt-16">
+    <div className="mx-auto mt-10 max-w-[1040px] overflow-hidden rounded-[18px] bg-[#202936] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.10),0_28px_70px_rgba(32,41,54,0.16)] lg:mt-12">
       <video
         className="block aspect-video w-full object-cover motion-reduce:hidden"
         autoPlay
