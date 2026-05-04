@@ -204,11 +204,11 @@ function HeroVisual() {
         loop
         muted
         playsInline
-        poster="/images/hero-ui-flow-poster.jpg?v=line-seed-jp-v1"
+        poster="/images/hero-ui-flow-poster.jpg?v=loop-large-ui-v1"
         preload="metadata"
         aria-hidden="true"
       >
-        <source src="/videos/hero-ui-flow-hq.mp4?v=line-seed-jp-v1" type="video/mp4" />
+        <source src="/videos/hero-ui-flow-hq.mp4?v=loop-large-ui-v1" type="video/mp4" />
       </video>
       <Image
         src="/images/hero-ui-flow-poster.jpg"

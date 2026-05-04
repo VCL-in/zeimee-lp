@@ -8,9 +8,9 @@ import {
 } from "remotion";
 
 const fontFamily = "'LINE Seed JP'";
-const slideWidth = 1500;
-const slideHeight = 760;
-const slideStep = 1620;
+const slideWidth = 1660;
+const slideHeight = 840;
+const slideStep = 1740;
 
 const slides = [
   {
@@ -45,40 +45,6 @@ function rangeOpacity(frame: number, start: number, end: number, fade = 28) {
     extrapolateRight: "clamp",
   });
   return Math.min(intro, outro);
-}
-
-function BrandMark() {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        left: 80,
-        top: 64,
-        display: "flex",
-        alignItems: "center",
-        gap: 14,
-        color: "#f8fbff",
-        fontFamily,
-        fontSize: 25,
-        fontWeight: 900,
-      }}
-    >
-      <div
-        style={{
-          width: 34,
-          height: 34,
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 5,
-        }}
-      >
-        {[0, 1, 2, 3].map((item) => (
-          <div key={item} style={{ background: "#f8fbff", borderRadius: 2 }} />
-        ))}
-      </div>
-      Zeimee
-    </div>
-  );
 }
 
 function Background() {
@@ -116,7 +82,7 @@ function Background() {
 function PromptPill() {
   const frame = useCurrentFrame();
   const prompts = [
-    { text: slides[0].prompt, start: 0, end: 300 },
+    { text: slides[0].prompt, start: 0, end: 300, loopIn: true },
     { text: slides[1].prompt, start: 300, end: 600 },
     { text: slides[2].prompt, start: 600, end: 900 },
   ];
@@ -128,19 +94,24 @@ function PromptPill() {
           key={prompt.text}
           style={{
             position: "absolute",
-            left: 310,
-            right: 310,
-            top: 126,
+            left: 260,
+            right: 260,
+            top: 62,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             color: "#f8fbff",
             fontFamily,
-            fontSize: 50,
+            fontSize: 54,
             lineHeight: 1.18,
             fontWeight: 900,
             letterSpacing: 0,
-            opacity: rangeOpacity(frame, prompt.start, prompt.end, 30),
+            opacity: prompt.loopIn
+              ? Math.max(
+                  frame < 270 ? 1 : rangeOpacity(frame, prompt.start, prompt.end, 30),
+                  rangeOpacity(frame, 870, 900, 30),
+                )
+              : rangeOpacity(frame, prompt.start, prompt.end, 30),
             transform: `translateY(${smooth(frame, [prompt.start, prompt.start + 40], [14, 0])}px)`,
             textShadow: "0 18px 48px rgba(0, 0, 0, 0.34)",
           }}
@@ -160,7 +131,7 @@ function SlidePanel({
   index: number;
 }) {
   const frame = useCurrentFrame();
-  const distanceFromActive = Math.abs(index * 300 - frame);
+  const distanceFromActive = Math.abs((index - 1) * 300 - frame);
   const glow = interpolate(distanceFromActive, [0, 180, 300], [1, 0.45, 0.22], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -170,7 +141,7 @@ function SlidePanel({
     <div
       style={{
         position: "absolute",
-        left: index * slideStep,
+        left: (index - 1) * slideStep,
         top: 0,
         width: slideWidth,
         height: slideHeight,
@@ -212,8 +183,8 @@ function UiCarousel() {
     <div
       style={{
         position: "absolute",
-        left: 210,
-        top: 296,
+        left: 180,
+        top: 198,
         width: slideWidth,
         height: slideHeight,
         overflow: "visible",
@@ -224,13 +195,13 @@ function UiCarousel() {
           position: "absolute",
           left: trackX,
           top: 0,
-          width: slideStep * 4,
+          width: slideStep * 5,
           height: slideHeight,
           display: "flex",
           gap: slideStep - slideWidth,
         }}
       >
-        {[...slides, slides[0]].map((slide, index) => (
+        {[slides[2], ...slides, slides[0]].map((slide, index) => (
           <SlidePanel key={`${slide.src}-${index}`} slide={slide} index={index} />
         ))}
       </div>
@@ -242,7 +213,6 @@ export function HeroUiFlow() {
   return (
     <AbsoluteFill>
       <Background />
-      <BrandMark />
       <PromptPill />
       <UiCarousel />
     </AbsoluteFill>
