@@ -48,6 +48,32 @@ function rangeOpacity(frame: number, start: number, end: number, fade = 28) {
   return Math.min(intro, outro);
 }
 
+function loopPromptOpacity(frame: number) {
+  if (frame < 250) {
+    return 1;
+  }
+
+  if (frame < 300) {
+    return interpolate(frame, [250, 300], [1, 0], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    });
+  }
+
+  if (frame < 820) {
+    return 0;
+  }
+
+  if (frame < 870) {
+    return interpolate(frame, [820, 870], [0, 1], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    });
+  }
+
+  return 1;
+}
+
 function Background() {
   return (
     <AbsoluteFill
@@ -85,7 +111,7 @@ function PromptPill() {
   const prompts = [
     { text: slides[0].prompt, start: 0, end: 300, loopIn: true },
     { text: slides[1].prompt, start: 300, end: 600 },
-    { text: slides[2].prompt, start: 600, end: 900 },
+    { text: slides[2].prompt, start: 600, end: 870 },
   ];
 
   return (
@@ -108,12 +134,11 @@ function PromptPill() {
             fontWeight: 700,
             letterSpacing: 0,
             opacity: prompt.loopIn
-              ? Math.max(
-                  frame < 270 ? 1 : rangeOpacity(frame, prompt.start, prompt.end, 30),
-                  rangeOpacity(frame, 870, 900, 30),
-                )
+              ? loopPromptOpacity(frame)
               : rangeOpacity(frame, prompt.start, prompt.end, 30),
-            transform: `translateY(${smooth(frame, [prompt.start, prompt.start + 40], [14, 0])}px)`,
+            transform: `translateY(${
+              prompt.loopIn ? 0 : smooth(frame, [prompt.start, prompt.start + 40], [14, 0])
+            }px)`,
             textShadow: "0 18px 48px rgba(0, 0, 0, 0.34)",
           }}
         >
@@ -171,8 +196,17 @@ function UiCarousel() {
   const frame = useCurrentFrame();
   const trackX = interpolate(
     frame,
-    [0, 250, 300, 550, 600, 850, 900],
-    [0, 0, -slideStep, -slideStep, -slideStep * 2, -slideStep * 2, -slideStep * 3],
+    [0, 250, 300, 550, 600, 820, 870, 900],
+    [
+      0,
+      0,
+      -slideStep,
+      -slideStep,
+      -slideStep * 2,
+      -slideStep * 2,
+      -slideStep * 3,
+      -slideStep * 3,
+    ],
     {
       easing: Easing.bezier(0.76, 0, 0.24, 1),
       extrapolateLeft: "clamp",
@@ -196,13 +230,13 @@ function UiCarousel() {
           position: "absolute",
           left: trackX,
           top: 0,
-          width: slideStep * 5,
+          width: slideStep * 6,
           height: slideHeight,
           display: "flex",
           gap: slideStep - slideWidth,
         }}
       >
-        {[slides[2], ...slides, slides[0]].map((slide, index) => (
+        {[slides[2], ...slides, slides[0], slides[1]].map((slide, index) => (
           <SlidePanel key={`${slide.src}-${index}`} slide={slide} index={index} />
         ))}
       </div>

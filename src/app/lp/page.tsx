@@ -204,11 +204,11 @@ function HeroVisual() {
         loop
         muted
         playsInline
-        poster="/images/hero-ui-flow-poster.jpg?v=cta-bg-balanced-v1"
+        poster="/images/hero-ui-flow-poster.jpg?v=loop-smooth-v1"
         preload="metadata"
         aria-hidden="true"
       >
-        <source src="/videos/hero-ui-flow-hq.mp4?v=cta-bg-balanced-v1" type="video/mp4" />
+        <source src="/videos/hero-ui-flow-hq.mp4?v=loop-smooth-v1" type="video/mp4" />
       </video>
       <Image
         src="/images/hero-ui-flow-poster.jpg"
