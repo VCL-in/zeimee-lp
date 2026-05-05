@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 function FieldLabel({ children }: { children: string }) {
   return (
-    <label className="block text-[15px] font-extrabold text-[#202936]">
+    <label className="block text-[18px] font-bold text-[#202936]">
       {children}
       <span className="ml-1 text-[#d91515]">*</span>
     </label>
@@ -13,7 +13,7 @@ function FieldLabel({ children }: { children: string }) {
 }
 
 const inputClass =
-  "mt-2 h-14 w-full rounded-[2px] border border-[#cbd6e3] bg-[#f7f9fb] px-4 text-[15px] font-bold text-[#202936] outline-none transition placeholder:text-[#aeb6c0] focus:border-[#1155cc] focus:bg-white";
+  "mt-2 h-14 w-full rounded-[2px] border border-[#cbd6e3] bg-[#f7f9fb] px-4 text-[18px] font-bold text-[#202936] outline-none transition placeholder:text-[#aeb6c0] focus:border-[#1155cc] focus:bg-white";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
@@ -117,34 +117,34 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-[15px] font-extrabold text-[#202936]">
+        <label className="block text-[18px] font-bold text-[#202936]">
           詳細
         </label>
         <textarea
           name="message"
           rows={6}
           placeholder="ご相談内容や現在の課題をご記入ください"
-          className="mt-2 w-full rounded-[2px] border border-[#cbd6e3] bg-[#f7f9fb] px-4 py-4 text-[15px] font-bold leading-7 text-[#202936] outline-none transition placeholder:text-[#aeb6c0] focus:border-[#1155cc] focus:bg-white"
+          className="mt-2 w-full rounded-[2px] border border-[#cbd6e3] bg-[#f7f9fb] px-4 py-4 text-[18px] font-bold leading-8 text-[#202936] outline-none transition placeholder:text-[#aeb6c0] focus:border-[#1155cc] focus:bg-white"
         />
       </div>
 
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-[2px] bg-[#1155cc] px-8 text-[15px] font-extrabold text-white transition disabled:cursor-not-allowed disabled:bg-[#8aa8e6] sm:w-auto"
+        className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-[2px] bg-[#1155cc] px-8 text-[18px] font-bold text-white transition disabled:cursor-not-allowed disabled:bg-[#8aa8e6] sm:w-auto"
       >
         {status === "sending" ? "送信中" : "送信する"}
         <ArrowRight className="size-4" />
       </button>
 
       {status === "sent" && (
-        <p className="text-[13px] font-bold leading-7 text-[#116b3a]">
+        <p className="text-[16px] font-bold leading-7 text-[#116b3a]">
           送信しました。担当者よりご連絡いたします。
         </p>
       )}
 
       {status === "error" && (
-        <p className="text-[13px] font-bold leading-7 text-[#b42318]">
+        <p className="text-[16px] font-bold leading-7 text-[#b42318]">
           {errorMessage}
         </p>
       )}
