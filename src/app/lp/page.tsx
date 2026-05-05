@@ -41,21 +41,21 @@ const featureItems = [
 const problemCards = [
   {
     label: "仕訳",
-    title: "記帳に時間がかかり、レビューが月末月初に集中",
+    title: "記帳業務に時間がかかる",
     points: ["採用・教育コストが重い", "担当者ごとに判断がばらつく", "所長レビューが重い"],
     icon: FileText,
     image: "/lp/problem-journal-v2.png",
   },
   {
     label: "証憑管理",
-    title: "証憑回収と紐付けが煩雑で、締めが遅れる",
+    title: "証憑回収と紐付けが追いつかない",
     points: ["提出方法が顧問先ごとに違う", "不足証憑の確認が属人化", "取引への紐付けが大変"],
     icon: ReceiptText,
     image: "/lp/problem-evidence-v2.png",
   },
   {
     label: "消込",
-    title: "入金確認や名義違いで、確認作業が止まる",
+    title: "消込の確認に手間がかかる",
     points: ["請求との突合に時間がかかる", "未消込に気づきにくい", "確認依頼が後手に回る"],
     icon: CircleDollarSign,
     image: "/lp/problem-reconciliation-v2.png",
@@ -74,8 +74,8 @@ const solutionCards = [
     image: "/lp/solution-ai-review-v2.png",
   },
   {
-    title: "顧問先対応をスムーズに",
-    text: "不足証憑や確認事項を整理。依頼・催促漏れを防ぎ、確認待ちを減らします。",
+    title: "証憑回収もAIが対応",
+    text: "不足証憑や確認事項をAIが整理。顧問先への依頼・催促漏れを防ぎます。",
     image: "/lp/solution-client-communication-v2.png",
   },
 ];
@@ -130,15 +130,14 @@ function Header() {
       <div className="mx-auto flex h-[62px] max-w-[1180px] items-center justify-between px-5">
         <div className="flex items-center gap-10">
           <Logo />
-          <nav className="hidden items-center gap-7 text-[13px] font-bold text-[#202936] lg:flex">
+          <nav className="hidden items-center gap-7 text-[16px] font-bold text-[#202936] lg:flex">
             <a href="#problems">課題</a>
             <a href="#solutions">解決策</a>
             <a href="#features">機能</a>
             <a href="#faq">よくある質問</a>
           </nav>
         </div>
-        <div className="hidden items-center gap-5 text-[13px] font-bold lg:flex">
-          <Link href="/login">ログイン</Link>
+        <div className="hidden items-center gap-5 text-[16px] font-bold lg:flex">
           <a
             href={contactHref}
             className="inline-flex h-10 items-center gap-2 rounded-[2px] bg-[#1155cc] px-5 text-white"
@@ -227,14 +226,14 @@ function AccountingIntegrations() {
               className="h-[66px] w-auto"
             />
           </div>
-          <div className="flex items-center justify-center text-center text-[28px] font-extrabold leading-tight text-[#202936]">
+          <div className="flex items-center justify-center text-center text-[34px] font-bold leading-tight text-[#005bac]">
             Money
             <br />
             Forward
           </div>
           <div className="flex flex-col items-center justify-center gap-1 text-center">
-            <span className="text-[28px] font-extrabold text-[#c4cbd5]">弥生会計</span>
-            <span className="text-[11px] font-extrabold text-[#b1bac6]">対応予定</span>
+            <span className="text-[34px] font-bold text-[#c4cbd5]">弥生会計</span>
+            <span className="text-[13px] font-bold text-[#b1bac6]">対応予定</span>
           </div>
         </div>
       </div>
@@ -247,8 +246,8 @@ function Problems() {
     <section id="problems" className="relative overflow-hidden bg-[#3d444f] pb-20 pt-28 text-white">
       <DiagonalTop />
       <div className="mx-auto max-w-[1180px] px-5">
-        <p className="text-[13px] font-bold text-white/25">Problems</p>
-        <h2 className="mt-5 text-[24px] font-extrabold tracking-normal">
+        <p className="text-[16px] font-bold text-white/25">Problems</p>
+        <h2 className="mt-5 text-[29px] font-bold tracking-normal">
           こんな課題ありませんか？
         </h2>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -263,13 +262,13 @@ function Problems() {
                   className="object-contain"
                 />
               </div>
-              <span className="mt-5 inline-block rounded-[2px] bg-[#10a6b7] px-3 py-1 text-[11px] font-bold">
+              <span className="mt-5 inline-block rounded-[2px] bg-[#10a6b7] px-3 py-1 text-[13px] font-bold">
                 {card.label}
               </span>
-              <h3 className="mt-4 text-balance text-[17px] font-extrabold leading-7">
+              <h3 className="mt-4 text-balance text-[20px] font-bold leading-7">
                 {card.title}
               </h3>
-              <ul className="mt-4 space-y-2 text-[13px] font-bold leading-6 text-white/82">
+              <ul className="mt-4 space-y-2 text-[16px] font-bold leading-6 text-white/82">
                 {card.points.map((point) => (
                   <li key={point} className="flex gap-2">
                     <span>・</span>
@@ -288,18 +287,18 @@ function Problems() {
 function Solutions() {
   return (
     <section id="solutions" className="bg-white py-24">
-      <div className="mx-auto max-w-[1020px] px-5">
-        <h2 className="text-balance text-center text-[22px] font-extrabold leading-8 tracking-normal sm:text-[24px]">
+      <div className="mx-auto max-w-[1200px] px-5">
+        <h2 className="text-balance text-center text-[29px] font-bold leading-9 tracking-normal">
           Zeimeeで月次業務を解決
         </h2>
-        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+        <div className="mt-12 grid gap-10 lg:grid-cols-3 xl:gap-12">
           {solutionCards.map((card) => (
             <article key={card.title}>
               <SolutionImage src={card.image} title={card.title} />
-              <h3 className="mt-6 text-balance text-[18px] font-extrabold leading-7">
+              <h3 className="mt-6 text-balance text-[22px] font-bold leading-8">
                 {card.title}
               </h3>
-              <p className="mt-3 text-[13px] font-medium leading-7 text-[#5c6675]">
+              <p className="mt-3 text-[16px] font-thin leading-8 text-[#5c6675]">
                 {card.text}
               </p>
             </article>
@@ -314,7 +313,7 @@ function Features() {
   return (
     <section id="features" className="bg-white py-24">
       <div className="mx-auto max-w-[920px] px-5">
-        <h2 className="text-center text-[24px] font-extrabold tracking-normal">
+        <h2 className="text-center text-[29px] font-bold tracking-normal">
           提供中の機能
         </h2>
         <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
@@ -331,7 +330,7 @@ function PlannedFeatures() {
   return (
     <section className="bg-[#f2f4f7] py-24">
       <div className="mx-auto max-w-[920px] px-5">
-        <h2 className="text-center text-[24px] font-extrabold tracking-normal">
+        <h2 className="text-center text-[29px] font-bold tracking-normal">
           提供予定の機能
         </h2>
         <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
@@ -340,7 +339,7 @@ function PlannedFeatures() {
               <div className="flex h-[112px] items-center justify-center rounded-[2px] bg-[#f5f7fa]">
                 <PlannedIllustration index={index} />
               </div>
-              <h3 className="mt-5 text-center text-[15px] font-extrabold leading-6">
+              <h3 className="mt-5 text-center text-[18px] font-bold leading-6">
                 {item}
               </h3>
             </div>
@@ -355,17 +354,17 @@ function Faq() {
   return (
     <section id="faq" className="bg-[#f2f4f7] py-24">
       <div className="mx-auto max-w-[920px] px-5">
-        <h2 className="text-center text-[24px] font-extrabold tracking-normal">
+        <h2 className="text-center text-[29px] font-bold tracking-normal">
           よくある質問
         </h2>
         <div className="mt-10 space-y-4">
           {faqs.map((faq) => (
             <details key={faq.question} className="group rounded-[3px] bg-white p-6">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-balance text-[17px] font-extrabold">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-balance text-[20px] font-bold">
                 {faq.question}
                 <ChevronDown className="size-5 transition group-open:rotate-180" />
               </summary>
-              <p className="mt-4 text-[13px] font-medium leading-7 text-[#5c6675]">
+              <p className="mt-4 text-[16px] font-thin leading-7 text-[#5c6675]">
                 {faq.answer}
               </p>
             </details>
@@ -380,13 +379,13 @@ function ContactBand() {
   return (
     <section id="contact" className="scroll-mt-24 bg-white py-24">
       <div className="mx-auto max-w-[760px] px-5">
-        <h2 className="text-balance text-[30px] font-extrabold leading-[1.35] tracking-normal text-[#202936] sm:text-[38px]">
+        <h2 className="text-balance text-[36px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[46px]">
           Zeimeeへのお問い合わせ
         </h2>
-        <p className="mt-8 text-[15px] font-bold leading-8 text-[#202936]">
+        <p className="mt-8 text-[18px] font-bold leading-8 text-[#202936]">
           Zeimeeにご関心をお寄せいただきありがとうございます。
         </p>
-        <p className="mt-5 text-[15px] font-bold leading-8 text-[#202936]">
+        <p className="mt-5 text-[18px] font-bold leading-8 text-[#202936]">
           導入相談、デモ、料金や機能のご質問など、お気軽にお問い合わせください。
           <br className="hidden sm:block" />
           内容に応じて担当者よりご連絡します。
@@ -403,10 +402,24 @@ function Footer() {
       <DiagonalTop light />
       <div className="mx-auto max-w-[1180px] px-5">
         <Logo light />
-        <div className="mt-14 grid gap-10 text-[13px] font-bold text-white/55 sm:grid-cols-2 lg:grid-cols-4">
-          <FooterColumn title="製品" items={["機能", "料金", "セキュリティ"]} />
-          <FooterColumn title="サポート" items={["無料相談", "ヘルプセンター", "お問い合わせ"]} />
-          <FooterColumn title="会社情報" items={["運営会社", "採用情報", "プライバシー", "利用規約"]} />
+        <div className="mt-14 grid gap-10 text-[16px] font-bold text-white/55 lg:grid-cols-[1fr_auto]">
+          <div>
+            <p className="mb-5 text-white">会社情報</p>
+            <dl className="space-y-3">
+              <div>
+                <dt className="sr-only">会社名</dt>
+                <dd>株式会社Vibe Coding Lab</dd>
+              </div>
+              <div>
+                <dt className="sr-only">所在地</dt>
+                <dd>東京都調布市調布ヶ丘1-5-1 電気通信大学西11号館4階411号室</dd>
+              </div>
+              <div>
+                <dt className="sr-only">代表者</dt>
+                <dd>代表取締役 佐次本 脩真</dd>
+              </div>
+            </dl>
+          </div>
           <div className="lg:text-right">
             <a
               href={contactHref}
@@ -417,7 +430,7 @@ function Footer() {
             </a>
           </div>
         </div>
-        <p className="mt-16 text-[12px] font-medium text-white/35">
+        <p className="mt-16 text-[14px] font-thin text-white/35">
           © 2026 Zeimee
         </p>
       </div>
@@ -456,8 +469,8 @@ function FeatureCard({
           <Icon className="size-10 text-[#1155cc]" />
         </div>
       </div>
-      <h3 className="mt-5 text-center text-[16px] font-extrabold">{title}</h3>
-      <p className="mx-auto mt-3 max-w-[210px] text-center text-[12px] font-medium leading-6 text-[#667083]">
+      <h3 className="mt-5 text-center text-[19px] font-bold">{title}</h3>
+      <p className="mx-auto mt-3 max-w-[210px] text-center text-[14px] font-thin leading-6 text-[#667083]">
         {description}
       </p>
     </article>
@@ -466,12 +479,12 @@ function FeatureCard({
 
 function SolutionImage({ src, title }: { src: string; title: string }) {
   return (
-    <div className="relative h-[170px] overflow-hidden rounded-[3px] bg-[#eef2f7]">
+    <div className="relative h-[220px] overflow-hidden rounded-[3px] bg-[#eef2f7]">
       <Image
         src={src}
         alt={`${title}のイメージ`}
         fill
-        sizes="(min-width: 1024px) 300px, 100vw"
+        sizes="(min-width: 1280px) 370px, (min-width: 1024px) 31vw, 100vw"
         className="object-cover"
       />
     </div>
@@ -498,18 +511,5 @@ function DiagonalTop({ light = false }: { light?: boolean }) {
       }`}
       style={{ clipPath: "polygon(0 0, 100% 0, 100% 18%, 0 100%)" }}
     />
-  );
-}
-
-function FooterColumn({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div>
-      <p className="mb-5 text-white">{title}</p>
-      <ul className="space-y-3">
-        {items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-    </div>
   );
 }
