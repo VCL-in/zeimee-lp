@@ -107,6 +107,24 @@ const faqs = [
   },
 ];
 
+const teamCards = [
+  {
+    title: "税理士事務所",
+    role: "経営者",
+    image: "/lp/team-accounting-owner.jpg",
+  },
+  {
+    title: "月次業務",
+    role: "実務担当者",
+    image: "/lp/team-monthly-operator.jpg",
+  },
+  {
+    title: "AI / SaaS",
+    role: "開発担当",
+    image: "/lp/team-product-builder.jpg",
+  },
+];
+
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-white text-[#202936]">
@@ -118,6 +136,7 @@ export default function LandingPage() {
       <Features />
       <PlannedFeatures />
       <Faq />
+      <TeamSection />
       <ContactBand />
       <Footer />
     </main>
@@ -368,6 +387,39 @@ function Faq() {
                 {faq.answer}
               </p>
             </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TeamSection() {
+  return (
+    <section className="bg-white py-24">
+      <div className="mx-auto max-w-[1180px] px-5">
+        <h2 className="max-w-[820px] text-balance text-[32px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[42px]">
+          AIに知見のある税理士とエンジニアが一丸となって開発しています。
+        </h2>
+        <p className="mt-8 max-w-[900px] text-[18px] font-thin leading-9 text-[#202936]">
+          Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、税理士が確認と顧問先対応に集中できるプロダクトを目指しています。
+        </p>
+        <div className="mt-14 grid gap-8 lg:grid-cols-3">
+          {teamCards.map((card) => (
+            <article
+              key={card.title}
+              className="relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[#f2f5fa] bg-cover bg-center"
+              style={{ backgroundImage: `url(${card.image})` }}
+            >
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/90 via-white/60 to-transparent p-7 pt-24">
+                <p className="text-[20px] font-bold leading-7 text-[#202936]">
+                  {card.title}
+                </p>
+                <p className="mt-1 text-[16px] font-bold leading-6 text-[#202936]/75">
+                  {card.role}
+                </p>
+              </div>
+            </article>
           ))}
         </div>
       </div>
