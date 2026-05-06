@@ -401,7 +401,10 @@ function TeamSection() {
       <div className="mx-auto max-w-[1180px] px-5">
         <div className="mx-auto max-w-[900px] text-center">
           <h2 className="text-balance text-[31px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[40px]">
-            AIに知見のある税理士とエンジニアが一丸となって開発しています。
+            AIに知見のある税理士と
+            <br className="hidden sm:block" />
+            <span className="whitespace-nowrap">エンジニア</span>
+            が一丸となって開発しています。
           </h2>
           <p className="mx-auto mt-8 max-w-[860px] text-[18px] font-thin leading-9 text-[#202936]">
             Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、税理士が確認と顧問先対応に集中できるプロダクトを目指しています。
