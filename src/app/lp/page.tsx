@@ -109,19 +109,20 @@ const faqs = [
 
 const teamCards = [
   {
-    title: "税理士事務所",
-    role: "経営者",
-    image: "/lp/team-accounting-owner.jpg",
+    title: "アドバイザー 畠山謙人",
+    role: "公認会計士・税理士",
+    bio: "大和工業で連結決算等を担当後、監査法人トーマツで国内監査に従事。サイバーエージェントでは連結決算やAbemaTV経理、決算早期化を担当。税理士法人赤坂共同事務所を経て、2025年に畠山謙人税理士事務所を開業。シードスタートアップを中心に支援している。",
+    image: "/lp/team-tax-advisor.png",
+    objectPosition: "center 18%",
+    imageClassName: "scale-[1.2]",
   },
   {
-    title: "月次業務",
-    role: "実務担当者",
-    image: "/lp/team-monthly-operator.jpg",
-  },
-  {
-    title: "AI / SaaS",
-    role: "開発担当",
-    image: "/lp/team-product-builder.jpg",
+    title: "代表取締役 佐次本脩真",
+    role: "元メルカリエンジニア",
+    bio: "電気通信大学大学院 情報理工学研究科を卒業。大学院ではソフトウェア開発やAI活用の知見を深め、2025年8月から2026年4月までメルカリにてSWEとしてプロダクト開発を経験。月次業務の実務負担をAIで減らすため、Zeimeeを立ち上げる。",
+    image: "/lp/team-ai-engineer.png",
+    objectPosition: "center 20%",
+    imageClassName: "",
   },
 ];
 
@@ -183,7 +184,7 @@ function Hero() {
             <br />
             <span className="inline-block">AIで限りなくゼロへ。</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-[560px] text-[13px] font-bold leading-7 text-[#5c6675]">
+          <p className="mx-auto mt-6 max-w-[640px] text-[17px] font-bold leading-8 text-[#5c6675] sm:text-[20px] sm:leading-10">
             <span className="block">記帳・証憑・消込をAIが処理。</span>
             <span className="block">税理士はToDoを確認するだけ。</span>
           </p>
@@ -398,25 +399,41 @@ function TeamSection() {
   return (
     <section className="bg-white py-24">
       <div className="mx-auto max-w-[1180px] px-5">
-        <h2 className="max-w-[820px] text-balance text-[32px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[42px]">
-          AIに知見のある税理士とエンジニアが一丸となって開発しています。
-        </h2>
-        <p className="mt-8 max-w-[900px] text-[18px] font-thin leading-9 text-[#202936]">
-          Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、税理士が確認と顧問先対応に集中できるプロダクトを目指しています。
-        </p>
-        <div className="mt-14 grid gap-8 lg:grid-cols-3">
+        <div className="mx-auto max-w-[900px] text-center">
+          <h2 className="text-balance text-[31px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[40px]">
+            AIに知見のある税理士とエンジニアが一丸となって開発しています。
+          </h2>
+          <p className="mx-auto mt-8 max-w-[860px] text-[18px] font-thin leading-9 text-[#202936]">
+            Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、税理士が確認と顧問先対応に集中できるプロダクトを目指しています。
+          </p>
+        </div>
+        <div className="mx-auto mt-14 grid max-w-[960px] gap-8 md:grid-cols-2 lg:gap-10">
           {teamCards.map((card) => (
             <article
               key={card.title}
-              className="relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[#f2f5fa] bg-cover bg-center"
-              style={{ backgroundImage: `url(${card.image})` }}
+              className="flex flex-col gap-5"
             >
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/90 via-white/60 to-transparent p-7 pt-24">
-                <p className="text-[20px] font-bold leading-7 text-[#202936]">
-                  {card.title}
-                </p>
-                <p className="mt-1 text-[16px] font-bold leading-6 text-[#202936]/75">
-                  {card.role}
+              <div className="relative aspect-[5/6] overflow-hidden rounded-[8px] bg-[#f2f5fa]">
+                <Image
+                  src={card.image}
+                  alt={`${card.title} ${card.role}`}
+                  fill
+                  sizes="(min-width: 1024px) 460px, (min-width: 768px) 50vw, 100vw"
+                  className={`object-cover ${card.imageClassName}`}
+                  style={{ objectPosition: card.objectPosition }}
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/95 via-white/70 to-transparent px-6 pb-7 pt-28 sm:px-7">
+                  <p className="text-[21px] font-bold leading-7 text-[#202936] sm:text-[22px]">
+                    {card.title}
+                  </p>
+                  <p className="mt-2 text-[16px] font-bold leading-6 text-[#202936]/75 sm:text-[17px]">
+                    {card.role}
+                  </p>
+                </div>
+              </div>
+              <div className="flex-1 rounded-[8px] bg-[#f4f6f9] px-6 py-6 sm:px-7">
+                <p className="text-[15px] font-thin leading-8 text-[#4b5563] sm:text-[16px]">
+                  {card.bio}
                 </p>
               </div>
             </article>
@@ -468,7 +485,7 @@ function Footer() {
               </div>
               <div>
                 <dt className="sr-only">代表者</dt>
-                <dd>代表取締役 佐次本 脩真</dd>
+                <dd>代表取締役 佐次本脩真</dd>
               </div>
             </dl>
           </div>
