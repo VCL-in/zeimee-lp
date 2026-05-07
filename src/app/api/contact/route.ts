@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const recipients = [
+const defaultRecipients = [
   "vclab.jp@gmail.com",
   "iwasaki@vclab.jp",
   "sajimoto@vclab.jp",
@@ -19,9 +19,17 @@ function asString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
 
+function getRecipients() {
+  const configuredRecipients = process.env.CONTACT_TO_EMAILS?.split(",")
+    .map((email) => email.trim())
+    .filter(Boolean);
+
+  return configuredRecipients?.length ? configuredRecipients : defaultRecipients;
+}
+
 export async function POST(request: Request) {
   const resendApiKey = process.env.RESEND_API_KEY;
-  const from = process.env.CONTACT_FROM_EMAIL ?? "Zeimee <noreply@zeimee.app>";
+  const from = process.env.CONTACT_FROM_EMAIL ?? "Zeimee <noreply@zeimee.com>";
 
   if (!resendApiKey) {
     return NextResponse.json(
@@ -77,7 +85,7 @@ export async function POST(request: Request) {
     },
     body: JSON.stringify({
       from,
-      to: recipients,
+      to: getRecipients(),
       reply_to: email,
       subject: `【Zeimee】お問い合わせ: ${company}`,
       text,

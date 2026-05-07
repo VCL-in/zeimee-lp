@@ -99,7 +99,7 @@ export function ContactForm() {
           type="email"
           name="email"
           autoComplete="email"
-          placeholder="例）example@zeimee.app"
+          placeholder="例）example@zeimee.com"
           className={inputClass}
         />
       </div>
