@@ -24,36 +24,44 @@ export function ContactForm() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     setStatus("sending");
     setErrorMessage("");
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        company: form.get("company"),
-        lastName: form.get("lastName"),
-        firstName: form.get("firstName"),
-        email: form.get("email"),
-        phone: form.get("phone"),
-        message: form.get("message"),
-      }),
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          company: form.get("company"),
+          lastName: form.get("lastName"),
+          firstName: form.get("firstName"),
+          email: form.get("email"),
+          phone: form.get("phone"),
+          message: form.get("message"),
+        }),
+      });
 
-    if (!response.ok) {
-      const result = await response.json().catch(() => null);
+      if (!response.ok) {
+        const result = await response.json().catch(() => null);
+        setStatus("error");
+        setErrorMessage(
+          result?.message ?? "送信に失敗しました。時間をおいて再度お試しください。",
+        );
+        return;
+      }
+
+      formElement.reset();
+      setStatus("sent");
+    } catch {
       setStatus("error");
       setErrorMessage(
-        result?.message ?? "送信に失敗しました。時間をおいて再度お試しください。",
+        "送信に失敗しました。時間をおいて再度お試しください。",
       );
-      return;
     }
-
-    event.currentTarget.reset();
-    setStatus("sent");
   }
 
   return (
