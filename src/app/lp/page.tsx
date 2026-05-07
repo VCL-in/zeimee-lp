@@ -490,6 +490,10 @@ function Footer() {
                 <dt className="sr-only">代表者</dt>
                 <dd>代表取締役 佐次本脩真</dd>
               </div>
+              <div>
+                <dt className="sr-only">取締役</dt>
+                <dd>取締役 岩崎琉晟</dd>
+              </div>
             </dl>
           </div>
           <div className="lg:text-right">
