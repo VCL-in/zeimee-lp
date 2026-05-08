@@ -236,6 +236,9 @@ function AccountingIntegrations() {
   return (
     <section className="border-y border-[#eef1f5] bg-white py-10">
       <div className="mx-auto max-w-[1180px] px-5">
+        <p className="mb-8 text-center text-[15px] font-bold text-[#5b6675]">
+          対応している会計ソフト
+        </p>
         <div className="grid grid-cols-1 gap-x-16 gap-y-9 sm:grid-cols-3">
           <div className="flex items-center justify-center">
             <Image
