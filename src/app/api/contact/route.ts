@@ -6,6 +6,15 @@ const defaultRecipients = [
   "sajimoto@vclab.jp",
 ];
 
+type EmailPayload = {
+  from: string;
+  to: string | string[];
+  reply_to?: string;
+  subject: string;
+  text: string;
+  html: string;
+};
+
 function escapeHtml(value: string) {
   return value
     .replaceAll("&", "&amp;")
@@ -25,6 +34,17 @@ function getRecipients() {
     .filter(Boolean);
 
   return configuredRecipients?.length ? configuredRecipients : defaultRecipients;
+}
+
+async function sendEmail(resendApiKey: string, payload: EmailPayload) {
+  return fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${resendApiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
 }
 
 export async function POST(request: Request) {
@@ -54,9 +74,8 @@ export async function POST(request: Request) {
   }
 
   const name = `${lastName} ${firstName}`;
-  const text = [
-    "Zeimee LPからお問い合わせがありました。",
-    "",
+  const safeCompanyForSubject = company.replaceAll(/[\r\n]+/g, " ");
+  const submittedDetails = [
     `会社名: ${company}`,
     `お名前: ${name}`,
     `会社のメールアドレス: ${email}`,
@@ -65,9 +84,7 @@ export async function POST(request: Request) {
     "詳細:",
     message || "未入力",
   ].join("\n");
-
-  const html = `
-    <h1>Zeimee LPからお問い合わせがありました</h1>
+  const escapedSubmittedDetails = `
     <dl>
       <dt>会社名</dt><dd>${escapeHtml(company)}</dd>
       <dt>お名前</dt><dd>${escapeHtml(name)}</dd>
@@ -77,28 +94,73 @@ export async function POST(request: Request) {
     </dl>
   `;
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${resendApiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to: getRecipients(),
-      reply_to: email,
-      subject: `【Zeimee】お問い合わせ: ${company}`,
-      text,
-      html,
-    }),
+  const notificationText = [
+    "Zeimee LPからお問い合わせがありました。",
+    "",
+    submittedDetails,
+  ].join("\n");
+
+  const notificationHtml = `
+    <h1>Zeimee LPからお問い合わせがありました</h1>
+    ${escapedSubmittedDetails}
+  `;
+
+  const autoReplyText = [
+    `${name} 様`,
+    "",
+    "Zeimeeへお問い合わせいただきありがとうございます。",
+    "以下の内容でお問い合わせを受け付けました。",
+    "内容を確認のうえ、担当者より順次ご連絡いたします。",
+    "",
+    submittedDetails,
+    "",
+    "このメールにお心当たりがない場合は、破棄してください。",
+  ].join("\n");
+
+  const autoReplyHtml = `
+    <p>${escapeHtml(name)} 様</p>
+    <p>
+      Zeimeeへお問い合わせいただきありがとうございます。<br />
+      以下の内容でお問い合わせを受け付けました。<br />
+      内容を確認のうえ、担当者より順次ご連絡いたします。
+    </p>
+    ${escapedSubmittedDetails}
+    <p>このメールにお心当たりがない場合は、破棄してください。</p>
+  `;
+
+  const notificationResponse = await sendEmail(resendApiKey, {
+    from,
+    to: getRecipients(),
+    reply_to: email,
+    subject: `【Zeimee】お問い合わせ: ${safeCompanyForSubject}`,
+    text: notificationText,
+    html: notificationHtml,
   });
 
-  if (!response.ok) {
-    const error = await response.text();
+  if (!notificationResponse.ok) {
+    const error = await notificationResponse.text();
     console.error("Failed to send contact email", error);
 
     return NextResponse.json(
       { message: "メール送信に失敗しました。" },
+      { status: 502 },
+    );
+  }
+
+  const autoReplyResponse = await sendEmail(resendApiKey, {
+    from,
+    to: email,
+    subject: "【Zeimee】お問い合わせを受け付けました",
+    text: autoReplyText,
+    html: autoReplyHtml,
+  });
+
+  if (!autoReplyResponse.ok) {
+    const error = await autoReplyResponse.text();
+    console.error("Failed to send contact auto reply", error);
+
+    return NextResponse.json(
+      { message: "確認メールの送信に失敗しました。" },
       { status: 502 },
     );
   }
