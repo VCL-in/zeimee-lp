@@ -147,7 +147,7 @@ export function ContactForm() {
 
       {status === "sent" && (
         <p className="text-[16px] font-bold leading-7 text-[#116b3a]">
-          送信しました。担当者よりご連絡いたします。
+          送信しました。確認メールをお送りしましたので、ご確認ください。
         </p>
       )}
 
