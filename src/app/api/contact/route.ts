@@ -131,7 +131,7 @@ export async function POST(request: Request) {
   const autoReplyText = isSeminarApplication
     ? [
         "はじめまして。",
-        "Zeimee運営の岩崎 琉晟と申します。",
+        "Zeimee担当者と申します。",
         "",
         "この度は「税理士特化AI Zeimee活用セミナー」にお申し込みいただき、誠にありがとうございます。",
         "",
@@ -143,12 +143,12 @@ export async function POST(request: Request) {
         "当日お会いできますことを楽しみにしております。",
         "",
         "――――――――――",
-        "岩崎 琉晟",
+        "Zeimee担当者",
         "Zeimee",
       ].join("\n")
     : [
         "はじめまして。",
-        "Zeimee運営の岩崎 琉晟と申します。",
+        "Zeimee担当者と申します。",
         "",
         "この度は、月次業務自動化サービス「Zeimee」へお問い合わせいただき、誠にありがとうございます。",
         "",
@@ -162,7 +162,7 @@ export async function POST(request: Request) {
         "お忙しいところ恐縮ですが、ご確認のほどよろしくお願いいたします。",
         "",
         "――――――――――",
-        "岩崎 琉晟",
+        "Zeimee担当者",
         "Zeimee",
       ].join("\n");
 
@@ -170,7 +170,7 @@ export async function POST(request: Request) {
     ? `
       <p>
         はじめまして。<br />
-        Zeimee運営の岩崎 琉晟と申します。
+        Zeimee担当者と申します。
       </p>
       <p>この度は「税理士特化AI Zeimee活用セミナー」にお申し込みいただき、誠にありがとうございます。</p>
       <p>
@@ -181,14 +181,14 @@ export async function POST(request: Request) {
       <p>当日お会いできますことを楽しみにしております。</p>
       <p>
         ――――――――――<br />
-        岩崎 琉晟<br />
+        Zeimee担当者<br />
         Zeimee
       </p>
     `
     : `
       <p>
         はじめまして。<br />
-        Zeimee運営の岩崎 琉晟と申します。
+        Zeimee担当者と申します。
       </p>
       <p>この度は、月次業務自動化サービス「Zeimee」へお問い合わせいただき、誠にありがとうございます。</p>
       <p>ぜひ一度、オンラインにてZeimeeのご紹介をさせていただければと思っております。</p>
@@ -200,7 +200,7 @@ export async function POST(request: Request) {
       <p>お忙しいところ恐縮ですが、ご確認のほどよろしくお願いいたします。</p>
       <p>
         ――――――――――<br />
-        岩崎 琉晟<br />
+        Zeimee担当者<br />
         Zeimee
       </p>
     `;
