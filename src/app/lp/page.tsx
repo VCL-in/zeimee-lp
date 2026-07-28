@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   title: "zeimee | 税理士向け月次業務自動化サービス",
   description:
     "zeimeeは、税理士事務所の記帳代行・証憑管理・消込・月次チェックをAIで支援する月次業務自動化サービスです。",
+  alternates: {
+    canonical: "https://zeimee.com/",
+  },
 };
 
 const contactHref = "#contact";
@@ -155,6 +158,7 @@ function Header() {
             <a href="#solutions">解決策</a>
             <a href="#features">機能</a>
             <a href="#faq">よくある質問</a>
+            <Link href="/company">会社情報</Link>
           </nav>
         </div>
         <div className="hidden items-center gap-5 text-[16px] font-bold lg:flex">
@@ -483,7 +487,7 @@ function Footer() {
             <dl className="space-y-3">
               <div>
                 <dt className="sr-only">会社名</dt>
-                <dd>株式会社Vibe Coding Lab</dd>
+                <dd>株式会社Zeimee</dd>
               </div>
               <div>
                 <dt className="sr-only">所在地</dt>
