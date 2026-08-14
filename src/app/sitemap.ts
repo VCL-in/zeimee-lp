@@ -14,11 +14,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    {
-      url: "https://zeimee.com/security",
-      lastModified: new Date("2026-08-14"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
   ];
 }
