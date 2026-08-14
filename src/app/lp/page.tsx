@@ -38,12 +38,19 @@ export const metadata: Metadata = {
     title: "Zeimee | 税理士事務所の月次業務をAIで支援",
     description:
       "明細・証憑・未消込・要確認を一つのレビューに集約。担当者が確認・修正・承認して会計ソフトへ反映できます。",
+    images: [
+      {
+        url: "/images/hero-ui-flow-poster-aio-v1.jpg",
+        alt: "Zeimeeの月次業務レビュー画面",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Zeimee | 税理士事務所の月次業務をAIで支援",
     description:
       "明細・証憑・未消込・要確認を一つのレビューに集約。担当者が確認・修正・承認して会計ソフトへ反映できます。",
+    images: ["/images/hero-ui-flow-poster-aio-v1.jpg"],
   },
 };
 

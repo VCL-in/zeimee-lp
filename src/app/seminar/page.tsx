@@ -21,12 +21,21 @@ export const metadata: Metadata = {
     title: "税理士特化AI Zeimee活用セミナー | Zeimee",
     description:
       "税理士業務へのAI活用、Zeimeeでできること、導入・運用のポイントを解説するオンラインセミナーです。",
+    images: [
+      {
+        url: "/seminar/tax-ai-zeimee-seminar.png",
+        width: 1672,
+        height: 941,
+        alt: "税理士特化AI Zeimee活用セミナー",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "税理士特化AI Zeimee活用セミナー | Zeimee",
     description:
       "税理士業務へのAI活用、Zeimeeでできること、導入・運用のポイントを解説するオンラインセミナーです。",
+    images: ["/seminar/tax-ai-zeimee-seminar.png"],
   },
 };
 
