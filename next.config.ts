@@ -4,6 +4,15 @@ const companySiteOrigin =
   process.env.COMPANY_SITE_ORIGIN ?? "https://zeimee-hp.vercel.app";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/lp",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {

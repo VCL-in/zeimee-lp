@@ -8,9 +8,13 @@ import "@fontsource/line-seed-jp/latin-800.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "zeimee | 税理士向け月次業務自動化サービス",
+  metadataBase: new URL("https://zeimee.com"),
+  title: {
+    default: "Zeimee | 税理士事務所の月次業務をAIで支援",
+    template: "%s | Zeimee",
+  },
   description:
-    "zeimeeは、税理士事務所の記帳代行・証憑管理・消込・月次チェックをAIで支援する月次業務自動化サービスです。",
+    "Zeimeeは、税理士事務所の明細・証憑・未消込・要確認を一つのレビューに集約し、月次業務の判断と処理をAIで支援するサービスです。",
 };
 
 export default function RootLayout({

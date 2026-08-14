@@ -5,9 +5,38 @@ import { ArrowRight, CalendarDays, Clock3, Laptop } from "lucide-react";
 import { SeminarForm } from "./SeminarForm";
 
 export const metadata: Metadata = {
-  title: "税理士特化AI Zeimee活用セミナー | Zeimee",
+  title: {
+    absolute: "税理士特化AI Zeimee活用セミナー | Zeimee",
+  },
   description:
     "2026年5月25日21:00開催。税理士業務へのAI活用、Zeimeeでできること、導入・運用のポイントを解説するオンラインセミナーです。",
+  alternates: {
+    canonical: "/seminar",
+  },
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: "/seminar",
+    siteName: "Zeimee",
+    title: "税理士特化AI Zeimee活用セミナー | Zeimee",
+    description:
+      "税理士業務へのAI活用、Zeimeeでできること、導入・運用のポイントを解説するオンラインセミナーです。",
+    images: [
+      {
+        url: "/seminar/tax-ai-zeimee-seminar.png",
+        width: 1672,
+        height: 941,
+        alt: "税理士特化AI Zeimee活用セミナー",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "税理士特化AI Zeimee活用セミナー | Zeimee",
+    description:
+      "税理士業務へのAI活用、Zeimeeでできること、導入・運用のポイントを解説するオンラインセミナーです。",
+    images: ["/seminar/tax-ai-zeimee-seminar.png"],
+  },
 };
 
 export default function SeminarPage() {
@@ -15,7 +44,7 @@ export default function SeminarPage() {
     <main className="min-h-screen bg-[#f6f8fb] text-[#17202c]">
       <header className="border-b border-[#edf0f4] bg-white">
         <div className="mx-auto flex h-[64px] max-w-[1120px] items-center justify-between px-5">
-          <Link href="/lp" className="inline-flex items-center">
+          <Link href="/" className="inline-flex items-center">
             <Image
               src="/lp/zeimee-logo.png"
               alt="Zeimee"

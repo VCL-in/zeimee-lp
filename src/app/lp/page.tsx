@@ -22,11 +22,35 @@ import {
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "zeimee | 税理士向け月次業務自動化サービス",
+  title: {
+    absolute: "Zeimee | 税理士事務所の月次業務をAIで支援",
+  },
   description:
-    "zeimeeは、税理士事務所の記帳代行・証憑管理・消込・月次チェックをAIで支援する月次業務自動化サービスです。",
+    "Zeimeeは、税理士事務所の明細・証憑・未消込・要確認を一つのレビューに集約し、月次業務の判断と処理をAIで支援するサービスです。",
   alternates: {
-    canonical: "https://zeimee.com/",
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: "/",
+    siteName: "Zeimee",
+    title: "Zeimee | 税理士事務所の月次業務をAIで支援",
+    description:
+      "明細・証憑・未消込・要確認を一つのレビューに集約。担当者が確認・修正・承認して会計ソフトへ反映できます。",
+    images: [
+      {
+        url: "/images/hero-ui-flow-poster-aio-v1.jpg",
+        alt: "Zeimeeの月次業務レビュー画面",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zeimee | 税理士事務所の月次業務をAIで支援",
+    description:
+      "明細・証憑・未消込・要確認を一つのレビューに集約。担当者が確認・修正・承認して会計ソフトへ反映できます。",
+    images: ["/images/hero-ui-flow-poster-aio-v1.jpg"],
   },
 };
 
@@ -34,10 +58,10 @@ const contactHref = "#contact";
 
 const featureItems = [
   { title: "AI仕訳", icon: Sparkles, description: "勘定科目と税区分を提案" },
-  { title: "AI証憑解析", icon: ReceiptText, description: "証憑を読み取り取引に紐付け" },
-  { title: "AI消込", icon: CircleDollarSign, description: "請求と入金を突合し、差異だけを確認" },
+  { title: "AI証憑解析", icon: ReceiptText, description: "証憑を読み取り、取引との紐付け候補を作成" },
+  { title: "AI消込", icon: CircleDollarSign, description: "請求と入出金の候補を突合し、差異をレビュー" },
   { title: "月次チェック", icon: CalendarCheck, description: "残高・異常値・不足資料をチェック" },
-  { title: "顧問先コミュニケーション", icon: MessageSquareText, description: "不足資料や確認事項をまとめて依頼" },
+  { title: "顧問先コミュニケーション", icon: MessageSquareText, description: "不足資料や確認事項の候補を整理" },
   { title: "タスク管理", icon: ListChecks, description: "顧問先ごとの進捗と未対応を一覧化" },
 ];
 
@@ -67,24 +91,24 @@ const problemCards = [
 
 const solutionCards = [
   {
-    title: "月次業務をAIで自動処理",
-    text: "仕訳候補、証憑解析、消込候補をAIが作成。担当者は確認だけに集中できます。",
+    title: "AIが月次業務の候補を作成",
+    text: "仕訳、証憑解析、突合、消込の候補を作成し、判断が必要な項目をレビューへ集約します。",
     image: "/lp/solution-ai-processing-v2.png",
   },
   {
-    title: "税理士はAI作業をチェックするだけ",
-    text: "要確認のタスクだけをToDo化。AIの処理結果を確認・承認するだけで進みます。",
+    title: "確認・修正・承認を一つのレビューで",
+    text: "AIの処理結果をそのまま登録せず、担当者が確認・修正・却下・承認できます。",
     image: "/lp/solution-ai-review-v2.png",
   },
   {
-    title: "証憑回収もAIが対応",
-    text: "不足証憑や確認事項をAIが整理。顧問先への依頼・催促漏れを防ぎます。",
+    title: "不足資料と確認事項を整理",
+    text: "証憑や説明が不足している可能性のある項目を整理し、顧問先への依頼判断を支援します。",
     image: "/lp/solution-client-communication-v2.png",
   },
 ];
 
 const plannedItems = [
-  "freee / MF 連携拡張",
+  "会計ソフト連携拡張",
   "顧問先ポータル",
   "自動リマインド",
   "月次レポート出力",
@@ -94,9 +118,9 @@ const plannedItems = [
 
 const faqs = [
   {
-    question: "freeeやMoney Forwardと連携できますか？",
+    question: "利用中の会計ソフトと連携できますか？",
     answer:
-      "はい。現在の会計ソフトの運用状況を伺いながら、連携方法と導入ステップをご案内します。",
+      "会計ソフトや対象機能によって取込・反映方法が異なります。現在の運用を確認し、利用できる入力・レビュー・反映範囲と導入手順をご案内します。",
   },
   {
     question: "顧問先も利用が必要ですか？",
@@ -106,9 +130,49 @@ const faqs = [
   {
     question: "AIの結果はそのまま登録されますか？",
     answer:
-      "原則として担当者が確認してから反映する運用を想定しています。最終判断は税理士事務所側で行えます。",
+      "AIが作成した仕訳・消込・証憑紐付け等の候補は、担当者が確認・修正・却下・承認できます。Zeimee内の承認と会計ソフトへの反映完了は別に管理します。",
   },
 ];
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://zeimee.com/company#organization",
+      name: "株式会社Zeimee",
+      legalName: "株式会社Zeimee",
+      url: "https://zeimee.com/company",
+      logo: "https://zeimee.com/company/assets/zeimee-logo.png",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "JP",
+        addressRegion: "東京都",
+        addressLocality: "調布市",
+        streetAddress: "調布ヶ丘1-5-1 電気通信大学西11号館4階411号室",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://zeimee.com/#website",
+      url: "https://zeimee.com/",
+      name: "Zeimee",
+      inLanguage: "ja",
+      publisher: { "@id": "https://zeimee.com/company#organization" },
+    },
+    {
+      "@type": "Service",
+      "@id": "https://zeimee.com/#service",
+      name: "Zeimee",
+      url: "https://zeimee.com/",
+      serviceType: "税理士事務所向け月次業務支援サービス",
+      description:
+        "会計ソフトの明細と証憑から仕訳・突合・消込の候補を作成し、担当者が確認・修正・承認して会計ソフトへ反映できるサービスです。",
+      provider: { "@id": "https://zeimee.com/company#organization" },
+      areaServed: "JP",
+    },
+  ],
+};
 
 const teamCards = [
   {
@@ -132,6 +196,12 @@ const teamCards = [
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-white text-[#202936]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceJsonLd).replaceAll("<", "\\u003c"),
+        }}
+      />
       <Header />
       <Hero />
       <AccountingIntegrations />
@@ -184,13 +254,13 @@ function Hero() {
       <div className="mx-auto max-w-[1240px] px-5 pb-14 pt-10 lg:pb-[72px] lg:pt-12">
         <div className="mx-auto max-w-[920px] text-center">
           <h1 className="text-balance text-[25px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[34px] lg:text-[41px]">
-            <span className="inline-block">税理士の手作業を、</span>
+            <span className="inline-block">明細・証憑・未消込・要確認を、</span>
             <br />
-            <span className="inline-block">AIで限りなくゼロへ。</span>
+            <span className="inline-block">ひとつのレビューへ。</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-[640px] text-[17px] font-bold leading-8 text-[#5c6675] sm:text-[20px] sm:leading-10">
-            <span className="block">記帳・証憑・消込をAIが処理。</span>
-            <span className="block">税理士はToDoを確認するだけ。</span>
+          <p className="mx-auto mt-6 max-w-[760px] text-[17px] font-bold leading-8 text-[#5c6675] sm:text-[20px] sm:leading-10">
+            <span className="block">会計ソフトの明細と、ファイル・LINE・メール等で届く証憑から、仕訳・突合・消込の候補を作成。</span>
+            <span className="block">担当者が確認・修正・承認してから会計ソフトへ反映できます。</span>
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
@@ -217,14 +287,14 @@ function HeroVisual() {
         loop
         muted
         playsInline
-        poster="/images/hero-ui-flow-poster.jpg?v=text-sync-v2"
+        poster="/images/hero-ui-flow-poster-aio-v1.jpg"
         preload="metadata"
         aria-hidden="true"
       >
-        <source src="/videos/hero-ui-flow-hq.mp4?v=text-sync-v2" type="video/mp4" />
+        <source src="/videos/hero-ui-flow-hq.mp4?v=aio-v1" type="video/mp4" />
       </video>
       <Image
-        src="/images/hero-ui-flow-poster.jpg"
+        src="/images/hero-ui-flow-poster-aio-v1.jpg"
         alt="zeimeeのToDo画面とAI処理カード"
         width={1920}
         height={1080}
@@ -239,30 +309,13 @@ function HeroVisual() {
 function AccountingIntegrations() {
   return (
     <section className="border-y border-[#eef1f5] bg-white py-10">
-      <div className="mx-auto max-w-[1180px] px-5">
-        <p className="mb-8 text-center text-[15px] font-bold text-[#5b6675]">
-          対応している会計ソフト
+      <div className="mx-auto max-w-[820px] px-5 text-center">
+        <h2 className="text-[22px] font-bold text-[#202936]">
+          会計ソフトごとの取込・反映方法を確認
+        </h2>
+        <p className="mt-4 text-[15px] font-bold leading-7 text-[#5b6675]">
+          対応状況は会計ソフトと対象機能ごとに異なります。導入前に現在の運用を確認し、利用できる入力・レビュー・反映範囲をご案内します。
         </p>
-        <div className="grid grid-cols-1 gap-x-16 gap-y-9 sm:grid-cols-3">
-          <div className="flex items-center justify-center">
-            <Image
-              src="/lp/freee-logo.png"
-              alt="freee"
-              width={450}
-              height={184}
-              className="h-[66px] w-auto"
-            />
-          </div>
-          <div className="flex items-center justify-center text-center text-[34px] font-bold leading-tight text-[#005bac]">
-            Money
-            <br />
-            Forward
-          </div>
-          <div className="flex flex-col items-center justify-center gap-1 text-center">
-            <span className="text-[34px] font-bold text-[#c4cbd5]">弥生会計</span>
-            <span className="text-[13px] font-bold text-[#b1bac6]">対応予定</span>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -414,7 +467,7 @@ function TeamSection() {
             が一丸となって開発しています。
           </h2>
           <p className="mx-auto mt-8 max-w-[860px] text-[18px] font-thin leading-9 text-[#202936]">
-            Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、税理士が確認と顧問先対応に集中できるプロダクトを目指しています。
+            Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、担当者の確認・修正・承認を支援するプロダクトを目指しています。
           </p>
         </div>
         <div className="mx-auto mt-14 grid max-w-[960px] gap-8 md:grid-cols-2 lg:gap-10">
@@ -519,7 +572,7 @@ function Footer() {
 
 function Logo({ light = false }: { light?: boolean }) {
   return (
-    <Link href="/lp" className="inline-flex items-center">
+    <Link href="/" className="inline-flex items-center">
       <Image
         src="/lp/zeimee-logo.png"
         alt="Zeimee"
