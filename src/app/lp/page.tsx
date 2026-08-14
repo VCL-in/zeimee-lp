@@ -280,14 +280,14 @@ function HeroVisual() {
         loop
         muted
         playsInline
-        poster="/images/hero-ui-flow-poster.jpg?v=aio-v1"
+        poster="/images/hero-ui-flow-poster-aio-v1.jpg"
         preload="metadata"
         aria-hidden="true"
       >
         <source src="/videos/hero-ui-flow-hq.mp4?v=aio-v1" type="video/mp4" />
       </video>
       <Image
-        src="/images/hero-ui-flow-poster.jpg?v=aio-v1"
+        src="/images/hero-ui-flow-poster-aio-v1.jpg"
         alt="zeimeeのToDo画面とAI処理カード"
         width={1920}
         height={1080}
