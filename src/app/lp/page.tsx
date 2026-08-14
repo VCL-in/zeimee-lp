@@ -22,11 +22,11 @@ import {
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "zeimee | 税理士向け月次業務自動化サービス",
+  title: "Zeimee | 税理士事務所の月次業務をAIで支援",
   description:
-    "zeimeeは、税理士事務所の記帳代行・証憑管理・消込・月次チェックをAIで支援する月次業務自動化サービスです。",
+    "Zeimeeは、税理士事務所の明細・証憑・未消込・要確認を一つのレビューに集約し、月次業務の判断と処理をAIで支援するサービスです。",
   alternates: {
-    canonical: "https://zeimee.com/",
+    canonical: "/",
   },
 };
 
@@ -34,10 +34,10 @@ const contactHref = "#contact";
 
 const featureItems = [
   { title: "AI仕訳", icon: Sparkles, description: "勘定科目と税区分を提案" },
-  { title: "AI証憑解析", icon: ReceiptText, description: "証憑を読み取り取引に紐付け" },
-  { title: "AI消込", icon: CircleDollarSign, description: "請求と入金を突合し、差異だけを確認" },
+  { title: "AI証憑解析", icon: ReceiptText, description: "証憑を読み取り、取引との紐付け候補を作成" },
+  { title: "AI消込", icon: CircleDollarSign, description: "請求と入出金の候補を突合し、差異をレビュー" },
   { title: "月次チェック", icon: CalendarCheck, description: "残高・異常値・不足資料をチェック" },
-  { title: "顧問先コミュニケーション", icon: MessageSquareText, description: "不足資料や確認事項をまとめて依頼" },
+  { title: "顧問先コミュニケーション", icon: MessageSquareText, description: "不足資料や確認事項の候補を整理" },
   { title: "タスク管理", icon: ListChecks, description: "顧問先ごとの進捗と未対応を一覧化" },
 ];
 
@@ -67,18 +67,18 @@ const problemCards = [
 
 const solutionCards = [
   {
-    title: "月次業務をAIで自動処理",
-    text: "仕訳候補、証憑解析、消込候補をAIが作成。担当者は確認だけに集中できます。",
+    title: "AIが月次業務の候補を作成",
+    text: "仕訳、証憑解析、突合、消込の候補を作成し、判断が必要な項目をレビューへ集約します。",
     image: "/lp/solution-ai-processing-v2.png",
   },
   {
-    title: "税理士はAI作業をチェックするだけ",
-    text: "要確認のタスクだけをToDo化。AIの処理結果を確認・承認するだけで進みます。",
+    title: "確認・修正・承認を一つのレビューで",
+    text: "AIの処理結果をそのまま登録せず、担当者が確認・修正・却下・承認できます。",
     image: "/lp/solution-ai-review-v2.png",
   },
   {
-    title: "証憑回収もAIが対応",
-    text: "不足証憑や確認事項をAIが整理。顧問先への依頼・催促漏れを防ぎます。",
+    title: "不足資料と確認事項を整理",
+    text: "証憑や説明が不足している可能性のある項目を整理し、顧問先への依頼判断を支援します。",
     image: "/lp/solution-client-communication-v2.png",
   },
 ];
@@ -96,7 +96,7 @@ const faqs = [
   {
     question: "freeeやMoney Forwardと連携できますか？",
     answer:
-      "はい。現在の会計ソフトの運用状況を伺いながら、連携方法と導入ステップをご案内します。",
+      "freeeとMoney Forwardは、会計ソフトや対象機能によって取込・反映方法が異なります。現在の運用を確認し、利用できる範囲と導入手順をご案内します。",
   },
   {
     question: "顧問先も利用が必要ですか？",
@@ -106,9 +106,49 @@ const faqs = [
   {
     question: "AIの結果はそのまま登録されますか？",
     answer:
-      "原則として担当者が確認してから反映する運用を想定しています。最終判断は税理士事務所側で行えます。",
+      "AIが作成した仕訳・消込・証憑紐付け等の候補は、担当者が確認・修正・却下・承認できます。Zeimee内の承認と会計ソフトへの反映完了は別に管理します。",
   },
 ];
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://zeimee.com/company#organization",
+      name: "株式会社Zeimee",
+      legalName: "株式会社Zeimee",
+      url: "https://zeimee.com/company",
+      logo: "https://zeimee.com/company/assets/zeimee-logo.png",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "JP",
+        addressRegion: "東京都",
+        addressLocality: "調布市",
+        streetAddress: "調布ヶ丘1-5-1 電気通信大学西11号館4階411号室",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://zeimee.com/#website",
+      url: "https://zeimee.com/",
+      name: "Zeimee",
+      inLanguage: "ja",
+      publisher: { "@id": "https://zeimee.com/company#organization" },
+    },
+    {
+      "@type": "Service",
+      "@id": "https://zeimee.com/#service",
+      name: "Zeimee",
+      url: "https://zeimee.com/",
+      serviceType: "税理士事務所向け月次業務支援サービス",
+      description:
+        "会計ソフトの明細と証憑から仕訳・突合・消込の候補を作成し、担当者が確認・修正・承認して会計ソフトへ反映できるサービスです。",
+      provider: { "@id": "https://zeimee.com/company#organization" },
+      areaServed: "JP",
+    },
+  ],
+};
 
 const teamCards = [
   {
@@ -132,6 +172,12 @@ const teamCards = [
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-white text-[#202936]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceJsonLd).replaceAll("<", "\\u003c"),
+        }}
+      />
       <Header />
       <Hero />
       <AccountingIntegrations />
@@ -158,6 +204,7 @@ function Header() {
             <a href="#solutions">解決策</a>
             <a href="#features">機能</a>
             <a href="#faq">よくある質問</a>
+            <Link href="/security">セキュリティ</Link>
             <Link href="/company">会社情報</Link>
           </nav>
         </div>
@@ -184,13 +231,13 @@ function Hero() {
       <div className="mx-auto max-w-[1240px] px-5 pb-14 pt-10 lg:pb-[72px] lg:pt-12">
         <div className="mx-auto max-w-[920px] text-center">
           <h1 className="text-balance text-[25px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[34px] lg:text-[41px]">
-            <span className="inline-block">税理士の手作業を、</span>
+            <span className="inline-block">明細・証憑・未消込・要確認を、</span>
             <br />
-            <span className="inline-block">AIで限りなくゼロへ。</span>
+            <span className="inline-block">ひとつのレビューへ。</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-[640px] text-[17px] font-bold leading-8 text-[#5c6675] sm:text-[20px] sm:leading-10">
-            <span className="block">記帳・証憑・消込をAIが処理。</span>
-            <span className="block">税理士はToDoを確認するだけ。</span>
+          <p className="mx-auto mt-6 max-w-[760px] text-[17px] font-bold leading-8 text-[#5c6675] sm:text-[20px] sm:leading-10">
+            <span className="block">会計ソフトの明細と、ファイル・LINE・メール等で届く証憑から、仕訳・突合・消込の候補を作成。</span>
+            <span className="block">担当者が確認・修正・承認してから会計ソフトへ反映できます。</span>
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
@@ -217,11 +264,11 @@ function HeroVisual() {
         loop
         muted
         playsInline
-        poster="/images/hero-ui-flow-poster.jpg?v=text-sync-v2"
+        poster="/images/hero-ui-flow-poster.jpg?v=aio-v1"
         preload="metadata"
         aria-hidden="true"
       >
-        <source src="/videos/hero-ui-flow-hq.mp4?v=text-sync-v2" type="video/mp4" />
+        <source src="/videos/hero-ui-flow-hq.mp4?v=aio-v1" type="video/mp4" />
       </video>
       <Image
         src="/images/hero-ui-flow-poster.jpg"
@@ -241,7 +288,7 @@ function AccountingIntegrations() {
     <section className="border-y border-[#eef1f5] bg-white py-10">
       <div className="mx-auto max-w-[1180px] px-5">
         <p className="mb-8 text-center text-[15px] font-bold text-[#5b6675]">
-          対応している会計ソフト
+          会計ソフトとの連携
         </p>
         <div className="grid grid-cols-1 gap-x-16 gap-y-9 sm:grid-cols-3">
           <div className="flex items-center justify-center">
@@ -263,6 +310,9 @@ function AccountingIntegrations() {
             <span className="text-[13px] font-bold text-[#b1bac6]">対応予定</span>
           </div>
         </div>
+        <p className="mt-8 text-center text-[14px] font-bold leading-6 text-[#7a8492]">
+          取込・反映方法や利用できる機能は、会計ソフトと対象業務によって異なります。
+        </p>
       </div>
     </section>
   );
@@ -414,7 +464,7 @@ function TeamSection() {
             が一丸となって開発しています。
           </h2>
           <p className="mx-auto mt-8 max-w-[860px] text-[18px] font-thin leading-9 text-[#202936]">
-            Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、税理士が確認と顧問先対応に集中できるプロダクトを目指しています。
+            Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、担当者の確認・修正・承認を支援するプロダクトを目指しています。
           </p>
         </div>
         <div className="mx-auto mt-14 grid max-w-[960px] gap-8 md:grid-cols-2 lg:gap-10">
@@ -500,6 +550,12 @@ function Footer() {
             </dl>
           </div>
           <div className="lg:text-right">
+            <Link
+              href="/security"
+              className="mb-4 block text-[14px] text-white/70 hover:text-white"
+            >
+              セキュリティと承認
+            </Link>
             <a
               href={contactHref}
               className="inline-flex h-11 items-center gap-3 rounded-[2px] border border-white/40 px-5 text-white"
@@ -519,7 +575,7 @@ function Footer() {
 
 function Logo({ light = false }: { light?: boolean }) {
   return (
-    <Link href="/lp" className="inline-flex items-center">
+    <Link href="/" className="inline-flex items-center">
       <Image
         src="/lp/zeimee-logo.png"
         alt="Zeimee"

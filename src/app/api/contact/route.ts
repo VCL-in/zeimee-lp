@@ -6,6 +6,15 @@ const defaultRecipients = [
   "sajimoto@vclab.jp",
 ];
 
+const discoverySourceLabels = new Map([
+  ["search", "Google・Yahoo!などの検索"],
+  ["ai", "ChatGPTなどのAI"],
+  ["referral", "紹介"],
+  ["social", "SNS"],
+  ["event_article", "イベント・記事"],
+  ["other", "その他"],
+]);
+
 type EmailPayload = {
   from: string;
   to: string | string[];
@@ -64,13 +73,24 @@ export async function POST(request: Request) {
   const firstName = asString(body?.firstName);
   const email = asString(body?.email);
   const phone = asString(body?.phone);
+  const discoverySource = asString(body?.discoverySource);
+  const discoveryQuery = asString(body?.discoveryQuery).slice(0, 500);
   const message = asString(body?.message);
   const kind = asString(body?.kind);
   const seminarTitle = asString(body?.seminarTitle);
   const seminarDate = asString(body?.seminarDate);
   const isSeminarApplication = kind === "seminar";
+  const discoverySourceLabel =
+    discoverySourceLabels.get(discoverySource) ?? "未入力";
 
-  if (!company || !lastName || !firstName || !email || !phone) {
+  if (
+    !company ||
+    !lastName ||
+    !firstName ||
+    !email ||
+    !phone ||
+    (!isSeminarApplication && !discoverySourceLabels.has(discoverySource))
+  ) {
     return NextResponse.json(
       { message: "必須項目を入力してください。" },
       { status: 400 },
@@ -94,6 +114,8 @@ export async function POST(request: Request) {
     `お名前: ${name}`,
     `会社のメールアドレス: ${email}`,
     `電話番号: ${phone}`,
+    `流入元: ${discoverySourceLabel}`,
+    `検索・AIで入力した言葉: ${discoveryQuery || "未入力"}`,
     "",
     "詳細:",
     message || "未入力",
@@ -113,6 +135,8 @@ export async function POST(request: Request) {
       <dt>お名前</dt><dd>${escapeHtml(name)}</dd>
       <dt>会社のメールアドレス</dt><dd>${escapeHtml(email)}</dd>
       <dt>電話番号</dt><dd>${escapeHtml(phone)}</dd>
+      <dt>流入元</dt><dd>${escapeHtml(discoverySourceLabel)}</dd>
+      <dt>検索・AIで入力した言葉</dt><dd>${escapeHtml(discoveryQuery || "未入力").replaceAll("\n", "<br />")}</dd>
       <dt>詳細</dt><dd>${escapeHtml(message || "未入力").replaceAll("\n", "<br />")}</dd>
     </dl>
   `;

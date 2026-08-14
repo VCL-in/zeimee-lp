@@ -41,6 +41,8 @@ export function ContactForm() {
           firstName: form.get("firstName"),
           email: form.get("email"),
           phone: form.get("phone"),
+          discoverySource: form.get("discoverySource"),
+          discoveryQuery: form.get("discoveryQuery"),
           message: form.get("message"),
         }),
       });
@@ -121,6 +123,34 @@ export function ContactForm() {
           autoComplete="tel"
           placeholder="例）08012345678"
           className={inputClass}
+        />
+      </div>
+
+      <div>
+        <FieldLabel>Zeimeeをどこで知りましたか？</FieldLabel>
+        <select required name="discoverySource" className={inputClass} defaultValue="">
+          <option value="" disabled>
+            選択してください
+          </option>
+          <option value="search">Google・Yahoo!などの検索</option>
+          <option value="ai">ChatGPTなどのAI</option>
+          <option value="referral">紹介</option>
+          <option value="social">SNS</option>
+          <option value="event_article">イベント・記事</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block text-[18px] font-bold text-[#202936]">
+          検索・AIで入力した言葉（任意）
+        </label>
+        <textarea
+          name="discoveryQuery"
+          rows={3}
+          maxLength={500}
+          placeholder="例）税理士事務所 証憑 消込 AI"
+          className="mt-2 w-full rounded-[2px] border border-[#cbd6e3] bg-[#f7f9fb] px-4 py-4 text-[18px] font-bold leading-8 text-[#202936] outline-none transition placeholder:text-[#aeb6c0] focus:border-[#1155cc] focus:bg-white"
         />
       </div>
 

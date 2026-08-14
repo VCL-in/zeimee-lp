@@ -16,15 +16,15 @@ const carouselLeft = (1920 - slideWidth) / 2;
 const slides = [
   {
     src: "/lp/hero-screen-todo.png",
-    prompt: "ToDoリストを実行するだけで業務完了",
+    prompt: "要確認をひとつのレビューに集約",
   },
   {
     src: "/lp/hero-screen-message.png",
-    prompt: "不足証憑はAIが顧問先から収集",
+    prompt: "不足資料と確認事項の候補を整理",
   },
   {
     src: "/lp/hero-screen-review.png",
-    prompt: "仕訳も証憑紐付けもAIにおまかせ",
+    prompt: "仕訳・証憑紐付けの候補をレビュー",
   },
 ];
 
