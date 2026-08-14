@@ -15,24 +15,6 @@ export const metadata: Metadata = {
   },
   description:
     "Zeimeeは、税理士事務所の明細・証憑・未消込・要確認を一つのレビューに集約し、月次業務の判断と処理をAIで支援するサービスです。",
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    locale: "ja_JP",
-    url: "/",
-    siteName: "Zeimee",
-    title: "Zeimee | 税理士事務所の月次業務をAIで支援",
-    description:
-      "明細・証憑・未消込・要確認を一つのレビューに集約。担当者が確認・修正・承認して会計ソフトへ反映できます。",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Zeimee | 税理士事務所の月次業務をAIで支援",
-    description:
-      "明細・証憑・未消込・要確認を一つのレビューに集約。担当者が確認・修正・承認して会計ソフトへ反映できます。",
-  },
 };
 
 export default function RootLayout({

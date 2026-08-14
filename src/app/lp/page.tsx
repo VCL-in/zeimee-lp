@@ -22,11 +22,28 @@ import {
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "Zeimee | 税理士事務所の月次業務をAIで支援",
+  title: {
+    absolute: "Zeimee | 税理士事務所の月次業務をAIで支援",
+  },
   description:
     "Zeimeeは、税理士事務所の明細・証憑・未消込・要確認を一つのレビューに集約し、月次業務の判断と処理をAIで支援するサービスです。",
   alternates: {
     canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: "/",
+    siteName: "Zeimee",
+    title: "Zeimee | 税理士事務所の月次業務をAIで支援",
+    description:
+      "明細・証憑・未消込・要確認を一つのレビューに集約。担当者が確認・修正・承認して会計ソフトへ反映できます。",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zeimee | 税理士事務所の月次業務をAIで支援",
+    description:
+      "明細・証憑・未消込・要確認を一つのレビューに集約。担当者が確認・修正・承認して会計ソフトへ反映できます。",
   },
 };
 
@@ -84,7 +101,7 @@ const solutionCards = [
 ];
 
 const plannedItems = [
-  "freee / MF 連携拡張",
+  "会計ソフト連携拡張",
   "顧問先ポータル",
   "自動リマインド",
   "月次レポート出力",
@@ -94,9 +111,9 @@ const plannedItems = [
 
 const faqs = [
   {
-    question: "freeeやMoney Forwardと連携できますか？",
+    question: "利用中の会計ソフトと連携できますか？",
     answer:
-      "freeeとMoney Forwardは、会計ソフトや対象機能によって取込・反映方法が異なります。現在の運用を確認し、利用できる範囲と導入手順をご案内します。",
+      "会計ソフトや対象機能によって取込・反映方法が異なります。現在の運用を確認し、利用できる入力・レビュー・反映範囲と導入手順をご案内します。",
   },
   {
     question: "顧問先も利用が必要ですか？",
@@ -270,7 +287,7 @@ function HeroVisual() {
         <source src="/videos/hero-ui-flow-hq.mp4?v=aio-v1" type="video/mp4" />
       </video>
       <Image
-        src="/images/hero-ui-flow-poster.jpg"
+        src="/images/hero-ui-flow-poster.jpg?v=aio-v1"
         alt="zeimeeのToDo画面とAI処理カード"
         width={1920}
         height={1080}
@@ -285,32 +302,12 @@ function HeroVisual() {
 function AccountingIntegrations() {
   return (
     <section className="border-y border-[#eef1f5] bg-white py-10">
-      <div className="mx-auto max-w-[1180px] px-5">
-        <p className="mb-8 text-center text-[15px] font-bold text-[#5b6675]">
-          会計ソフトとの連携
-        </p>
-        <div className="grid grid-cols-1 gap-x-16 gap-y-9 sm:grid-cols-3">
-          <div className="flex items-center justify-center">
-            <Image
-              src="/lp/freee-logo.png"
-              alt="freee"
-              width={450}
-              height={184}
-              className="h-[66px] w-auto"
-            />
-          </div>
-          <div className="flex items-center justify-center text-center text-[34px] font-bold leading-tight text-[#005bac]">
-            Money
-            <br />
-            Forward
-          </div>
-          <div className="flex flex-col items-center justify-center gap-1 text-center">
-            <span className="text-[34px] font-bold text-[#c4cbd5]">弥生会計</span>
-            <span className="text-[13px] font-bold text-[#b1bac6]">対応予定</span>
-          </div>
-        </div>
-        <p className="mt-8 text-center text-[14px] font-bold leading-6 text-[#7a8492]">
-          取込・反映方法や利用できる機能は、会計ソフトと対象業務によって異なります。
+      <div className="mx-auto max-w-[820px] px-5 text-center">
+        <h2 className="text-[22px] font-bold text-[#202936]">
+          会計ソフトごとの取込・反映方法を確認
+        </h2>
+        <p className="mt-4 text-[15px] font-bold leading-7 text-[#5b6675]">
+          対応状況は会計ソフトと対象機能ごとに異なります。導入前に現在の運用を確認し、利用できる入力・レビュー・反映範囲をご案内します。
         </p>
       </div>
     </section>

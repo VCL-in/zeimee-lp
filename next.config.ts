@@ -4,6 +4,14 @@ const companySiteOrigin =
   process.env.COMPANY_SITE_ORIGIN ?? "https://zeimee-hp.vercel.app";
 
 const nextConfig: NextConfig = {
+  images: {
+    localPatterns: [
+      {
+        pathname: "/images/hero-ui-flow-poster.jpg",
+        search: "?v=aio-v1",
+      },
+    ],
+  },
   async redirects() {
     return [
       {

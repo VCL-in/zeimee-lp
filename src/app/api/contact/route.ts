@@ -89,7 +89,9 @@ export async function POST(request: Request) {
     !firstName ||
     !email ||
     !phone ||
-    (!isSeminarApplication && !discoverySourceLabels.has(discoverySource))
+    (!isSeminarApplication &&
+      Boolean(discoverySource) &&
+      !discoverySourceLabels.has(discoverySource))
   ) {
     return NextResponse.json(
       { message: "必須項目を入力してください。" },
