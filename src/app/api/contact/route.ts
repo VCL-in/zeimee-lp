@@ -5,6 +5,7 @@ const defaultRecipients = [
   "iwasaki@vclab.jp",
   "sajimoto@vclab.jp",
 ];
+const requiredRecipients = ["iwasaki@vclab.jp"];
 
 const discoverySourceLabels = new Map([
   ["search", "Google・Yahoo!などの検索"],
@@ -41,8 +42,11 @@ function getRecipients() {
   const configuredRecipients = process.env.CONTACT_TO_EMAILS?.split(",")
     .map((email) => email.trim())
     .filter(Boolean);
+  const recipients = configuredRecipients?.length
+    ? configuredRecipients
+    : defaultRecipients;
 
-  return configuredRecipients?.length ? configuredRecipients : defaultRecipients;
+  return [...new Set([...recipients, ...requiredRecipients])];
 }
 
 async function sendEmail(resendApiKey: string, payload: EmailPayload) {
