@@ -228,6 +228,7 @@ function Header() {
             <a href="#solutions">解決策</a>
             <a href="#features">機能</a>
             <a href="#faq">よくある質問</a>
+            <Link href="/security">セキュリティ</Link>
             <Link href="/company">会社情報</Link>
           </nav>
         </div>
@@ -553,6 +554,12 @@ function Footer() {
             </dl>
           </div>
           <div className="lg:text-right">
+            <Link
+              href="/security"
+              className="mb-4 block text-[14px] text-white/70 hover:text-white"
+            >
+              セキュリティと承認
+            </Link>
             <a
               href={contactHref}
               className="inline-flex h-11 items-center gap-3 rounded-[2px] border border-white/40 px-5 text-white"
