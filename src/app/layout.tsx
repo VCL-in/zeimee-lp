@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   },
   description:
     "Zeimeeは、税理士事務所の明細・証憑・未消込・要確認を一つのレビューに集約し、月次業務の判断と処理をAIで支援するサービスです。",
+  verification: {
+    google: "v3B1BTXFCEKFxbEFjk96Aot0uYHoBZoB7iTsmEUNQO8",
+  },
 };
 
 export default function RootLayout({
