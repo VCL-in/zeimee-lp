@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fontsource/line-seed-jp": "^5.2.2",
+    "@vercel/analytics": "^2.0.1",
     "lucide-react": "^0.577.0",
     "next": "16.2.4",
     "react": "19.2.3",

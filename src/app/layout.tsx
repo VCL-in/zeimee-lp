@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "@fontsource/line-seed-jp/japanese-400.css";
 import "@fontsource/line-seed-jp/japanese-700.css";
 import "@fontsource/line-seed-jp/japanese-800.css";
@@ -27,7 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
