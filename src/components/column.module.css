@@ -1,0 +1,35 @@
+.header { padding: 8px 0 40px; border-bottom: 1px solid #e3e7ed; }
+.category { color: #534dff; font-weight: 700; font-size: 14px; margin: 0 0 12px; }
+.header h1 { font-size: clamp(26px, 3.6vw, 40px); line-height: 1.5; letter-spacing: -0.02em; margin: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 20px; color: #647080; font-size: 13px; }
+.pr { display: inline-block; border: 1px solid #c9ccd4; border-radius: 4px; padding: 0 8px; font-size: 12px; color: #647080; }
+.disclosure { margin: 24px 0 0; padding: 16px 20px; background: #f7f8fc; border-radius: 8px; font-size: 13px; line-height: 1.9; color: #4a5562; }
+.toc { margin: 40px 0 8px; padding: 24px 28px; border: 1px solid #e3e7ed; border-radius: 10px; }
+.toc p { font-weight: 700; margin: 0 0 8px; }
+.toc ol { margin: 0; padding-left: 20px; }
+.toc li { padding: 4px 0; line-height: 1.7; }
+.toc a { color: #152632; text-decoration: underline; text-underline-offset: 4px; }
+.tableWrap { overflow-x: auto; margin: 24px 0; -webkit-overflow-scrolling: touch; }
+.table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14px; line-height: 1.7; }
+.table th, .table td { border: 1px solid #dee1e7; padding: 10px 12px; vertical-align: top; text-align: left; }
+.table thead th { background: #f6f6f7; font-weight: 700; white-space: nowrap; }
+.table tbody th { background: #fbfbfc; font-weight: 700; width: 18%; }
+.table td { min-width: 9em; }
+.card { margin: 32px 0; padding: 24px 28px; border: 1px solid #e3e7ed; border-radius: 10px; }
+.card h3 { margin-top: 0; }
+.card dl { display: grid; grid-template-columns: 8em 1fr; gap: 6px 16px; margin: 16px 0 0; font-size: 14px; line-height: 1.8; }
+.card dt { color: #647080; font-weight: 700; }
+.card dd { margin: 0; }
+.sources { font-size: 13px; line-height: 1.9; color: #4a5562; }
+.sources a { word-break: break-all; }
+.list { display: grid; gap: 20px; padding: 8px 0 64px; }
+.item { display: block; padding: 24px 28px; border: 1px solid #e3e7ed; border-radius: 10px; text-decoration: none; color: inherit; }
+.item:hover { border-color: #534dff; }
+.item h2 { font-size: 20px; line-height: 1.6; margin: 4px 0 8px; }
+.item p { margin: 0; color: #4a5562; font-size: 14px; line-height: 1.9; }
+.empty { padding: 32px 0 64px; color: #647080; }
+@media (max-width: 640px) {
+  .card { padding: 20px 16px; }
+  .card dl { grid-template-columns: 1fr; gap: 2px; }
+  .card dd { margin-bottom: 8px; }
+}
