@@ -19,7 +19,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   const tool = toolPages.find((t) => t.slug === slug);
   if (!tool) notFound();
   return <DetailShell label={tool.name}>
-    <header className={styles.hero}><p className={styles.eyebrow}>{tool.name}</p><h1>{tool.headline}</h1><p className={styles.lead}>{tool.intro}</p><a className={styles.button} href="/#contact">このツールについて相談する <span aria-hidden="true">↗</span></a></header>
+    <header className={styles.hero}><p className={styles.eyebrow}>{tool.name}</p><h1>{tool.headline}</h1><p className={styles.lead}>{tool.intro}</p><a className={styles.button} href="/#contact">資料をダウンロードする <span aria-hidden="true">↗</span></a></header>
     <figure className={styles.preview}><Image src={`/lp/tools/${tool.slug}.svg`} alt={`${tool.name}の画面イメージ`} width={1000} height={620} sizes="(max-width: 1080px) 100vw, 1000px" /><figcaption>画面は開発イメージです。表示データは架空で、導入時の仕様は個別に設計します。</figcaption></figure>
     <div className={styles.body}>
       <section className={styles.section}><h2>こんな業務を見直したい事務所へ</h2><ul>{tool.problems.map((p) => <li key={p}>{p}</li>)}</ul></section>

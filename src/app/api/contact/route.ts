@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
 import { INDUSTRIES } from "@/lib/contact-options";
+import {
+  BOOKING_URL,
+  OFFER_LABEL,
+  OFFER_WINDOW_MS,
+  formatDeadlineJst,
+} from "@/lib/document-offer";
 
 const defaultRecipients = [
   "vclab.jp@gmail.com",
@@ -120,7 +126,10 @@ export async function POST(request: Request) {
 
   const name = `${lastName} ${firstName}`;
   const safeCompanyForSubject = company.replaceAll(/[\r\n]+/g, " ");
-  const leadLabel = isSeminarApplication ? "セミナー申し込み" : "お問い合わせ";
+  const leadLabel = isSeminarApplication ? "セミナー申し込み" : "資料請求";
+  const offerDeadline = new Date(Date.now() + OFFER_WINDOW_MS);
+  const offerDeadlineLabel = `${formatDeadlineJst(offerDeadline)}（日本時間）`;
+  const documentUrl = process.env.DOCUMENT_DOWNLOAD_URL?.trim();
   const submittedSeminarDetails = isSeminarApplication
     ? [
         `種別: ${leadLabel}`,
@@ -128,7 +137,11 @@ export async function POST(request: Request) {
         `開催日時: ${seminarDate || "5/25 21:00"}`,
         "",
       ]
-    : [];
+    : [
+        `種別: ${leadLabel}`,
+        `${OFFER_LABEL}の予約期限: ${offerDeadlineLabel}`,
+        "",
+      ];
   const submittedDetails = [
     ...submittedSeminarDetails,
     `会社名: ${company}`,
@@ -152,7 +165,10 @@ export async function POST(request: Request) {
             <dt>セミナー名</dt><dd>${escapeHtml(seminarTitle || "税理士特化AI Zeimee活用セミナー")}</dd>
             <dt>開催日時</dt><dd>${escapeHtml(seminarDate || "5/25 21:00")}</dd>
           `
-          : ""
+          : `
+            <dt>種別</dt><dd>${escapeHtml(leadLabel)}</dd>
+            <dt>${escapeHtml(OFFER_LABEL)}の予約期限</dt><dd>${escapeHtml(offerDeadlineLabel)}</dd>
+          `
       }
       <dt>会社名</dt><dd>${escapeHtml(company)}</dd>
       <dt>業種</dt><dd>${escapeHtml(industry || "未入力")}</dd>
@@ -196,19 +212,20 @@ export async function POST(request: Request) {
         "Zeimee",
       ].join("\n")
     : [
-        "はじめまして。",
-        "Zeimee担当者と申します。",
+        `${name} 様`,
         "",
-        "この度は、月次業務自動化サービス「Zeimee」へお問い合わせいただき、誠にありがとうございます。",
+        "この度は、Zeimeeの資料をご請求いただき、誠にありがとうございます。",
         "",
-        "ぜひ一度、オンラインにてZeimeeのご紹介をさせていただければと思っております。",
+        documentUrl
+          ? `資料は下記URLからダウンロードいただけます。\n${documentUrl}`
+          : "資料は担当者より改めてお送りいたします。",
         "",
-        "お手数をおかけしますが、ご都合の良い日時をいくつかご共有いただけますでしょうか。",
+        "■ 24時間以内のご予約で初期費用5万円割引",
+        `${offerDeadlineLabel}までにオンライン面談をご予約いただいた方は、初期費用を5万円割引いたします（面談日は問いません）。`,
+        "下記リンクよりご都合の良い日時をお選びください。",
+        BOOKING_URL,
         "",
-        "また、下記リンクよりご都合の良い日時をご選択いただくことも可能です。",
-        "https://timerex.net/s/iwasaki_871f_0eeb/8b4b43a0",
-        "",
-        "お忙しいところ恐縮ですが、ご確認のほどよろしくお願いいたします。",
+        "ご不明な点がございましたら、本メールにご返信ください。",
         "",
         "――――――――――",
         "Zeimee担当者",
@@ -235,18 +252,22 @@ export async function POST(request: Request) {
       </p>
     `
     : `
+      <p>${escapeHtml(name)} 様</p>
+      <p>この度は、Zeimeeの資料をご請求いただき、誠にありがとうございます。</p>
       <p>
-        はじめまして。<br />
-        Zeimee担当者と申します。
+        ${
+          documentUrl
+            ? `資料は下記URLからダウンロードいただけます。<br /><a href="${escapeHtml(documentUrl)}">${escapeHtml(documentUrl)}</a>`
+            : "資料は担当者より改めてお送りいたします。"
+        }
       </p>
-      <p>この度は、月次業務自動化サービス「Zeimee」へお問い合わせいただき、誠にありがとうございます。</p>
-      <p>ぜひ一度、オンラインにてZeimeeのご紹介をさせていただければと思っております。</p>
-      <p>お手数をおかけしますが、ご都合の良い日時をいくつかご共有いただけますでしょうか。</p>
       <p>
-        また、下記リンクよりご都合の良い日時をご選択いただくことも可能です。<br />
-        <a href="https://timerex.net/s/iwasaki_871f_0eeb/8b4b43a0">https://timerex.net/s/iwasaki_871f_0eeb/8b4b43a0</a>
+        <strong>■ 24時間以内のご予約で初期費用5万円割引</strong><br />
+        ${escapeHtml(offerDeadlineLabel)}までにオンライン面談をご予約いただいた方は、初期費用を5万円割引いたします（面談日は問いません）。<br />
+        下記リンクよりご都合の良い日時をお選びください。<br />
+        <a href="${BOOKING_URL}">${BOOKING_URL}</a>
       </p>
-      <p>お忙しいところ恐縮ですが、ご確認のほどよろしくお願いいたします。</p>
+      <p>ご不明な点がございましたら、本メールにご返信ください。</p>
       <p>
         ――――――――――<br />
         Zeimee担当者<br />
@@ -278,7 +299,7 @@ export async function POST(request: Request) {
     to: email,
     subject: isSeminarApplication
       ? "【Zeimee】セミナー申し込みを受け付けました"
-      : "【Zeimee】お問い合わせを受け付けました",
+      : "【Zeimee】資料請求ありがとうございます（24時間以内のご予約で初期費用5万円割引）",
     text: autoReplyText,
     html: autoReplyHtml,
   });
@@ -293,5 +314,8 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({
+    ok: true,
+    offerDeadline: isSeminarApplication ? null : offerDeadline.toISOString(),
+  });
 }

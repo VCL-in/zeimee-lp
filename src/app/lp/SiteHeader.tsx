@@ -57,7 +57,7 @@ export function SiteHeader({ children, homePath = "" }: { children: ReactNode; h
             ))}
           </nav>
           <a className="nav-contact" href={`${homePath}#contact`}>
-            まずは相談する
+            資料ダウンロード
             <ArrowUpRight />
           </a>
           <button
@@ -102,7 +102,7 @@ export function SiteHeader({ children, homePath = "" }: { children: ReactNode; h
             </button>
           </div>
           <nav aria-label="ページ内メニュー">
-            {[...links, ["#contact", "事務所の課題を相談する"]].map(
+            {[...links, ["#contact", "資料ダウンロード（無料）"]].map(
               ([href, label], i) => (
                 <a href={`${homePath}${href}`} key={href} onClick={() => close(homePath ? undefined : href)}>
                   <span>0{i + 1}</span>

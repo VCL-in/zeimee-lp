@@ -1,10 +1,14 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { track } from "@vercel/analytics";
 import { ArrowUpRight } from "lucide-react";
 import { INDUSTRIES } from "@/lib/contact-options";
+import { LEAD_STORAGE_KEY, type DocumentLead } from "@/lib/document-offer";
 
 export function ContactForm() {
+  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
@@ -37,15 +41,25 @@ export function ContactForm() {
           ),
         ),
       });
+      const result = await response.json().catch(() => null);
       if (!response.ok) {
-        const result = await response.json().catch(() => null);
         throw new Error(
           result?.message ??
             "送信に失敗しました。時間をおいて再度お試しください。",
         );
       }
-      formElement.reset();
+      const lead: DocumentLead = {
+        company: String(form.get("company") ?? ""),
+        name: `${form.get("lastName") ?? ""} ${form.get("firstName") ?? ""}`.trim(),
+        email: String(form.get("email") ?? ""),
+        offerDeadline: result?.offerDeadline ?? "",
+      };
+      try {
+        sessionStorage.setItem(LEAD_STORAGE_KEY, JSON.stringify(lead));
+      } catch {}
+      track("document_request");
       setStatus("sent");
+      router.push("/document/thanks");
     } catch (error) {
       setStatus("error");
       setErrorMessage(
@@ -183,7 +197,7 @@ export function ContactForm() {
         />
       </div>
       <div className="form-field">
-        <label htmlFor="message">ご相談内容</label>
+        <label htmlFor="message">ご相談内容（任意）</label>
         <textarea
           id="message"
           name="message"
@@ -193,20 +207,20 @@ export function ContactForm() {
         />
       </div>
       <p className="form-note">
-        ご入力いただいた情報は、お問い合わせへの対応・ご連絡に利用します。顧問先の個人情報や取引情報の記入はお控えください。
+        ご入力いただいた情報は、資料の送付・ご連絡に利用します。顧問先の個人情報や取引情報の記入はお控えください。
       </p>
       <button
         className="button button-dark"
         type="submit"
         disabled={status === "sending"}
       >
-        {status === "sending" ? "送信しています…" : "この内容で相談する"}
+        {status === "sending" ? "送信しています…" : "資料をダウンロードする（無料）"}
         <ArrowUpRight aria-hidden="true" />
       </button>
       <div aria-live="polite" aria-atomic="true">
         {status === "sent" && (
           <p className="form-status success">
-            お問い合わせを受け付けました。確認メールをお送りしましたので、ご確認ください。
+            資料請求を受け付けました。面談予約ページへ移動します…
           </p>
         )}
         {status === "error" && (

@@ -109,16 +109,16 @@ function Brand() {
 }
 function ContactBanner({ id }: { id: string }) {
   return (
-    <section className="contact-banner" id={id} aria-label="お問い合わせ">
+    <section className="contact-banner" id={id} aria-label="資料ダウンロード">
       <div className="section-shell contact-banner-inner">
         <h2>
-          まずは無料でAI導入のイメージを相談！
+          AI導入の進め方・事例・費用感がわかる資料を無料でお届け。
           <wbr />
-          お気軽にお問い合わせください。
+          今なら24時間以内の面談予約で初期費用5万円割引。
         </h2>
         <div className="contact-banner-panel">
           <a className="button" href="#contact">
-            お問い合わせ
+            資料ダウンロード（無料）
             <ArrowUpRight aria-hidden="true" />
           </a>
         </div>
@@ -158,7 +158,7 @@ export default function LandingPage() {
                 </h1>
                 <div className="hero-description">
                   <a className="button" href="#contact">
-                    事務所の課題を相談する
+                    資料ダウンロード（無料）
                     <ArrowUpRight />
                   </a>
                 </div>
@@ -307,7 +307,7 @@ export default function LandingPage() {
               },
             ].map(({ name, image, description }) => (
               <article className="tool-card" key={name} data-reveal>
-                <a className="tool-card-link" href="#contact" aria-label={`${name}について問い合わせる`}>
+                <a className="tool-card-link" href="#contact" aria-label={`${name}の資料をダウンロードする`}>
                 <Image
                   className="tool-preview"
                   src={`/lp/tools/${image}.svg`}
@@ -431,11 +431,14 @@ export default function LandingPage() {
         <section className="contact" id="contact">
           <div className="section-shell contact-grid">
             <div className="contact-copy" data-reveal>
-              <h2>お問い合わせ</h2>
+              <h2>資料ダウンロード</h2>
+              <p>
+                フォーム送信後、すぐに面談予約へ進めます。24時間以内のご予約で初期費用5万円割引。
+              </p>
             </div>
             <div className="contact-panel">
               <div className="contact-form-title">
-                <h3>業務改善・導入のご相談</h3>
+                <h3>Zeimee サービス資料（無料）</h3>
                 <span>* 必須</span>
               </div>
               <ContactForm />

@@ -31,7 +31,7 @@ export default function SecurityPage() {
       <h2 style={{ fontSize: 26, marginTop: 40 }}>対象範囲とお問い合わせ</h2>
       <p>このページは、Zeimeeのデータ境界、AI処理、人による承認、会計ソフトへの反映管理に関する基本方針を説明するものです。個別の利用環境、会計ソフト、対象機能によって運用は異なります。導入時の確認事項はお問い合わせください。</p>
       <p style={{ marginBlock: 24 }}>内容確認日: 2026年8月28日</p>
-      <Link href="/#contact">お問い合わせ</Link>
+      <Link href="/#contact">資料ダウンロード・お問い合わせ</Link>
     </main>
   );
 }
