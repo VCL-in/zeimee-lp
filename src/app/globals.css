@@ -2715,3 +2715,113 @@ details[open] .faq-toggle:after {
 .field-case-link > span { color:var(--blue); font-size:14px; font-weight:700; }
 .field-case-link h3 { margin:12px 0; font-size:clamp(20px,2.4vw,28px); line-height:1.6; }
 .field-case-link p { color:var(--muted); font-size:15px; line-height:1.9; }
+
+/* Document request thanks / booking */
+.thanks-header {
+  border-bottom: 1px solid var(--line);
+  padding-block: 18px;
+}
+.thanks-page {
+  max-width: 920px;
+  padding-block: 56px 96px;
+  text-align: center;
+}
+.thanks-badge {
+  display: inline-block;
+  margin: 0;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 16px;
+}
+.thanks-page h1 {
+  margin: 16px 0 12px;
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.4;
+}
+.thanks-lead {
+  margin: 0 0 32px;
+  color: var(--muted);
+}
+.offer-box {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+  margin: 0 auto 40px;
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  background: var(--ice);
+  padding: 24px 28px;
+  text-align: left;
+}
+.offer-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.offer-title strong {
+  display: block;
+  color: var(--blue);
+  font-size: clamp(26px, 4.4vw, 36px);
+  font-weight: 800;
+  line-height: 1.3;
+}
+.offer-note {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.offer-timer {
+  border-left: 1px solid var(--line);
+  padding-left: 24px;
+  text-align: center;
+}
+.offer-timer span,
+.offer-timer small {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+.offer-timer p {
+  margin: 4px 0;
+  color: var(--blue);
+  font-size: 32px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.booking-heading,
+.booking-done {
+  margin: 0 0 16px;
+  font-weight: 700;
+}
+.booking-done {
+  color: #116b3a;
+}
+.booking-calendar {
+  min-height: 560px;
+}
+.booking-fallback {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.booking-fallback a {
+  color: var(--blue);
+}
+@media (max-width: 640px) {
+  .offer-box {
+    grid-template-columns: 1fr;
+    padding: 20px 16px;
+  }
+  .offer-timer {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 16px 0 0;
+  }
+}
