@@ -1,0 +1,9 @@
+{
+  "name": "Zeimee FDE — Editorial concept",
+  "id": "zeimee-fde-editorial-concept-20260908",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {"allowedDomains": ["none"]}
+}

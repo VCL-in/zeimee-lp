@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { INDUSTRIES } from "@/lib/contact-options";
 
 const defaultRecipients = [
   "vclab.jp@gmail.com",
@@ -80,6 +81,8 @@ export async function POST(request: Request) {
   const discoverySource = asString(body?.discoverySource);
   const discoveryQuery = asString(body?.discoveryQuery).slice(0, 500);
   const message = asString(body?.message);
+  const industry = asString(body?.industry);
+  const clientCount = asString(body?.clientCount);
   const kind = asString(body?.kind);
   const seminarTitle = asString(body?.seminarTitle);
   const seminarDate = asString(body?.seminarDate);
@@ -103,6 +106,18 @@ export async function POST(request: Request) {
     );
   }
 
+  if (
+    (body?.industry != null && typeof body.industry !== "string") ||
+    (body?.clientCount != null && typeof body.clientCount !== "string") ||
+    (industry && !INDUSTRIES.some((option) => option === industry)) ||
+    (clientCount && !/^\d{1,6}$/.test(clientCount))
+  ) {
+    return NextResponse.json(
+      { message: "業種または顧問先件数の入力内容を確認してください。" },
+      { status: 400 },
+    );
+  }
+
   const name = `${lastName} ${firstName}`;
   const safeCompanyForSubject = company.replaceAll(/[\r\n]+/g, " ");
   const leadLabel = isSeminarApplication ? "セミナー申し込み" : "お問い合わせ";
@@ -117,6 +132,8 @@ export async function POST(request: Request) {
   const submittedDetails = [
     ...submittedSeminarDetails,
     `会社名: ${company}`,
+    `業種: ${industry || "未入力"}`,
+    `顧問先件数: ${clientCount ? `${Number(clientCount)}件` : "未入力"}`,
     `お名前: ${name}`,
     `会社のメールアドレス: ${email}`,
     `電話番号: ${phone}`,
@@ -138,6 +155,8 @@ export async function POST(request: Request) {
           : ""
       }
       <dt>会社名</dt><dd>${escapeHtml(company)}</dd>
+      <dt>業種</dt><dd>${escapeHtml(industry || "未入力")}</dd>
+      <dt>顧問先件数</dt><dd>${clientCount ? `${Number(clientCount)}件` : "未入力"}</dd>
       <dt>お名前</dt><dd>${escapeHtml(name)}</dd>
       <dt>会社のメールアドレス</dt><dd>${escapeHtml(email)}</dd>
       <dt>電話番号</dt><dd>${escapeHtml(phone)}</dd>

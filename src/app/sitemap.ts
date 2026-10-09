@@ -1,24 +1,14 @@
 import type { MetadataRoute } from "next";
+import { toolPages } from "@/lib/tool-pages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: "https://zeimee.com/",
-      lastModified: new Date("2026-08-14"),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: "https://zeimee.com/company",
-      lastModified: new Date("2026-08-14"),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: "https://zeimee.com/security",
-      lastModified: new Date("2026-08-28"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-  ];
+    "",
+    "/security",
+    ...toolPages.map((t) => `/tools/${t.slug}`),
+    "/cases/field-development",
+  ].map((path) => ({
+    url: `https://zeimee.com${path}`,
+    lastModified: "2026-09-09",
+  }));
 }

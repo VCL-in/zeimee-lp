@@ -1,134 +1,166 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { ArrowRight } from "lucide-react";
-
-function FieldLabel({ children }: { children: string }) {
-  return (
-    <label className="block text-[18px] font-bold text-[#202936]">
-      {children}
-      <span className="ml-1 text-[#d91515]">*</span>
-    </label>
-  );
-}
-
-const inputClass =
-  "mt-2 h-14 w-full rounded-[2px] border border-[#cbd6e3] bg-[#f7f9fb] px-4 text-[18px] font-bold text-[#202936] outline-none transition placeholder:text-[#aeb6c0] focus:border-[#1155cc] focus:bg-white";
+import { ArrowUpRight } from "lucide-react";
+import { INDUSTRIES } from "@/lib/contact-options";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
   const [errorMessage, setErrorMessage] = useState("");
-
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
+    if (status === "sending") return;
     const formElement = event.currentTarget;
     const form = new FormData(formElement);
     setStatus("sending");
     setErrorMessage("");
-
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          company: form.get("company"),
-          lastName: form.get("lastName"),
-          firstName: form.get("firstName"),
-          email: form.get("email"),
-          phone: form.get("phone"),
-          discoverySource: form.get("discoverySource"),
-          discoveryQuery: form.get("discoveryQuery"),
-          message: form.get("message"),
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(
+          Object.fromEntries(
+            [
+              "company",
+              "industry",
+              "clientCount",
+              "lastName",
+              "firstName",
+              "email",
+              "phone",
+              "discoverySource",
+              "discoveryQuery",
+              "message",
+            ].map((key) => [key, form.get(key)]),
+          ),
+        ),
       });
-
       if (!response.ok) {
         const result = await response.json().catch(() => null);
-        setStatus("error");
-        setErrorMessage(
-          result?.message ?? "送信に失敗しました。時間をおいて再度お試しください。",
+        throw new Error(
+          result?.message ??
+            "送信に失敗しました。時間をおいて再度お試しください。",
         );
-        return;
       }
-
       formElement.reset();
       setStatus("sent");
-    } catch {
+    } catch (error) {
       setStatus("error");
       setErrorMessage(
-        "送信に失敗しました。時間をおいて再度お試しください。",
+        error instanceof Error
+          ? error.message
+          : "送信に失敗しました。時間をおいて再度お試しください。",
       );
     }
   }
-
   return (
-    <form onSubmit={handleSubmit} className="mt-12 space-y-6">
-      <div>
-        <FieldLabel>会社名</FieldLabel>
+    <form
+      onSubmit={handleSubmit}
+      className="contact-form"
+      aria-busy={status === "sending"}
+    >
+      <div className="form-field">
+        <label htmlFor="company">
+          事務所名・法人名<span className="required">*</span>
+        </label>
         <input
-          required
+          id="company"
           name="company"
           autoComplete="organization"
-          placeholder="例）Zeimee税理士事務所"
-          className={inputClass}
+          placeholder="例）〇〇税理士事務所"
+          required
+          maxLength={200}
         />
       </div>
-
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <FieldLabel>お名前（姓）</FieldLabel>
+      <div className="form-row">
+        <div className="form-field">
+          <label htmlFor="industry">業種（任意）</label>
+          <select id="industry" name="industry" defaultValue="">
+            <option value="">選択してください</option>
+            {INDUSTRIES.map((industry) => (
+              <option key={industry} value={industry}>
+                {industry}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="form-field">
+          <label htmlFor="clientCount">顧問先件数（任意）</label>
           <input
-            required
+            id="clientCount"
+            name="clientCount"
+            type="number"
+            min={0}
+            max={999999}
+            step={1}
+            inputMode="numeric"
+            placeholder="例）100"
+          />
+        </div>
+      </div>
+      <div className="form-row">
+        <div className="form-field">
+          <label htmlFor="lastName">
+            姓<span className="required">*</span>
+          </label>
+          <input
+            id="lastName"
             name="lastName"
             autoComplete="family-name"
-            placeholder="姓"
-            className={inputClass}
+            placeholder="山田"
+            required
+            maxLength={100}
           />
         </div>
-        <div>
-          <FieldLabel>お名前（名）</FieldLabel>
+        <div className="form-field">
+          <label htmlFor="firstName">
+            名<span className="required">*</span>
+          </label>
           <input
-            required
+            id="firstName"
             name="firstName"
             autoComplete="given-name"
-            placeholder="名"
-            className={inputClass}
+            placeholder="太郎"
+            required
+            maxLength={100}
           />
         </div>
       </div>
-
-      <div>
-        <FieldLabel>会社のメールアドレス</FieldLabel>
+      <div className="form-field">
+        <label htmlFor="email">
+          メールアドレス<span className="required">*</span>
+        </label>
         <input
-          required
-          type="email"
+          id="email"
           name="email"
+          type="email"
           autoComplete="email"
-          placeholder="例）example@zeimee.com"
-          className={inputClass}
-        />
-      </div>
-
-      <div>
-        <FieldLabel>ご連絡のつく電話番号</FieldLabel>
-        <input
+          placeholder="you@example.com"
           required
-          type="tel"
-          name="phone"
-          autoComplete="tel"
-          placeholder="例）08012345678"
-          className={inputClass}
+          maxLength={254}
         />
       </div>
-
-      <div>
-        <FieldLabel>Zeimeeをどこで知りましたか？</FieldLabel>
-        <select required name="discoverySource" className={inputClass} defaultValue="">
+      <div className="form-field">
+        <label htmlFor="phone">
+          電話番号<span className="required">*</span>
+        </label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          placeholder="03-0000-0000"
+          required
+          maxLength={40}
+        />
+      </div>
+      <div className="form-field">
+        <label htmlFor="discoverySource">
+          Zeimeeをどこで知りましたか？<span className="required">*</span>
+        </label>
+        <select id="discoverySource" name="discoverySource" required defaultValue="">
           <option value="" disabled>
             選択してください
           </option>
@@ -140,52 +172,47 @@ export function ContactForm() {
           <option value="other">その他</option>
         </select>
       </div>
-
-      <div>
-        <label className="block text-[18px] font-bold text-[#202936]">
-          検索・AIで入力した言葉（任意）
-        </label>
+      <div className="form-field">
+        <label htmlFor="discoveryQuery">検索・AIで入力した言葉（任意）</label>
         <textarea
+          id="discoveryQuery"
           name="discoveryQuery"
-          rows={3}
+          rows={2}
           maxLength={500}
-          placeholder="例）税理士事務所 証憑 消込 AI"
-          className="mt-2 w-full rounded-[2px] border border-[#cbd6e3] bg-[#f7f9fb] px-4 py-4 text-[18px] font-bold leading-8 text-[#202936] outline-none transition placeholder:text-[#aeb6c0] focus:border-[#1155cc] focus:bg-white"
+          placeholder="例）税理士事務所 AI 導入"
         />
       </div>
-
-      <div>
-        <label className="block text-[18px] font-bold text-[#202936]">
-          詳細
-        </label>
+      <div className="form-field">
+        <label htmlFor="message">ご相談内容</label>
         <textarea
+          id="message"
           name="message"
-          rows={6}
-          placeholder="ご相談内容や現在の課題をご記入ください"
-          className="mt-2 w-full rounded-[2px] border border-[#cbd6e3] bg-[#f7f9fb] px-4 py-4 text-[18px] font-bold leading-8 text-[#202936] outline-none transition placeholder:text-[#aeb6c0] focus:border-[#1155cc] focus:bg-white"
+          rows={4}
+          maxLength={5000}
+          placeholder="時間がかかっている業務や、実現したいことなど。まだ具体的でなくても構いません。"
         />
       </div>
-
+      <p className="form-note">
+        ご入力いただいた情報は、お問い合わせへの対応・ご連絡に利用します。顧問先の個人情報や取引情報の記入はお控えください。
+      </p>
       <button
+        className="button button-dark"
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-[2px] bg-[#1155cc] px-8 text-[18px] font-bold text-white transition disabled:cursor-not-allowed disabled:bg-[#8aa8e6] sm:w-auto"
       >
-        {status === "sending" ? "送信中" : "送信する"}
-        <ArrowRight className="size-4" />
+        {status === "sending" ? "送信しています…" : "この内容で相談する"}
+        <ArrowUpRight aria-hidden="true" />
       </button>
-
-      {status === "sent" && (
-        <p className="text-[16px] font-bold leading-7 text-[#116b3a]">
-          送信しました。確認メールをお送りしましたので、ご確認ください。
-        </p>
-      )}
-
-      {status === "error" && (
-        <p className="text-[16px] font-bold leading-7 text-[#b42318]">
-          {errorMessage}
-        </p>
-      )}
+      <div aria-live="polite" aria-atomic="true">
+        {status === "sent" && (
+          <p className="form-status success">
+            お問い合わせを受け付けました。確認メールをお送りしましたので、ご確認ください。
+          </p>
+        )}
+        {status === "error" && (
+          <p className="form-status error">{errorMessage}</p>
+        )}
+      </div>
     </form>
   );
 }
