@@ -1,28 +1,15 @@
 import type { NextConfig } from "next";
 
-const companySiteOrigin =
-  process.env.COMPANY_SITE_ORIGIN ?? "https://zeimee-hp.vercel.app";
-
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      {
-        source: "/lp",
-        destination: "/",
+      ...["www.zeimee.com", "zeimee.jp", "www.zeimee.jp"].map((host) => ({
+        source: "/:path*",
+        has: [{ type: "host" as const, value: host }],
+        destination: "https://zeimee.com/:path*",
         permanent: true,
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/company",
-        destination: `${companySiteOrigin}/`,
-      },
-      {
-        source: "/company/:path*",
-        destination: `${companySiteOrigin}/:path*`,
-      },
+      })),
+      { source: "/lp", destination: "/", permanent: true },
     ];
   },
 };

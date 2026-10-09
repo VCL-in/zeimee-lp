@@ -10,12 +10,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zeimee.com"),
-  title: {
-    default: "Zeimee | 税理士事務所の月次業務をAIで支援",
-    template: "%s | Zeimee",
-  },
+  title: "税理士・会計事務所のAI導入・開発支援｜Zeimee",
   description:
-    "Zeimeeは、税理士事務所の明細・証憑・未消込・要確認を一つのレビューに集約し、月次業務の判断と処理をAIで支援するサービスです。",
+    "会計士事務所・税理士事務所に特化したFDE。現場の業務理解からAIの設計・実装、導入後の改善まで、Zeimeeが伴走します。",
   verification: {
     google: "v3B1BTXFCEKFxbEFjk96Aot0uYHoBZoB7iTsmEUNQO8",
   },

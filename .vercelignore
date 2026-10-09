@@ -1,0 +1,9 @@
+.git
+.next
+node_modules
+archive
+design
+*.tsbuildinfo
+*.zip
+.env*
+DESIGN_NOTES.md
