@@ -1,0 +1,32 @@
+{
+  "runId": "zeimee-fde-illustrated-04-20260908",
+  "status": "font-color-revision-prepared-figma-sync-blocked",
+  "fileKey": "dV3tZXJxm7OrjWwRdUwlJI",
+  "pageId": "3192:60",
+  "figmaCreatedNodeIds": [],
+  "connector": "Read-only discovery completed; tool-call quota reached before writes",
+  "native": "Figma warns that changes will not sync until reconnection. Updated plugin launch attempted; Illustrated 04 creation and cloud save not confirmed.",
+  "verification": [
+    "node --check code.js passed",
+    "git diff --check passed"
+  ],
+  "pending": [
+    "Reconnect Figma and execute Illustrated 04",
+    "Record node IDs and inspect PC/mobile in Figma",
+    "Confirm cloud save"
+  ],
+  "illustrations": [
+    "assets/fieldwork-lineart-v3.png",
+    "assets/review-lineart-v3.png"
+  ],
+  "font": "LINE Seed JP Regular + Bold",
+  "illustrationsApproved": true,
+  "preview": "style-preview.html",
+  "palette": {
+    "blue": "#534DFF",
+    "ink": "#152632",
+    "paper": "#FFFFFF",
+    "pale": "#F6F6F7",
+    "sky": "#8DBBFF"
+  }
+}

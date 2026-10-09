@@ -1,591 +1,410 @@
 import type { Metadata } from "next";
-import type { ComponentType } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { toolPages } from "@/lib/tool-pages";
 import {
-  ArrowRight,
-  Bell,
-  CalendarCheck,
-  ChevronDown,
-  CircleDollarSign,
-  FileCheck2,
-  FileText,
-  ListChecks,
-  Menu,
-  MessageSquareText,
-  ReceiptText,
-  ShieldCheck,
-  Sparkles,
-  Upload,
-  Users,
+  BookOpen,
+  ArrowUpRight,
+  SlidersHorizontal,
+  Handshake,
+  MessagesSquare,
 } from "lucide-react";
+import { BrandLogo } from "./BrandLogo";
 import { ContactForm } from "./ContactForm";
+import { SiteHeader } from "./SiteHeader";
+import { MotionController } from "./MotionController";
+import { HeroVisual } from "./HeroVisual";
+import { TeamIntroduction, CompanyInformation } from "./CompanySections";
 
 export const metadata: Metadata = {
-  title: "zeimee | 税理士向け月次業務自動化サービス",
+  title: "税理士・会計事務所のAI導入・開発支援｜Zeimee",
   description:
-    "zeimeeは、税理士事務所の記帳代行・証憑管理・消込・月次チェックをAIで支援する月次業務自動化サービスです。",
+    "会計士・税理士事務所に特化したFDE。現場の業務理解からAI・システムの設計、実装、定着まで。事務所に合う仕事のしくみを、一緒につくります。",
+  alternates: { canonical: "https://zeimee.com/" },
+  openGraph: {
+    title: "税理士・会計事務所のAI導入・開発支援｜Zeimee",
+    description:
+      "会計士・税理士事務所のためのFDE。業務を理解し、つくり、使われるまで伴走する。",
+    url: "https://zeimee.com/",
+    locale: "ja_JP",
+    type: "website",
+  },
 };
 
-const contactHref = "#contact";
-
-const featureItems = [
-  { title: "AI仕訳", icon: Sparkles, description: "勘定科目と税区分を提案" },
-  { title: "AI証憑解析", icon: ReceiptText, description: "証憑を読み取り取引に紐付け" },
-  { title: "AI消込", icon: CircleDollarSign, description: "請求と入金を突合し、差異だけを確認" },
-  { title: "月次チェック", icon: CalendarCheck, description: "残高・異常値・不足資料をチェック" },
-  { title: "顧問先コミュニケーション", icon: MessageSquareText, description: "不足資料や確認事項をまとめて依頼" },
-  { title: "タスク管理", icon: ListChecks, description: "顧問先ごとの進捗と未対応を一覧化" },
-];
-
-const problemCards = [
-  {
-    label: "仕訳",
-    title: "記帳業務に時間がかかる",
-    points: ["採用・教育コストが重い", "担当者ごとに判断がばらつく", "所長レビューが重い"],
-    icon: FileText,
-    image: "/lp/problem-journal-v2.png",
-  },
-  {
-    label: "証憑管理",
-    title: "証憑回収と紐付けが追いつかない",
-    points: ["提出方法が顧問先ごとに違う", "不足証憑の確認が属人化", "取引への紐付けが大変"],
-    icon: ReceiptText,
-    image: "/lp/problem-evidence-v2.png",
-  },
-  {
-    label: "消込",
-    title: "消込の確認に手間がかかる",
-    points: ["請求との突合に時間がかかる", "未消込に気づきにくい", "確認依頼が後手に回る"],
-    icon: CircleDollarSign,
-    image: "/lp/problem-reconciliation-v2.png",
-  },
-];
-
-const solutionCards = [
-  {
-    title: "月次業務をAIで自動処理",
-    text: "仕訳候補、証憑解析、消込候補をAIが作成。担当者は確認だけに集中できます。",
-    image: "/lp/solution-ai-processing-v2.png",
-  },
-  {
-    title: "税理士はAI作業をチェックするだけ",
-    text: "要確認のタスクだけをToDo化。AIの処理結果を確認・承認するだけで進みます。",
-    image: "/lp/solution-ai-review-v2.png",
-  },
-  {
-    title: "証憑回収もAIが対応",
-    text: "不足証憑や確認事項をAIが整理。顧問先への依頼・催促漏れを防ぎます。",
-    image: "/lp/solution-client-communication-v2.png",
-  },
-];
-
-const plannedItems = [
-  "freee / MF 連携拡張",
-  "顧問先ポータル",
-  "自動リマインド",
-  "月次レポート出力",
-  "担当者別KPI",
-  "AIチェックルール管理",
-];
-
 const faqs = [
-  {
-    question: "freeeやMoney Forwardと連携できますか？",
-    answer:
-      "はい。現在の会計ソフトの運用状況を伺いながら、連携方法と導入ステップをご案内します。",
-  },
-  {
-    question: "顧問先も利用が必要ですか？",
-    answer:
-      "必ずしも必要ありません。まずは事務所側の記帳・証憑・消込業務の効率化から始められます。",
-  },
-  {
-    question: "AIの結果はそのまま登録されますか？",
-    answer:
-      "原則として担当者が確認してから反映する運用を想定しています。最終判断は税理士事務所側で行えます。",
-  },
+  [
+    "何から相談すればよいですか？",
+    "資料整理や転記など、困っている業務をお聞かせください。対象が決まっていなくても相談できます。",
+  ],
+  [
+    "いま使っている会計ソフトでも相談できますか？",
+    "はい。ご利用中のソフトと対象業務を確認し、連携・取込方法をご提案します。",
+  ],
+  [
+    "AIがすべて自動で判断するのですか？",
+    "AIが候補を作成し、担当者が確認・承認します。確認範囲は事務所の業務に合わせて設計します。",
+  ],
+  [
+    "費用と導入期間はどのくらいですか？",
+    "対象業務・帳票・連携要件を確認し、費用と日程をお見積もりします。",
+  ],
+  [
+    "顧問先の情報はどのように扱いますか？",
+    "アクセス権限、AIへの送信範囲、保存・削除条件を導入前に確認し、事務所の要件に合わせて設計します。",
+  ],
 ];
-
-const teamCards = [
-  {
-    title: "アドバイザー 畠山謙人",
-    role: "公認会計士・税理士",
-    bio: "大和工業で連結決算等を担当後、監査法人トーマツで国内監査に従事。サイバーエージェントでは連結決算やAbemaTV経理、決算早期化を担当。税理士法人赤坂共同事務所を経て、2025年に畠山謙人税理士事務所を開業。シードスタートアップを中心に支援している。",
-    image: "/lp/team-tax-advisor.png",
-    objectPosition: "center 18%",
-    imageClassName: "scale-[1.2]",
-  },
-  {
-    title: "代表取締役 佐次本脩真",
-    role: "元メルカリエンジニア",
-    bio: "電気通信大学大学院 情報理工学研究科を卒業。大学院ではソフトウェア開発やAI活用の知見を深め、2025年8月から2026年4月までメルカリにてSWEとしてプロダクト開発を経験。月次業務の実務負担をAIで減らすため、Zeimeeを立ち上げる。",
-    image: "/lp/team-ai-engineer.png",
-    objectPosition: "center 20%",
-    imageClassName: "",
-  },
-];
+function Brand() {
+  return (
+    <a className="brand" href="#top" aria-label="Zeimee トップへ">
+      <BrandLogo />
+    </a>
+  );
+}
+function ContactBanner({ id }: { id: string }) {
+  return (
+    <section className="contact-banner" id={id} aria-label="お問い合わせ">
+      <div className="section-shell contact-banner-inner">
+        <h2>
+          まずは無料でAI導入のイメージを相談！
+          <wbr />
+          お気軽にお問い合わせください。
+        </h2>
+        <div className="contact-banner-panel">
+          <a className="button" href="#contact">
+            お問い合わせ
+            <ArrowUpRight aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen bg-white text-[#202936]">
-      <Header />
-      <Hero />
-      <AccountingIntegrations />
-      <Problems />
-      <Solutions />
-      <Features />
-      <PlannedFeatures />
-      <Faq />
-      <TeamSection />
-      <ContactBand />
-      <Footer />
-    </main>
-  );
-}
-
-function Header() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-[#eef1f5] bg-white/95 backdrop-blur">
-      <div className="mx-auto flex h-[62px] max-w-[1180px] items-center justify-between px-5">
-        <div className="flex items-center gap-10">
-          <Logo />
-          <nav className="hidden items-center gap-7 text-[16px] font-bold text-[#202936] lg:flex">
-            <a href="#problems">課題</a>
-            <a href="#solutions">解決策</a>
-            <a href="#features">機能</a>
-            <a href="#faq">よくある質問</a>
-          </nav>
-        </div>
-        <div className="hidden items-center gap-5 text-[16px] font-bold lg:flex">
-          <a
-            href={contactHref}
-            className="inline-flex h-10 items-center gap-2 rounded-[2px] bg-[#1155cc] px-5 text-white"
-          >
-            お問い合わせ
-            <ArrowRight className="size-3.5" />
-          </a>
-        </div>
-        <button type="button" className="lg:hidden" aria-label="メニュー">
-          <Menu className="size-7" />
-        </button>
-      </div>
-    </header>
-  );
-}
-
-function Hero() {
-  return (
-    <section className="relative overflow-hidden bg-white">
-      <div className="mx-auto max-w-[1240px] px-5 pb-14 pt-10 lg:pb-[72px] lg:pt-12">
-        <div className="mx-auto max-w-[920px] text-center">
-          <h1 className="text-balance text-[25px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[34px] lg:text-[41px]">
-            <span className="inline-block">税理士の手作業を、</span>
-            <br />
-            <span className="inline-block">AIで限りなくゼロへ。</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-[640px] text-[17px] font-bold leading-8 text-[#5c6675] sm:text-[20px] sm:leading-10">
-            <span className="block">記帳・証憑・消込をAIが処理。</span>
-            <span className="block">税理士はToDoを確認するだけ。</span>
-          </p>
-          <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href={contactHref}
-              className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-[8px] bg-[#202936] px-8 text-[15px] font-extrabold text-white shadow-[0_10px_22px_rgba(32,41,54,0.18)] sm:w-auto"
-            >
-              お問い合わせ
-              <ArrowRight className="size-4" />
-            </a>
-          </div>
-        </div>
-        <HeroVisual />
-      </div>
-    </section>
-  );
-}
-
-function HeroVisual() {
-  return (
-    <div className="mx-auto mt-10 max-w-[1040px] overflow-hidden rounded-[18px] bg-[#202936] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.10),0_28px_70px_rgba(32,41,54,0.16)] lg:mt-12">
-      <video
-        className="block aspect-video w-full object-cover motion-reduce:hidden"
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/images/hero-ui-flow-poster.jpg?v=text-sync-v2"
-        preload="metadata"
-        aria-hidden="true"
-      >
-        <source src="/videos/hero-ui-flow-hq.mp4?v=text-sync-v2" type="video/mp4" />
-      </video>
-      <Image
-        src="/images/hero-ui-flow-poster.jpg"
-        alt="zeimeeのToDo画面とAI処理カード"
-        width={1920}
-        height={1080}
-        sizes="(min-width: 1024px) 1040px, 100vw"
-        className="hidden aspect-video w-full object-cover motion-reduce:block"
-        priority
-      />
-    </div>
-  );
-}
-
-function AccountingIntegrations() {
-  return (
-    <section className="border-y border-[#eef1f5] bg-white py-10">
-      <div className="mx-auto max-w-[1180px] px-5">
-        <div className="grid grid-cols-1 gap-x-16 gap-y-9 sm:grid-cols-3">
-          <div className="flex items-center justify-center">
-            <Image
-              src="/lp/freee-logo.png"
-              alt="freee"
-              width={450}
-              height={184}
-              className="h-[66px] w-auto"
-            />
-          </div>
-          <div className="flex items-center justify-center text-center text-[34px] font-bold leading-tight text-[#005bac]">
-            Money
-            <br />
-            Forward
-          </div>
-          <div className="flex flex-col items-center justify-center gap-1 text-center">
-            <span className="text-[34px] font-bold text-[#c4cbd5]">弥生会計</span>
-            <span className="text-[13px] font-bold text-[#b1bac6]">対応予定</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Problems() {
-  return (
-    <section id="problems" className="relative overflow-hidden bg-[#3d444f] pb-20 pt-28 text-white">
-      <DiagonalTop />
-      <div className="mx-auto max-w-[1180px] px-5">
-        <p className="text-[16px] font-bold text-white/25">Problems</p>
-        <h2 className="mt-5 text-[29px] font-bold tracking-normal">
-          こんな課題ありませんか？
-        </h2>
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {problemCards.map((card) => (
-            <article key={card.label} className="rounded-[3px] bg-[#4a515d] p-6">
-              <div className="relative h-[190px] overflow-hidden rounded-[2px] bg-white">
-                <Image
-                  src={card.image}
-                  alt={`${card.label}の課題を表すイラスト`}
-                  fill
-                  sizes="(min-width: 1024px) 340px, 100vw"
-                  className="object-contain"
-                />
-              </div>
-              <span className="mt-5 inline-block rounded-[2px] bg-[#10a6b7] px-3 py-1 text-[13px] font-bold">
-                {card.label}
-              </span>
-              <h3 className="mt-4 text-balance text-[20px] font-bold leading-7">
-                {card.title}
-              </h3>
-              <ul className="mt-4 space-y-2 text-[16px] font-bold leading-6 text-white/82">
-                {card.points.map((point) => (
-                  <li key={point} className="flex gap-2">
-                    <span>・</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Solutions() {
-  return (
-    <section id="solutions" className="bg-white py-24">
-      <div className="mx-auto max-w-[1200px] px-5">
-        <h2 className="text-balance text-center text-[29px] font-bold leading-9 tracking-normal">
-          Zeimeeで月次業務を解決
-        </h2>
-        <div className="mt-12 grid gap-10 lg:grid-cols-3 xl:gap-12">
-          {solutionCards.map((card) => (
-            <article key={card.title}>
-              <SolutionImage src={card.image} title={card.title} />
-              <h3 className="mt-6 text-balance text-[22px] font-bold leading-8">
-                {card.title}
-              </h3>
-              <p className="mt-3 text-[16px] font-thin leading-8 text-[#5c6675]">
-                {card.text}
+    <>
+      <a className="skip-link" href="#main">
+        本文へ移動
+      </a>
+      <SiteHeader>
+        <Brand />
+      </SiteHeader>
+      <MotionController />
+      <main id="main">
+        <section className="hero section-shell" id="top">
+          <div className="hero-layout">
+            <div className="hero-message">
+              <p className="eyebrow hero-enter">
+                会計士・税理士事務所に特化したFDE
               </p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Features() {
-  return (
-    <section id="features" className="bg-white py-24">
-      <div className="mx-auto max-w-[920px] px-5">
-        <h2 className="text-center text-[29px] font-bold tracking-normal">
-          提供中の機能
-        </h2>
-        <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {featureItems.map((item) => (
-            <FeatureCard key={item.title} {...item} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PlannedFeatures() {
-  return (
-    <section className="bg-[#f2f4f7] py-24">
-      <div className="mx-auto max-w-[920px] px-5">
-        <h2 className="text-center text-[29px] font-bold tracking-normal">
-          提供予定の機能
-        </h2>
-        <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {plannedItems.map((item, index) => (
-            <div key={item} className="rounded-[3px] bg-white p-7 shadow-sm">
-              <div className="flex h-[112px] items-center justify-center rounded-[2px] bg-[#f5f7fa]">
-                <PlannedIllustration index={index} />
-              </div>
-              <h3 className="mt-5 text-center text-[18px] font-bold leading-6">
-                {item}
-              </h3>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Faq() {
-  return (
-    <section id="faq" className="bg-[#f2f4f7] py-24">
-      <div className="mx-auto max-w-[920px] px-5">
-        <h2 className="text-center text-[29px] font-bold tracking-normal">
-          よくある質問
-        </h2>
-        <div className="mt-10 space-y-4">
-          {faqs.map((faq) => (
-            <details key={faq.question} className="group rounded-[3px] bg-white p-6">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-balance text-[20px] font-bold">
-                {faq.question}
-                <ChevronDown className="size-5 transition group-open:rotate-180" />
-              </summary>
-              <p className="mt-4 text-[16px] font-thin leading-7 text-[#5c6675]">
-                {faq.answer}
-              </p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TeamSection() {
-  return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-[1180px] px-5">
-        <div className="mx-auto max-w-[900px] text-center">
-          <h2 className="text-balance text-[31px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[40px]">
-            AIに知見のある税理士と
-            <br className="hidden sm:block" />
-            <span className="whitespace-nowrap">エンジニア</span>
-            が一丸となって開発しています。
-          </h2>
-          <p className="mx-auto mt-8 max-w-[860px] text-[18px] font-thin leading-9 text-[#202936]">
-            Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、税理士が確認と顧問先対応に集中できるプロダクトを目指しています。
-          </p>
-        </div>
-        <div className="mx-auto mt-14 grid max-w-[960px] gap-8 md:grid-cols-2 lg:gap-10">
-          {teamCards.map((card) => (
-            <article
-              key={card.title}
-              className="flex flex-col gap-5"
-            >
-              <div className="relative aspect-[5/6] overflow-hidden rounded-[8px] bg-[#f2f5fa]">
-                <Image
-                  src={card.image}
-                  alt={`${card.title} ${card.role}`}
-                  fill
-                  sizes="(min-width: 1024px) 460px, (min-width: 768px) 50vw, 100vw"
-                  className={`object-cover ${card.imageClassName}`}
-                  style={{ objectPosition: card.objectPosition }}
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white/95 via-white/70 to-transparent px-6 pb-7 pt-28 sm:px-7">
-                  <p className="text-[21px] font-bold leading-7 text-[#202936] sm:text-[22px]">
-                    {card.title}
-                  </p>
-                  <p className="mt-2 text-[16px] font-bold leading-6 text-[#202936]/75 sm:text-[17px]">
-                    {card.role}
-                  </p>
+              <div className="hero-copy hero-enter">
+                <h1>
+                  会計の現場から、
+                  <br />
+                  <span className="keep">手作業をゼロに。</span>
+                </h1>
+                <div className="hero-description">
+                  <a className="button" href="#contact">
+                    事務所の課題を相談する
+                    <ArrowUpRight />
+                  </a>
                 </div>
               </div>
-              <div className="flex-1 rounded-[8px] bg-[#f4f6f9] px-6 py-6 sm:px-7">
-                <p className="text-[15px] font-thin leading-8 text-[#4b5563] sm:text-[16px]">
-                  {card.bio}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+            </div>
+            <HeroVisual />
+          </div>
+        </section>
 
-function ContactBand() {
-  return (
-    <section id="contact" className="scroll-mt-24 bg-white py-24">
-      <div className="mx-auto max-w-[760px] px-5">
-        <h2 className="text-balance text-[36px] font-bold leading-[1.35] tracking-normal text-[#202936] sm:text-[46px]">
-          Zeimeeへのお問い合わせ
-        </h2>
-        <p className="mt-8 text-[18px] font-bold leading-8 text-[#202936]">
-          Zeimeeにご関心をお寄せいただきありがとうございます。
-        </p>
-        <p className="mt-5 text-[18px] font-bold leading-8 text-[#202936]">
-          導入相談、デモ、料金や機能のご質問など、お気軽にお問い合わせください。
-          <br className="hidden sm:block" />
-          内容に応じて担当者よりご連絡します。
-        </p>
-        <ContactForm />
-      </div>
-    </section>
-  );
-}
+        <section
+          className="about-section section-shell content-section"
+          id="about"
+        >
+          <h2>Zeimeeとは</h2>
+          <div className="about-grid" data-reveal>
+            <div>
+              <h3>あなたの事務所専属のAI開発チーム</h3>
+              <p>
+                会計士・税理士事務所に特化したFDE。業務の整理から、AI・システムの開発、運用改善まで支援します。
+              </p>
+              <p className="about-definition">
+                FDE：現場の課題を、設計・開発まで担うエンジニア。
+              </p>
+            </div>
+            <Image
+              src="/lp/fieldwork-lineart.png"
+              alt="資料を見ながら業務を検討する二人"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 800px) 90vw, 450px"
+            />
+          </div>
+          <TeamIntroduction />
+        </section>
 
-function Footer() {
-  return (
-    <footer className="relative overflow-hidden bg-[#252b34] pb-24 pt-32 text-white">
-      <DiagonalTop light />
-      <div className="mx-auto max-w-[1180px] px-5">
-        <Logo light />
-        <div className="mt-14 grid gap-10 text-[16px] font-bold text-white/55 lg:grid-cols-[1fr_auto]">
+        <section className="reasons-section" id="reasons">
+          <div className="section-shell content-section">
+            <h2>Zeimeeが選ばれる理由</h2>
+            <div className="reason-grid" data-reveal>
+              {[
+                {
+                  icon: BookOpen,
+                  title: "会計業務特化のFDE",
+                  benefit: "会計実務がわかるから、課題がすぐに伝わる。",
+                },
+                {
+                  icon: SlidersHorizontal,
+                  title: "事務所専用のカスタマイズ開発",
+                  benefit: "いつもの業務に合う仕組みをつくれる。",
+                },
+                {
+                  icon: MessagesSquare,
+                  title: "対面出社でのヒアリング・開発",
+                  benefit: "現場を見ながら、細かな要望まで形に。",
+                },
+                {
+                  icon: Handshake,
+                  title: "対面での徹底サポート",
+                  benefit: "操作の不安を解消し、日々の業務に定着。",
+                },
+              ].map(({ icon: Icon, title, benefit }, i) => (
+                <article className="reason-card" key={title}>
+                  <span className="reason-index">0{i + 1}</span>
+                  <Icon aria-hidden="true" />
+                  <h3>{title}</h3>
+                  <p>{benefit}</p>
+                </article>
+              ))}
+            </div>
+            <div className="reason-promise" data-reveal>
+              <h3>
+                作っておわりではなく、
+                <br />
+                <span>事務所に浸透するAIツールを開発</span>
+              </h3>
+              <Image
+                src="/lp/fieldwork-lineart.png"
+                alt="事務所スタッフとエンジニアが資料を見ながら相談する様子"
+                width={1536}
+                height={1024}
+                sizes="(max-width: 800px) 90vw, 540px"
+              />
+            </div>
+          </div>
+        </section>
+
+        <ContactBanner id="contact-first" />
+
+        <section className="content-section section-shell" id="tools">
+          <h2>導入ツール一覧</h2>
+          <div className="tools-grid">
+            {[
+              {
+                name: "記帳自動化AI",
+                image: "bookkeeping",
+                description:
+                  "証憑から仕訳を作成。確認から会計ソフトへの反映まで支援します。",
+              },
+              {
+                name: "生産性管理ダッシュボード",
+                image: "productivity",
+                description:
+                  "担当者や業務ごとの作業時間を可視化。改善すべき業務が見えます。",
+              },
+              {
+                name: "証憑収集AI",
+                image: "collection",
+                description:
+                  "必要な資料と提出状況を一元管理。顧問先への確認の手間を減らします。",
+              },
+              {
+                name: "顧問先管理",
+                image: "clients",
+                description:
+                  "顧問先の情報、担当者、業務状況をひとつに。事務所内で共有できます。",
+              },
+              {
+                name: "証憑フォルダ分けAI",
+                image: "folders",
+                description:
+                  "証憑の内容を読み取り、自動で分類。資料整理の手間を減らします。",
+              },
+              {
+                name: "法人税申告チェックAI",
+                image: "tax-check",
+                description:
+                  "申告書と関連資料を照合。確認が必要な箇所を見つける作業を支援します。",
+              },
+              {
+                name: "会計ソフト引越しAI",
+                image: "migration",
+                description:
+                  "勘定科目やデータ形式を変換。会計ソフトの移行作業を支援します。",
+              },
+              {
+                name: "相続税取引履歴作成AI",
+                image: "inheritance",
+                description:
+                  "通帳の入出金を読み取り、時系列に整理。相続調査用の取引履歴を作成します。",
+              },
+              {
+                name: "決算書作成AI",
+                image: "financial-statements",
+                description:
+                  "会計データをもとに、貸借対照表や損益計算書を作成。決算書の作成業務を支援します。",
+              },
+            ].map(({ name, image, description }) => (
+              <article className="tool-card" key={name} data-reveal>
+                <a className="tool-card-link" href="#contact" aria-label={`${name}について問い合わせる`}>
+                <Image
+                  className="tool-preview"
+                  src={`/lp/tools/${image}.svg`}
+                  alt={`${name}の画面イメージ（架空データ）`}
+                  width={1000}
+                  height={620}
+                  sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 340px"
+                />
+                <h3>{name}</h3>
+                <p>{description}</p>
+                </a>
+                {toolPages.some((tool) => tool.slug === image) && (
+                  <Link className="tool-detail-link" href={`/tools/${image}`} aria-label={`${name}の詳細を見る`}>詳しく見る <span aria-hidden="true">→</span></Link>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <ContactBanner id="contact-tools" />
+
+        <section
+          className="content-section section-shell listing-section"
+          id="cases"
+        >
+          <h2>導入事例</h2>
+          <a
+            className="case-feature"
+            href="https://prtimes.jp/main/html/rd/p/000000003.000183909.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="case-photo"
+              src="/lp/seiwa-team.png"
+              alt="成和税理士法人の看板前で撮影した集合写真"
+              width={1950}
+              height={1069}
+              sizes="(max-width: 800px) 100vw, 660px"
+            />
+            <span className="case-category">本格検証</span>
+            <h3>成和税理士法人</h3>
+            <p>呉・広島の2拠点で、記帳業務のAI活用を検証。</p>
+            <div className="case-meta">
+              <time dateTime="2026-08-06">2026.08.06</time>
+              <span>
+                導入発表を読む
+                <ArrowUpRight aria-hidden="true" />
+              </span>
+            </div>
+          </a>
+          <Link className="field-case-link" href="/cases/field-development">
+            <span>税理士事務所のAI導入事例</span>
+            <h3>日計表の転記を削減し、Excelの5工程を1画面に。</h3>
+            <p>現場に合わせた個別開発で、記帳・データ加工の業務を改善。導入事例を読む →</p>
+          </Link>
+        </section>
+
+        <section
+          className="content-section section-shell listing-section"
+          id="news"
+        >
+          <h2>お知らせ</h2>
+          <div className="news-list">
+            {[
+              {
+                date: "2026-08-07",
+                label: "受賞",
+                title: "JAFCO SEED Pitch 2026で準優勝",
+                url: "https://prtimes.jp/main/html/rd/p/000000004.000183909.html",
+              },
+              {
+                date: "2026-08-06",
+                label: "資金調達",
+                title: "Skyland Venturesから2,000万円を調達",
+                url: "https://prtimes.jp/main/html/rd/p/000000003.000183909.html",
+              },
+              {
+                date: "2026-05-25",
+                label: "サービス",
+                title: "会計AI「Zeimee」の先行提供を開始",
+                url: "https://prtimes.jp/main/html/rd/p/000000002.000183909.html",
+              },
+            ].map(({ date, label, title, url }) => (
+              <a
+                className="news-item"
+                key={url}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="news-meta">
+                  <time dateTime={date}>{date.replaceAll("-", ".")}</time>
+                  <span>{label}</span>
+                </div>
+                <h3>{title}</h3>
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="faq section-shell" id="faq">
           <div>
-            <p className="mb-5 text-white">会社情報</p>
-            <dl className="space-y-3">
-              <div>
-                <dt className="sr-only">会社名</dt>
-                <dd>株式会社Vibe Coding Lab</dd>
-              </div>
-              <div>
-                <dt className="sr-only">所在地</dt>
-                <dd>東京都調布市調布ヶ丘1-5-1 電気通信大学西11号館4階411号室</dd>
-              </div>
-              <div>
-                <dt className="sr-only">代表者</dt>
-                <dd>代表取締役 佐次本脩真</dd>
-              </div>
-              <div>
-                <dt className="sr-only">取締役</dt>
-                <dd>取締役 岩崎琉晟</dd>
-              </div>
-            </dl>
+            <h2 data-reveal>よくある質問</h2>
           </div>
-          <div className="lg:text-right">
-            <a
-              href={contactHref}
-              className="inline-flex h-11 items-center gap-3 rounded-[2px] border border-white/40 px-5 text-white"
-            >
-              お問い合わせ
-              <ArrowRight className="size-4" />
-            </a>
+          <div className="faq-list">
+            {faqs.map(([q, a], i) => (
+              <details key={q}>
+                <summary>
+                  <span className="faq-number">0{i + 1}</span>
+                  <h3>{q}</h3>
+                  <span className="faq-toggle" aria-hidden="true" />
+                </summary>
+                <p>{a}</p>
+              </details>
+            ))}
           </div>
+        </section>
+
+        <section className="contact" id="contact">
+          <div className="section-shell contact-grid">
+            <div className="contact-copy" data-reveal>
+              <h2>お問い合わせ</h2>
+            </div>
+            <div className="contact-panel">
+              <div className="contact-form-title">
+                <h3>業務改善・導入のご相談</h3>
+                <span>* 必須</span>
+              </div>
+              <ContactForm />
+            </div>
+          </div>
+        </section>
+        <CompanyInformation />
+      </main>
+      <footer className="footer section-shell">
+        <div className="footer-top">
+          <Brand />
+          <a href="https://zeimee.com/company">
+            会社情報
+            <ArrowUpRight />
+          </a>
         </div>
-        <p className="mt-16 text-[14px] font-thin text-white/35">
-          © 2026 Zeimee
-        </p>
-      </div>
-    </footer>
-  );
-}
-
-function Logo({ light = false }: { light?: boolean }) {
-  return (
-    <Link href="/lp" className="inline-flex items-center">
-      <Image
-        src="/lp/zeimee-logo.png"
-        alt="Zeimee"
-        width={145}
-        height={30}
-        className={`h-[28px] w-auto ${light ? "[filter:brightness(0)_invert(1)]" : ""}`}
-        priority={!light}
-      />
-    </Link>
-  );
-}
-
-function FeatureCard({
-  title,
-  description,
-  icon: Icon,
-}: {
-  title: string;
-  description: string;
-  icon: ComponentType<{ className?: string }>;
-}) {
-  return (
-    <article className="rounded-[3px] bg-[#f4f6f9] p-6">
-      <div className="flex h-[138px] items-center justify-center rounded-[2px] bg-white">
-        <div className="rounded-[4px] border border-[#dce4ef] bg-[#f8fafc] p-5">
-          <Icon className="size-10 text-[#1155cc]" />
+        <div className="footer-bottom">
+          <span>株式会社Zeimee</span>
+          <span>© {new Date().getFullYear()} Zeimee Inc.</span>
+          <a href="#top">ページの先頭へ ↑</a>
         </div>
-      </div>
-      <h3 className="mt-5 text-center text-[19px] font-bold">{title}</h3>
-      <p className="mx-auto mt-3 max-w-[210px] text-center text-[14px] font-thin leading-6 text-[#667083]">
-        {description}
-      </p>
-    </article>
-  );
-}
-
-function SolutionImage({ src, title }: { src: string; title: string }) {
-  return (
-    <div className="relative h-[220px] overflow-hidden rounded-[3px] bg-[#eef2f7]">
-      <Image
-        src={src}
-        alt={`${title}のイメージ`}
-        fill
-        sizes="(min-width: 1280px) 370px, (min-width: 1024px) 31vw, 100vw"
-        className="object-cover"
-      />
-    </div>
-  );
-}
-
-function PlannedIllustration({ index }: { index: number }) {
-  const icons = [Upload, Bell, FileCheck2, CalendarCheck, Users, ShieldCheck];
-  const Icon = icons[index] ?? Sparkles;
-
-  return (
-    <div className="rounded-full bg-white p-5 shadow-sm">
-      <Icon className="size-9 text-[#1155cc]" />
-    </div>
-  );
-}
-
-function DiagonalTop({ light = false }: { light?: boolean }) {
-  return (
-    <div
-      aria-hidden
-      className={`absolute left-0 top-0 h-20 w-full ${
-        light ? "bg-white" : "bg-white"
-      }`}
-      style={{ clipPath: "polygon(0 0, 100% 0, 100% 18%, 0 100%)" }}
-    />
+      </footer>
+    </>
   );
 }

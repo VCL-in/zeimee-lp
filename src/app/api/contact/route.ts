@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { INDUSTRIES } from "@/lib/contact-options";
 
 const defaultRecipients = [
   "vclab.jp@gmail.com",
@@ -24,7 +25,9 @@ function getRecipients() {
     .map((email) => email.trim())
     .filter(Boolean);
 
-  return configuredRecipients?.length ? configuredRecipients : defaultRecipients;
+  return configuredRecipients?.length
+    ? configuredRecipients
+    : defaultRecipients;
 }
 
 export async function POST(request: Request) {
@@ -45,6 +48,19 @@ export async function POST(request: Request) {
   const email = asString(body?.email);
   const phone = asString(body?.phone);
   const message = asString(body?.message);
+  const industry = asString(body?.industry);
+  const clientCount = asString(body?.clientCount);
+  if (
+    (body?.industry != null && typeof body.industry !== "string") ||
+    (body?.clientCount != null && typeof body.clientCount !== "string") ||
+    (industry && !INDUSTRIES.some((option) => option === industry)) ||
+    (clientCount && !/^\d{1,6}$/.test(clientCount))
+  ) {
+    return NextResponse.json(
+      { message: "業種または顧問先件数の入力内容を確認してください。" },
+      { status: 400 },
+    );
+  }
 
   if (!company || !lastName || !firstName || !email || !phone) {
     return NextResponse.json(
@@ -58,6 +74,8 @@ export async function POST(request: Request) {
     "Zeimee LPからお問い合わせがありました。",
     "",
     `会社名: ${company}`,
+    `業種: ${industry || "未入力"}`,
+    `顧問先件数: ${clientCount ? `${Number(clientCount)}件` : "未入力"}`,
     `お名前: ${name}`,
     `会社のメールアドレス: ${email}`,
     `電話番号: ${phone}`,
@@ -70,6 +88,8 @@ export async function POST(request: Request) {
     <h1>Zeimee LPからお問い合わせがありました</h1>
     <dl>
       <dt>会社名</dt><dd>${escapeHtml(company)}</dd>
+      <dt>業種</dt><dd>${escapeHtml(industry || "未入力")}</dd>
+      <dt>顧問先件数</dt><dd>${clientCount ? `${Number(clientCount)}件` : "未入力"}</dd>
       <dt>お名前</dt><dd>${escapeHtml(name)}</dd>
       <dt>会社のメールアドレス</dt><dd>${escapeHtml(email)}</dd>
       <dt>電話番号</dt><dd>${escapeHtml(phone)}</dd>

@@ -1,0 +1,174 @@
+.team {
+  margin-top: 88px;
+  padding-top: 72px;
+  border-top: 1px solid #e2e5ea;
+  scroll-margin-top: 120px;
+}
+.team > h3 {
+  font-size: 30px;
+  line-height: 1.7;
+  text-align: center;
+  letter-spacing: -0.025em;
+}
+.intro {
+  max-width: 850px;
+  margin: 24px auto 48px;
+  font-size: 16px;
+  line-height: 2;
+  color: #59636d;
+}
+.members {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+.portrait {
+  position: relative;
+  aspect-ratio: 5 / 6;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f7f7f7;
+}
+.portrait > img {
+  object-fit: cover;
+  object-position: center 20%;
+}
+.members article:first-child .portrait > img {
+  transform: scale(1.15);
+}
+.identity {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 100px 28px 28px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.92) 70%);
+}
+.identity h4 {
+  font-size: 24px;
+  line-height: 1.6;
+}
+.identity h4 span {
+  font-size: 19px;
+}
+.identity p {
+  font-size: 17px;
+  color: #59636d;
+  margin-top: 6px;
+  font-weight: 700;
+}
+.bio {
+  margin-top: 20px;
+  padding: 24px;
+  border-radius: 8px;
+  background: #f6f7fb;
+  font-size: 15px;
+  line-height: 2;
+  color: #59636d;
+}
+.company {
+  background: #534dff;
+  color: #fff;
+  padding: 88px 0;
+}
+.companyInner {
+  width: min(1040px, calc(100% - 80px));
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+.company h2 {
+  font-size: 16px;
+  margin-bottom: 36px;
+}
+.mission {
+  font-size: clamp(26px, 2.5vw, 36px);
+  line-height: 1.9;
+  letter-spacing: -0.025em;
+}
+.company dl > div {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 20px;
+  padding: 24px 0;
+  border-top: 1px solid #ffffff40;
+  font-size: 14px;
+  line-height: 1.9;
+}
+.company dl > div:last-child {
+  border-bottom: 1px solid #ffffff40;
+}
+.company dt {
+  color: #e2e0ff;
+}
+.company dd {
+  margin: 0;
+}
+.contactLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px 0;
+  margin-top: 24px;
+  border-block: 1px solid #ffffff40;
+  font-size: 21px;
+  font-weight: 700;
+}
+.contactLink small {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.contactLink svg {
+  flex-shrink: 0;
+}
+.contactLink:hover {
+  color: #e2e0ff;
+}
+@media (max-width: 700px) {
+  .team {
+    margin-top: 48px;
+    padding-top: 48px;
+  }
+  .team > h3 {
+    font-size: 23px;
+  }
+  .intro {
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+  .members {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .identity {
+    padding: 80px 20px 24px;
+  }
+  .identity h4 {
+    font-size: 23px;
+  }
+  .bio {
+    padding: 20px;
+  }
+  .company {
+    padding: 56px 0;
+  }
+  .companyInner {
+    width: calc(100% - 48px);
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .company h2 {
+    margin-bottom: 24px;
+  }
+  .mission {
+    font-size: 27px;
+  }
+  .company dl > div {
+    grid-template-columns: 66px 1fr;
+    gap: 14px;
+  }
+  .contactLink {
+    font-size: 18px;
+  }
+}
