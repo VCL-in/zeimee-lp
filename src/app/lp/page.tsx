@@ -450,6 +450,7 @@ export default function LandingPage() {
       <footer className="footer section-shell">
         <div className="footer-top">
           <Brand />
+          <Link href="/column">コラム</Link>
           <a href="https://zeimee.com/company">
             会社情報
             <ArrowUpRight />

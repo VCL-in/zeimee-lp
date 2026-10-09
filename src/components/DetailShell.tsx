@@ -13,6 +13,6 @@ export function DetailShell({ children, label, casePage = false }: { children: R
       {children}
       <aside className={styles.cta}><h2>あなたの事務所の業務も、<br />ご相談ください。</h2><a className={styles.button} href="/#contact">資料ダウンロード（無料） <span aria-hidden="true">↗</span></a></aside>
     </main>
-    <footer className={styles.footer}><Link href="/">Zeimee トップ</Link><a href="/#company-info">会社情報</a><Link href="/security">セキュリティ</Link><small>© 2026 株式会社Zeimee</small></footer>
+    <footer className={styles.footer}><Link href="/">Zeimee トップ</Link><a href="/#company-info">会社情報</a><Link href="/column">コラム</Link><Link href="/security">セキュリティ</Link><small>© 2026 株式会社Zeimee</small></footer>
   </div>;
 }
