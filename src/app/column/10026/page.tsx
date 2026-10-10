@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -438,7 +439,36 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "相続税の申告のしかた：家族名義の財産",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/publication/pamph/sozoku/shikata-sozoku2026/pdf/shikata03.pdf",
+              context: "名義と実質の確認",
+            },
+            {
+              title: "財産評価基本通達203：預貯金の評価",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/law/tsutatsu/kihon/sisan/hyoka_new/08/08.htm#a-203",
+              context: "取引履歴の整理と財産評価の区別",
+            },
+            {
+              title: "相続税申告のためのチェックシート",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/publication/pamph/sozoku-zoyo/2023/pdf/r05-01.pdf",
+              context: "口座・取引履歴の確認項目",
+            },
+            {
+              title: "預金取引記録開示請求事件（最高裁判決）",
+              publisher: "裁判所",
+              url: "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-37210.pdf",
+              context: "相続人による取引記録の請求",
+            },
+          ]}
+          note="金融機関の発行条件は各行の公式FAQの例であり、すべての金融機関に当てはまるものではありません。"
+        >
           <p>法令・官公庁・業界団体などの資料</p>
           <ul>
             {linkedReferences.map((ref) => (
@@ -450,7 +480,7 @@ export default function Page() {
                 ) : (
                   ref.title
                 )}
-                （{ref.meta}、2026-10-10確認）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
@@ -458,16 +488,16 @@ export default function Page() {
           <ul>
             {textReferences.map((ref) => (
               <li key={ref.title}>
-                {ref.title}（{ref.meta}、2026-10-10確認）
+                {ref.title}（{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
           <p>
             自社資料：株式会社Zeimee「
             <Link href="/cases/field-development">導入事例</Link>
-            」（2026-10-10確認）
+            」
           </p>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

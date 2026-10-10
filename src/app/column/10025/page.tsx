@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -316,21 +317,50 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "個人情報保護法ガイドライン（通則編）",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/",
+              context: "委託先の選定・契約・監督",
+            },
+            {
+              title: "特定個人情報ガイドライン（事業者編）",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/legal/policy/my_number_guideline_jigyosha/",
+              context: "マイナンバーと再委託の管理",
+            },
+            {
+              title: "税理士制度のQ&A：税理士法違反行為",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/zeirishi/zeirishiseido/qa/06.htm",
+              context: "記帳代行と税務業務の線引き",
+            },
+            {
+              title: "テレワークにおけるセキュリティ確保",
+              publisher: "総務省",
+              url: "https://www.soumu.go.jp/main_sosiki/cybersecurity/telework/",
+              context: "在宅作業の場所・端末・情報の管理",
+            },
+          ]}
+          note="令和8年法律第56号による改正は、未施行の内容として区別しています。"
+        >
           <ul>
             {references.map((ref) => (
               <li key={ref.url}>
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}、2026-10-10確認）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
           <p>
-            他社サービスへの外部リンクは設けていません。令和8年法律第56号による改正は未施行の内容として区別しています。
+            他社サービスへの外部リンクは設けていません。
           </p>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

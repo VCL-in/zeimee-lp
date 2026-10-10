@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -993,10 +994,31 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "AI事業者ガイドライン（第1.2版）",
+              publisher: "総務省・経済産業省",
+              url: "https://www.soumu.go.jp/main_sosiki/kenkyu/ai_network/02ryutsu20_04000019.html",
+              context: "生成AIの利用と出力の確認",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "プロンプトに含める情報の確認",
+            },
+            {
+              title: "AIと著作権に関するチェックリスト＆ガイダンス",
+              publisher: "文化庁",
+              url: "https://www.bunka.go.jp/seisaku/chosakuken/pdf/94097701_01.pdf",
+              context: "生成物を業務で使う際の確認",
+            },
+          ]}
+        >
           <p>
-            いずれも{CHECKED}
-            に確認しました。AIサービス提供会社の資料はリンクを設けず、名称のみ記載しています。
+            AIサービス提供会社の資料はリンクを設けず、名称のみ記載しています。
           </p>
           <h3>法令（e-Gov法令検索）</h3>
           <ul>
@@ -1004,42 +1026,38 @@ export default function Page() {
               <ExternalLink href="https://laws.e-gov.go.jp/law/326AC1000000237">
                 税理士法（昭和26年法律第237号）
               </ExternalLink>
-              （デジタル庁 e-Gov法令検索、2025年10月1日施行の現行版、{CHECKED}
-              確認）
+              （デジタル庁 e-Gov法令検索、2025年10月1日施行の現行版）
             </li>
             <li>
               <ExternalLink href="https://laws.e-gov.go.jp/law/415AC0000000057">
                 個人情報の保護に関する法律（平成15年法律第57号）
               </ExternalLink>
               （デジタル庁
-              e-Gov法令検索、2026年10月1日施行の現行版。令和8年法律第56号による改正は未施行、
-              {CHECKED}
-              確認）
+              e-Gov法令検索、2026年10月1日施行の現行版。令和8年法律第56号による改正は未施行）
             </li>
             <li>
               <ExternalLink href="https://laws.e-gov.go.jp/law/425AC0000000027">
                 行政手続における特定の個人を識別するための番号の利用等に関する法律（平成25年法律第27号）
               </ExternalLink>
-              （デジタル庁 e-Gov法令検索、{CHECKED}確認）
+              （デジタル庁 e-Gov法令検索）
             </li>
             <li>
               <ExternalLink href="https://laws.e-gov.go.jp/law/323AC0000000120">
                 国家行政組織法（昭和23年法律第120号）
               </ExternalLink>
-              （デジタル庁 e-Gov法令検索、{CHECKED}確認）
+              （デジタル庁 e-Gov法令検索）
             </li>
             <li>
               <ExternalLink href="https://laws.e-gov.go.jp/law/337AC0000000066">
                 国税通則法（昭和37年法律第66号）
               </ExternalLink>
-              （デジタル庁 e-Gov法令検索、2026年6月24日施行の現行版、{CHECKED}
-              確認）
+              （デジタル庁 e-Gov法令検索、2026年6月24日施行の現行版）
             </li>
             <li>
               <ExternalLink href="https://laws.e-gov.go.jp/">
                 e-Gov法令検索
               </ExternalLink>
-              （デジタル庁、2024年7月29日リニューアル、{CHECKED}確認）
+              （デジタル庁、2024年7月29日リニューアル）
             </li>
           </ul>
           <h3>官公庁・業界団体の資料</h3>
@@ -1048,13 +1066,13 @@ export default function Page() {
               <ExternalLink href="https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/">
                 生成AIサービスの利用に関する注意喚起等について
               </ExternalLink>
-              （個人情報保護委員会、2023年6月2日、{CHECKED}確認）
+              （個人情報保護委員会、2023年6月2日）
             </li>
             <li>
               <ExternalLink href="https://www.houjin-bangou.nta.go.jp/">
                 国税庁法人番号公表サイト
               </ExternalLink>
-              （国税庁、{CHECKED}確認）
+              （国税庁）
             </li>
             <li>
               <ExternalLink href="https://www.invoice-kohyo.nta.go.jp/about-toroku/index.html">
@@ -1064,105 +1082,94 @@ export default function Page() {
               <ExternalLink href="https://www.invoice-kohyo.nta.go.jp/about-toroku/touroku_no_info.html">
                 登録番号に関する情報
               </ExternalLink>
-              （国税庁 適格請求書発行事業者公表サイト、{CHECKED}確認）
+              （国税庁 適格請求書発行事業者公表サイト）
             </li>
             <li>
               <ExternalLink href="https://www.bunka.go.jp/seisaku/chosakuken/aiandcopyright.html">
                 AIと著作権に関する考え方について
               </ExternalLink>
-              （文化審議会著作権分科会法制度小委員会／文化庁、2024年3月15日、
-              {CHECKED}
-              確認）
+              （文化審議会著作権分科会法制度小委員会／文化庁、2024年3月15日）
             </li>
             <li>
               <ExternalLink href="https://www.bunka.go.jp/seisaku/chosakuken/pdf/94097701_01.pdf">
                 AIと著作権に関するチェックリスト＆ガイダンス
               </ExternalLink>
-              （文化庁著作権課、2024年7月31日。AI利用者向けの項目は3-1-3、3-1-5、3-1-7など、
-              {CHECKED}
-              確認）
+              （文化庁著作権課、2024年7月31日。AI利用者向けの項目は3-1-3、3-1-5、3-1-7など）
             </li>
             <li>
               <ExternalLink href="https://www.soumu.go.jp/main_sosiki/kenkyu/ai_network/02ryutsu20_04000019.html">
                 AI事業者ガイドライン（第1.2版）
               </ExternalLink>
-              （総務省・経済産業省、2026年3月31日。AI利用者の項目U-2、U-4、U-5など、
-              {CHECKED}
-              確認）
+              （総務省・経済産業省、2026年3月31日。AI利用者の項目U-2、U-4、U-5など）
             </li>
             <li>
               <ExternalLink href="https://www.nta.go.jp/law/tsutatsu/menu.htm">
                 法令解釈通達
               </ExternalLink>
-              （国税庁、{CHECKED}確認）
+              （国税庁）
             </li>
             <li>
               <ExternalLink href="https://www.nta.go.jp/law/shitsugi/01.htm">
                 質疑応答事例
               </ExternalLink>
-              （国税庁、{CHECKED}確認）
+              （国税庁）
             </li>
             <li>
               <ExternalLink href="https://www.nta.go.jp/law/bunshokaito/01.htm">
                 文書回答事例
               </ExternalLink>
-              （国税庁、{CHECKED}確認）
+              （国税庁）
             </li>
             <li>
               <ExternalLink href="https://www.kfs.go.jp/service/JP/index.html">
                 公表裁決事例
               </ExternalLink>
-              （国税不服審判所、{CHECKED}確認）
+              （国税不服審判所）
             </li>
             <li>
               <ExternalLink href="https://www.mof.go.jp/tax_policy/tax_reform/outline/index.html">
                 税制改正
               </ExternalLink>
-              （財務省、{CHECKED}確認）
+              （財務省）
             </li>
             <li>
               <ExternalLink href="https://www.courts.go.jp/hanrei/search1/index.html">
                 裁判例検索
               </ExternalLink>
-              （裁判所、{CHECKED}確認）
+              （裁判所）
             </li>
             <li>
               <ExternalLink href="https://www.nichizeiren.or.jp/datalibrary/business/governance/p20230323/">
                 税理士事務所等の内部規律及び内部管理体制に関する指針
               </ExternalLink>
-              （日本税理士会連合会、2023年3月23日掲載、{CHECKED}確認）
+              （日本税理士会連合会、2023年3月23日掲載）
             </li>
             <li>
-              税理士事務所のためのAI・クラウド活用ガイドラインの策定について（日本税理士会連合会、2026年9月30日の会員向けお知らせ。本文は会員専用のため未確認、
-              {CHECKED}
-              確認）
+              税理士事務所のためのAI・クラウド活用ガイドラインの策定について（日本税理士会連合会、2026年9月30日の会員向けお知らせ。本文は会員専用のため未確認）
             </li>
           </ul>
           <h3>AIサービス提供会社の資料（リンクなし）</h3>
           <ul>
             <li>
               OpenAI「OpenAI
-              におけるエンタープライズプライバシー」（2026年1月8日更新、
-              {CHECKED}
-              確認）
+              におけるエンタープライズプライバシー」（2026年1月8日更新）
             </li>
             <li>
-              OpenAI Help Center「Data controls in ChatGPT」（{CHECKED}確認）
+              OpenAI Help Center「Data controls in ChatGPT」
             </li>
             <li>
-              OpenAI Help Center「Does ChatGPT tell the truth?」（{CHECKED}
-              確認）
+              OpenAI Help Center「Does ChatGPT tell the truth?」
             </li>
             <li>
               OpenAI Help Center「Best practices for prompt engineering with the
-              OpenAI API」（{CHECKED}確認）
+              OpenAI API」
             </li>
             <li>
               Google「ビジネスで効果を発揮する AI プロンプトの書き方 | Gemini
-              for Workspace」（{CHECKED}確認）
+              for Workspace」
             </li>
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

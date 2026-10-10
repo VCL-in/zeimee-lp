@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -863,9 +864,36 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "AI・クラウド活用ガイドライン策定のお知らせ",
+              publisher: "日本税理士会連合会",
+              context: "公表状況を確認。ガイドライン本文は未確認です。",
+            },
+            {
+              title: "TKC全国会のAI活用基本方針",
+              publisher: "株式会社TKC",
+              context: "会員事務所向け方針の公表内容。",
+            },
+            {
+              title: "AI事業者ガイドライン 第1.2版",
+              publisher: "総務省・経済産業省",
+              url: "https://www.soumu.go.jp/main_sosiki/kenkyu/ai_network/02ryutsu20_04000019.html",
+              context: "AI利用者が確認する指針。",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "顧問先情報を入力する際の注意点。",
+            },
+          ]}
+          note="日税連のガイドラインは公表のお知らせのみ確認し、本文の内容は紹介していません。"
+        >
           <p>
-            本記事で参照した資料です。括弧内は発行元、発行日・更新日、確認日（いずれも2026-10-10）です。法令や指針は改正・改訂されることがあるため、最新の内容をご確認ください。
+            法令や指針は改正・改訂されることがあるため、最新の内容をご確認ください。
           </p>
           {references.map((group) => (
             <div key={group.group}>
@@ -884,13 +912,13 @@ export default function Page() {
                     ) : (
                       item.title
                     )}
-                    （{item.meta}）
+                    （{formatReferenceMeta(item.meta, "2026-10-10")}）
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

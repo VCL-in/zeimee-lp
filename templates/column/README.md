@@ -61,12 +61,17 @@
 | `ColumnComparisonTable` | サービスが横に並ぶ比較表 | 列、比較項目、各列の値（列数を揃える） |
 | `ColumnService` | 現行サービス紹介カード | 会社、工程、特徴、料金・条件、出典、確認日 |
 | `ColumnFaq` | 見える質問・回答 | 質問、根拠のある回答 |
+| `ColumnReferences` | 主な出典3〜4件と詳細一覧の折りたたみ | 共通の `checkedAt`、短い資料名・発行元・既存URLの `primarySources`、全出典の `children` |
 | `ColumnCta` | 画像付きのZeimee資料・導入支援案内（`ColumnArticle` が自動表示） | 共通部品で管理。資料請求は `/#contact`、支援の説明は `/#about` |
 | `createColumnMetadata` | canonical・OG・Twitter・robots | 記事メタ情報から生成 |
 
 本文のh3・h4、段落、太字、箇条書きは `ColumnArticle` と `detail.body` 内で使えば共通の書式になる。手順は `detail.steps` / `detail.step` を使う。表は枠内で横スクロールし、ページ全体の横はみ出しを避ける。
 
 記事末尾のZeimee案内は `ColumnArticle` が執筆者・編集方針の後に1回表示する。本文には `ColumnCta` を追加しない。記事に合わせた説明が必要な場合は `ColumnArticle` の `ctaDescription` に文字列を渡す。省略時は共通説明を使う。サービス資料の画像は紹介イメージ、写真風画像は生成イメージとして表示し、実際の資料表紙・顧客写真として扱わない。資料ボタンは既存フォームへの請求導線であり、その場でPDFを取得するボタンとして説明しない。
+
+参考資料は `ColumnReferences` を使う。`checkedAt` は実際の共通確認日を `YYYY-MM-DD` で指定し、本文の主要な主張に直結する確認済み資料を3〜4件だけ短い名称で表示する。配列の先頭から機械的に選ばない。全資料の正式名・URL・参照条文・発行日・適用する版・確認範囲は `children` に残し、「出典の詳細を見る」で開けるようにする。`#references` は部品が付けるので、外側に同じIDを重ねない。
+
+同じ確認日の反復だけを省く。データ中の `meta` をそのまま保持し、表示では `formatReferenceMeta(meta, checkedAt)` を使える。異なる確認日、発行日・公布日・施行日、現行版と未施行版の違い、「案」「会員専用」「本文未確認」などの条件は残す。他社サービスに外部リンクを設けない既存方針も維持する。確認できていない本文を主要な主張の根拠に使わない。
 
 ## 記事タイプごとの構成
 

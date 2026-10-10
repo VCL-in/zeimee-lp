@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -622,21 +623,46 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
-          <p>
-            本文で参照した一次情報です。確認日はいずれも2026年10月10日です。
-          </p>
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "No.5461 ソフトウエアの取得価額と耐用年数",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/hojin/5461.htm",
+              context: "法人税上のソフトウエアの取扱い。",
+            },
+            {
+              title: "デジタル化・AI導入補助金2026 通常枠",
+              publisher: "中小企業基盤整備機構・補助金事務局",
+              url: "https://it-shien.smrj.go.jp/applicant/subsidy/normal/",
+              context: "自己負担額を見積もる際の制度確認。",
+            },
+            {
+              title: "労働基準法 第36条・第37条",
+              publisher: "e-Gov法令検索",
+              url: "https://laws.e-gov.go.jp/law/322AC0000000049",
+              context: "時間外労働と割増賃金の確認。",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/files/pdf/230602_alert_generative_AI_service.pdf",
+              context: "試験導入でも必要な情報の保護。",
+            },
+          ]}
+        >
           <ul>
             {references.map((ref) => (
               <li key={ref.url}>
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

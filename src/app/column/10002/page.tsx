@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -934,104 +935,125 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "AI事業者ガイドライン（第1.2版）",
+              publisher: "総務省・経済産業省",
+              url: "https://www.soumu.go.jp/main_sosiki/kenkyu/ai_network/02ryutsu20_04000019.html",
+              context: "AIを使う業務と人が確認する範囲",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "顧問先情報を入力する前の確認",
+            },
+            {
+              title: "税理士法",
+              publisher: "e-Gov法令検索",
+              url: "https://laws.e-gov.go.jp/law/326AC1000000237",
+              context: "税理士業務と守秘義務の確認",
+            },
+          ]}
+        >
           <p>
-            本記事で参照した一次情報です。法令は{CHECKED}
-            時点の現行版を確認しています。なお、e-Gov法令検索には税理士法について2028年6月13日施行予定の改正（令和5年法律第53号）も登録されていますが、本記事は現行の条文に基づいています。
+            法令は現行版を確認しています。なお、e-Gov法令検索には税理士法について2028年6月13日施行予定の改正（令和5年法律第53号）も登録されていますが、本記事は現行の条文に基づいています。
           </p>
           <ul>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/326AC1000000237">
                 税理士法（昭和26年法律第237号）
               </ExternalSource>
-              （e-Gov法令検索、2025年10月1日施行版、2026-10-10確認）
+              （e-Gov法令検索、2025年10月1日施行版）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/415AC0000000057">
                 個人情報の保護に関する法律
               </ExternalSource>
-              （e-Gov法令検索、2026年10月1日施行版。令和8年法律第56号による改正のうち2027年1月17日・2028年7月16日施行予定の版も登録、2026-10-10確認）
+              （e-Gov法令検索、2026年10月1日施行版。令和8年法律第56号による改正のうち2027年1月17日・2028年7月16日施行予定の版も登録）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/425AC0000000027">
                 行政手続における特定の個人を識別するための番号の利用等に関する法律
               </ExternalSource>
-              （e-Gov法令検索、2026年10月1日施行版、2026-10-10確認）
+              （e-Gov法令検索、2026年10月1日施行版）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/340AC0000000033">
                 所得税法
               </ExternalSource>
-              （e-Gov法令検索、2026年10月1日施行版、2026-10-10確認）
+              （e-Gov法令検索、2026年10月1日施行版）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/325AC0000000073">
                 相続税法
               </ExternalSource>
-              （e-Gov法令検索、2026年4月1日施行版、2026-10-10確認）
+              （e-Gov法令検索、2026年4月1日施行版）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/323AC0000000103">
                 公認会計士法
               </ExternalSource>
-              （e-Gov法令検索、2026年8月12日施行版、2026-10-10確認）
+              （e-Gov法令検索、2026年8月12日施行版）
             </li>
             <li>
               <ExternalSource href="https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/">
                 生成AIサービスの利用に関する注意喚起等について
               </ExternalSource>
-              （個人情報保護委員会、2023年6月2日、2026-10-10確認）
+              （個人情報保護委員会、2023年6月2日）
             </li>
             <li>
               <ExternalSource href="https://www.ppc.go.jp/personalinfo/legal/r8kaiseihogohou/">
                 令和8年 改正個人情報保護法について
               </ExternalSource>
-              （個人情報保護委員会、2026年7月17日公布、2026-10-10確認）
+              （個人情報保護委員会、2026年7月17日公布）
             </li>
             <li>
               <ExternalSource href="https://www.soumu.go.jp/main_sosiki/kenkyu/ai_network/02ryutsu20_04000019.html">
                 AI事業者ガイドライン（第1.2版）
               </ExternalSource>
-              （総務省・経済産業省、2026年3月31日、2026-10-10確認）
+              （総務省・経済産業省、2026年3月31日）
             </li>
             <li>
               <ExternalSource href="https://www.nichizeiren.or.jp/datalibrary/business/governance/p20230323/">
                 税理士事務所等の内部規律及び内部管理体制に関する指針
               </ExternalSource>
-              （日本税理士会連合会、2023年3月23日掲載、2026-10-10確認）
+              （日本税理士会連合会、2023年3月23日掲載）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/invoice-review/index.htm">
                 令和8年度税制改正特集
               </ExternalSource>
-              （国税庁。インボイス制度の経過措置の見直しを含む。更新日の表示なし、2026-10-10確認）
+              （国税庁。インボイス制度の経過措置の見直しを含む。更新日の表示なし）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/users/gensen/2026kiso/index.htm">
                 令和8年度税制改正による所得税の基礎控除の引上げ等について
               </ExternalSource>
-              （国税庁、掲載日の表示なし、2026-10-10確認）
+              （国税庁、掲載日の表示なし）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/law/joho-zeikaishaku/sonota/jirei/pdf/03-6.pdf">
                 電子帳簿保存法一問一答【電子取引関係】
               </ExternalSource>
-              （国税庁、令和7年6月、2026-10-10確認）
+              （国税庁、令和7年6月）
             </li>
             <li>
               <ExternalSource href="https://jicpa.or.jp/cpainfo/ai.html">
                 公認会計士業務とAI
               </ExternalSource>
-              （日本公認会計士協会、更新日の表示なし、2026-10-10確認）
+              （日本公認会計士協会、更新日の表示なし）
             </li>
             <li>
               <ExternalSource href="https://www.smrj.go.jp/news/2025/hkj3i800000018o6.html">
                 「中小企業デジタル化・AI導入補助金2026」の公募要領が公開されました
               </ExternalSource>
-              （中小企業基盤整備機構、2026年2月27日、2026-10-10確認）
+              （中小企業基盤整備機構、2026年2月27日）
             </li>
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

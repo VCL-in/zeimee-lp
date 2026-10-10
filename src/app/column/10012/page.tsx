@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -649,174 +650,202 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "マイナポータル連携による確定申告手続",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/tetsuzuki/mynumberinfo/mnp_junbi/kakutei.htm",
+              context: "連携で取得できる資料と準備手順。",
+            },
+            {
+              title: "No.1120 医療費控除",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm",
+              context: "医療費の整理と控除の確認。",
+            },
+            {
+              title: "令和8年度税制改正 基礎控除等Q&A",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/users/gensen/2026kiso/pdf/0026005-024.pdf",
+              context: "対象年に応じた控除の確認。",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "申告資料に含まれる個人情報の扱い。",
+            },
+          ]}
+        >
           <ul>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm">
                 No.1120 医療費を支払ったとき（医療費控除）
               </ExternalSource>
-              （国税庁、令和8年4月1日現在法令等、2026-10-10確認）
+              （国税庁、令和8年4月1日現在法令等）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1122.htm">
                 No.1122 医療費控除の対象となる医療費
               </ExternalSource>
-              （国税庁、令和8年4月1日現在法令等、2026-10-10確認）
+              （国税庁、令和8年4月1日現在法令等）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1150.htm">
                 No.1150 一定の寄附金を支払ったとき（寄附金控除）
               </ExternalSource>
-              （国税庁、令和8年4月1日現在法令等、2026-10-10確認）
+              （国税庁、令和8年4月1日現在法令等）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1155.htm">
                 No.1155 ふるさと納税（寄附金控除）
               </ExternalSource>
-              （国税庁、令和8年4月1日現在法令等、2026-10-10確認）
+              （国税庁、令和8年4月1日現在法令等）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm">
                 No.1199 基礎控除
               </ExternalSource>
-              （国税庁、令和8年4月1日現在法令等、2026-10-10確認）
+              （国税庁、令和8年4月1日現在法令等）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1370.htm">
                 No.1370 不動産収入を受け取ったとき（不動産所得）
               </ExternalSource>
-              （国税庁、令和8年4月1日現在法令等、2026-10-10確認）
+              （国税庁、令和8年4月1日現在法令等）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1379.htm">
                 No.1379 修繕費とならないものの判定
               </ExternalSource>
-              （国税庁、令和8年4月1日現在法令等、2026-10-10確認）
+              （国税庁、令和8年4月1日現在法令等）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm">
                 No.1410 給与所得控除
               </ExternalSource>
-              （国税庁、令和8年4月1日現在法令等、2026-10-10確認）
+              （国税庁、令和8年4月1日現在法令等）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/tetsuzuki/mynumberinfo/mnp_junbi/kakutei.htm">
                 マイナポータルと連携した所得税確定申告手続
               </ExternalSource>
-              （国税庁、更新日の記載なし、2026-10-10確認）
+              （国税庁、更新日の記載なし）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/tetsuzuki/mynumberinfo/mnp_question/mynapokakutei_question/question.htm">
                 マイナポータルを活用した所得税確定申告について（よくある質問）
               </ExternalSource>
-              （国税庁、更新日の記載なし、2026-10-10確認）
+              （国税庁、更新日の記載なし）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/tetsuzuki/mynumberinfo/kyuyogensenjoho-top/userpage.htm">
                 給与所得の確定申告がさらに簡単に！【利用者用ページ】
               </ExternalSource>
-              （国税庁、更新日の記載なし、2026-10-10確認）
+              （国税庁、更新日の記載なし）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/tetsuzuki/mynumberinfo/kyuyogensenjoho-top/pdf/0023010-050.pdf">
                 給与情報のマイナポータル連携に関するFAQ（利用者向け）
               </ExternalSource>
-              （国税庁、令和8年4月30日、2026-10-10確認）
+              （国税庁、令和8年4月30日）
             </li>
             <li>
               <ExternalSource href="https://www.keisan.nta.go.jp/r7yokuaru_sp/socat1/scid379.html">
                 【確定申告書等作成コーナー】マイナポータル連携やxmlデータの読込を行う方法はこちら
               </ExternalSource>
-              （国税庁、令和7年分よくある質問、2026-10-10確認）
+              （国税庁、令和7年分よくある質問）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/users/gensen/2026kiso/pdf/0026005-024.pdf">
                 令和8年度税制改正（所得税の基礎控除の引上げ等関係）Q&amp;A
               </ExternalSource>
-              （国税庁、令和8年5月、2026-10-10確認）
+              （国税庁、令和8年5月）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/information/release/pdf/0026005-037.pdf">
                 令和7年分の所得税等、消費税及び贈与税の確定申告状況等について
               </ExternalSource>
-              （国税庁、令和8年5月、2026-10-10確認）
+              （国税庁、令和8年5月）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/shinkoku/tokushu/keisubetsu/iryou-shuukei.htm">
                 医療費集計フォームのダウンロード（令和7年分 確定申告特集）
               </ExternalSource>
-              （国税庁、令和7年分特集、2026-10-10確認）
+              （国税庁、令和7年分特集）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/shinkoku/tokushu/shinkoku-tyuui/">
                 こんな収入の申告漏れにご注意（令和7年分 確定申告特集）
               </ExternalSource>
-              （国税庁、令和7年分特集、2026-10-10確認）
+              （国税庁、令和7年分特集）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/shiraberu/shinkoku/tokushu/index.htm">
                 令和7年分 確定申告特集
               </ExternalSource>
-              （国税庁、令和7年分特集、2026-10-10確認）
+              （国税庁、令和7年分特集）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/tetsuzuki/mynumberinfo/FAQ/houteichosho_qa.htm">
                 法定調書に関するFAQ（社会保障・税番号制度）
               </ExternalSource>
-              （国税庁、Q1-1、2026-10-10確認）
+              （国税庁、Q1-1）
             </li>
             <li>
               <ExternalSource href="https://www.nichizeiren.or.jp/taxaccount/auth/faq/n9/">
                 税理士のための電子申告Q&amp;A 9章 マイナポータル
               </ExternalSource>
-              （日本税理士会連合会、更新日の記載なし、2026-10-10確認）
+              （日本税理士会連合会、更新日の記載なし）
             </li>
             <li>
               <ExternalSource href="https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/">
                 生成AIサービスの利用に関する注意喚起等
               </ExternalSource>
-              （個人情報保護委員会、令和5年6月2日、2026-10-10確認）
+              （個人情報保護委員会、令和5年6月2日）
             </li>
             <li>
               <ExternalSource href="https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/">
                 個人情報の保護に関する法律についてのガイドライン（通則編）
               </ExternalSource>
-              （個人情報保護委員会、平成28年11月・令和8年6月一部改正、2026-10-10確認）
+              （個人情報保護委員会、平成28年11月・令和8年6月一部改正）
             </li>
             <li>
               <ExternalSource href="https://www.ppc.go.jp/legal/policy/faq/">
                 「特定個人情報の適正な取扱いに関するガイドライン（事業者編）」に関するQ&amp;A
               </ExternalSource>
-              （個人情報保護委員会、Q3-12・Q3-13、2026-10-10確認）
+              （個人情報保護委員会、Q3-12・Q3-13）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/340AC0000000033">
                 所得税法
               </ExternalSource>
-              （e-Gov法令検索、第73条・第78条、2026-10-10確認）
+              （e-Gov法令検索、第73条・第78条）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/326AC1000000237">
                 税理士法
               </ExternalSource>
-              （e-Gov法令検索、第2条・第38条・第52条、2026-10-10確認）
+              （e-Gov法令検索、第2条・第38条・第52条）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/425AC0000000027">
                 行政手続における特定の個人を識別するための番号の利用等に関する法律
               </ExternalSource>
-              （e-Gov法令検索、第11条・第12条・第19条・第20条、2026-10-10確認）
+              （e-Gov法令検索、第11条・第12条・第19条・第20条）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/415AC0000000057">
                 個人情報の保護に関する法律
               </ExternalSource>
-              （e-Gov法令検索、第2条・第20条・第23条・第25条、令和8年改正の施行前の現行条文、2026-10-10確認）
+              （e-Gov法令検索、第2条・第20条・第23条・第25条、令和8年改正の施行前の現行条文）
             </li>
-            <li><ExternalSource href="https://laws.e-gov.go.jp/law/415CO0000000507">個人情報の保護に関する法律施行令</ExternalSource>（第2条、2026-10-10確認）</li>
-            <li><ExternalSource href="https://www.nta.go.jp/publication/pamph/gensen/2026kaisei.pdf">源泉所得税の改正のあらまし</ExternalSource>（国税庁、令和8年4月、2026-10-10確認）</li>
+            <li><ExternalSource href="https://laws.e-gov.go.jp/law/415CO0000000507">個人情報の保護に関する法律施行令</ExternalSource>（第2条）</li>
+            <li><ExternalSource href="https://www.nta.go.jp/publication/pamph/gensen/2026kaisei.pdf">源泉所得税の改正のあらまし</ExternalSource>（国税庁、令和8年4月）</li>
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

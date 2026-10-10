@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -616,7 +617,35 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "税理士制度のQ&A「税理士の業務」",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/zeirishi/zeirishiseido/qa/02.htm",
+              context: "記帳代行と税理士業務の区分",
+            },
+            {
+              title: "電子帳簿保存法一問一答【スキャナ保存関係】",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/law/joho-zeikaishaku/sonota/jirei/pdf/0026007-006_03.pdf",
+              context: "証憑を読み取る際の保存要件",
+            },
+            {
+              title: "個人情報保護法ガイドライン（通則編）",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/",
+              context: "委託先の監督と情報管理",
+            },
+            {
+              title: "AI事業者ガイドライン（第1.2版）概要",
+              publisher: "総務省・経済産業省",
+              url: "https://www.soumu.go.jp/main_content/001064299.pdf",
+              context: "AIを組み込む業務の確認",
+            },
+          ]}
+        >
           <p>
             会計ソフト各社のサポート情報は、本文中に名称と確認日を記載しています。
           </p>
@@ -626,11 +655,11 @@ export default function Page() {
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}、{CHECKED}確認）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -403,7 +404,32 @@ Zeimeeは、帳票の読み取り、仕訳候補の作成、チェック、取�
           <p>最初は形式が決まった顧問先を1件選びます。公式仕様から取込仕様メモを作り、ダミーサンプルと期待する出力を手で用意します。次に変換ルールと検証用の数式を作り、例外を含むサンプルで一致を確かめてから実データへ適用します。仕様メモ・対応表・変換ツール・確認記録をセットで台帳へ残すと、次の月も同じ基準で確認できます。</p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "仕訳データの項目と記述形式",
+              publisher: "弥生株式会社",
+              context: "弥生会計へ出力するCSVの仕様。",
+            },
+            {
+              title: "他社会計ソフトから仕訳データを移行する",
+              publisher: "freee株式会社",
+              context: "仕訳データの移行と取込方法。",
+            },
+            {
+              title: "「仕訳帳」をインポートする",
+              publisher: "株式会社マネーフォワード",
+              context: "クラウド会計の取込仕様と確認。",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "CSVに含まれる個人情報の扱い。",
+            },
+          ]}
+        >
           <p>法令・官公庁の資料</p>
           <ul>
             {linkedReferences.map((ref) => (
@@ -411,7 +437,7 @@ Zeimeeは、帳票の読み取り、仕訳候補の作成、チェック、取�
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}、2026-10-10確認）
+                （{ref.meta}）
               </li>
             ))}
           </ul>
@@ -421,11 +447,11 @@ Zeimeeは、帳票の読み取り、仕訳候補の作成、チェック、取�
           <ul>
             {textReferences.map((ref) => (
               <li key={ref.title}>
-                {ref.title}（{ref.meta}、2026-10-10確認）
+                {ref.title}（{ref.meta}）
               </li>
             ))}
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

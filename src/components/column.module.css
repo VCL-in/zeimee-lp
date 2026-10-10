@@ -2877,3 +2877,113 @@
     transition: none;
   }
 }
+
+/* Keep a short list visible and retain the full source record in native details. */
+.references .referenceChecked {
+  margin: 0 0 16px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #666176;
+}
+.references .referenceNote {
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.references .referencePrimaryHeading {
+  margin: 20px 0 8px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.references .referencePrimaryList {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+.references .referencePrimaryList > li {
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid #e9e6ef;
+  font-size: 14px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.referencePrimaryList a,
+.referencePrimaryList strong {
+  font-weight: 700;
+}
+.referencePublisher {
+  color: #666176;
+  font-size: 12px;
+}
+.references .referencePrimaryList > li p {
+  margin: 4px 0 0;
+  color: #666176;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.referenceDetails {
+  border: 1px solid #ddd9e9;
+  border-radius: 8px;
+  background: #faf9fd;
+}
+.referenceDetails > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  padding: 14px 20px;
+  color: #332d50;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+  cursor: pointer;
+  list-style: none;
+}
+.referenceDetails > summary::-webkit-details-marker {
+  display: none;
+}
+.referenceDetails > summary svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.referenceDetails[open] > summary svg {
+  transform: rotate(180deg);
+}
+.referenceDetails > summary:hover {
+  background: #f1eff9;
+}
+.referenceDetails > summary:focus-visible {
+  outline: 3px solid #534dff;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.referenceDetailsBody {
+  padding: 8px 20px 20px;
+  border-top: 1px solid #e9e6ef;
+  font-size: 13px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+.references .referenceDetailsBody p,
+.references .referenceDetailsBody li {
+  font-size: 13px;
+  line-height: 1.9;
+}
+.references .referenceDetailsBody h3 {
+  font-size: 15px;
+  margin: 20px 0 10px;
+}
+.referenceDetailsBody > :last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 640px) {
+  .referenceDetails > summary {
+    padding: 14px 16px;
+  }
+  .referenceDetailsBody {
+    padding: 8px 16px 16px;
+  }
+}

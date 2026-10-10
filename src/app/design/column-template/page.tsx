@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -41,6 +42,7 @@ const toc = [
   { id: "steps", label: "手順・チェックリスト" },
   { id: "faq", label: "よくある質問" },
   { id: "summary", label: "まとめ・お問い合わせ" },
+  { id: "references", label: "参考資料" },
 ];
 export default function Page() {
   return (
@@ -170,6 +172,28 @@ export default function Page() {
             記事の結論と読者の次の行動をまとめ、その後にZeimeeへのお問い合わせ・資料ダウンロードを配置します。
           </p>
         </ColumnSection>
+        <ColumnReferences
+          checkedAt="【実際の確認日】"
+          primarySources={[
+            {
+              title: "主要な公式資料の短い名称",
+              publisher: "発行元",
+              context: "本文のどの説明の根拠かを短く示します。",
+            },
+            { title: "関連する法令・指針", publisher: "発行元" },
+            { title: "テーマに直接関係する公表資料", publisher: "発行元" },
+          ]}
+          note="出典欄のデザイン見本です。実際の資料を引用したものではありません。"
+        >
+          <p>
+            全資料の正式名・URL・発行時期・適用する版・確認範囲を記載します。同じ確認日は上にまとめ、異なるものは個別に残します。
+          </p>
+          <ul>
+            <li>正式な資料名と発行元（発行日、適用する版、参照した範囲）</li>
+            <li>関連する法令（参照条文、施行日、現行版と未施行版の区別）</li>
+            <li>本文を確認できない資料は、その状態も記載します。</li>
+          </ul>
+        </ColumnReferences>
       </div>
     </ColumnArticle>
   );

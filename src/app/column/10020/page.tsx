@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -552,9 +553,37 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "税理士法",
+              publisher: "e-Gov法令検索（デジタル庁）",
+              url: "https://laws.e-gov.go.jp/law/326AC1000000237",
+              context: "署名・書面添付と最終確認の責任",
+            },
+            {
+              title: "インボイス制度Q&A 問109",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/pdf/qa/109.pdf",
+              context: "帳簿に記載する項目の確認",
+            },
+            {
+              title: "別表四の記載の仕方",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/hojin/shinkoku/itiran2026/pdf/04-ki.pdf",
+              context: "決算・申告書の整合チェック",
+            },
+            {
+              title: "消費税区分エージェント（β）の使い方",
+              publisher: "株式会社マネーフォワード",
+              context: "各社のAIチェック機能の例",
+            },
+          ]}
+          note="会員向け資料は公開された案内の範囲で参照し、本文未確認のものは詳細に明記しています。"
+        >
           <p>
-            本記事で参照した資料です。括弧内は発行元、発行日・更新日、確認日（いずれも2026-10-10）です。他社の資料はリンクを設けず、名称と日付を記載しています。
+            他社の資料はリンクを設けず、名称と発行日・更新日を記載しています。
           </p>
           {references.map((group) => (
             <div key={group.group}>
@@ -573,13 +602,13 @@ export default function Page() {
                     ) : (
                       item.title
                     )}
-                    （{item.meta}）
+                    （{formatReferenceMeta(item.meta, "2026-10-10")}）
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

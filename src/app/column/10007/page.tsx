@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -690,181 +691,209 @@ export default function Page() {
           <p>まずは10月中に、チェックリストの1〜3から着手してください。</p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "令和8年分 年末調整の手順",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/publication/pamph/gensen/nencho2026/pdf/104.pdf",
+              context: "年末調整の流れと担当する作業",
+            },
+            {
+              title: "令和8年分 年末調整チェック表",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/publication/pamph/gensen/nencho2026/pdf/206.pdf",
+              context: "申告書と計算結果の確認",
+            },
+            {
+              title: "令和8年度税制改正による基礎控除の引上げ等",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/users/gensen/2026kiso/index.htm",
+              context: "令和8年分の改正内容",
+            },
+            {
+              title: "特定個人情報ガイドライン（事業者編）",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/legal/policy/my_number_guideline_jigyosha/",
+              context: "マイナンバーを含む資料の管理",
+            },
+          ]}
+        >
           <ul>
             <li>
               <ExternalSource href="https://www.nta.go.jp/users/gensen/nencho/index.htm">
                 年末調整がよくわかるページ（令和8年分）
               </ExternalSource>
-              （国税庁、更新日の表示なし、2026-10-10確認）
+              （国税庁、更新日の表示なし）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/publication/pamph/gensen/nencho2026/pdf/102.pdf">
                 令和8年分 年末調整のしかた Ⅰ 昨年と比べて変わった点
               </ExternalSource>
-              （国税庁、令和8年分、2026-10-10確認）
+              （国税庁、令和8年分）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/publication/pamph/gensen/nencho2026/pdf/104.pdf">
                 令和8年分 年末調整のしかた Ⅲ 1 年末調整の手順
               </ExternalSource>
-              （国税庁、令和8年分、2026-10-10確認）
+              （国税庁、令和8年分）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/publication/pamph/gensen/nencho2026/pdf/108.pdf">
                 令和8年分 年末調整のしかた 2-4
                 住宅借入金等特別控除申告書の受理と内容の確認
               </ExternalSource>
-              （国税庁、令和8年分、2026-10-10確認）
+              （国税庁、令和8年分）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/publication/pamph/gensen/nencho2026/pdf/206.pdf">
                 令和8年分 年末調整チェック表
               </ExternalSource>
-              （国税庁、令和8年分、2026-10-10確認）
+              （国税庁、令和8年分）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/publication/pamph/gensen/nencho2026/qa.htm">
                 令和8年分 年末調整Q&amp;A
               </ExternalSource>
-              （国税庁、令和8年分、2026-10-10確認）
+              （国税庁、令和8年分）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/users/gensen/2026kiso/index.htm">
                 令和8年度税制改正による所得税の基礎控除の引上げ等について
               </ExternalSource>
-              （国税庁、更新日の表示なし、2026-10-10確認）
+              （国税庁、更新日の表示なし）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/users/gensen/2026kiso/pdf/0026005-024.pdf">
                 令和8年度税制改正（所得税の基礎控除の引上げ等関係）Q&amp;A
               </ExternalSource>
-              （国税庁、令和8年5月、2026-10-10確認）
+              （国税庁、令和8年5月）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/users/gensen/2025kiso/index.htm">
                 令和7年度税制改正による所得税の基礎控除の見直し等について
               </ExternalSource>
-              （国税庁、令和7年、2026-10-10確認）
+              （国税庁、令和7年）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/gensen/annai/1648_73.htm">
                 給与所得者の基礎控除申告書 兼 配偶者控除等申告書 兼
                 特定親族特別控除申告書 兼 所得金額調整控除申告書（様式ページ）
               </ExternalSource>
-              （国税庁、更新日の表示なし、2026-10-10確認）
+              （国税庁、更新日の表示なし）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/users/gensen/nenmatsu/nencho_01.htm">
                 年末調整手続の電子化の概要・メリット
               </ExternalSource>
-              （国税庁、更新日の表示なし、2026-10-10確認）
+              （国税庁、更新日の表示なし）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/users/gensen/nenmatsu/nencho.htm">
                 年末調整手続の電子化に向けた取組について
               </ExternalSource>
-              （国税庁、2026年10月1日おしらせ掲載、2026-10-10確認）
+              （国税庁、2026年10月1日おしらせ掲載）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/taxes/tetsuzuki/mynumberinfo/FAQ/gensen_qa.htm">
                 源泉所得税関係に関するFAQ（マイナンバー）
               </ExternalSource>
-              （国税庁、各問に更新日記載、2026-10-10確認）
+              （国税庁、各問に更新日記載）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/publication/pamph/hotei/tebiki2026/PDF/01.pdf">
                 令和8年分 給与所得の源泉徴収票等の法定調書の作成と提出の手引
                 第1章
               </ExternalSource>
-              （国税庁、令和8年分・訂正情報は2026年9月18日更新、2026-10-10確認）
+              （国税庁、令和8年分・訂正情報は2026年9月18日更新）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/publication/pamph/hotei/tebiki2026/PDF/02.pdf">
                 令和8年分 給与所得の源泉徴収票等の法定調書の作成と提出の手引
                 第2章
               </ExternalSource>
-              （国税庁、令和8年分、2026-10-10確認）
+              （国税庁、令和8年分）
             </li>
             <li>
               <ExternalSource href="https://www.nta.go.jp/users/gensen/nencho/pdf/02.pdf">
                 年末調整リーフレット（源泉徴収義務者向け）
               </ExternalSource>
-              （国税庁、令和8年7月1日現在の法令に基づき作成、2026-10-10確認）
+              （国税庁、令和8年7月1日現在の法令に基づき作成）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/425AC0000000027">
                 行政手続における特定の個人を識別するための番号の利用等に関する法律
               </ExternalSource>
-              （e-Gov法令検索、2026年10月1日施行版および未施行版、2026-10-10確認）
+              （e-Gov法令検索、2026年10月1日施行版および未施行版）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/340AC0000000033">
                 所得税法
               </ExternalSource>
-              （e-Gov法令検索、2026年10月1日施行版および2026年12月1日施行版、2026-10-10確認）
+              （e-Gov法令検索、2026年10月1日施行版および2026年12月1日施行版）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/415AC0000000057">
                 個人情報の保護に関する法律
               </ExternalSource>
-              （e-Gov法令検索、2026年10月1日施行版、2026-10-10確認）
+              （e-Gov法令検索、2026年10月1日施行版）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/415CO0000000507">
                 個人情報の保護に関する法律施行令
               </ExternalSource>
-              （e-Gov法令検索、2026-10-10確認）
+              （e-Gov法令検索）
             </li>
             <li>
               <ExternalSource href="https://laws.e-gov.go.jp/law/428M60020000003">
                 個人情報の保護に関する法律施行規則
               </ExternalSource>
-              （e-Gov法令検索、2026年6月14日施行版、2026-10-10確認）
+              （e-Gov法令検索、2026年6月14日施行版）
             </li>
             <li>
               <ExternalSource href="https://www.ppc.go.jp/legal/policy/my_number_guideline_jigyosha/">
                 特定個人情報の適正な取扱いに関するガイドライン（事業者編）（別添1・別添2を含む）
               </ExternalSource>
-              （個人情報保護委員会、令和7年6月一部改正、2026-10-10確認）
+              （個人情報保護委員会、令和7年6月一部改正）
             </li>
             <li>
               <ExternalSource href="https://www.ppc.go.jp/files/pdf/guidelineqa_250401.pdf">
                 「特定個人情報の適正な取扱いに関するガイドライン（事業者編）」及び「（別冊）金融業務における特定個人情報の適正な取扱いに関するガイドライン」に関するQ&amp;A
               </ExternalSource>
-              （個人情報保護委員会、2025年4月1日更新、2026-10-10確認）
+              （個人情報保護委員会、2025年4月1日更新）
             </li>
             <li>
               <ExternalSource href="https://www.ppc.go.jp/all_faq_index/faq5-q3-12/">
                 FAQ Q3-12（クラウドサービスと番号法上の委託）
               </ExternalSource>
-              （個人情報保護委員会、平成27年4月更新、2026-10-10確認）
+              （個人情報保護委員会、平成27年4月更新）
             </li>
             <li>
               <ExternalSource href="https://www.ppc.go.jp/personalinfo/legal/leakAction/">
                 漏えい等の対応とお役立ち資料
               </ExternalSource>
-              （個人情報保護委員会、更新日の表示なし、2026-10-10確認）
+              （個人情報保護委員会、更新日の表示なし）
             </li>
             <li>
               <ExternalSource href="https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/">
                 生成AIサービスの利用に関する注意喚起等
               </ExternalSource>
-              （個人情報保護委員会、2023年6月2日、2026-10-10確認）
+              （個人情報保護委員会、2023年6月2日）
             </li>
             <li>
               <ExternalSource href="https://www.nichizeiren.or.jp/wp-content/uploads/doc/nichizeiren/report/14_jigyokatudogaikyo.pdf">
                 平成14年度事業活動概況
               </ExternalSource>
-              （日本税理士会連合会、平成14年度、2026-10-10確認）
+              （日本税理士会連合会、平成14年度）
             </li>
           </ul>
           <p>
             製品の例として記載した他社の公式情報（リンクは設けていません）：日本デジタル研究所「AI-OCR年末調整入力システム」製品ページ（更新日の表示なし）、ミロク情報サービス
             ニュースリリース（2025年9月17日）、マネーフォワード
-            クラウド年末調整「2026年度対応のお知らせ」（2026年9月1日掲載）。いずれも2026-10-10確認。
+            クラウド年末調整「2026年度対応のお知らせ」（2026年9月1日掲載）。
           </p>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

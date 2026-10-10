@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -513,11 +514,38 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
-          <p>本記事で参照した一次情報です（いずれも{CHECKED}確認）。</p>
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "インボイス制度 令和8年度税制改正特集",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/invoice-review/index.htm",
+              context: "経過措置の見直し",
+            },
+            {
+              title: "インボイス制度Q&A 問113",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/pdf/qa/113.pdf",
+              context: "免税事業者等からの仕入れの経過措置",
+            },
+            {
+              title: "消費税経理通達関係Q&A",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/law/joho-zeikaishaku/hojin/shouhizei_faq/pdf/r0512/all.pdf",
+              context: "仕訳と消費税の経理処理",
+            },
+            {
+              title: "消費税法",
+              publisher: "e-Gov法令検索",
+              url: "https://laws.e-gov.go.jp/law/363AC0000000108",
+              context: "仕入税額控除の法令と改正法附則",
+            },
+          ]}
+        >
           <ul>
             <li>
-              消費税の仕入税額控除制度における適格請求書等保存方式に関するQ&A（国税庁、令和8年4月改訂分を含む、2026-10-10確認）：
+              消費税の仕入税額控除制度における適格請求書等保存方式に関するQ&A（国税庁、令和8年4月改訂分を含む）：
               {qaItems.map((item, i) => (
                 <span key={item.url}>
                   {i > 0 && "・"}
@@ -532,11 +560,11 @@ export default function Page() {
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}、2026-10-10確認）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -428,9 +429,37 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "個人情報保護法ガイドライン 通則編",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/",
+              context: "安全管理と委託先の監督。",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "入力情報・学習利用の確認。",
+            },
+            {
+              title: "AIの利用・開発に関する契約チェックリスト",
+              publisher: "経済産業省",
+              url: "https://www.meti.go.jp/policy/mono_info_service/connected_industries/sharing_and_utilization/20250218003-ar.pdf",
+              context: "提供会社へ確認する契約上の論点。",
+            },
+            {
+              title: "中小企業の情報セキュリティ対策ガイドライン 第4.0版",
+              publisher: "IPA",
+              url: "https://www.ipa.go.jp/security/guide/sme/about.html",
+              context: "付録7のクラウドサービス安全利用の手引き。",
+            },
+          ]}
+        >
           <p>
-            本記事で参照した資料です。括弧内は発行元、発行日・更新日、確認日です。法令は改正されることがあるため、最新の条文をご確認ください。日本税理士会連合会のガイドラインは本文を確認できていないため、存在の紹介にとどめています（各団体の指針は
+            法令は改正されることがあるため、最新の条文をご確認ください。日本税理士会連合会のガイドラインは本文を確認できていないため、存在の紹介にとどめています（各団体の指針は
             <Link href="/column/10010">税理士のAIガイドライン一覧</Link>
             を参照）。
           </p>
@@ -451,13 +480,13 @@ export default function Page() {
                     ) : (
                       item.title
                     )}
-                    （{item.meta}）
+                    （{formatReferenceMeta(item.meta, "2026-10-10")}）
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

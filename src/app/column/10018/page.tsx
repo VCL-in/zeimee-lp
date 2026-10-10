@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -624,22 +625,47 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
-          <p>
-            本文で参照した一次情報です。確認日はいずれも2026年10月10日です。
-          </p>
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "税理士法",
+              publisher: "e-Gov法令検索（デジタル庁）",
+              url: "https://laws.e-gov.go.jp/law/326AC1000000237",
+              context: "守秘義務と事務所内の監督",
+            },
+            {
+              title: "インボイス制度Q&A",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/qa_01.htm",
+              context: "仕訳ルールに反映する税務上の要件",
+            },
+            {
+              title: "個人情報保護法ガイドライン（通則編）",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/",
+              context: "顧問先情報の管理と委託先の監督",
+            },
+            {
+              title: "「自動仕訳ルール一括編集」機能の使い方",
+              publisher: "株式会社マネーフォワード",
+              context: "会計ソフト標準機能との役割分担",
+            },
+          ]}
+          note="弥生の一部資料は本文にアクセスできず、件数上限などの仕様は未確認です。"
+        >
           <ul>
             {references.map((ref) => (
               <li key={ref.url}>
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
           <p>
-            会計ソフトの機能は、次の各社公式ヘルプで確認しました（外部リンクは設けていません。確認日はいずれも2026年10月10日）。
+            会計ソフトの機能は、次の各社公式ヘルプで確認しました（外部リンクは設けていません）。
           </p>
           <ul>
             {softwareHelpSources.map((source) => (
@@ -654,7 +680,7 @@ export default function Page() {
             </Link>
             、<Link href="/tools/bookkeeping">記帳自動化AIのサービス紹介ページ</Link>
           </p>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

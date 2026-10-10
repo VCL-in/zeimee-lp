@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -429,7 +430,34 @@ export default function Page() {
           </ul>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "MCP仕様：Tools・Security Best Practices",
+              publisher: "Model Context Protocol",
+              context: "ツールの権限と安全な連携設計",
+            },
+            {
+              title: "MCPサーバー利用特約",
+              publisher: "株式会社マネーフォワード",
+              context: "会計ソフト側の利用条件",
+            },
+            {
+              title: "AI事業者ガイドライン（第1.2版）",
+              publisher: "総務省・経済産業省",
+              url: "https://www.soumu.go.jp/main_content/001064279.pdf",
+              context: "AIエージェントのリスクと管理",
+            },
+            {
+              title: "個人情報保護法ガイドライン（通則編）",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/",
+              context: "認証・アクセス管理と委託先の監督",
+            },
+          ]}
+          note="API・MCPの実機検証は行っていません。令和8年改正の個人情報保護法は、未施行の主要部分を現行法と区別しています。"
+        >
           <p>法令・官公庁の資料</p>
           <ul>
             {linkedReferences.map((ref) => (
@@ -437,7 +465,7 @@ export default function Page() {
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}、2026-10-10確認）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
@@ -447,11 +475,11 @@ export default function Page() {
           <ul>
             {textReferences.map((ref) => (
               <li key={ref.title}>
-                {ref.title}（{ref.meta}、2026-10-10確認）
+                {ref.title}（{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

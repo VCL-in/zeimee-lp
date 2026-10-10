@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -1192,9 +1193,36 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "個人情報を扱う際の確認",
+            },
+            {
+              title: "中小企業の情報セキュリティ対策ガイドライン",
+              publisher: "IPA",
+              url: "https://www.ipa.go.jp/security/guide/sme/about.html",
+              context: "事務所のセキュリティ対策",
+            },
+            {
+              title: "ChatGPT Work cloud security",
+              publisher: "OpenAI",
+              context: "Workと法人ワークスペースのデータ管理",
+            },
+            {
+              title: "Claudeのプライバシー設定に関する公式資料",
+              publisher: "Anthropic",
+              context: "個人プランと商用サービスの扱い",
+            },
+          ]}
+          note="ChatGPT・Claudeの設定・APIに関する公式資料は、2026年10月11日に確認しています。"
+        >
           <p>
-            本記事で参照した資料です。括弧内は発行元、発行日・更新日、確認日です。法令・指針とGoogle・Microsoftの情報は2026-10-10、ChatGPT・Claudeの設定に関する公式資料は2026-10-11に確認しました。法令やサービスの条件は変わるため、利用前に最新の内容をご確認ください。
+            法令やサービスの条件は変わるため、利用前に最新の内容をご確認ください。
           </p>
           {references.map((group) => (
             <div key={group.group}>
@@ -1213,13 +1241,13 @@ export default function Page() {
                     ) : (
                       item.title
                     )}
-                    （{item.meta}）
+                    （{formatReferenceMeta(item.meta, "2026-10-10")}）
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

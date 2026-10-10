@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -394,30 +395,56 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "保存する帳簿・請求書等の記載事項（No.6497）",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6497.htm",
+              context: "記帳データで検査する項目",
+            },
+            {
+              title: "モデルの正確性スコアと信頼度スコア",
+              publisher: "Microsoft Learn",
+              context: "AI-OCRの評価指標の読み方",
+            },
+            {
+              title: "Document AI Workbench 評価（Evaluate）",
+              publisher: "Google Cloud",
+              context: "抽出結果の評価と改善",
+            },
+            {
+              title: "データ入力業務の委託先に対する監督",
+              publisher: "個人情報保護委員会事務局",
+              url: "https://www.ppc.go.jp/files/pdf/itaku_kanntoku.pdf",
+              context: "入力工程の検査と品質管理",
+            },
+          ]}
+        >
           <ul>
             {references.map((ref) => (
               <li key={ref.url}>
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}、2026-10-10確認）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
             <li>
               モデルの正確性スコアと信頼度スコアの解釈と改善（Microsoft
               Learn、Azure Document Intelligenceの公式ドキュメント、ms.date
-              2026-04-08、2026-10-10確認）
+              2026-04-08）
             </li>
             <li>
               Document AI Workbench 評価（Evaluate）（Google
-              Cloudの公式ドキュメント、2026-10-07最終更新、2026-10-10確認）
+              Cloudの公式ドキュメント、2026-10-07最終更新）
             </li>
           </ul>
           <p>
-            他社サービスの公式ドキュメントは、外部リンクを設けず名称と確認日のみを記載しています。
+            他社サービスの公式ドキュメントは、外部リンクを設けず名称と発行日・更新日を記載しています。
           </p>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

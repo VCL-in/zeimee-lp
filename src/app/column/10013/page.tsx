@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -757,9 +758,37 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "個人情報保護法",
+              publisher: "e-Gov法令検索",
+              url: "https://laws.e-gov.go.jp/law/415AC0000000057",
+              context: "利用目的・委託・第三者提供の整理。",
+            },
+            {
+              title: "個人情報保護法ガイドライン 通則編",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/",
+              context: "同意・通知を判断するための取扱い。",
+            },
+            {
+              title: "個人情報保護法ガイドライン 外国提供編",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/personalinfo/legal/guidelines_offshore/",
+              context: "外国にある第三者への提供と説明事項。",
+            },
+            {
+              title: "税理士法基本通達 38-1・38-2",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/law/tsutatsu/kihon/zeirishi/02.htm",
+              context: "守秘義務と顧問先情報の扱い。",
+            },
+          ]}
+        >
           <p>
-            本記事で参照した資料です。括弧内は発行元、発行日・更新日、確認日（いずれも2026-10-10）です。法令やガイドラインは改正されることがあるため、最新の内容をご確認ください。
+            法令やガイドラインは改正されることがあるため、最新の内容をご確認ください。
           </p>
           {references.map((group) => (
             <div key={group.group}>
@@ -778,13 +807,13 @@ export default function Page() {
                     ) : (
                       item.title
                     )}
-                    （{item.meta}）
+                    （{formatReferenceMeta(item.meta, "2026-10-10")}）
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -600,9 +601,37 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "税理士法",
+              publisher: "e-Gov法令検索",
+              url: "https://laws.e-gov.go.jp/law/326AC1000000237",
+              context: "守秘義務と業務上の責任",
+            },
+            {
+              title: "税理士法基本通達",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/law/tsutatsu/kihon/zeirishi/02.htm",
+              context: "第38条と職員への監督",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "生成AIへ入力する情報の確認",
+            },
+            {
+              title: "個人情報保護法ガイドライン（通則編）",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/",
+              context: "個人情報の委託と安全管理",
+            },
+          ]}
+        >
           <p>
-            本記事で参照した資料です。括弧内は発行元、発行日・更新日、確認日です。法令や各社の規約は改正・変更されることがあるため、最新の内容をご確認ください。
+            法令や各社の規約は改正・変更されることがあるため、最新の内容をご確認ください。
           </p>
           {references.map((group) => (
             <div key={group.group}>
@@ -621,13 +650,13 @@ export default function Page() {
                     ) : (
                       item.title
                     )}
-                    （{item.meta}）
+                    （{formatReferenceMeta(item.meta, "2026-10-10")}）
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

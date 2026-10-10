@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -641,19 +642,46 @@ export default function Page() {
           <p>まず1顧問先・1か月分で試し、分類別の件数と確認時間を測ります。チェック体制は<Link href="/column/10020">仕訳レビュー</Link>、<Link href="/column/10024">品質管理</Link>、<Link href="/column/10018">ルール台帳</Link>を参照してください。</p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
-          <p>本文で参照した一次情報です。確認日はいずれも{CHECKED}です。</p>
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "電子帳簿保存法一問一答",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/law/joho-zeikaishaku/sonota/jirei/4-3.htm",
+              context: "仕訳と照合する証憑の保存要件",
+            },
+            {
+              title: "適格請求書発行事業者公表サイト",
+              publisher: "国税庁",
+              url: "https://www.invoice-kohyo.nta.go.jp/",
+              context: "登録番号の照合",
+            },
+            {
+              title: "中小企業の会計に関する基本要領のチェックリスト",
+              publisher: "日本税理士会連合会",
+              url: "https://www.nichizeiren.or.jp/wp-content/uploads/doc/cpta/business/tyushoushien/indicator/youryouchecklist150325-2.pdf",
+              context: "月次・決算チェックの観点",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "AIへ渡す顧問先情報の扱い",
+            },
+          ]}
+        >
           <ul>
             {references.map((ref) => (
               <li key={ref.url + ref.title}>
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

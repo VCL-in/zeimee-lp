@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -703,28 +704,56 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
-          <p>
-            本文で参照した一次情報です。確認日はいずれも2026年10月10日です。
-          </p>
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "情報システム・モデル取引・契約書 第2版・追補版",
+              publisher: "IPA",
+              url: "https://www.ipa.go.jp/digital/model/model20201222.html",
+              context: "開発・保守を依頼する際の契約事項。",
+            },
+            {
+              title: "アジャイル開発版モデル契約",
+              publisher: "IPA",
+              url: "https://www.ipa.go.jp/digital/model/agile20200331.html",
+              context: "要件の変更を伴う開発と役割の整理。",
+            },
+            {
+              title: "個人情報保護法ガイドライン 通則編",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/",
+              context: "外部開発先・運用委託先の監督。",
+            },
+            {
+              title: "派遣・請負の区分に関する疑義応答集 第3集",
+              publisher: "厚生労働省",
+              url: "https://www.mhlw.go.jp/content/001704257.pdf",
+              context: "外注先との指揮命令関係の確認。",
+            },
+          ]}
+        >
           <ul>
             {references.map((ref) => (
               <li key={ref.title}>
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}）
+                （{formatReferenceMeta(ref.meta, "2026-10-10").replace(
+                  "2026年10月10日確認の掲載版",
+                  "確認時点の掲載版",
+                )}）
               </li>
             ))}
             <li>
-              FXクラウドシリーズAPI（株式会社TKC、ページ更新日の記載なし、2026-10-10確認。提供会社の公式ページのため外部リンクは掲載していません）
+              FXクラウドシリーズAPI（株式会社TKC、ページ更新日の記載なし。提供会社の公式ページのため外部リンクは掲載していません）
             </li>
             <li>
               Googleサービスの割り当て（Apps
-              Script）（Google、2026年4月23日更新、2026-10-10確認。提供会社の公式ページのため外部リンクは掲載していません）
+              Script）（Google、2026年4月23日更新。提供会社の公式ページのため外部リンクは掲載していません）
             </li>
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

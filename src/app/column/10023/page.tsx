@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -477,27 +478,56 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "個人情報保護法ガイドライン（通則編）",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/",
+              context: "入力区分・安全管理・漏えい時の対応",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/files/pdf/230602_alert_generative_AI_service.pdf",
+              context: "生成AIへの入力ルール",
+            },
+            {
+              title: "特定個人情報ガイドライン（事業者編）",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/legal/policy/my_number_guideline_jigyosha/",
+              context: "マイナンバーを含む情報の取扱い",
+            },
+            {
+              title: "税理士法",
+              publisher: "e-Gov法令検索",
+              url: "https://laws.e-gov.go.jp/law/326AC1000000237",
+              context: "守秘義務と職員への監督",
+            },
+          ]}
+          note="日本税理士会連合会のAI・クラウド活用ガイドラインは会員専用で、本文は未確認です。"
+        >
           <ul>
             {references.map((ref) => (
               <li key={ref.url}>
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}、2026-10-10確認）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
             <li>
-              日本税理士会連合会「税理士事務所のためのAI・クラウド活用ガイドラインの策定について」（会員専用ページのお知らせ、2026年9月30日付、本文は未確認、2026-10-10確認）
+              日本税理士会連合会「税理士事務所のためのAI・クラウド活用ガイドラインの策定について」（会員専用ページのお知らせ、2026年9月30日付、本文は未確認）
             </li>
             <li>
-              TKC全国会「AIの活用に関する基本方針および会計事務所における必要な対応」（株式会社TKCのニュースリリース、2026年6月3日公表、2026-10-10確認）
+              TKC全国会「AIの活用に関する基本方針および会計事務所における必要な対応」（株式会社TKCのニュースリリース、2026年6月3日公表）
             </li>
           </ul>
           <p>
             会員専用ページと民間企業の発表は、リンクを設けず名称と日付のみを記載しています。
           </p>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

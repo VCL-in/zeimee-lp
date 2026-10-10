@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -453,7 +454,33 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "Images and vision",
+              publisher: "OpenAI Developers",
+              context: "画像入力の技術資料。ChatGPTのプラン仕様とは区別",
+            },
+            {
+              title: "Prompting",
+              publisher: "OpenAI Learn",
+              context: "指示と検証の考え方",
+            },
+            {
+              title: "適格請求書等保存方式（No.6498）",
+              publisher: "国税庁",
+              url: "https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6498.htm",
+              context: "仕訳候補と別に確かめる保存要件",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "通帳・領収書をAIに渡す前の確認",
+            },
+          ]}
+        >
           <p>法令・官公庁の資料</p>
           <ul>
             {linkedReferences.map((ref) => (
@@ -465,7 +492,7 @@ export default function Page() {
                 ) : (
                   ref.title
                 )}
-                （{ref.meta}、2026-10-10確認）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
@@ -473,11 +500,11 @@ export default function Page() {
           <ul>
             {textReferences.map((ref) => (
               <li key={ref.title}>
-                {ref.title}（{ref.meta}、2026-10-10確認）
+                {ref.title}（{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

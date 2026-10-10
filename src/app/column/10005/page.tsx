@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences, formatReferenceMeta } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -1126,24 +1127,49 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnSection id="references" title="参考資料">
-          <p>
-            本文で参照した一次情報です。確認日はいずれも2026年10月10日です。
-          </p>
+        <ColumnReferences
+          checkedAt="2026-10-10"
+          primarySources={[
+            {
+              title: "AI事業者ガイドライン（第1.2版）",
+              publisher: "総務省・経済産業省",
+              url: "https://www.soumu.go.jp/main_sosiki/kenkyu/ai_network/02ryutsu20_04000019.html",
+              context: "AI導入の体制と運用ルール",
+            },
+            {
+              title: "生成AIサービスの利用に関する注意喚起",
+              publisher: "個人情報保護委員会",
+              url: "https://www.ppc.go.jp/news/careful_information/230602_AI_utilize_alert/",
+              context: "試行前の入力情報の確認",
+            },
+            {
+              title: "税理士法",
+              publisher: "e-Gov法令検索",
+              url: "https://laws.e-gov.go.jp/law/326AC1000000237",
+              context: "業務の責任と職員への監督",
+            },
+            {
+              title: "デジタルスキル標準ver.2.0",
+              publisher: "IPA",
+              url: "https://www.ipa.go.jp/pressrelease/2026/press20260416.html",
+              context: "導入を支える人材と研修",
+            },
+          ]}
+        >
           <ul>
             {references.map((ref) => (
               <li key={ref.url}>
                 <a href={ref.url} target="_blank" rel="noopener noreferrer">
                   {ref.title}
                 </a>
-                （{ref.meta}）
+                （{formatReferenceMeta(ref.meta, "2026-10-10")}）
               </li>
             ))}
             <li>
-              税理士事務所のためのAI・クラウド活用ガイドラインの策定について（日本税理士会連合会、2026年9月30日、会員向けのお知らせのためリンクは掲載していません、2026-10-10確認）
+              税理士事務所のためのAI・クラウド活用ガイドラインの策定について（日本税理士会連合会、2026年9月30日、会員向けのお知らせのためリンクは掲載していません）
             </li>
           </ul>
-        </ColumnSection>
+        </ColumnReferences>
 
       </div>
     </ColumnArticle>

@@ -1,5 +1,6 @@
 /** Copy to src/app/column/<id>/page.tsx, then register metadata in src/lib/columns.ts. */
 import { ColumnArticle } from "@/components/ColumnArticle";
+import { ColumnReferences } from "@/components/ColumnReferences";
 import {
   ColumnSection,
   ColumnNote,
@@ -18,6 +19,7 @@ const toc = [
   { id: "steps", label: "導入の手順" },
   { id: "faq", label: "よくある質問" },
   { id: "summary", label: "まとめ" },
+  { id: "references", label: "参考資料" },
 ];
 
 export function generateMetadata() {
@@ -77,6 +79,18 @@ export default function Page() {
         <ColumnSection id="summary" title="まとめ">
           <p>【差し替え】結論と読者の次の行動。</p>
         </ColumnSection>
+        <ColumnReferences
+          checkedAt="YYYY-MM-DD"
+          primarySources={[
+            { title: "【差し替え】主な資料1", publisher: "【発行元】" },
+            { title: "【差し替え】主な資料2", publisher: "【発行元】" },
+            { title: "【差し替え】主な資料3", publisher: "【発行元】" },
+          ]}
+        >
+          <ul>
+            <li>【差し替え】全出典の正式名・URL・発行日・適用する版・確認範囲。</li>
+          </ul>
+        </ColumnReferences>
       </div>
     </ColumnArticle>
   );
