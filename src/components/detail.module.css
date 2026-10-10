@@ -23,8 +23,8 @@
 .section ul { padding-left:24px; list-style:disc; }
 .section li { padding:6px 0; line-height:1.9; }
 .section a, .related a { color:#534dff; text-decoration:underline; text-underline-offset:5px; }
-.steps { display:grid; gap:28px; counter-reset:step; }
-.step { border-left:3px solid #534dff; padding-left:24px; }
+.steps { display:grid; grid-template-columns:minmax(0,1fr); gap:28px; counter-reset:step; }
+.step { min-width:0; border-left:3px solid #534dff; padding-left:24px; }
 .note { padding:24px; background:#f7f8fc; border-radius:8px; }
 .faq { margin-top:24px; }
 .faq + .faq { border-top:1px solid #e3e7ed; padding-top:24px; }

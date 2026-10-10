@@ -164,9 +164,15 @@ export function ColumnArticle({
             </div>
             <div className={styles.sideRelated}>
               <h2>あわせて読みたい</h2>
-              {columns
-                .filter((c) => c.id !== column.id)
-                .slice(0, 2)
+              {[
+                ...columns.filter(
+                  (c) => c.id !== column.id && c.category === column.category,
+                ),
+                ...columns.filter(
+                  (c) => c.id !== column.id && c.category !== column.category,
+                ),
+              ]
+                .slice(0, 3)
                 .map((c) => (
                   <Link key={c.id} href={`/column/${c.id}`}>
                     <ColumnCover column={c} compact />

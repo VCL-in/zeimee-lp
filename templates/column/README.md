@@ -9,7 +9,7 @@
 
 ## 新しい記事を作る手順
 
-1. `src/lib/columns.ts` で未使用のIDを確認し、次のIDを採番する。現在の次候補は `10002`。公開後のIDは変更・再利用しない。
+1. `src/lib/columns.ts` で未使用のIDを確認し、次のIDを採番する。現在の次候補は `10027`。公開後のIDは変更・再利用しない。
 2. 同ファイルの `columns` に記事のメタデータを追加する。タイトル・説明・カテゴリ・公開日・実際の更新日・記事固有のOG画像を設定する。
 3. `templates/column/page.tsx` を `src/app/column/<id>/page.tsx` にコピーし、`ARTICLE_ID` を設定する。
 4. サンプル文言を置き換え、不要なブロックを削除する。目次の `id` と見出しの `id` を揃える。
@@ -18,11 +18,11 @@
 
 ```ts
 {
-  id: "10002", // 採番時に未使用か確認
+  id: "10027", // 採番時に未使用か確認
   title: "【記事のタイトル】",
   description: "【読者・記事でわかること・範囲】",
   category: "【カテゴリ】",
-  coverImage: "/images/column/10002-og.png", // 実際に作成する1200×630画像
+  coverImage: "/images/column/10027-og.png", // 実際に作成する1200×630画像
   coverDesign: {
     intro: "【カバーの補助説明】",
     title: "【短いテーマ名】",
@@ -37,6 +37,8 @@
 ```
 
 `coverDesign` の数字を省くと解説記事向けになる。カバー文言と画像は記事別に設定し、記事10001の内容を引き継がない。画像生成が必要な場合はImage機能を使う。OG画像も新記事の内容に合わせて作成する。
+
+本文を確定したら `python3 design/fonts/subset_column.py` で日本語フォントを再生成する（fontToolsが必要）。本文の表データを置く `.ts` ファイルも収集対象になる。カバーのOG画像は、ローカルサーバーを起動して `node design/column-og/generate.mjs 10027` で生成できる。Playwrightが別の場所にある場合は `PLAYWRIGHT` にその `index.mjs` のパスを指定し、標準の3310番ポートと違う場合は `BASE_URL` を指定する。生成した1200×630画像は切れや文字化けを目視で確認する。
 
 ## 共通ブロック
 

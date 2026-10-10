@@ -2243,6 +2243,14 @@
   overflow-x: auto;
   margin: 24px 0;
 }
+.prose pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.prose code {
+  overflow-wrap: anywhere;
+}
 .informationTable {
   width: 100%;
   min-width: 580px;
