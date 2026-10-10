@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pages,
     { url: "https://zeimee.com/column", lastModified: latestColumn },
     ...columns.map((c) => ({
-      url: `https://zeimee.com/column/${c.slug}`,
+      url: `https://zeimee.com/column/${c.id}`,
       lastModified: c.updatedAt,
     })),
   ];

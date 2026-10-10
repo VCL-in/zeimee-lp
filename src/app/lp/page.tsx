@@ -112,13 +112,11 @@ function ContactBanner({ id }: { id: string }) {
     <section className="contact-banner" id={id} aria-label="資料ダウンロード">
       <div className="section-shell contact-banner-inner">
         <h2>
-          AI導入の進め方・事例・費用感がわかる資料を無料でお届け。
-          <wbr />
-          今なら24時間以内の面談予約で初期費用5万円割引。
+          お問い合わせ・資料ダウンロードはこちらから
         </h2>
         <div className="contact-banner-panel">
           <a className="button" href="#contact">
-            資料ダウンロード（無料）
+            <span>資料ダウンロード（無料）</span>
             <ArrowUpRight aria-hidden="true" />
           </a>
         </div>
