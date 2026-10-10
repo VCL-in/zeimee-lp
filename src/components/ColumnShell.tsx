@@ -5,7 +5,13 @@ import { SiteHeader } from "@/app/lp/SiteHeader";
 import { BrandLogo } from "@/app/lp/BrandLogo";
 import styles from "./column.module.css";
 
-export function ColumnShell({ children }: { children: ReactNode }) {
+export function ColumnShell({
+  children,
+  showBottomCta = true,
+}: {
+  children: ReactNode;
+  showBottomCta?: boolean;
+}) {
   return (
     <div className={styles.page}>
       <a className="skip-link" href="#column-main">
@@ -23,22 +29,24 @@ export function ColumnShell({ children }: { children: ReactNode }) {
           <Link href="/column">コラム</Link>
         </nav>
         {children}
-        <aside className={styles.bottomCta} aria-label="Zeimeeの資料案内">
-          <div>
-            <p className={styles.eyebrow}>NEXT STEP</p>
-            <h2>
-              あなたの事務所に合う、
-              <br />
-              AI活用の進め方を。
-            </h2>
-            <p>
-              現場に合わせた業務改善の考え方と導入事例を、資料にまとめました。
-            </p>
-          </div>
-          <Link className={styles.ctaButton} href="/#contact">
-            資料をダウンロード <ArrowUpRight />
-          </Link>
-        </aside>
+        {showBottomCta && (
+          <aside className={styles.bottomCta} aria-label="Zeimeeの資料案内">
+            <div>
+              <p className={styles.eyebrow}>NEXT STEP</p>
+              <h2>
+                あなたの事務所に合う、
+                <br />
+                AI活用の進め方を。
+              </h2>
+              <p>
+                現場に合わせた業務改善の考え方と導入事例を、資料にまとめました。
+              </p>
+            </div>
+            <Link className={styles.ctaButton} href="/#contact">
+              資料をダウンロード <ArrowUpRight />
+            </Link>
+          </aside>
+        )}
       </main>
       <footer className={styles.footer}>
         <Link

@@ -53,7 +53,7 @@
 
 | ブロック | 用途 | 差し替える内容 |
 | --- | --- | --- |
-| `ColumnArticle` | ヘッダー・目次・本文幅・サイドバー・執筆者・構造化データ | メタ情報、目次、調査方針、PR表示、本文 |
+| `ColumnArticle` | ヘッダー・目次・本文幅・サイドバー・執筆者・構造化データ・記事末尾のZeimee案内 | メタ情報、目次、調査方針、PR表示、本文、必要な場合だけ `ctaDescription` |
 | `ColumnCover` | イラスト付きカバー、一覧サムネイル | `coverDesign` / `coverImage` |
 | `ColumnSection` | h2付きセクション | id、見出し、本文 |
 | `ColumnNote` | 結論・補足・確認事項 | タイトル、本文・箇条書き |
@@ -61,10 +61,12 @@
 | `ColumnComparisonTable` | サービスが横に並ぶ比較表 | 列、比較項目、各列の値（列数を揃える） |
 | `ColumnService` | 現行サービス紹介カード | 会社、工程、特徴、料金・条件、出典、確認日 |
 | `ColumnFaq` | 見える質問・回答 | 質問、根拠のある回答 |
-| `ColumnCta` | 問い合わせ・資料ダウンロード | 説明文。送信先は `/#contact` |
+| `ColumnCta` | 画像付きのZeimee資料・導入支援案内（`ColumnArticle` が自動表示） | 共通部品で管理。資料請求は `/#contact`、支援の説明は `/#about` |
 | `createColumnMetadata` | canonical・OG・Twitter・robots | 記事メタ情報から生成 |
 
 本文のh3・h4、段落、太字、箇条書きは `ColumnArticle` と `detail.body` 内で使えば共通の書式になる。手順は `detail.steps` / `detail.step` を使う。表は枠内で横スクロールし、ページ全体の横はみ出しを避ける。
+
+記事末尾のZeimee案内は `ColumnArticle` が執筆者・編集方針の後に1回表示する。本文には `ColumnCta` を追加しない。記事に合わせた説明が必要な場合は `ColumnArticle` の `ctaDescription` に文字列を渡す。省略時は共通説明を使う。サービス資料の画像は紹介イメージ、写真風画像は生成イメージとして表示し、実際の資料表紙・顧客写真として扱わない。資料ボタンは既存フォームへの請求導線であり、その場でPDFを取得するボタンとして説明しない。
 
 ## 記事タイプごとの構成
 

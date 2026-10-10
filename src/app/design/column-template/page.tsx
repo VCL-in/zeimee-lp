@@ -6,7 +6,6 @@ import {
   ColumnInformationTable,
   ColumnComparisonTable,
   ColumnFaq,
-  ColumnCta,
 } from "@/components/ColumnBlocks";
 import { ColumnService } from "@/components/ColumnService";
 import {
@@ -171,7 +170,6 @@ export default function Page() {
             記事の結論と読者の次の行動をまとめ、その後にZeimeeへのお問い合わせ・資料ダウンロードを配置します。
           </p>
         </ColumnSection>
-        <ColumnCta />
       </div>
     </ColumnArticle>
   );

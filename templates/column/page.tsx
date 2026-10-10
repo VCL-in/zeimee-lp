@@ -5,7 +5,6 @@ import {
   ColumnNote,
   ColumnInformationTable,
   ColumnFaq,
-  ColumnCta,
 } from "@/components/ColumnBlocks";
 import { createColumnMetadata } from "@/lib/column-metadata";
 import { getColumn } from "@/lib/columns";
@@ -78,7 +77,6 @@ export default function Page() {
         <ColumnSection id="summary" title="まとめ">
           <p>【差し替え】結論と読者の次の行動。</p>
         </ColumnSection>
-        <ColumnCta />
       </div>
     </ColumnArticle>
   );

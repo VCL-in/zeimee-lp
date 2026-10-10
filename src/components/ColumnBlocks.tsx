@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import detail from "./detail.module.css";
 import styles from "./column.module.css";
 
@@ -106,21 +107,92 @@ export function ColumnFaq({
 }
 
 export function ColumnCta({
-  description = "AI導入の進め方・事例をまとめた資料をご用意しています。",
+  description = "業務の整理から、AI・システムの開発、運用改善まで。Zeimeeの支援内容をご紹介します。",
 }: {
   description?: string;
 }) {
   return (
-    <div className={styles.bottomCta}>
-      <div>
-        <h2>お問い合わせ・資料ダウンロードはこちらから</h2>
-        <p>{description}</p>
+    <aside
+      className={styles.resourceCta}
+      id="zeimee-resources"
+      aria-labelledby="zeimee-resources-title"
+    >
+      <div className={styles.resourceHeader}>
+        <p className={styles.resourceEyebrow}>ZeimeeのAI導入・開発支援</p>
+        <h2 id="zeimee-resources-title">
+          会計事務所のAI活用を、
+          <br />
+          もっと詳しく知りたい方へ
+        </h2>
+        <p className={styles.resourceDescription}>{description}</p>
       </div>
-      <Link className={styles.ctaButton} href="/#contact">
-        資料ダウンロード
-        <ArrowUpRight aria-hidden="true" />
+      <div className={styles.resourceGrid}>
+        <div className={styles.resourceCard}>
+          <div className={`${styles.resourceVisual} ${styles.resourceGuide}`}>
+            <Image
+              className={styles.resourceImage}
+              src="/images/column/zeimee-workflow-banner-v1.webp"
+              alt=""
+              fill
+              sizes="(max-width: 640px) calc(100vw - 88px), (max-width: 1100px) 36vw, 380px"
+            />
+            <div className={styles.resourceGuideCopy}>
+              <Image
+                className={styles.resourceLogo}
+                src="/lp/zeimee-logo.png"
+                alt="Zeimee"
+                width={1397}
+                height={289}
+                sizes="130px"
+              />
+              <strong>
+                事務所の業務に、
+                <br />
+                AIを合わせる。
+              </strong>
+              <span>会計事務所に特化したAI導入・開発支援</span>
+            </div>
+            <span className={styles.resourceImageNote}>サービス紹介イメージ</span>
+          </div>
+          <h3>Zeimeeサービス資料</h3>
+          <p>支援内容やAI導入の進め方をご案内します。</p>
+          <Link className={styles.resourceButton} href="/#contact">
+            <span>無料の資料を請求する</span>
+            <span className={styles.resourceButtonIcon} aria-hidden="true">
+              <ArrowRight />
+            </span>
+          </Link>
+        </div>
+        <div className={styles.resourceCard}>
+          <div className={styles.resourceVisual}>
+            <Image
+              className={styles.resourceImage}
+              src="/images/column/assets/ai-adoption-photo.webp"
+              alt="AI導入について資料を見ながら打ち合わせるイメージ"
+              fill
+              sizes="(max-width: 640px) calc(100vw - 88px), (max-width: 1100px) 36vw, 380px"
+            />
+            <span className={styles.resourceImageNote}>生成イメージ</span>
+          </div>
+          <h3>AI導入・開発支援の進め方</h3>
+          <p>
+            業務のヒアリングから開発・運用改善まで、Zeimeeの支援をご紹介します。
+          </p>
+          <Link className={styles.resourceButton} href="/#about">
+            <span>導入支援について見る</span>
+            <span className={styles.resourceButtonIcon} aria-hidden="true">
+              <ArrowRight />
+            </span>
+          </Link>
+        </div>
+      </div>
+      <Link className={styles.resourceMore} href="/">
+        <span>Zeimeeのサービスを見る</span>
+        <span className={styles.resourceButtonIcon} aria-hidden="true">
+          <ArrowRight />
+        </span>
       </Link>
-    </div>
+    </aside>
   );
 }
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ColumnShell } from "@/components/ColumnShell";
 import { ColumnCover } from "@/components/ColumnCover";
+import { ColumnCta } from "@/components/ColumnBlocks";
 import { ArrowUpRight, BookOpen, ChevronRight } from "lucide-react";
 import {
   COLUMN_AUTHOR,
@@ -20,6 +21,7 @@ export function ColumnArticle({
   toc,
   disclosure,
   editorialPolicy,
+  ctaDescription,
   structuredData = true,
   children,
 }: {
@@ -27,6 +29,7 @@ export function ColumnArticle({
   toc: { id: string; label: string }[];
   disclosure?: ReactNode;
   editorialPolicy?: ReactNode;
+  ctaDescription?: string;
   structuredData?: boolean;
   children: ReactNode;
 }) {
@@ -78,7 +81,7 @@ export function ColumnArticle({
   const schema = { "@context": "https://schema.org", "@graph": graph };
 
   return (
-    <ColumnShell>
+    <ColumnShell showBottomCta={false}>
       {structuredData && (
         <script
           type="application/ld+json"
@@ -153,6 +156,7 @@ export function ColumnArticle({
                 コラム一覧へ <ArrowUpRight aria-hidden="true" />
               </Link>
             </div>
+            <ColumnCta description={ctaDescription} />
           </div>
           <aside className={styles.sidebar} aria-label="記事の関連情報">
             <div className={styles.sideCta}>

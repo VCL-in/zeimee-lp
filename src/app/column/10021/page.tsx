@@ -5,7 +5,6 @@ import {
   ColumnNote,
   ColumnInformationTable,
   ColumnFaq,
-  ColumnCta,
 } from "@/components/ColumnBlocks";
 import { createColumnMetadata } from "@/lib/column-metadata";
 import { getColumn } from "@/lib/columns";
@@ -107,6 +106,7 @@ export default function Page() {
   const column = getColumn(ARTICLE_ID);
   return (
     <ColumnArticle
+      ctaDescription="顧問先ルールや確認・承認、会計ソフトへの取込までを業務に合わせて設計する支援について、Zeimeeのサービス資料でご覧いただけます。"
       column={column}
       toc={toc}
       editorialPolicy={
@@ -479,7 +479,6 @@ export default function Page() {
           </ul>
         </ColumnSection>
 
-        <ColumnCta description="顧問先ルールや確認・承認、会計ソフトへの取込までを業務に合わせて設計する支援について、Zeimeeのサービス資料でご覧いただけます。" />
       </div>
     </ColumnArticle>
   );

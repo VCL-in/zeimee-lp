@@ -6,7 +6,6 @@ import {
   ColumnNote,
   ColumnInformationTable,
   ColumnFaq,
-  ColumnCta,
 } from "@/components/ColumnBlocks";
 import { createColumnMetadata } from "@/lib/column-metadata";
 import { getColumn } from "@/lib/columns";
@@ -56,6 +55,7 @@ const faqs = [
 export default function Page() {
   return (
     <ColumnArticle
+      ctaDescription="AI導入の進め方や、業務に合わせて仕組みを作った事例をまとめた資料をご用意しています。AIを使う業務のセキュリティ確認についてのご相談もお問い合わせから受け付けています。"
       column={column}
       toc={toc}
       editorialPolicy={
@@ -332,7 +332,6 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnCta description="AI導入の進め方や、業務に合わせて仕組みを作った事例をまとめた資料をご用意しています。AIを使う業務のセキュリティ確認についてのご相談もお問い合わせから受け付けています。" />
       </div>
     </ColumnArticle>
   );

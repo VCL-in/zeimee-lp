@@ -5,7 +5,6 @@ import {
   ColumnNote,
   ColumnInformationTable,
   ColumnFaq,
-  ColumnCta,
 } from "@/components/ColumnBlocks";
 import { createColumnMetadata } from "@/lib/column-metadata";
 import { getColumn } from "@/lib/columns";
@@ -1165,7 +1164,6 @@ export default function Page() {
           </ul>
         </ColumnSection>
 
-        <ColumnCta />
       </div>
     </ColumnArticle>
   );

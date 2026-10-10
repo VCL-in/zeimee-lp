@@ -5,7 +5,6 @@ import {
   ColumnNote,
   ColumnInformationTable,
   ColumnFaq,
-  ColumnCta,
 } from "@/components/ColumnBlocks";
 import { createColumnMetadata } from "@/lib/column-metadata";
 import { getColumn } from "@/lib/columns";
@@ -229,6 +228,7 @@ export default function Page() {
   const column = getColumn(ARTICLE_ID);
   return (
     <ColumnArticle
+      ctaDescription="顧問先ごとの判断基準や繰り返す修正を、記帳の仕組みに反映する支援の進め方をサービス資料でご紹介しています。"
       column={column}
       toc={toc}
       editorialPolicy={
@@ -656,7 +656,6 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnCta description="顧問先ごとの判断基準や繰り返す修正を、記帳の仕組みに反映する支援の進め方をサービス資料でご紹介しています。" />
       </div>
     </ColumnArticle>
   );

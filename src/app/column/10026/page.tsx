@@ -5,7 +5,6 @@ import {
   ColumnNote,
   ColumnInformationTable,
   ColumnFaq,
-  ColumnCta,
 } from "@/components/ColumnBlocks";
 import { createColumnMetadata } from "@/lib/column-metadata";
 import { getColumn } from "@/lib/columns";
@@ -87,6 +86,7 @@ export default function Page() {
   const column = getColumn(ARTICLE_ID);
   return (
     <ColumnArticle
+      ctaDescription="ZeimeeのAI導入・開発支援の進め方や公開事例は、サービス資料でご覧いただけます。"
       column={column}
       toc={toc}
       editorialPolicy={
@@ -469,7 +469,6 @@ export default function Page() {
           </p>
         </ColumnSection>
 
-        <ColumnCta description="ZeimeeのAI導入・開発支援の進め方や公開事例は、サービス資料でご覧いただけます。" />
       </div>
     </ColumnArticle>
   );
