@@ -13,6 +13,7 @@ import detail from "@/components/detail.module.css";
 
 const ARTICLE_ID = "10004";
 const CHECKED = "2026年10月10日";
+const AI_SETTINGS_CHECKED = "2026年10月11日";
 
 const toc = [
   { id: "seven-checkpoints", label: "導入前に確認する7項目" },
@@ -20,6 +21,7 @@ const toc = [
   { id: "risk-map", label: "業務の流れで見るリスク地図" },
   { id: "input-data", label: "1 入力する情報の区分" },
   { id: "service-contract", label: "2 入力先のサービスと契約" },
+  { id: "chat-settings", label: "ChatGPT・Claudeの設定チェック" },
   { id: "data-boundary", label: "3 データ境界とアクセス権限" },
   { id: "credentials", label: "4 認証情報をAIに渡さない" },
   { id: "approval-and-sync", label: "5 承認と反映を分ける" },
@@ -210,6 +212,40 @@ const references: {
           "Microsoft Learn「Microsoft Copilot および Microsoft Copilot Chat におけるエンタープライズ データ保護」",
         meta: "Microsoft、2026年10月1日更新、2026-10-10確認",
       },
+      {
+        title:
+          "OpenAI Docs「Browser」「Memories」「ChatGPT Work cloud security」「Plugin controls」",
+        meta: "OpenAI、2026-10-11確認（Web版・Work・法人ワークスペースの記述を区別して参照）",
+      },
+      {
+        title: "OpenAI Docs「Data controls in the OpenAI platform」",
+        meta: "OpenAI、2026-10-11確認（APIの学習利用・保持・ZDR）",
+      },
+      {
+        title:
+          "Anthropic Privacy Center「How do I change my model improvement privacy settings?」「How do you use personal data in model training?」「How long do you store my organization's data?」",
+        meta: "Anthropic、2026-10-11確認（個人プランと商用サービスを区別して参照）",
+      },
+      {
+        title:
+          "Claude Help Center「Use Claude's chat search and memory to build on previous context」「Use incognito chats」",
+        meta: "Anthropic、2026-10-11確認（メモリの新旧UI・プラン別の初期設定・保持の違い）",
+      },
+      {
+        title:
+          "Claude Help Center「Use connectors to extend Claude's capabilities」「Public links for shared chats」「Share a chat with specific people」",
+        meta: "Anthropic、2026-10-11確認（外部連携の権限・公開リンク・招待共有）",
+      },
+      {
+        title:
+          "Claude Help Center「Configure custom data retention controls for Enterprise plans」「Manage project visibility and sharing」「Set up single sign-on (SSO)」",
+        meta: "Anthropic、2026-10-11確認（組織の保持期間・共有範囲・認証）",
+      },
+      {
+        title:
+          "Anthropic Privacy Center「I have a zero data retention agreement with Anthropic. What products does it apply to?」",
+        meta: "Anthropic、2026-10-11確認（ZDRの対象・契約条件・機能の制限）",
+      },
     ],
   },
 ];
@@ -226,9 +262,11 @@ export default function Page() {
       toc={toc}
       disclosure={
         <>
-          本記事は、会計士・税理士事務所向けのAI導入・開発支援「Zeimee」を提供する株式会社Zeimeeが執筆・運営しています。本文で触れている他社サービス（Google、Microsoft、OpenAI）の情報は、
+          本記事は、会計士・税理士事務所向けのAI導入・開発支援「Zeimee」を提供する株式会社Zeimeeが執筆・運営しています。Google・Microsoftの情報は
           {CHECKED}
-          時点で各社が公開している情報に基づきます。他社サイトへのリンクは設けず、資料名と確認日を記載しています。各社の条件は変更される場合があるため、利用前に最新の規約と設定をご確認ください。
+          、ChatGPT・Claudeの設定に関する情報は
+          {AI_SETTINGS_CHECKED}
+          時点の各社の公開情報に基づきます。他社サイトへのリンクは設けず、資料名と確認日を記載しています。各社の条件は変更される場合があるため、利用前に最新の規約と設定をご確認ください。
         </>
       }
       editorialPolicy={
@@ -236,7 +274,9 @@ export default function Page() {
           <p>
             本記事は、会計事務所が生成AIを業務で使う前に確認すべき事項を、法令（e-Gov法令検索）、国税庁の通達・告示、個人情報保護委員会のガイドライン・Q&A・注意喚起、総務省・経済産業省とIPAの指針、日本税理士会連合会・日本公認会計士協会の公表資料といった一次情報を中心に調査して整理しています。情報の確認日は
             {CHECKED}
-            です。
+            です。ChatGPT・Claudeの設定チェックは
+            {AI_SETTINGS_CHECKED}
+            に公式資料を確認して追記しました。
           </p>
           <p>
             専門家の監修は受けていません。他社サービスの記述は各社の公開情報に基づくもので、実機での検証は行っていません。法令の解釈や個別の事案への当てはめは、事務所の状況によって変わります。具体的な判断は、弁護士などの専門家や個人情報保護委員会などの所管官庁にご確認ください。令和8年の個人情報保護法改正は主要な改正事項が確認日時点で未施行のため、現行のルールと書き分けています。
@@ -466,6 +506,16 @@ export default function Page() {
               ],
             ]}
           />
+          <ColumnNote title="ChatGPT・Claudeを実際に使う前に">
+            <p>
+              このリスク地図を設定に落とし込むなら、まず利用中のプランとワークスペースを確かめ、学習利用、メモリ・過去会話の参照、外部アプリの権限、共有範囲、保存・削除の順に確認します。有料の個人プランと法人向け契約は分けて考えます。
+            </p>
+            <p>
+              学習利用をオフにしても、会話履歴や保存済みメモリが自動で消えるとは限りません。
+              <Link href="#chat-settings">ChatGPT・Claudeの設定場所と確認表</Link>
+              を確認項目2にまとめています。設定を変えるだけで、顧問先の資料を入力してよいことにはなりません。
+            </p>
+          </ColumnNote>
           <p>
             シャドーAIは、事務所が把握・許可していないAIを職員が業務に使うこと、ハルシネーションは、AIが事実と異なる内容をもっともらしく出力することです。IPAとAIセーフティ・インスティテュート（AISI）の「AI利用者のためのセキュリティ豆知識」（2026年4月2日）は、資料を検索して回答に使う仕組み（RAG）で、メールなどの外部資料に仕込まれた指示が社内情報の流出を招くおそれを挙げています。顧問先の資料を分けることに加え、信頼できない外部資料を検索対象に混ぜないことも確認します。
           </p>
@@ -541,13 +591,111 @@ export default function Page() {
           title="確認項目2 入力先のサービスと契約（学習利用・保持期間・人によるレビュー）"
         >
           <p>
-            同じ会社のAIでも、個人向けと法人向け、さらに機能ごとに条件が違うことがあります。以下は
-            {CHECKED}
-            時点で公開情報を確認できた例です（他社サイトへのリンクは設けていません）。
+            同じ会社のAIでも、個人向けと法人向け、さらに機能ごとに条件が違うことがあります。契約上の扱いと、利用者・管理者が変更できる設定の両方を確認します。
           </p>
+          <h3 id="chat-settings">ChatGPT・Claudeを使うときの設定チェック</h3>
+          <p>
+            以下は{AI_SETTINGS_CHECKED}
+            に公式資料で確認した設定と、会計事務所での確認方法です。ここでいうGPTはChatGPTのWeb版を中心に扱い、APIは別欄に分けます。Workは調査・資料作成など複数の作業を進めるChatGPTの機能です。Workを使う場合の確認点は該当行に明記します。英語の設定名は公式資料の表記です。日本語画面での表示や操作は実機未検証で、プラン・更新状況によって利用できる項目が異なります。
+          </p>
+          <ColumnNote title="最初に確認するのは契約と利用中のアカウント">
+            <p>
+              ChatGPTのPlus・ProやClaudeのPro・Maxを契約していても、個人向けプランの条件を確認する必要があります。ChatGPTのBusiness・Enterprise・Edu、ClaudeのTeam・Enterpriseなどの業務用契約とは区別し、実際に入力する先が事務所の認めたワークスペースかを確かめてください。
+            </p>
+            <p>
+              ChatGPTのBusiness・Enterprise・EduとClaudeの商用サービスは、通常、業務データをモデル学習に使わない扱いです。ただし、任意のデータ共有やフィードバック、保存期間、外部連携の条件は別に確認します。
+            </p>
+          </ColumnNote>
+          <h3>ChatGPT：データコントロール、メモリ、アプリの権限</h3>
+          <ColumnInformationTable
+            label="ChatGPTの設定場所と会計事務所での確認方法"
+            headers={["確認すること", "設定・確認場所", "会計事務所での確認方法"]}
+            rows={[
+              [
+                "学習利用",
+                "Web・モバイルの Settings > Data controls（設定 > データコントロール）",
+                "個人向けでは利用中の学習利用の許可状態を確認。業務の入力をモデル改善に提供しない運用にする。法人ワークスペースの通常の非学習扱いと混同しない。",
+              ],
+              [
+                "メモリ・過去会話の参照",
+                "Web版の Settings > Personalization（設定 > パーソナライズ）にあるメモリの設定",
+                "顧問先情報を別の会話の文脈に持ち込まないよう、参照する情報と利用要否を確認。Workでもアカウント・ワークスペースのメモリ設定が適用される。",
+              ],
+              [
+                "外部アプリの読取・書込権限",
+                "対応する法人ワークスペースの Workspace apps > Action control / App permissions",
+                "必要な接続だけを許可し、Action controlで読取専用などに絞る。App permissionsで変更時の確認を求めるなど、実行前の承認も設定する。利用可否と実行時の確認は別。",
+              ],
+              [
+                "保存・削除（Workを使う場合）",
+                "会話、Library、プロジェクト、保存済みメモリそれぞれの管理画面と、ワークスペースの保持設定",
+                "会話を削除してもLibraryのファイルや保存済みメモリが残り得る。プロジェクトの資料も別に管理する。接続解除だけで外部サービスの原本が消えるとは考えない。",
+              ],
+            ]}
+          />
+          <p>
+            アプリの確認方式には、対応する環境で「Always ask」「Any changes」などがあります。例えば「Any changes」は対応する読取を確認なしで進め、変更時に確認を求める設定です。会計ソフトへの書き込みや外部送信を許可する前に、接続先の権限と実行時の確認を両方点検します。
+          </p>
+          <h3>Claude：Privacy、Memory、Connectors、共有</h3>
+          <ColumnInformationTable
+            label="Claudeの設定場所と会計事務所での確認方法"
+            headers={["確認すること", "設定・確認場所", "会計事務所での確認方法"]}
+            rows={[
+              [
+                "個人プランの学習利用",
+                "Settings > Privacy > Help Improve our AI models",
+                "Free・Pro・Maxは、アカウントの実際の設定値を確認し、業務の入力を学習に提供しない運用ならオフにする。オフは会話履歴の削除ではなく、開始済み・完了済みの学習を戻すものでもない。安全目的などの例外も確認する。",
+              ],
+              [
+                "メモリ・過去会話検索",
+                "Settings > Memory の Search and reference chats / Generate memory from chats（旧環境では Settings > Capabilities）",
+                "現在のメモリは個人のFree・Pro・Maxで初期設定がオン、Team・Enterpriseは各メンバーでオフ。過去会話検索はPro・Max・Team・Enterpriseで利用できる。顧問先情報を会話をまたいで参照させない運用なら各項目を確認する。Pause memoryは停止、Reset memoryは消去。会話の削除だけで生成済みメモリが消えるとは限らない。",
+              ],
+              [
+                "一時的な会話（Incognito）",
+                "プロジェクト外の新規チャット右上にあるゴーストアイコン",
+                "履歴・メモリ・学習には使われないが、通常30日保持される。Team・Enterpriseでは管理者のエクスポートにも含まれる。「保存ゼロ」「管理者に見えない」機能とは考えない。",
+              ],
+              [
+                "外部接続・ツールの権限",
+                "Customize > Connectors。会話単位では + > Connectors。Team・Enterpriseの組織側でもツール権限を確認",
+                "不要な接続を外し、必要な範囲だけを許可する。組織で対応するツール権限は Needs approval（承認が必要）やBlocked（禁止）に絞る。接続先は独自の規約で処理するため、Claudeの学習設定だけでは判断しない。",
+              ],
+              [
+                "会話・プロジェクトの共有",
+                "会話の Share と Settings > Privacy > Shared chats。プロジェクトは Share > General access",
+                "個人プランの公開リンクは、リンクを持つ人がログインせず閲覧できる。招待共有と公開リンクを区別する。組織内のプロジェクトも、顧問先の資料は Only people invitedなど担当者だけに絞り、不要な共有を解除する。",
+              ],
+              [
+                "Enterpriseの保持期間",
+                "Ownerが Organization settings > Data and Privacy で設定",
+                "チャットとプロジェクトの両方を確認する。保持期間は最低30日で、未設定では無期限。プロジェクト内の会話にはプロジェクトの保持期間が優先するため、会話だけの設定では足りない。",
+              ],
+            ]}
+          />
+          <h3>事務所で決める初期設定と、職員が確認する順番</h3>
+          <ol>
+            <li>事務所が認めた契約・ワークスペースを選び、個人アカウントとの使い分けを確認する。</li>
+            <li>学習利用の許可状態を確認し、メモリや過去会話参照は必要な範囲に限る。顧問先ごとに会話・資料を分ける。</li>
+            <li>外部接続は必要なものだけにし、読取範囲、書込権限、実行前の確認を別々に設定する。</li>
+            <li>共有先・保存先・保持期間・削除方法を決め、誰が設定を確認したかを記録する。</li>
+          </ol>
+          <p>
+            認証も合わせて点検します。利用できる多要素認証を有効にし、組織のSSO（事務所の認証基盤によるログイン）は「設定済み」と「利用を強制している」を区別します。ClaudeのTeam・Enterpriseでは
+            {" Organization and access > Authentication "}
+            の Require SSO for Claudeを確認します。個人利用は、ログインに使うGoogleアカウントやメールの認証設定も確認対象です。
+          </p>
+          <ColumnNote title="APIの設定はChatGPT・Claudeのチャット設定と別">
+            <p>
+              APIを使うツールでは、チャット画面の学習設定やIncognitoがそのまま適用されるとは考えません。OpenAI APIとClaude APIは通常モデル学習に使わない扱いですが、ログ、ファイル、会話状態の保存は別です。OpenAI APIは通常、不正利用監視ログを最大30日保持し、Claude APIも通常は入力・出力を30日以内に削除する扱いで、いずれも機能や安全・法令・契約による例外があります。
+            </p>
+            <p>
+              ゼロ保持（ZDR）は別途の承認・契約や対応機能の確認が必要です。「APIだから保存しない」「学習しないから顧問先情報を自由に入れられる」とは判断せず、入力区分と契約上の許可に戻って確認してください。
+            </p>
+          </ColumnNote>
           <h3>個人向けと法人向けで扱いが違う例</h3>
           <p>
-            Googleの「Gemini アプリ プライバシー
+            {CHECKED}に確認したGoogleの「Gemini アプリ プライバシー
             ハブ」は、個人向けのGeminiアプリでは人間のレビュアー（委託先を含む）がチャットの一部を確認するため、機密情報を入力しないよう求めています。アクティビティの保存をオフにしても、チャットは72時間アカウントに保持されるとしています。一方「Google
             Workspace の生成 AI に関するプライバシー
             ハブ」は、Workspaceではチャットやファイルを人間がレビューせず、許可なくドメイン外のモデル学習にも使わないとしています。
@@ -559,7 +707,7 @@ export default function Page() {
           </p>
           <h3>法人向けでも機能ごとに条件が違う例</h3>
           <p>
-            Microsoft Learnの「Microsoft Copilot および Microsoft Copilot Chat
+            {CHECKED}に確認したMicrosoft Learnの「Microsoft Copilot および Microsoft Copilot Chat
             におけるエンタープライズ データ
             保護」は、プロンプトと応答を基盤モデルの学習に使わないとする一方、Bing検索サービスに送るWeb検索のクエリは、Microsoftが独立したデータ管理者となる別の条件で処理されるとしています。Web検索や外部連携をオンにしたときの条件も確認対象です。
           </p>
@@ -980,6 +1128,17 @@ export default function Page() {
             },
             {
               question:
+                "ChatGPT・Claudeの学習利用をオフにすれば、入力した情報は保存されませんか？",
+              answer: (
+                <>
+                  学習利用と保存は別です。会話、添付ファイル、プロジェクトの資料、保存済みメモリはそれぞれの保持・削除方法を確認します。ClaudeのIncognitoも通常30日保持されます。具体的な確認場所は
+                  <Link href="#chat-settings">ChatGPT・Claudeの設定チェック</Link>
+                  を参照してください。
+                </>
+              ),
+            },
+            {
+              question:
                 "誤って顧問先の個人情報をAIに入力したら、必ず漏えい等報告が必要ですか？",
               answer:
                 "一律には決まりません。事実関係と規則7条の4類型に当たるかで判断します。まず責任者に報告して影響範囲を確認し、迷う場合はPPCや専門家に相談してください。",
@@ -1036,7 +1195,7 @@ export default function Page() {
 
         <ColumnSection id="references" title="参考資料">
           <p>
-            本記事で参照した資料です。括弧内は発行元、発行日・更新日、確認日（いずれも2026-10-10）です。法令は改正されることがあるため、最新の条文をご確認ください。
+            本記事で参照した資料です。括弧内は発行元、発行日・更新日、確認日です。法令・指針とGoogle・Microsoftの情報は2026-10-10、ChatGPT・Claudeの設定に関する公式資料は2026-10-11に確認しました。法令やサービスの条件は変わるため、利用前に最新の内容をご確認ください。
           </p>
           {references.map((group) => (
             <div key={group.group}>
