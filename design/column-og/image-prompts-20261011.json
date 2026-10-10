@@ -1,0 +1,53 @@
+{
+  "createdAt": "2026-10-11",
+  "tool": "Built-in image_gen.imagegen",
+  "purpose": "Editorial thumbnail refresh based on the user's purple-border reference",
+  "note": "Photos are generated illustrative scenes of fictional people and generic documents; they are not customer photographs or product screenshots.",
+  "assets": [
+    {
+      "filename": "ai-adoption-photo.webp",
+      "kind": "photo",
+      "prompt": "Use case: photorealistic-natural. Asset type: editorial photograph for a Japanese accounting firm's article about introducing AI into office workflows. Scene: a small, believable Japanese accounting office in daylight. Subject: two Japanese accounting professionals, a woman in her 30s and a man in his 40s in ordinary smart business clothing, sitting side by side discussing a workflow at a laptop, a modest paper checklist and folders on the desk. Candid collaborative moment, natural hands and expressions, authentic skin and fabric texture, no staged handshake. Medium wide landscape composition, both people and laptop fit comfortably in frame with 10% safe margin; 3:2 landscape photo intended to crop to a thumbnail. Bright soft natural lighting; white and neutral office palette with understated navy details. No visible text, no readable personal data, no brand logos, no watermarks, no fake AI holograms, no robots. The people are fictional and should not resemble any named real individual. Generate only the photograph; headline and border will be added separately in code."
+    },
+    {
+      "filename": "bookkeeping-team-photo.webp",
+      "kind": "photo",
+      "prompt": "Use case: photorealistic-natural. Asset type: editorial photograph for an accounting bookkeeping and BPO workflow article. Scene: practical modern Japanese back-office workplace, daylight, tidy but lived-in. Subject: two Japanese bookkeepers in ordinary business casual clothes working at neighboring desks, one sorting a small batch of generic paper receipts and placing them next to a document scanner, the other reviewing rows on a monitor from a natural angle. Medium wide landscape photo, realistic workspace and credible small office, natural hands and skin textures. Keep people and scanner centered within generous safe margins for a 3:2 crop. White/gray/navy palette, soft daylight, photographic documentary realism. No legible text or numbers, no personal or company data, no logos, no watermarks, no magical floating interfaces or robots. Fictional people only. Generate only the photograph, no headline or frame."
+    },
+    {
+      "filename": "year-end-photo.webp",
+      "kind": "photo",
+      "prompt": "Use case: photorealistic-natural. Asset type: editorial photograph for an article on year-end payroll adjustment preparation at a Japanese accounting office. Scene: an accountant's wooden desk near a window in a Japanese office in late autumn. Subject: hands of an accounting professional sorting generic paper declaration forms and small insurance certificate envelopes, a calculator, pen, discreet laptop at the edge; a folded navy cardigan nearby suggests the season. Close-up desk scene with physically plausible documents and hand anatomy, real paper grain and natural imperfect edges, soft bright daylight. Landscape 3:2 framing, centered objects with 10% safe crop margin. Document print is softly out of focus and abstract, no readable names, identifiers, tax numbers or numbers. No text, logos or watermarks, no calendars with dates, no holiday decorations or futuristic objects. Generate only the photograph, no headline or frame."
+    },
+    {
+      "filename": "tax-documents-photo.webp",
+      "kind": "photo",
+      "prompt": "Use case: photorealistic-natural. Asset type: editorial photograph for an accounting firm's article about organizing personal tax filing documents. Scene: a real-looking Japanese office desk in bright natural daylight. Subject: overhead flat-lay of a pair of hands organizing generic receipts and document sheets into three neatly spaced stacks with unlabeled divider folders; laptop corner and calculator sit at the edges, a pen and a simple paper clip. Focus on the practical task of collecting and arranging documents, realistic paper texture and natural hands. Landscape 3:2 photographic composition with centered documents and safe margins for thumbnail crop; restrained white, warm wood and navy palette. No readable text, no real financial records or personal data, no logos, no watermarks, no floating icons or robots. Generate only the photograph, no headline or frame."
+    },
+    {
+      "filename": "quality-review-photo.webp",
+      "kind": "photo",
+      "prompt": "Use case: photorealistic-natural. Asset type: editorial photograph for an article on quality review after AI-OCR bookkeeping. Scene: ordinary Japanese accounting office desk, soft daylight. Subject: an experienced Japanese accounting supervisor in her 40s and a younger colleague in his 30s checking a generic paper invoice against abstract, unfocused spreadsheet rows on a laptop. Supervisor points naturally to a line on the paper with a pen while colleague listens, calm serious review rather than sales posing. Medium-close landscape 3:2 composition with people, paper and laptop safely in frame, 10% safe margin. Authentic faces, hands, fabric and paper texture, bright neutral office palette, subtle navy attire. No readable text or data, no identifiable customers, no logos, no watermarks, no screen-filling holograms or robots. Fictional people only. Generate only the photograph, no headline or frame."
+    },
+    {
+      "filename": "inheritance-records-photo.webp",
+      "kind": "photo",
+      "prompt": "Use case: photorealistic-natural. Asset type: editorial desk photograph for an article about ordering several bank-account transaction histories for inheritance tax preparation. Scene: understated Japanese accounting office desk in daylight. Subject: close overhead three-quarter view of generic unbranded bank passbooks and printed transaction-history sheets from multiple accounts, neatly fanned next to a laptop showing an abstract blurred tabular timeline and a calculator. An accountant's hand moves one page into order, realistic fingers, paper grain, restrained pale blue and gray stationery. Landscape 3:2 photo, centered key objects with safe crop margins, natural soft light and authentic everyday office textures. All text and numeric details are unreadable; no names, account numbers, signatures, logos or watermarks. No cash piles, luxury wealth symbols, grieving people or futuristic imagery. Generate only the photograph, no headline or frame."
+    },
+    {
+      "filename": "ai-accountant-illustration.png",
+      "kind": "illustration",
+      "prompt": "Use case: illustration-story. Asset type: standalone illustration insert for accounting AI article thumbnails, not a complete thumbnail. Primary request: an original Japanese editorial-style illustration of a business accounting professional standing with a tablet beside a tall stylized spreadsheet panel, a few small paper receipts and a small friendly purple abstract AI assistant orb. Clean delicate navy outlines, flat white and pale lavender fills, vivid purple accents (#6250ff) and a tiny mint accent, understated soft shading. Similar to clean business web editorial illustrations, not a logo or icon set. Centered full figures with everything inside generous safe margins, compact vertical cluster suited for the left side of a white business thumbnail; no lettering, no numbers, no brand marks, no watermark, no frame, no headline. Genuinely transparent background, crisp edges and preserve alpha. Only one coherent illustration, no collage or multiple panels."
+    },
+    {
+      "filename": "security-illustration.png",
+      "kind": "illustration",
+      "prompt": "Use case: illustration-story. Asset type: standalone illustration insert for Japanese accounting AI security and policy article thumbnails. Primary request: an original clean editorial illustration of a Japanese female accounting professional holding a closed folder beside a large simple lavender shield with a dark purple padlock, a short stack of paper files and a small cloud shape behind. Fine navy linework, flat white and pale lavender fills, vivid purple accents (#6250ff), tiny mint accent, subtle shading, serious reassuring business style. Centered compact vertical group with full figure and all objects visible, generous safe margins, fits the left side of a white thumbnail. No text, no numbers, no logos, no watermark, no border, no headline. Genuinely transparent background with crisp clean edges and preserved alpha. One coherent illustration only, not a collage or icon grid."
+    },
+    {
+      "filename": "data-link-illustration.png",
+      "kind": "illustration",
+      "prompt": "Use case: illustration-story. Asset type: standalone illustration insert for Japanese accounting software data conversion and matching article thumbnails. Primary request: original clean business editorial illustration showing a Japanese accounting professional at a laptop, two stylized document/table panels connected by a curved purple transfer arrow, and a modest stack of receipts; subtle check symbol indicates matching. Fine dark navy outlines, flat white and pale lavender fills, vivid purple accents (#6250ff), a small mint accent, understated soft shading. Centered compact vertical composition, full character and all panels within generous safe margins, designed for left side of a white article thumbnail. Abstract table rows only, no legible letters or numbers, no branded UI or logos, no watermark, no headline or border. Genuinely transparent background, preserve alpha, crisp edges. One coherent illustration only, no multiple panels or grid of assets."
+    }
+  ]
+}

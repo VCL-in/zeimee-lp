@@ -26,10 +26,13 @@
   coverDesign: {
     intro: "【カバーの補助説明】",
     title: "【短いテーマ名】",
-    // 比較記事のみ count: 実際の掲載サービス数,
+    titleLines: ["【見出しの1行目】", "【見出しの2行目】"],
+    // 数を訴求する場合だけ count: 本文で扱う実際の数,
+    // countLabel: "業務" / "項目" / "ステップ" / "選" など,
     message: "【比較・解説・導入ガイドなど】",
     caption: "【何がわかるか】",
-    illustration: "/images/column/【作成したイラスト】.webp",
+    asset: "/images/column/assets/【作成した画像】.webp",
+    assetKind: "illustration", // 現場の雰囲気を伝える記事は "photo"
   },
   publishedAt: "【実際の公開日時ISO8601】",
   updatedAt: "【実際の内容更新日時ISO8601】",
@@ -38,7 +41,13 @@
 
 `coverDesign` の数字を省くと解説記事向けになる。カバー文言と画像は記事別に設定し、記事10001の内容を引き継がない。画像生成が必要な場合はImage機能を使う。OG画像も新記事の内容に合わせて作成する。
 
+追加記事は白背景・紫枠・短い見出し・テーマ画像を共通のカバーに使う。記事冒頭は `ColumnCover` のHTML/CSSを描画し、一覧には同じカバーを書き出した1200×630画像を使う。既存10001は比較記事のレイアウトを維持する。`illustration` は旧データ向けの互換フィールドとして残す。
+
+写真風の生成画像は架空の人物とダミー書類によるイメージとして扱い、顧客の写真・導入実績・実際の製品画面と説明しない。生成プロンプトと記事への割当ては `design/column-og/image-prompts-20261011.json` と `design/column-og/README.md` に記録する。
+
 本文を確定したら `python3 design/fonts/subset_column.py` で日本語フォントを再生成する（fontToolsが必要）。本文の表データを置く `.ts` ファイルも収集対象になる。カバーのOG画像は、ローカルサーバーを起動して `node design/column-og/generate.mjs 10027` で生成できる。Playwrightが別の場所にある場合は `PLAYWRIGHT` にその `index.mjs` のパスを指定し、標準の3310番ポートと違う場合は `BASE_URL` を指定する。生成した1200×630画像は切れや文字化けを目視で確認する。
+
+2026-10-11の25記事更新では `OUTPUT_SUFFIX=-og-v2` を指定し、`coverImage` を `<id>-og-v2.png` に合わせる。同じURLの画像キャッシュを避け、前の版も残す。
 
 ## 共通ブロック
 
