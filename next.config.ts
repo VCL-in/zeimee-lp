@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       })),
       { source: "/lp", destination: "/", permanent: true },
+      {
+        source: "/column/accounting-firm-bookkeeping-automation-comparison",
+        destination: "/column/10001",
+        permanent: true,
+      },
     ];
   },
 };
