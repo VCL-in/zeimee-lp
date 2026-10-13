@@ -2745,6 +2745,9 @@ details[open] .faq-toggle:after {
   margin: 0 0 32px;
   color: var(--muted);
 }
+.thanks-download {
+  margin: 0 0 36px;
+}
 .offer-box {
   display: grid;
   grid-template-columns: 1fr auto;

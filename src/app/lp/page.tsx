@@ -431,7 +431,7 @@ export default function LandingPage() {
             <div className="contact-copy" data-reveal>
               <h2>資料ダウンロード</h2>
               <p>
-                フォーム送信後、すぐに面談予約へ進めます。24時間以内のご予約で初期費用5万円割引。
+                フォーム送信後、サービス資料のPDFをダウンロードできます。続けて面談予約へ進めます。24時間以内のご予約で初期費用5万円割引。
               </p>
             </div>
             <div className="contact-panel">
