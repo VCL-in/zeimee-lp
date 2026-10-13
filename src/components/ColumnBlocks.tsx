@@ -152,7 +152,6 @@ export function ColumnCta({
               </strong>
               <span>会計事務所に特化したAI導入・開発支援</span>
             </div>
-            <span className={styles.resourceImageNote}>サービス紹介イメージ</span>
           </div>
           <h3>Zeimeeサービス資料</h3>
           <p>支援内容やAI導入の進め方をご案内します。</p>
@@ -172,7 +171,6 @@ export function ColumnCta({
               fill
               sizes="(max-width: 640px) calc(100vw - 88px), (max-width: 1100px) 36vw, 380px"
             />
-            <span className={styles.resourceImageNote}>生成イメージ</span>
           </div>
           <h3>AI導入・開発支援の進め方</h3>
           <p>

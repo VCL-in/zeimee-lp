@@ -37,9 +37,6 @@ function CoverArtwork({
           }
           preload={!compact}
         />
-        {photo && (
-          <span className={styles.editorialCoverPhotoLabel}>生成イメージ</span>
-        )}
       </div>
     );
   }
