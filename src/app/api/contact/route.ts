@@ -4,6 +4,7 @@ import {
   BOOKING_URL,
   OFFER_LABEL,
   OFFER_WINDOW_MS,
+  SERVICE_DOCUMENT_URL,
   formatDeadlineJst,
 } from "@/lib/document-offer";
 
@@ -129,7 +130,7 @@ export async function POST(request: Request) {
   const leadLabel = isSeminarApplication ? "セミナー申し込み" : "資料請求";
   const offerDeadline = new Date(Date.now() + OFFER_WINDOW_MS);
   const offerDeadlineLabel = `${formatDeadlineJst(offerDeadline)}（日本時間）`;
-  const documentUrl = process.env.DOCUMENT_DOWNLOAD_URL?.trim();
+  const documentUrl = SERVICE_DOCUMENT_URL;
   const submittedSeminarDetails = isSeminarApplication
     ? [
         `種別: ${leadLabel}`,
@@ -216,9 +217,7 @@ export async function POST(request: Request) {
         "",
         "この度は、Zeimeeの資料をご請求いただき、誠にありがとうございます。",
         "",
-        documentUrl
-          ? `資料は下記URLからダウンロードいただけます。\n${documentUrl}`
-          : "資料は担当者より改めてお送りいたします。",
+        `資料は下記URLからダウンロードいただけます。\n${documentUrl}`,
         "",
         "■ 24時間以内のご予約で初期費用5万円割引",
         `${offerDeadlineLabel}までにオンライン面談をご予約いただいた方は、初期費用を5万円割引いたします（面談日は問いません）。`,
@@ -255,11 +254,7 @@ export async function POST(request: Request) {
       <p>${escapeHtml(name)} 様</p>
       <p>この度は、Zeimeeの資料をご請求いただき、誠にありがとうございます。</p>
       <p>
-        ${
-          documentUrl
-            ? `資料は下記URLからダウンロードいただけます。<br /><a href="${escapeHtml(documentUrl)}">${escapeHtml(documentUrl)}</a>`
-            : "資料は担当者より改めてお送りいたします。"
-        }
+        資料は下記URLからダウンロードいただけます。<br /><a href="${escapeHtml(documentUrl)}">${escapeHtml(documentUrl)}</a>
       </p>
       <p>
         <strong>■ 24時間以内のご予約で初期費用5万円割引</strong><br />

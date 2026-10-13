@@ -5,7 +5,12 @@ import { useRouter } from "next/navigation";
 import { track } from "@vercel/analytics";
 import { ArrowUpRight } from "lucide-react";
 import { INDUSTRIES } from "@/lib/contact-options";
-import { LEAD_STORAGE_KEY, type DocumentLead } from "@/lib/document-offer";
+import {
+  LEAD_STORAGE_KEY,
+  SERVICE_DOCUMENT_FILENAME,
+  SERVICE_DOCUMENT_PATH,
+  type DocumentLead,
+} from "@/lib/document-offer";
 
 export function ContactForm() {
   const router = useRouter();
@@ -57,6 +62,12 @@ export function ContactForm() {
       try {
         sessionStorage.setItem(LEAD_STORAGE_KEY, JSON.stringify(lead));
       } catch {}
+      const downloadLink = document.createElement("a");
+      downloadLink.href = SERVICE_DOCUMENT_PATH;
+      downloadLink.download = SERVICE_DOCUMENT_FILENAME;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      downloadLink.remove();
       track("document_request");
       setStatus("sent");
       router.push("/document/thanks");
@@ -220,7 +231,7 @@ export function ContactForm() {
       <div aria-live="polite" aria-atomic="true">
         {status === "sent" && (
           <p className="form-status success">
-            資料請求を受け付けました。面談予約ページへ移動します…
+            資料をダウンロードします。面談予約ページへ移動します…
           </p>
         )}
         {status === "error" && (
