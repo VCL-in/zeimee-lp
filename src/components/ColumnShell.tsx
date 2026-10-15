@@ -43,7 +43,7 @@ export function ColumnShell({
               </p>
             </div>
             <Link className={styles.ctaButton} href="/#contact">
-              資料をダウンロード <ArrowUpRight />
+              資料DL・面談予約 <ArrowUpRight />
             </Link>
           </aside>
         )}

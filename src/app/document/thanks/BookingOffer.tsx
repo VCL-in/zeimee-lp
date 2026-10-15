@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { track } from "@vercel/analytics";
+import { flyerEventProperties } from "@/lib/flyer-experiment";
 import {
   BOOKING_URL,
   LEAD_STORAGE_KEY,
@@ -77,6 +78,7 @@ export function BookingOffer() {
           onBookingComplete: () => {
             setBooked(true);
             track("booking_complete", {
+              ...flyerEventProperties(),
               withinOffer: stored?.offerDeadline
                 ? Date.now() <= Date.parse(stored.offerDeadline)
                 : false,

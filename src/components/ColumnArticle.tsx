@@ -163,7 +163,7 @@ export function ColumnArticle({
               <h2>Zeimeeの導入資料</h2>
               <p>AI導入の進め方・事例をご紹介します。</p>
               <Link className={styles.ctaButton} href="/#contact">
-                資料ダウンロード <ArrowUpRight aria-hidden="true" />
+                資料DL・面談予約 <ArrowUpRight aria-hidden="true" />
               </Link>
             </div>
             <div className={styles.sideRelated}>
