@@ -26,7 +26,7 @@ export default function DocumentThanksPage() {
         <p className="thanks-badge">Thank you</p>
         <h1>資料請求ありがとうございます</h1>
         <p className="thanks-lead">
-          サービス資料は下のボタンからもダウンロードできます。メールでも資料のリンクをご案内しています。
+          サービス資料は下のボタンからダウンロードできます。
           <br />
           続けて、30分のオンライン面談をご予約いただけます。
         </p>

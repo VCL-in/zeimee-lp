@@ -109,14 +109,14 @@ function Brand() {
 }
 function ContactBanner({ id }: { id: string }) {
   return (
-    <section className="contact-banner" id={id} aria-label="資料ダウンロード">
+    <section className="contact-banner" id={id} aria-label="資料DL・面談予約">
       <div className="section-shell contact-banner-inner">
         <h2>
-          お問い合わせ・資料ダウンロードはこちらから
+          資料DL・面談予約はこちらから
         </h2>
         <div className="contact-banner-panel">
           <a className="button" href="#contact">
-            <span>資料ダウンロード（無料）</span>
+            <span>資料DL・面談予約</span>
             <ArrowUpRight aria-hidden="true" />
           </a>
         </div>
@@ -156,7 +156,7 @@ export default function LandingPage() {
                 </h1>
                 <div className="hero-description">
                   <a className="button" href="#contact">
-                    資料ダウンロード（無料）
+                    資料DL・面談予約
                     <ArrowUpRight />
                   </a>
                 </div>
@@ -305,7 +305,7 @@ export default function LandingPage() {
               },
             ].map(({ name, image, description }) => (
               <article className="tool-card" key={name} data-reveal>
-                <a className="tool-card-link" href="#contact" aria-label={`${name}の資料をダウンロードする`}>
+                <a className="tool-card-link" href="#contact" aria-label={`${name}の資料DL・面談予約`}>
                 <Image
                   className="tool-preview"
                   src={`/lp/tools/${image}.svg`}
@@ -429,9 +429,9 @@ export default function LandingPage() {
         <section className="contact" id="contact">
           <div className="section-shell contact-grid">
             <div className="contact-copy" data-reveal>
-              <h2>資料ダウンロード</h2>
+              <h2>資料DL・面談予約</h2>
               <p>
-                フォーム送信後、サービス資料のPDFをダウンロードできます。続けて面談予約へ進めます。24時間以内のご予約で初期費用5万円割引。
+                フォーム送信後、資料DL・面談予約ページへ進みます。資料のダウンロードと、30分のオンライン面談のご予約ができます。24時間以内のご予約で初期費用5万円割引。
               </p>
             </div>
             <div className="contact-panel">

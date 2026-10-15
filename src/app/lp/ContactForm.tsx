@@ -5,10 +5,9 @@ import { useRouter } from "next/navigation";
 import { track } from "@vercel/analytics";
 import { ArrowUpRight } from "lucide-react";
 import { INDUSTRIES } from "@/lib/contact-options";
+import { documentThanksPath, flyerEventProperties } from "@/lib/flyer-experiment";
 import {
   LEAD_STORAGE_KEY,
-  SERVICE_DOCUMENT_FILENAME,
-  SERVICE_DOCUMENT_PATH,
   type DocumentLead,
 } from "@/lib/document-offer";
 
@@ -62,15 +61,9 @@ export function ContactForm() {
       try {
         sessionStorage.setItem(LEAD_STORAGE_KEY, JSON.stringify(lead));
       } catch {}
-      const downloadLink = document.createElement("a");
-      downloadLink.href = SERVICE_DOCUMENT_PATH;
-      downloadLink.download = SERVICE_DOCUMENT_FILENAME;
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      downloadLink.remove();
-      track("document_request");
+      track("document_request", flyerEventProperties());
       setStatus("sent");
-      router.push("/document/thanks");
+      router.push(documentThanksPath());
     } catch (error) {
       setStatus("error");
       setErrorMessage(
@@ -225,13 +218,13 @@ export function ContactForm() {
         type="submit"
         disabled={status === "sending"}
       >
-        {status === "sending" ? "送信しています…" : "資料をダウンロードする（無料）"}
+        {status === "sending" ? "送信しています…" : "資料DL・面談予約"}
         <ArrowUpRight aria-hidden="true" />
       </button>
       <div aria-live="polite" aria-atomic="true">
         {status === "sent" && (
           <p className="form-status success">
-            資料をダウンロードします。面談予約ページへ移動します…
+            資料DL・面談予約ページへ移動します…
           </p>
         )}
         {status === "error" && (

@@ -96,7 +96,7 @@ export function CompanyInformation() {
           </dl>
           <a className={styles.contactLink} href="#contact">
             <span>
-              <small>資料ダウンロード</small>Zeimee・FDEの資料を受け取る
+              <small>資料DL・面談予約</small>Zeimee・FDEの資料を受け取る
             </span>
             <ArrowUpRight aria-hidden="true" />
           </a>
