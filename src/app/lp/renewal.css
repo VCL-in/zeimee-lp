@@ -1,0 +1,329 @@
+/* トップ（zeimee.com）専用。すべて .aia の中だけに効く。クラス名には aa- を付けて、共通の globals.css と重ならないようにしている。
+   配色は黒・白・薄い灰色。見出しは細めの大きな字。 */
+.aia{--ink:#16181C; --sub:#505A63; --mute:#767676;
+  --bg:#FFFFFF; --pale:#F4F4F4; --line:#E4E4E4; --black:#000000;
+  --w-sub:rgba(244,244,244,.62); --w-mute:rgba(244,244,244,.42); --w-line:rgba(255,255,255,.14);
+  --ja:var(--font-inter),var(--font-noto-sans-jp),"Hiragino Sans","Hiragino Kaku Gothic ProN",sans-serif;
+  --gut:clamp(20px,2.8vw,40px);}
+.aia *{box-sizing:border-box}
+.aia{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ja);font-weight:400;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip;font-feature-settings:"palt"}
+.aia h1,.aia h2,.aia h3,.aia p,.aia ul,.aia ol,.aia dl,.aia dd,.aia figure{margin:0;padding:0}
+.aia ul,.aia ol{list-style:none}
+.aia img{display:block;max-width:100%}
+.aia a{color:inherit;text-decoration:none}
+.aia h1,.aia h2,.aia h3,.aia .aa-lede{word-break:auto-phrase}
+.aia .aa-wrap{max-width:1440px;margin:0 auto;padding-inline:var(--gut)}
+.aia section{position:relative}
+.aia .aa-h-xl{font-size:clamp(34px,6.1vw,88px);font-weight:500;line-height:1.16;letter-spacing:-.015em}
+.aia .aa-h-xl i{font-style:normal;color:var(--mute)}
+.aia .aa-h-l{font-size:clamp(30px,4.45vw,64px);font-weight:500;line-height:1.18;letter-spacing:-.015em}
+.aia .aa-eyebrow{font-size:13px;line-height:1.5;letter-spacing:.2em;text-transform:uppercase}
+.aia .aa-more{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--sub);transition:color .2s,gap .2s;white-space:nowrap}
+.aia .aa-more::after{content:"→"}
+.aia .aa-more:hover{color:var(--ink);gap:12px}
+.aia .aa-pill{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;border:1px solid transparent;cursor:pointer;font-family:inherit;transition:background .2s,color .2s,border-color .2s}
+.aia .aa-pill.aa-dark{background:#161618;color:#fff}
+.aia .aa-pill.aa-dark:hover{background:#3A3A3E}
+.aia .aa-pill.aa-light{background:#fff;color:var(--ink);border-color:var(--line)}
+.aia .aa-pill.aa-light:hover{background:var(--pale)}
+.aia .aa-pill.aa-arrow::after{content:"→"}
+.aia .aa-pill.aa-lg{height:52px;padding:0 26px;font-size:16px}
+.aia .aa-header{position:sticky;top:0;z-index:50;background:#fff;height:72px;display:flex;align-items:center;gap:40px;padding:0 var(--gut);transition:box-shadow .2s}
+.aia .aa-header.aa-on{box-shadow:0 1px 0 var(--line)}
+.aia .aa-header img{height:26px;width:auto}
+.aia .aa-header nav{display:flex;gap:6px;font-size:15px;font-weight:500;color:rgba(22,24,28,.7);margin-right:auto}
+.aia .aa-header nav a{padding:8px 12px;border-radius:6px;transition:background .2s,color .2s}
+.aia .aa-header nav a:hover{background:var(--pale);color:var(--ink)}
+.aia .aa-stage{position:relative;margin:0 8px 8px;height:calc(100vh - 80px);min-height:520px;max-height:860px;border-radius:14px;overflow:hidden;background:#111;color:#fff;isolation:isolate}
+.aia .aa-shot{position:absolute;inset:-4%;background:center/cover no-repeat;animation:aa-drift 18s ease-in-out infinite alternate}
+.aia .aa-shot.aa-a{background-image:url(/lp/seiwa-team.png);filter:grayscale(.5) contrast(1.05) brightness(.82)}
+.aia .aa-shot.aa-b{background-image:url(/images/hero-ui-flow-poster-aio-v1.jpg);mix-blend-mode:screen;opacity:0;filter:grayscale(1) invert(1) brightness(.9);animation:aa-drift 18s ease-in-out infinite alternate-reverse,aa-fadeb 9s ease-in-out infinite alternate}
+@keyframes aa-drift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.08) translate(-1.5%,-1%)}}
+@keyframes aa-fadeb{0%,45%{opacity:0}80%,100%{opacity:.16}}
+.aia .aa-shade{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(8,8,12,.42),rgba(8,8,12,.7))}
+.aia .aa-stage h1{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:0 20px;z-index:2;font-size:clamp(34px,6.1vw,88px);font-weight:500;line-height:1.1;letter-spacing:-.015em}
+.aia .aa-stage h1 span{display:block}
+.aia .aa-scroll{position:absolute;left:0;right:0;bottom:22px;z-index:2;text-align:center;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.8);display:grid;justify-items:center;gap:4px}
+.aia .aa-scroll::before{content:"";width:9px;height:9px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg)}
+.aia .aa-mission{background:#000;color:#F4F4F4;text-align:center;padding:clamp(96px,11vw,160px) 0}
+.aia .aa-mission .aa-eyebrow{color:var(--w-mute)}
+.aia .aa-mission h2{margin-top:36px}
+.aia .aa-mission p{margin:44px auto 0;max-width:34em;font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:var(--w-sub)}
+.aia .aa-mission .aa-pill{margin-top:44px}
+.aia .aa-sec{padding:clamp(88px,10vw,150px) 0}
+.aia .aa-sec.aa-pale{background:var(--pale)}
+.aia .aa-sec .aa-h-l + *,.aia .aa-sec .aa-h-xl + *{margin-top:clamp(36px,4vw,56px)}
+.aia .aa-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.aia .aa-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.aia .aa-card{background:#fff;border-radius:6px;padding:24px 24px 28px}
+.aia .aa-card .aa-n{font-size:13px;font-weight:700}
+.aia .aa-card h3{font-size:20px;font-weight:600;line-height:1.5;margin-top:22px}
+.aia .aa-card .aa-s{font-size:15px;color:var(--sub);margin-top:2px}
+.aia .aa-card p{font-size:15px;line-height:1.75;color:var(--sub);margin-top:16px}
+.aia .aa-list{border-top:1px solid var(--line)}
+.aia .aa-list > li{display:grid;grid-template-columns:232px minmax(0,1fr) auto;gap:32px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+.aia .aa-thumb{aspect-ratio:4/3;border-radius:8px;background:var(--pale);display:grid;place-content:center;padding:14px;overflow:hidden}
+.aia .aa-thumb.aa-k{background:#161618}
+.aia .aa-thumb q{quotes:none;display:block;background:#161618;color:#fff;font-size:12.5px;font-weight:500;line-height:1.5;border-radius:12px 12px 3px 12px;padding:8px 12px;max-width:180px}
+.aia .aa-thumb.aa-k q{background:#fff;color:var(--ink)}
+.aia .aa-list h3{font-size:clamp(22px,2.3vw,32px);font-weight:700;line-height:1.25;letter-spacing:-.02em}
+.aia .aa-list p{font-size:15px;line-height:1.7;color:var(--sub);margin-top:8px;max-width:38em}
+.aia .aa-chip{display:inline-block;font-size:13px;font-weight:500;background:var(--pale);border-radius:999px;padding:4px 12px;line-height:1.5}
+.aia .aa-fine{margin-top:20px;font-size:13px;line-height:1.7;color:var(--mute)}
+.aia .aa-news{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.aia .aa-post{background:#fff;border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.aia .aa-post figure{aspect-ratio:16/9;overflow:hidden;background:#EDEDED}
+.aia .aa-post figure img{width:100%;height:100%;object-fit:cover}
+.aia .aa-post figure.aa-shot2{padding:28px 0 0 28px}
+.aia .aa-post figure.aa-shot2 img{object-position:left top;border-radius:6px 0 0 0;box-shadow:0 0 0 1px var(--line)}
+.aia .aa-post .aa-txt{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
+.aia .aa-post .aa-meta{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--mute)}
+.aia .aa-post h3{font-size:clamp(18px,1.7vw,22px);font-weight:600;line-height:1.45;margin-top:12px}
+.aia .aa-post p{font-size:15px;line-height:1.75;color:var(--sub);margin-top:10px}
+.aia details{border-bottom:1px solid var(--line)}
+.aia .aa-faq{border-top:1px solid var(--line)}
+.aia summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:26px 0;font-size:clamp(16px,1.4vw,20px);font-weight:500;line-height:1.5}
+.aia summary::-webkit-details-marker{display:none}
+.aia summary::after{content:"";flex:none;width:16px;height:16px;background:linear-gradient(var(--ink),var(--ink)) center/100% 1.5px no-repeat,linear-gradient(var(--ink),var(--ink)) center/1.5px 100% no-repeat;transition:transform .3s}
+.aia details[open] summary::after{transform:rotate(45deg)}
+.aia details p{padding:0 60px 26px 0;font-size:15px;line-height:1.75;color:var(--sub)}
+.aia .aa-contact{background:#000;color:#F4F4F4;padding:clamp(88px,10vw,150px) 0}
+.aia .aa-contact .aa-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.aia .aa-contact .aa-eyebrow{color:var(--w-mute)}
+.aia .aa-contact h2{margin-top:28px}
+.aia .aa-contact .aa-lede{margin-top:32px;font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:var(--w-sub);max-width:26em}
+.aia .aa-pts{margin-top:40px;border-top:1px solid var(--w-line)}
+.aia .aa-pts li{padding:16px 0;border-bottom:1px solid var(--w-line);font-size:15px}
+.aia [hidden]{display:none!important}
+.aia footer{background:#000;color:#F4F4F4;padding:72px 0 40px;border-top:1px solid var(--w-line)}
+.aia footer .aa-cols{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+.aia footer img{height:28px}
+.aia footer h3{font-size:15px;font-weight:500;margin-bottom:18px}
+.aia footer ul{display:grid;gap:12px;font-size:15px;color:var(--w-mute)}
+.aia footer ul a:hover{color:#fff}
+.aia footer .aa-end{margin-top:96px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.aia footer .aa-tag{font-size:clamp(44px,6.7vw,96px);font-weight:700;line-height:1;letter-spacing:-.025em}
+.aia footer .aa-copy{font-size:13px;color:var(--w-mute)}
+.aia .aa-mcta{display:none}
+@media (max-width:1000px){
+.aia .aa-header nav{display:none}
+.aia .aa-header{justify-content:space-between}
+.aia .aa-contact .aa-cols{grid-template-columns:1fr}
+.aia .aa-cards{grid-template-columns:1fr}
+.aia .aa-list > li{grid-template-columns:160px minmax(0,1fr)}
+.aia .aa-list > li > .aa-chip{display:none}
+.aia .aa-news{grid-template-columns:1fr}
+.aia footer .aa-cols{grid-template-columns:1fr 1fr}
+.aia footer .aa-cols > :first-child{grid-column:1/-1}
+}
+@media (max-width:640px){
+.aia .aa-header{height:60px}
+.aia .aa-header img{height:22px}
+.aia .aa-stage{height:calc(100svh - 110px);min-height:440px;margin:0 6px 6px}
+.aia .aa-list > li{grid-template-columns:112px minmax(0,1fr);gap:16px;padding:18px 0;align-items:start}
+.aia .aa-thumb{padding:8px}
+.aia .aa-thumb q{font-size:10.5px;padding:6px 8px}
+.aia .aa-list p{font-size:14px}
+.aia details p{padding-right:0}
+.aia footer{padding-bottom:110px}
+.aia .aa-mcta{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;transform:translateY(140%);transition:transform .35s}
+.aia .aa-mcta.aa-show{transform:none}
+.aia .aa-mcta .aa-pill{width:100%;justify-content:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2)}
+}
+@media (prefers-reduced-motion:reduce){
+.aia *{transition:none!important}
+.aia .aa-shot{animation:none}
+}
+
+/* ---- ここから下は、トップの中身に合わせて足した物 ---- */
+.aia .aa-skip{position:absolute;left:-9999px;top:8px;z-index:100;background:#fff;color:var(--ink);padding:8px 12px;border-radius:6px}
+.aia .aa-skip:focus{left:8px}
+.aia section[id]{scroll-margin-top:84px}
+.aia .aa-shot.aa-a{inset:0;background-image:url(/lp/hero-field-poster.jpg);background-position:center;filter:none;animation:none}
+.aia .aa-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s}
+.aia .aa-vid.aa-ready{opacity:1}
+.aia .aa-shot.aa-b{z-index:1}
+.aia .aa-shade{z-index:1;background:radial-gradient(ellipse at center,rgba(8,8,12,.38),rgba(8,8,12,.62))}
+.aia .aa-header .aa-logo{height:26px;width:auto}
+.aia .aa-mission .aa-def{margin-top:18px;font-size:13px;color:var(--w-mute)}
+
+.aia .aa-intro{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:end}
+.aia .aa-intro p{font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:var(--sub)}
+.aia .aa-lead-sec .aa-pill{margin-top:32px}
+.aia .aa-lead-sec .aa-h-xl{font-size:clamp(30px,4.6vw,68px)}
+.aia .aa-lead-sec .aa-intro{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
+@media (max-width:1000px){.aia .aa-lead-sec .aa-intro{grid-template-columns:1fr}}
+.aia .aa-people{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(40px,5vw,64px)}
+.aia .aa-person{background:var(--pale);border-radius:6px;overflow:hidden;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1fr)}
+.aia .aa-person figure{position:relative;min-height:320px;background:#E9E9E9}
+.aia .aa-person figure img{object-fit:cover;object-position:center top}
+.aia .aa-person > div{padding:26px 26px 28px;display:flex;flex-direction:column}
+.aia .aa-person .aa-role{font-size:13px;color:var(--mute)}
+.aia .aa-person h3{font-size:24px;font-weight:600;line-height:1.4;margin-top:4px}
+.aia .aa-person .aa-title{font-size:15px;color:var(--sub);margin-top:2px}
+.aia .aa-person .aa-bio{font-size:14px;line-height:1.8;color:var(--sub);margin-top:auto;padding-top:20px}
+
+.aia .aa-cards.aa-four{grid-template-columns:repeat(4,1fr)}
+.aia .aa-promise{margin-top:clamp(56px,6vw,88px);display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.aia .aa-promise h3 i{font-style:normal;color:var(--mute)}
+
+.aia .aa-list > li{grid-template-columns:232px minmax(0,1fr) auto}
+.aia .aa-thumb.aa-img{position:relative;padding:0;background:#fff;border:1px solid var(--line)}
+.aia .aa-thumb.aa-img img{object-fit:cover;object-position:left top}
+.aia .aa-list-foot{margin-top:36px}
+
+.aia .aa-post figure{position:relative}
+.aia .aa-post figure img{object-fit:cover}
+.aia .aa-post figure.aa-art{background:#fff;border-bottom:1px solid var(--line)}
+.aia .aa-post figure.aa-art img{object-fit:contain;padding:18px}
+.aia .aa-post .aa-more{margin-top:auto;padding-top:20px}
+
+.aia .aa-rows{border-top:1px solid var(--line)}
+.aia .aa-rows a{display:grid;grid-template-columns:120px 110px minmax(0,1fr) auto;gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);transition:padding .2s}
+.aia .aa-rows a:hover{padding-left:8px}
+.aia .aa-rows time{font-size:13px;color:var(--mute)}
+.aia .aa-rows h3{font-size:clamp(16px,1.4vw,20px);font-weight:500;line-height:1.5}
+.aia .aa-rows a::after{content:"→";color:var(--sub)}
+.aia .aa-faq h3{font-size:inherit;font-weight:inherit;line-height:inherit}
+
+.aia #contact{background:#000;color:#F4F4F4;padding-block:clamp(88px,10vw,150px)}
+.aia #contact h2{text-align:left;margin-top:28px;font-size:clamp(30px,4.45vw,64px)}
+.aia .aa-panel{background:#fff;color:var(--ink);border-radius:8px;padding:32px}
+.aia .aa-panel-title{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:24px}
+.aia .aa-panel-title h3{font-size:18px;font-weight:600;line-height:1.5}
+.aia .aa-panel-title span{font-size:12px;color:var(--mute)}
+.aia .aa-panel .form-field label{font-weight:600}
+.aia .aa-panel .required{color:#C4321C}
+.aia .aa-panel .form-field input,.aia .aa-panel .form-field select,.aia .aa-panel .form-field textarea{border-color:#D0D0D0;border-radius:6px}
+.aia .aa-panel .form-field input:focus,.aia .aa-panel .form-field select:focus,.aia .aa-panel .form-field textarea:focus{border-color:#161618;outline:2px solid rgba(22,22,24,.16)}
+.aia .aa-panel .contact-form .button{height:52px;border-radius:999px;background:#161618;color:#fff;justify-content:center;gap:10px;padding:0 26px;font-weight:500;font-size:16px}
+.aia .aa-panel .contact-form .button:hover{background:#3A3A3E}
+.aia .aa-panel .form-status.success{background:var(--pale);color:var(--ink)}
+
+.aia .aa-company{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.aia .aa-company .aa-h-l{margin-top:28px}
+.aia .aa-dl{border-top:1px solid var(--line)}
+.aia .aa-dl > div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.75}
+.aia .aa-dl dt{color:var(--mute);font-size:13px;padding-top:2px}
+.aia .aa-company .aa-pill{margin-top:32px}
+.aia footer .aa-logo{height:28px;width:auto;filter:brightness(0) invert(1)}
+.aia footer .aa-top{font-size:13px;color:var(--w-mute)}
+
+@media (max-width:1000px){
+.aia .aa-intro,.aia .aa-company,.aia .aa-people{grid-template-columns:1fr}
+.aia .aa-cards.aa-four{grid-template-columns:1fr 1fr}
+.aia .aa-list > li{grid-template-columns:160px minmax(0,1fr)}
+.aia .aa-list > li > .aa-more{grid-column:2}
+.aia .aa-rows a{grid-template-columns:96px minmax(0,1fr) auto}
+.aia .aa-rows a > span{display:none}
+}
+@media (max-width:640px){
+.aia .aa-person{grid-template-columns:1fr}
+.aia .aa-person figure{min-height:0;aspect-ratio:4/3}
+.aia .aa-cards.aa-four{grid-template-columns:1fr}
+.aia .aa-list > li{grid-template-columns:112px minmax(0,1fr)}
+.aia .aa-list h3{font-size:19px}
+.aia .aa-rows a{grid-template-columns:1fr auto;gap:6px 12px}
+.aia .aa-rows time{grid-column:1/-1}
+.aia .aa-panel{padding:24px 18px}
+.aia .aa-dl > div{grid-template-columns:88px minmax(0,1fr)}
+}
+
+/* ---- 一番上：動画を画面いっぱいにし、ロゴ・メニュー・ボタンを動画の上に重ねる ---- */
+.aia .aa-header{position:fixed;inset:0 0 auto 0;background:transparent;transition:background .25s,box-shadow .25s,color .25s}
+.aia .aa-header nav{color:rgba(255,255,255,.9)}
+.aia .aa-header nav a:hover{background:rgba(255,255,255,.14);color:#fff}
+.aia .aa-header .aa-logo{filter:brightness(0) invert(1);transition:filter .25s}
+.aia .aa-header .aa-pill{background:#fff;color:#161618}
+.aia .aa-header .aa-pill:hover{background:#E9E9E9}
+.aia .aa-header.aa-on{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.aia .aa-header.aa-on nav{color:rgba(22,24,28,.7)}
+.aia .aa-header.aa-on nav a:hover{background:var(--pale);color:var(--ink)}
+.aia .aa-header.aa-on .aa-logo{filter:none}
+.aia .aa-header.aa-on .aa-pill{background:#161618;color:#fff}
+.aia .aa-header.aa-on .aa-pill:hover{background:#3A3A3E}
+.aia .aa-stage{margin:0;border-radius:0;height:100vh;height:100svh;min-height:560px;max-height:none}
+.aia .aa-shade{background:linear-gradient(180deg,rgba(8,8,12,.5) 0%,rgba(8,8,12,.28) 22%,rgba(8,8,12,.4) 60%,rgba(8,8,12,.62) 100%)}
+@media (max-width:640px){
+.aia .aa-stage{margin:0;height:100svh;min-height:480px}
+}
+
+.aia #team .aa-person{background:#fff}
+.aia #cases .aa-post{background:var(--pale)}
+.aia .aa-biz{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.aia .aa-biz article{background:var(--pale);border-radius:6px;padding:clamp(28px,3.2vw,48px);display:flex;flex-direction:column;min-height:clamp(260px,24vw,360px)}
+.aia .aa-biz .aa-n{font-size:13px;font-weight:700;color:var(--mute)}
+.aia .aa-biz h3{font-size:clamp(26px,3vw,44px);font-weight:500;line-height:1.25;letter-spacing:-.015em;margin-top:clamp(20px,2.4vw,36px)}
+.aia .aa-biz .aa-biz-lead{font-size:14px;color:var(--mute);margin-top:8px}
+.aia .aa-biz .aa-biz-desc{font-size:clamp(15px,1.15vw,17px);line-height:1.8;color:var(--sub);margin-top:auto;padding-top:28px}
+@media (max-width:800px){.aia .aa-biz{grid-template-columns:1fr}.aia .aa-biz article{min-height:0}}
+
+.aia footer .aa-end{margin-top:56px;justify-content:flex-end}
+
+.aia #team .aa-people{margin-top:clamp(36px,4vw,56px)}
+
+.aia #team .aa-people{grid-template-columns:repeat(3,minmax(0,1fr))}
+.aia #team .aa-person{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+.aia #team .aa-person figure{min-height:0;aspect-ratio:4/3.6}
+.aia #team .aa-person .aa-bio{margin-top:0;padding-top:18px}
+@media (max-width:1000px){.aia #team .aa-people{grid-template-columns:1fr}.aia #team .aa-person figure{aspect-ratio:4/3}}
+
+.aia #team .aa-person figure{background:#F4F4F4}
+
+.aia #cases .aa-news{grid-template-columns:repeat(3,minmax(0,1fr))}
+.aia #cases .aa-post figure.aa-shot2{padding:0;background:#fff;border-bottom:1px solid var(--line)}
+.aia #cases .aa-post figure.aa-shot2 img{object-fit:cover;object-position:left top;border-radius:0;box-shadow:none}
+.aia #cases .aa-post .aa-fine{margin-top:auto;padding-top:20px}
+@media (max-width:1000px){.aia #cases .aa-news{grid-template-columns:1fr}}
+
+/* ---- AXに必要な3つと、それをすべて担うことを示す図 ---- */
+.aia .aa-flow{margin-top:clamp(48px,6vw,88px)}
+.aia .aa-flow-cap{font-size:13px;color:var(--mute);letter-spacing:.08em;margin-bottom:16px}
+.aia .aa-flow ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px}
+.aia .aa-flow li{position:relative;background:#fff;border-radius:6px;padding:clamp(24px,2.6vw,36px)}
+.aia .aa-flow li:not(:last-child)::after{content:"";position:absolute;right:-31px;top:50%;width:18px;height:18px;margin-top:-9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M2 9h13M10 4l5 5-5 5' fill='none' stroke='%2316181C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.aia .aa-flow .aa-n{font-size:13px;font-weight:700;color:var(--mute)}
+.aia .aa-flow h3{font-size:clamp(24px,2.6vw,38px);font-weight:500;line-height:1.3;letter-spacing:-.015em;margin-top:14px}
+.aia .aa-flow li p{font-size:15px;line-height:1.75;color:var(--sub);margin-top:12px}
+.aia .aa-flow-all{position:relative;margin-top:26px;padding-top:26px}
+.aia .aa-flow-all::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;border:1.5px solid var(--ink);border-top:0;border-radius:0 0 8px 8px}
+.aia .aa-flow-all span{display:block;background:#161618;color:#fff;border-radius:6px;text-align:center;padding:18px 16px;font-size:clamp(16px,1.5vw,20px);font-weight:500;letter-spacing:.02em}
+@media (max-width:800px){
+.aia .aa-flow ol{grid-template-columns:1fr;gap:36px}
+.aia .aa-flow li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-27px;margin:0 0 0 -9px;transform:rotate(90deg)}
+}
+
+/* 一番上の見出しは、明るい場面でも読めるように薄い影を付ける。 */
+.aia .aa-stage h1{text-shadow:0 2px 18px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.35)}
+.aia .aa-scroll{text-shadow:0 1px 6px rgba(0,0,0,.5)}
+
+/* ---- AX専門部隊の節：左に文、右に線画の図 ---- */
+.aia .aa-ax{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(28px,4vw,64px);align-items:center}
+.aia .aa-ax-copy .aa-h-xl{font-size:clamp(32px,4.4vw,64px)}
+.aia .aa-ax-copy p{margin-top:32px;font-size:clamp(15px,1.25vw,18px);line-height:1.8;color:var(--sub);max-width:30em}
+.aia .aa-ax-copy .aa-pill{margin-top:32px}
+.aia .aa-ax-fig svg{display:block;width:100%;height:auto;overflow:visible}
+.aia .aa-ax-orbit{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:3 7;stroke-linecap:round}
+.aia .aa-ax-axis{stroke:var(--ink);stroke-width:1;opacity:.18}
+.aia .aa-ax-c{fill:rgba(255,255,255,.72);stroke:var(--ink);stroke-width:1.2}
+.aia .aa-ax-c.aa-ax-last{fill:#161618}
+.aia .aa-ax-num{font-size:15px;font-weight:700;fill:var(--mute)}
+.aia .aa-ax-name{font-size:30px;font-weight:500;fill:var(--ink);letter-spacing:-.01em}
+.aia .aa-ax-fig g:last-of-type .aa-ax-name{fill:#fff}
+.aia .aa-ax-fig g:last-of-type .aa-ax-num{fill:rgba(255,255,255,.6)}
+.aia .aa-ax-dot{fill:var(--ink)}
+.aia .aa-ax-lead{stroke:var(--ink);stroke-width:1}
+.aia .aa-ax-label{font-size:18px;font-weight:600;fill:var(--ink)}
+.aia .aa-ax-notes{margin-top:8px;border-top:1px solid var(--line)}
+.aia .aa-ax-notes li{display:grid;grid-template-columns:36px 96px minmax(0,1fr);gap:8px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.7;color:var(--sub)}
+.aia .aa-ax-notes b{font-weight:600;color:var(--ink);font-size:15px}
+.aia .aa-ax-notes .aa-n{font-size:12px;font-weight:700;color:var(--mute)}
+@media (max-width:1000px){.aia .aa-ax{grid-template-columns:1fr}.aia .aa-ax-name{font-size:34px}.aia .aa-ax-label{font-size:22px}}
+@media (max-width:640px){.aia .aa-ax-notes li{grid-template-columns:30px 84px minmax(0,1fr)}}
+
+.aia #cases .aa-post figure.aa-art img{padding:clamp(28px,3.4vw,48px)}
+
+/* 導入事例のカード：白い画像が白地に溶けないよう、枠線で境目を出す。 */
+.aia #cases .aa-post{border:1px solid var(--line);background:#fff}
+.aia #cases .aa-post .aa-txt{background:var(--pale);border-top:1px solid var(--line)}
+.aia #cases .aa-post figure.aa-art{border-bottom:0}

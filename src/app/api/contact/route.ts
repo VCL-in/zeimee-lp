@@ -2,10 +2,8 @@ import { NextResponse } from "next/server";
 import { INDUSTRIES } from "@/lib/contact-options";
 import {
   BOOKING_URL,
-  OFFER_LABEL,
   OFFER_WINDOW_MS,
   SERVICE_DOCUMENT_URL,
-  formatDeadlineJst,
 } from "@/lib/document-offer";
 
 const defaultRecipients = [
@@ -129,7 +127,6 @@ export async function POST(request: Request) {
   const safeCompanyForSubject = company.replaceAll(/[\r\n]+/g, " ");
   const leadLabel = isSeminarApplication ? "セミナー申し込み" : "資料請求";
   const offerDeadline = new Date(Date.now() + OFFER_WINDOW_MS);
-  const offerDeadlineLabel = `${formatDeadlineJst(offerDeadline)}（日本時間）`;
   const documentUrl = SERVICE_DOCUMENT_URL;
   const submittedSeminarDetails = isSeminarApplication
     ? [
@@ -140,7 +137,6 @@ export async function POST(request: Request) {
       ]
     : [
         `種別: ${leadLabel}`,
-        `${OFFER_LABEL}の予約期限: ${offerDeadlineLabel}`,
         "",
       ];
   const submittedDetails = [
@@ -168,7 +164,6 @@ export async function POST(request: Request) {
           `
           : `
             <dt>種別</dt><dd>${escapeHtml(leadLabel)}</dd>
-            <dt>${escapeHtml(OFFER_LABEL)}の予約期限</dt><dd>${escapeHtml(offerDeadlineLabel)}</dd>
           `
       }
       <dt>会社名</dt><dd>${escapeHtml(company)}</dd>
@@ -219,9 +214,8 @@ export async function POST(request: Request) {
         "",
         `資料は下記URLからダウンロードいただけます。\n${documentUrl}`,
         "",
-        "■ 24時間以内のご予約で初期費用5万円割引",
-        `${offerDeadlineLabel}までにオンライン面談をご予約いただいた方は、初期費用を5万円割引いたします（面談日は問いません）。`,
-        "下記リンクよりご都合の良い日時をお選びください。",
+        "■ オンライン面談のご予約",
+        "30分のオンライン面談をご希望の方は、下記リンクよりご都合の良い日時をお選びください。",
         BOOKING_URL,
         "",
         "ご不明な点がございましたら、本メールにご返信ください。",
@@ -257,9 +251,8 @@ export async function POST(request: Request) {
         資料は下記URLからダウンロードいただけます。<br /><a href="${escapeHtml(documentUrl)}">${escapeHtml(documentUrl)}</a>
       </p>
       <p>
-        <strong>■ 24時間以内のご予約で初期費用5万円割引</strong><br />
-        ${escapeHtml(offerDeadlineLabel)}までにオンライン面談をご予約いただいた方は、初期費用を5万円割引いたします（面談日は問いません）。<br />
-        下記リンクよりご都合の良い日時をお選びください。<br />
+        <strong>■ オンライン面談のご予約</strong><br />
+        30分のオンライン面談をご希望の方は、下記リンクよりご都合の良い日時をお選びください。<br />
         <a href="${BOOKING_URL}">${BOOKING_URL}</a>
       </p>
       <p>ご不明な点がございましたら、本メールにご返信ください。</p>
@@ -294,7 +287,7 @@ export async function POST(request: Request) {
     to: email,
     subject: isSeminarApplication
       ? "【Zeimee】セミナー申し込みを受け付けました"
-      : "【Zeimee】資料請求ありがとうございます（24時間以内のご予約で初期費用5万円割引）",
+      : "【Zeimee】資料請求ありがとうございます",
     text: autoReplyText,
     html: autoReplyHtml,
   });
