@@ -261,3 +261,9 @@
 .aia footer .aa-end{margin-top:56px;justify-content:flex-end}
 
 .aia #team .aa-people{margin-top:0}
+
+.aia #team .aa-people{grid-template-columns:repeat(3,minmax(0,1fr))}
+.aia #team .aa-person{grid-template-columns:1fr;grid-template-rows:auto 1fr}
+.aia #team .aa-person figure{min-height:0;aspect-ratio:4/3.6}
+.aia #team .aa-person .aa-bio{margin-top:0;padding-top:18px}
+@media (max-width:1000px){.aia #team .aa-people{grid-template-columns:1fr}.aia #team .aa-person figure{aspect-ratio:4/3}}

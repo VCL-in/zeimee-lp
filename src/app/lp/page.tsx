@@ -105,11 +105,11 @@ const faqs = [
 ];
 const members = [
   {
-    name: "畠山謙人",
-    role: "アドバイザー",
-    title: "公認会計士・税理士",
-    image: "team-tax-advisor.png",
-    bio: "大和工業で連結決算等を担当後、監査法人トーマツで国内監査に従事。サイバーエージェントでは連結決算やAbemaTV経理、決算早期化を担当。税理士法人赤坂共同事務所を経て、2025年に畠山謙人税理士事務所を開業。シードスタートアップを中心に支援している。",
+    name: "岩﨑琉晟",
+    role: "代表取締役",
+    title: "",
+    image: "team-iwasaki.jpg",
+    bio: "",
   },
   {
     name: "佐次本脩真",
@@ -117,6 +117,13 @@ const members = [
     title: "元メルカリエンジニア",
     image: "team-ai-engineer.png",
     bio: "電気通信大学大学院 情報理工学研究科を卒業。大学院ではソフトウェア開発やAI活用の知見を深め、2025年8月から2026年4月までメルカリにてSWEとしてプロダクト開発を経験。月次業務の実務負担をAIで減らすため、Zeimeeを立ち上げる。",
+  },
+  {
+    name: "畠山謙人",
+    role: "アドバイザー",
+    title: "公認会計士・税理士",
+    image: "team-tax-advisor.png",
+    bio: "大和工業で連結決算等を担当後、監査法人トーマツで国内監査に従事。サイバーエージェントでは連結決算やAbemaTV経理、決算早期化を担当。税理士法人赤坂共同事務所を経て、2025年に畠山謙人税理士事務所を開業。シードスタートアップを中心に支援している。",
   },
 ];
 
@@ -363,14 +370,14 @@ export default function LandingPage() {
                       src={`/lp/${member.image}`}
                       alt={`${member.role} ${member.name}`}
                       fill
-                      sizes="(max-width: 640px) 100vw, 320px"
+                      sizes="(max-width: 1000px) 100vw, 460px"
                     />
                   </figure>
                   <div>
                     <p className="aa-role">{member.role}</p>
                     <h3>{member.name}</h3>
-                    <p className="aa-title">{member.title}</p>
-                    <p className="aa-bio">{member.bio}</p>
+                    {member.title && <p className="aa-title">{member.title}</p>}
+                    {member.bio && <p className="aa-bio">{member.bio}</p>}
                   </div>
                 </article>
               ))}
