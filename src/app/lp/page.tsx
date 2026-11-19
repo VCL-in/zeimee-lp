@@ -354,16 +354,7 @@ export default function LandingPage() {
 
         <section className="aa-sec aa-pale" id="team">
           <div className="aa-wrap">
-            <div className="aa-intro">
-              <h2 className="aa-h-l">
-                AIに知見のある税理士と
-                <br />
-                エンジニアが一丸となって開発しています。
-              </h2>
-              <p>
-                Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、担当者の確認・修正・承認を支援するプロダクトを目指しています。
-              </p>
-            </div>
+            <h2 className="aa-h-l">メンバー</h2>
             <div className="aa-people">
               {members.map((member) => (
                 <article className="aa-person" key={member.name}>

@@ -259,3 +259,5 @@
 @media (max-width:800px){.aia .aa-biz{grid-template-columns:1fr}.aia .aa-biz article{min-height:0}}
 
 .aia footer .aa-end{margin-top:56px;justify-content:flex-end}
+
+.aia #team .aa-people{margin-top:0}
