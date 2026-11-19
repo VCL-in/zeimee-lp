@@ -280,28 +280,8 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-mission" id="about">
-          <div className="aa-wrap">
-            <p className="aa-eyebrow">Zeimeeとは</p>
-            <h2 className="aa-h-l">
-              あなたの事務所専属の
-              <br />
-              AI開発チーム
-            </h2>
-            <p>
-              会計士・税理士事務所に特化したFDE。業務の整理から、AI・システムの開発、運用改善まで支援します。
-            </p>
-            <p className="aa-def">
-              FDE：現場の課題を、設計・開発まで担うエンジニア。
-            </p>
-            <a className="aa-pill aa-light aa-arrow aa-lg" href="#contact">
-              資料DL・面談予約
-            </a>
-          </div>
-        </section>
-
-        <section className="aa-sec" id="team">
-          <div className="aa-wrap">
+        <section className="aa-sec" id="about">
+          <div className="aa-wrap" id="team">
             <div className="aa-intro">
               <h2 className="aa-h-l">
                 AIに知見のある税理士と
