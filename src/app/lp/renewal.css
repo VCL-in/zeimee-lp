@@ -42,7 +42,7 @@
 .aia .aa-shot.aa-a{background-image:url(/lp/seiwa-team.png);filter:grayscale(.5) contrast(1.05) brightness(.82)}
 .aia .aa-shot.aa-b{background-image:url(/images/hero-ui-flow-poster-aio-v1.jpg);mix-blend-mode:screen;opacity:0;filter:grayscale(1) invert(1) brightness(.9);animation:aa-drift 18s ease-in-out infinite alternate-reverse,aa-fadeb 9s ease-in-out infinite alternate}
 @keyframes aa-drift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.08) translate(-1.5%,-1%)}}
-@keyframes aa-fadeb{0%,35%{opacity:0}70%,100%{opacity:.36}}
+@keyframes aa-fadeb{0%,45%{opacity:0}80%,100%{opacity:.16}}
 .aia .aa-shade{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(8,8,12,.42),rgba(8,8,12,.7))}
 .aia .aa-stage h1{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:0 20px;z-index:2;font-size:clamp(34px,6.1vw,88px);font-weight:500;line-height:1.1;letter-spacing:-.015em}
 .aia .aa-stage h1 span{display:block}
