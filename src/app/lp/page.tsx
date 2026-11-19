@@ -105,21 +105,21 @@ const faqs = [
 ];
 const members = [
   {
-    name: "岩﨑琉晟",
-    role: "代表取締役",
-    title: "",
+    name: "岩﨑 琉晟",
+    role: "代表取締役CEO",
+    title: "元LINEヤフーエンジニア",
     image: "team-iwasaki.jpg",
-    bio: "",
+    bio: "電気通信大学で情報工学を専攻。データエンジニアを経て、LINEヤフーでAIエージェント基盤の立ち上げに従事。AIを現場の業務に定着させるため、Zeimeeを共同で創業。",
   },
   {
-    name: "佐次本脩真",
-    role: "代表取締役",
+    name: "佐次本 脩真",
+    role: "代表取締役COO",
     title: "元メルカリエンジニア",
     image: "team-ai-engineer.png",
     bio: "電気通信大学大学院 情報理工学研究科を卒業。大学院ではソフトウェア開発やAI活用の知見を深め、2025年8月から2026年4月までメルカリにてSWEとしてプロダクト開発を経験。月次業務の実務負担をAIで減らすため、Zeimeeを立ち上げる。",
   },
   {
-    name: "畠山謙人",
+    name: "畠山 謙人",
     role: "アドバイザー",
     title: "公認会計士・税理士",
     image: "team-tax-advisor.png",
@@ -462,9 +462,9 @@ export default function LandingPage() {
                 <div>
                   <dt>代表者</dt>
                   <dd>
-                    代表取締役　岩﨑 琉晟
+                    代表取締役CEO　岩﨑 琉晟
                     <br />
-                    代表取締役　佐次本 脩真
+                    代表取締役COO　佐次本 脩真
                   </dd>
                 </div>
                 <div>
