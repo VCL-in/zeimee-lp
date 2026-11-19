@@ -127,6 +127,21 @@ const members = [
   },
 ];
 
+const axSteps = [
+  {
+    name: "課題設定",
+    description: "現場に入って業務を見て、AIで解くべき課題を決める。",
+  },
+  {
+    name: "AI導入",
+    description: "業務に合わせたAI・システムを設計し、開発する。",
+  },
+  {
+    name: "業務浸透",
+    description: "現場で日々使われるまで、改善と定着を続ける。",
+  },
+];
+
 const businesses = [
   {
     name: "AX Solution事業",
@@ -258,6 +273,27 @@ export default function LandingPage() {
               <a className="aa-pill aa-dark aa-arrow aa-lg" href="#contact">
                 資料DL・面談予約
               </a>
+            </div>
+          </div>
+          <div className="aa-wrap">
+            <div
+              className="aa-flow"
+              role="img"
+              aria-label="AXに必要な課題設定・AI導入・業務浸透の3つを、すべてZeimeeが担うことを示す図"
+            >
+              <p className="aa-flow-cap">AXに必要な3つのこと</p>
+              <ol>
+                {axSteps.map(({ name, description }, i) => (
+                  <li key={name}>
+                    <span className="aa-n">0{i + 1}</span>
+                    <h3>{name}</h3>
+                    <p>{description}</p>
+                  </li>
+                ))}
+              </ol>
+              <div className="aa-flow-all">
+                <span>3つすべてを、Zeimeeが担います</span>
+              </div>
             </div>
           </div>
         </section>
