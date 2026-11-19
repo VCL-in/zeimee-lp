@@ -249,7 +249,7 @@
 }
 
 .aia #team .aa-person{background:#fff}
-.aia #reasons .aa-card{background:var(--pale)}
+.aia #cases .aa-post{background:var(--pale)}
 .aia .aa-biz{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .aia .aa-biz article{background:var(--pale);border-radius:6px;padding:clamp(28px,3.2vw,48px);display:flex;flex-direction:column;min-height:clamp(260px,24vw,360px)}
 .aia .aa-biz .aa-n{font-size:13px;font-weight:700;color:var(--mute)}

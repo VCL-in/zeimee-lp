@@ -271,42 +271,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec aa-pale" id="team">
-          <div className="aa-wrap">
-            <div className="aa-intro">
-              <h2 className="aa-h-l">
-                AIに知見のある税理士と
-                <br />
-                エンジニアが一丸となって開発しています。
-              </h2>
-              <p>
-                Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、担当者の確認・修正・承認を支援するプロダクトを目指しています。
-              </p>
-            </div>
-            <div className="aa-people">
-              {members.map((member) => (
-                <article className="aa-person" key={member.name}>
-                  <figure>
-                    <Image
-                      src={`/lp/${member.image}`}
-                      alt={`${member.role} ${member.name}`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 320px"
-                    />
-                  </figure>
-                  <div>
-                    <p className="aa-role">{member.role}</p>
-                    <h3>{member.name}</h3>
-                    <p className="aa-title">{member.title}</p>
-                    <p className="aa-bio">{member.bio}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="aa-sec" id="reasons">
+        <section className="aa-sec aa-pale" id="reasons">
           <div className="aa-wrap">
             <h2 className="aa-h-l">
               Zeimeeが
@@ -335,7 +300,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec aa-pale" id="cases">
+        <section className="aa-sec" id="cases">
           <div className="aa-wrap">
             <h2 className="aa-h-l">導入事例</h2>
             <div className="aa-news">
@@ -383,6 +348,41 @@ export default function LandingPage() {
                   <span className="aa-more">導入事例を読む</span>
                 </div>
               </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="aa-sec aa-pale" id="team">
+          <div className="aa-wrap">
+            <div className="aa-intro">
+              <h2 className="aa-h-l">
+                AIに知見のある税理士と
+                <br />
+                エンジニアが一丸となって開発しています。
+              </h2>
+              <p>
+                Zeimeeは、記帳・証憑回収・消込に時間を取られている税理士事務所の声をもとに開発しています。現場で起きる判断のばらつき、資料回収、確認待ちの課題に向き合い、担当者の確認・修正・承認を支援するプロダクトを目指しています。
+              </p>
+            </div>
+            <div className="aa-people">
+              {members.map((member) => (
+                <article className="aa-person" key={member.name}>
+                  <figure>
+                    <Image
+                      src={`/lp/${member.image}`}
+                      alt={`${member.role} ${member.name}`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 320px"
+                    />
+                  </figure>
+                  <div>
+                    <p className="aa-role">{member.role}</p>
+                    <h3>{member.name}</h3>
+                    <p className="aa-title">{member.title}</p>
+                    <p className="aa-bio">{member.bio}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
