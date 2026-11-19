@@ -270,6 +270,16 @@ export default function LandingPage() {
         <section id="top">
           <div className="aa-stage">
             <div className="aa-shot aa-a" />
+            <video
+              className="aa-vid"
+              data-src="/lp/hero-field.mp4"
+              muted
+              loop
+              playsInline
+              preload="none"
+              aria-hidden="true"
+              tabIndex={-1}
+            />
             <div className="aa-shot aa-b" />
             <div className="aa-shade" />
             <h1>

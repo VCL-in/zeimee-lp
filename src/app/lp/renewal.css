@@ -143,7 +143,11 @@
 .aia .aa-skip{position:absolute;left:-9999px;top:8px;z-index:100;background:#fff;color:var(--ink);padding:8px 12px;border-radius:6px}
 .aia .aa-skip:focus{left:8px}
 .aia section[id]{scroll-margin-top:84px}
-.aia .aa-shot.aa-a{background-position:center 38%}
+.aia .aa-shot.aa-a{inset:0;background-image:url(/lp/hero-field-poster.jpg);background-position:center;filter:none;animation:none}
+.aia .aa-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s}
+.aia .aa-vid.aa-ready{opacity:1}
+.aia .aa-shot.aa-b{z-index:1}
+.aia .aa-shade{z-index:1;background:radial-gradient(ellipse at center,rgba(8,8,12,.38),rgba(8,8,12,.62))}
 .aia .aa-header .aa-logo{height:26px;width:auto}
 .aia .aa-mission .aa-def{margin-top:18px;font-size:13px;color:var(--w-mute)}
 
