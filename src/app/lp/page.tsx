@@ -108,7 +108,7 @@ const members = [
     name: "岩﨑 琉晟",
     role: "代表取締役CEO",
     title: "元LINEヤフーエンジニア",
-    image: "team-iwasaki-portrait.jpg",
+    image: "team-iwasaki-color.jpg",
     bio: "電気通信大学で情報工学を専攻。データエンジニアを経て、LINEヤフーでAIエージェント基盤の立ち上げに従事。AIを現場の業務に定着させるため、Zeimeeを共同で創業。",
   },
   {
