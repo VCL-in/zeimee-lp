@@ -247,3 +247,5 @@
 @media (max-width:640px){
 .aia .aa-stage{margin:0;height:100svh;min-height:480px}
 }
+
+.aia #cases .aa-post{background:var(--pale)}

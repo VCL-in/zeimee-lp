@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { toolPages } from "@/lib/tool-pages";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import { ContactForm } from "./ContactForm";
 import { RenewalEffects } from "./RenewalEffects";
@@ -140,63 +139,6 @@ const reasons = [
   },
 ];
 
-const tools = [
-  {
-    name: "記帳自動化AI",
-    image: "bookkeeping",
-    description:
-      "証憑から仕訳を作成。確認から会計ソフトへの反映まで支援します。",
-  },
-  {
-    name: "生産性管理ダッシュボード",
-    image: "productivity",
-    description:
-      "担当者や業務ごとの作業時間を可視化。改善すべき業務が見えます。",
-  },
-  {
-    name: "証憑収集AI",
-    image: "collection",
-    description:
-      "必要な資料と提出状況を一元管理。顧問先への確認の手間を減らします。",
-  },
-  {
-    name: "顧問先管理",
-    image: "clients",
-    description:
-      "顧問先の情報、担当者、業務状況をひとつに。事務所内で共有できます。",
-  },
-  {
-    name: "証憑フォルダ分けAI",
-    image: "folders",
-    description:
-      "証憑の内容を読み取り、自動で分類。資料整理の手間を減らします。",
-  },
-  {
-    name: "法人税申告チェックAI",
-    image: "tax-check",
-    description:
-      "申告書と関連資料を照合。確認が必要な箇所を見つける作業を支援します。",
-  },
-  {
-    name: "会計ソフト引越しAI",
-    image: "migration",
-    description:
-      "勘定科目やデータ形式を変換。会計ソフトの移行作業を支援します。",
-  },
-  {
-    name: "相続税取引履歴作成AI",
-    image: "inheritance",
-    description:
-      "通帳の入出金を読み取り、時系列に整理。相続調査用の取引履歴を作成します。",
-  },
-  {
-    name: "決算書作成AI",
-    image: "financial-statements",
-    description:
-      "会計データをもとに、貸借対照表や損益計算書を作成。決算書の作成業務を支援します。",
-  },
-];
-
 const news = [
   {
     date: "2026-08-07",
@@ -250,7 +192,6 @@ export default function LandingPage() {
         <nav aria-label="メインナビゲーション">
           <a href="#about">Zeimeeとは</a>
           <a href="#reasons">選ばれる理由</a>
-          <a href="#tools">導入ツール</a>
           <a href="#cases">導入事例</a>
           <a href="#news">お知らせ</a>
           <Link href="/column">コラム</Link>
@@ -366,61 +307,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec" id="tools">
-          <div className="aa-wrap">
-            <h2 className="aa-h-xl">
-              導入ツール<i>一覧</i>
-            </h2>
-            <div>
-              <ul className="aa-list">
-                {tools.map(({ name, image, description }) => {
-                  const hasDetail = toolPages.some((tool) => tool.slug === image);
-                  return (
-                    <li key={name}>
-                      <div className="aa-thumb aa-img">
-                        <Image
-                          src={`/lp/tools/${image}.svg`}
-                          alt={`${name}の画面イメージ（架空データ）`}
-                          fill
-                          sizes="232px"
-                        />
-                      </div>
-                      <div>
-                        <h3>{name}</h3>
-                        <p>{description}</p>
-                      </div>
-                      {hasDetail ? (
-                        <Link
-                          className="aa-more"
-                          href={`/tools/${image}`}
-                          aria-label={`${name}の詳細を見る`}
-                        >
-                          詳しく見る
-                        </Link>
-                      ) : (
-                        <a
-                          className="aa-more"
-                          href="#contact"
-                          aria-label={`${name}の資料DL・面談予約`}
-                        >
-                          資料DL・面談予約
-                        </a>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-              <p className="aa-fine">※画面イメージは架空データです。</p>
-              <div className="aa-list-foot">
-                <a className="aa-pill aa-dark aa-arrow" href="#contact">
-                  資料DL・面談予約
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="aa-sec aa-pale" id="cases">
+        <section className="aa-sec" id="cases">
           <div className="aa-wrap">
             <h2 className="aa-h-l">導入事例</h2>
             <div className="aa-news">
@@ -472,7 +359,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec" id="news">
+        <section className="aa-sec aa-pale" id="news">
           <div className="aa-wrap">
             <h2 className="aa-h-l">お知らせ</h2>
             <div className="aa-rows">
@@ -489,7 +376,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec aa-pale" id="faq">
+        <section className="aa-sec" id="faq">
           <div className="aa-wrap">
             <h2 className="aa-h-l">よくある質問</h2>
             <div className="aa-faq">
@@ -589,9 +476,6 @@ export default function LandingPage() {
                 </li>
                 <li>
                   <a href="#reasons">選ばれる理由</a>
-                </li>
-                <li>
-                  <a href="#tools">導入ツール</a>
                 </li>
                 <li>
                   <a href="#cases">導入事例</a>
