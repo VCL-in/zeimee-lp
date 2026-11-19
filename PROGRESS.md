@@ -1,3 +1,25 @@
+# 2026-11-19: AI顧問のページ（/ai-advisor）
+
+## Result
+
+- 中小企業向けの「AI顧問」のページを `/ai-advisor` に追加。トップ（税理士・会計事務所向け）は変えていない。
+- 見た目は、このページ専用の `ai-advisor.css`（すべて `.aia` の中だけに効く）。文字は Noto Sans JP と Outfit。
+- 一番上は、現場写真にダッシュボードの画面を重ねた静止画（仮）。本番は動画に差し替える想定。
+- フォームは `/api/contact` に `kind: "ai_advisor"` で送る。氏名は1つの欄、社員数は4択。`?utm_source=` を読んで、通知メールと分析イベント `ai_advisor_request` に経路として残す。
+- AI顧問の申し込みには、専用の通知と自動返信を使う（資料PDFと初期費用割引の案内は付けない）。送信後はTimeRexの予約ページへ移る。
+- 公開の判断が出るまで `robots: noindex, nofollow`。サイトマップにも入れていない。トップからのリンクもまだない。
+
+## Validation
+
+- `npm run build`: 成功。`npx eslint`（変更ファイル）と `npx tsc --noEmit`: エラーなし。
+- ローカルのproduction buildを1440pxと390pxで表示。横はみ出しなし、実行時エラーなし（`/_vercel/insights/script.js` の404はローカルのため）。
+- `/api/contact` の入力チェック（AI顧問の必須もれ・社員数の不正・経路の不正、既存の資料請求の必須もれ）が400を返すことを確認。
+- 実メール送信と実予約は行っていない。AI顧問用の自動返信の文面は未承認の下書き。
+
+## Release
+
+- ブランチ: `claude/ai-advisor-lp`（未push）
+
 # 2026-10-15: 資料DL・面談予約とチラシA/Bテスト
 
 ## Result
