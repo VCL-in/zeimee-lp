@@ -448,11 +448,11 @@ export default function LandingPage() {
             <div>
               <p className="aa-eyebrow">会社情報</p>
               <h2 className="aa-h-l">
-                諦めない、
+                AXで、
                 <br />
-                確実に浸透する
+                日本全体を
                 <br />
-                AXを届ける。
+                アップデートする。
               </h2>
             </div>
             <div>
