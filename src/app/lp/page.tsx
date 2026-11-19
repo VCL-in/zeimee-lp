@@ -120,6 +120,27 @@ const members = [
   },
 ];
 
+const businesses = [
+  {
+    name: "FDE（現場に入る開発）",
+    lead: "会計士・税理士事務所向け",
+    description:
+      "エンジニアが事務所に入り、業務の整理から、AI・システムの開発、運用改善まで支援します。",
+  },
+  {
+    name: "AI顧問",
+    lead: "企業向け",
+    description:
+      "面談とチャットで業務を聞き、会社専用のAIツールをつくり、社員の方が使えるようになるまで伴走します。",
+  },
+  {
+    name: "会計AI「Zeimee」",
+    lead: "月次経理AIエージェント",
+    description:
+      "証憑から仕訳を作成し、担当者の確認・修正・承認を支援するプロダクトを開発・提供しています。",
+  },
+];
+
 const reasons = [
   {
     title: "会計業務特化のFDE",
@@ -191,6 +212,7 @@ export default function LandingPage() {
         </a>
         <nav aria-label="メインナビゲーション">
           <a href="#about">Zeimeeとは</a>
+          <a href="#business">事業内容</a>
           <a href="#reasons">選ばれる理由</a>
           <a href="#cases">導入事例</a>
           <a href="#news">お知らせ</a>
@@ -243,7 +265,25 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec" id="team">
+        <section className="aa-sec" id="business">
+          <div className="aa-wrap">
+            <h2 className="aa-h-l">事業内容</h2>
+            <ul className="aa-biz">
+              {businesses.map(({ name, lead, description }, i) => (
+                <li key={name}>
+                  <span className="aa-n">0{i + 1}</span>
+                  <div>
+                    <h3>{name}</h3>
+                    <p className="aa-biz-lead">{lead}</p>
+                  </div>
+                  <p>{description}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="aa-sec aa-pale" id="team">
           <div className="aa-wrap">
             <div className="aa-intro">
               <h2 className="aa-h-l">
@@ -278,7 +318,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec aa-pale" id="reasons">
+        <section className="aa-sec" id="reasons">
           <div className="aa-wrap">
             <h2 className="aa-h-l">
               Zeimeeが
@@ -307,7 +347,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec" id="cases">
+        <section className="aa-sec aa-pale" id="cases">
           <div className="aa-wrap">
             <h2 className="aa-h-l">導入事例</h2>
             <div className="aa-news">
@@ -359,7 +399,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec aa-pale" id="news">
+        <section className="aa-sec" id="news">
           <div className="aa-wrap">
             <h2 className="aa-h-l">お知らせ</h2>
             <div className="aa-rows">
@@ -376,7 +416,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec" id="faq">
+        <section className="aa-sec aa-pale" id="faq">
           <div className="aa-wrap">
             <h2 className="aa-h-l">よくある質問</h2>
             <div className="aa-faq">
