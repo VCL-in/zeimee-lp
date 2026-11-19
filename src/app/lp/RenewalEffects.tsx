@@ -12,7 +12,8 @@ export function RenewalEffects() {
     const contact = root.querySelector<HTMLElement>("#contact");
 
     const onScroll = () => {
-      header?.classList.toggle("aa-on", window.scrollY > 40);
+      // 一番上の動画を抜けたら、ヘッダーを白地に切り替える。
+      header?.classList.toggle("aa-on", window.scrollY > window.innerHeight - 90);
       if (mobileCta && contact) {
         mobileCta.classList.toggle(
           "aa-show",

@@ -228,3 +228,22 @@
 .aia .aa-panel{padding:24px 18px}
 .aia .aa-dl > div{grid-template-columns:88px minmax(0,1fr)}
 }
+
+/* ---- 一番上：動画を画面いっぱいにし、ロゴ・メニュー・ボタンを動画の上に重ねる ---- */
+.aia .aa-header{position:fixed;inset:0 0 auto 0;background:transparent;transition:background .25s,box-shadow .25s,color .25s}
+.aia .aa-header nav{color:rgba(255,255,255,.9)}
+.aia .aa-header nav a:hover{background:rgba(255,255,255,.14);color:#fff}
+.aia .aa-header .aa-logo{filter:brightness(0) invert(1);transition:filter .25s}
+.aia .aa-header .aa-pill{background:#fff;color:#161618}
+.aia .aa-header .aa-pill:hover{background:#E9E9E9}
+.aia .aa-header.aa-on{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.aia .aa-header.aa-on nav{color:rgba(22,24,28,.7)}
+.aia .aa-header.aa-on nav a:hover{background:var(--pale);color:var(--ink)}
+.aia .aa-header.aa-on .aa-logo{filter:none}
+.aia .aa-header.aa-on .aa-pill{background:#161618;color:#fff}
+.aia .aa-header.aa-on .aa-pill:hover{background:#3A3A3E}
+.aia .aa-stage{margin:0;border-radius:0;height:100vh;height:100svh;min-height:560px;max-height:none}
+.aia .aa-shade{background:linear-gradient(180deg,rgba(8,8,12,.5) 0%,rgba(8,8,12,.28) 22%,rgba(8,8,12,.4) 60%,rgba(8,8,12,.62) 100%)}
+@media (max-width:640px){
+.aia .aa-stage{margin:0;height:100svh;min-height:480px}
+}
