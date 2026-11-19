@@ -260,40 +260,61 @@ export default function LandingPage() {
         </section>
 
         <section className="aa-sec aa-pale aa-lead-sec" id="about">
-          <div className="aa-wrap aa-intro">
-            <h2 className="aa-h-xl">
-              あなたの会社の、
-              <br />
-              AX専門部隊になります。
-            </h2>
-            <div>
+          <div className="aa-wrap aa-ax">
+            <div className="aa-ax-copy">
+              <h2 className="aa-h-xl">
+                あなたの会社の、
+                <br />
+                AX専門部隊に
+                <br />
+                なります。
+              </h2>
               <p>
-                現場に入って業務を理解し、AI・システムの設計、開発、運用改善までを担います。作っておわりではなく、日々の業務に定着するところまで伴走します。
+                AXには、課題設定・AI導入・業務浸透の3つが要ります。Zeimeeは現場に入り、この3つをすべて担います。作っておわりではなく、日々の業務に定着するところまで伴走します。
               </p>
               <a className="aa-pill aa-dark aa-arrow aa-lg" href="#contact">
                 資料DL・面談予約
               </a>
             </div>
-          </div>
-          <div className="aa-wrap">
-            <div
-              className="aa-flow"
-              role="img"
-              aria-label="AXに必要な課題設定・AI導入・業務浸透の3つを、すべてZeimeeが担うことを示す図"
-            >
-              <p className="aa-flow-cap">AXに必要な3つのこと</p>
-              <ol>
+            <div className="aa-ax-fig">
+              <svg
+                viewBox="0 0 700 560"
+                role="img"
+                aria-label="課題設定、AI導入、業務浸透の3つの円が右上へ連なり、その全体をZeimeeの範囲を示す線が囲んでいる図"
+              >
+                <g transform="rotate(-35.2 350 280)">
+                  <ellipse className="aa-ax-orbit" cx="350" cy="280" rx="330" ry="152" />
+                  <line className="aa-ax-axis" x1="62" y1="280" x2="638" y2="280" />
+                </g>
+                <circle className="aa-ax-c" cx="180" cy="400" r="110" />
+                <circle className="aa-ax-c" cx="350" cy="280" r="110" />
+                <circle className="aa-ax-c aa-ax-last" cx="520" cy="160" r="110" />
+                {axSteps.map(({ name }, i) => (
+                  <g key={name} transform={`translate(${180 + i * 170} ${400 - i * 120})`}>
+                    <text className="aa-ax-num" y="-26" textAnchor="middle">
+                      0{i + 1}
+                    </text>
+                    <text className="aa-ax-name" y="14" textAnchor="middle">
+                      {name}
+                    </text>
+                  </g>
+                ))}
+                <circle className="aa-ax-dot" cx="262" cy="156" r="4" />
+                <line className="aa-ax-lead" x1="262" y1="156" x2="150" y2="84" />
+                <line className="aa-ax-lead" x1="150" y1="84" x2="40" y2="84" />
+                <text className="aa-ax-label" x="40" y="70">
+                  Zeimeeが担う範囲
+                </text>
+              </svg>
+              <ol className="aa-ax-notes">
                 {axSteps.map(({ name, description }, i) => (
                   <li key={name}>
                     <span className="aa-n">0{i + 1}</span>
-                    <h3>{name}</h3>
-                    <p>{description}</p>
+                    <b>{name}</b>
+                    <span>{description}</span>
                   </li>
                 ))}
               </ol>
-              <div className="aa-flow-all">
-                <span>3つすべてを、Zeimeeが担います</span>
-              </div>
             </div>
           </div>
         </section>
@@ -372,10 +393,10 @@ export default function LandingPage() {
                 </div>
               </a>
               <article className="aa-post">
-                <figure className="aa-shot2">
+                <figure className="aa-art">
                   <Image
-                    src="/lp/case-rikimaru-dashboard.jpg"
-                    alt="顧問料と工数を一画面で見るダッシュボードの画面（デモ用の架空データ）"
+                    src="/lp/case-rikimaru-logo.png"
+                    alt="力丸公認会計士事務所のロゴ"
                     fill
                     sizes="(max-width: 1000px) 100vw, 460px"
                   />
@@ -389,7 +410,6 @@ export default function LandingPage() {
                   <p>
                     顧問先・担当者ごとの顧問料と工数を、一画面で見られる事務所専用のツールを開発。2026年10月から、毎月の保守運用で改善を続けています。
                   </p>
-                  <span className="aa-fine">※画面はデモ用の架空データです</span>
                 </div>
               </article>
               <Link className="aa-post" href="/cases/field-development">

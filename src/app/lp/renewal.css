@@ -296,3 +296,29 @@
 /* 一番上の見出しは、明るい場面でも読めるように薄い影を付ける。 */
 .aia .aa-stage h1{text-shadow:0 2px 18px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.35)}
 .aia .aa-scroll{text-shadow:0 1px 6px rgba(0,0,0,.5)}
+
+/* ---- AX専門部隊の節：左に文、右に線画の図 ---- */
+.aia .aa-ax{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(28px,4vw,64px);align-items:center}
+.aia .aa-ax-copy .aa-h-xl{font-size:clamp(32px,4.4vw,64px)}
+.aia .aa-ax-copy p{margin-top:32px;font-size:clamp(15px,1.25vw,18px);line-height:1.8;color:var(--sub);max-width:30em}
+.aia .aa-ax-copy .aa-pill{margin-top:32px}
+.aia .aa-ax-fig svg{display:block;width:100%;height:auto;overflow:visible}
+.aia .aa-ax-orbit{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:3 7;stroke-linecap:round}
+.aia .aa-ax-axis{stroke:var(--ink);stroke-width:1;opacity:.18}
+.aia .aa-ax-c{fill:rgba(255,255,255,.72);stroke:var(--ink);stroke-width:1.2}
+.aia .aa-ax-c.aa-ax-last{fill:#161618}
+.aia .aa-ax-num{font-size:15px;font-weight:700;fill:var(--mute)}
+.aia .aa-ax-name{font-size:30px;font-weight:500;fill:var(--ink);letter-spacing:-.01em}
+.aia .aa-ax-fig g:last-of-type .aa-ax-name{fill:#fff}
+.aia .aa-ax-fig g:last-of-type .aa-ax-num{fill:rgba(255,255,255,.6)}
+.aia .aa-ax-dot{fill:var(--ink)}
+.aia .aa-ax-lead{stroke:var(--ink);stroke-width:1}
+.aia .aa-ax-label{font-size:18px;font-weight:600;fill:var(--ink)}
+.aia .aa-ax-notes{margin-top:8px;border-top:1px solid var(--line)}
+.aia .aa-ax-notes li{display:grid;grid-template-columns:36px 96px minmax(0,1fr);gap:8px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.7;color:var(--sub)}
+.aia .aa-ax-notes b{font-weight:600;color:var(--ink);font-size:15px}
+.aia .aa-ax-notes .aa-n{font-size:12px;font-weight:700;color:var(--mute)}
+@media (max-width:1000px){.aia .aa-ax{grid-template-columns:1fr}.aia .aa-ax-name{font-size:34px}.aia .aa-ax-label{font-size:22px}}
+@media (max-width:640px){.aia .aa-ax-notes li{grid-template-columns:30px 84px minmax(0,1fr)}}
+
+.aia #cases .aa-post figure.aa-art img{padding:clamp(28px,3.4vw,48px)}
