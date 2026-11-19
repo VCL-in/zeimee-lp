@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { ADVISOR_EMPLOYEE_RANGES, INDUSTRIES } from "@/lib/contact-options";
+import { INDUSTRIES } from "@/lib/contact-options";
 import {
   BOOKING_URL,
   OFFER_LABEL,
@@ -80,13 +80,8 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json().catch(() => null);
-  const kind = asString(body?.kind);
-  // AI顧問のページ（/ai-advisor）からの申し込み。氏名は1つの欄で受ける。
-  const isAdvisorRequest = kind === "ai_advisor";
   const company = asString(body?.company);
-  const lastName = isAdvisorRequest
-    ? asString(body?.name)
-    : asString(body?.lastName);
+  const lastName = asString(body?.lastName);
   const firstName = asString(body?.firstName);
   const email = asString(body?.email);
   const phone = asString(body?.phone);
@@ -95,8 +90,7 @@ export async function POST(request: Request) {
   const message = asString(body?.message);
   const industry = asString(body?.industry);
   const clientCount = asString(body?.clientCount);
-  const employees = asString(body?.employees);
-  const advisorSource = asString(body?.source);
+  const kind = asString(body?.kind);
   const seminarTitle = asString(body?.seminarTitle);
   const seminarDate = asString(body?.seminarDate);
   const isSeminarApplication = kind === "seminar";
@@ -106,11 +100,10 @@ export async function POST(request: Request) {
   if (
     !company ||
     !lastName ||
-    (!firstName && !isAdvisorRequest) ||
+    !firstName ||
     !email ||
     !phone ||
     (!isSeminarApplication &&
-      !isAdvisorRequest &&
       Boolean(discoverySource) &&
       !discoverySourceLabels.has(discoverySource))
   ) {
@@ -132,24 +125,9 @@ export async function POST(request: Request) {
     );
   }
 
-  if (
-    isAdvisorRequest &&
-    ((employees && !ADVISOR_EMPLOYEE_RANGES.some((range) => range === employees)) ||
-      (advisorSource && !/^[a-z0-9_-]{1,40}$/.test(advisorSource)))
-  ) {
-    return NextResponse.json(
-      { message: "入力内容を確認してください。" },
-      { status: 400 },
-    );
-  }
-
-  const name = isAdvisorRequest ? lastName : `${lastName} ${firstName}`;
+  const name = `${lastName} ${firstName}`;
   const safeCompanyForSubject = company.replaceAll(/[\r\n]+/g, " ");
-  const leadLabel = isAdvisorRequest
-    ? "AI顧問の相談申し込み"
-    : isSeminarApplication
-      ? "セミナー申し込み"
-      : "資料請求";
+  const leadLabel = isSeminarApplication ? "セミナー申し込み" : "資料請求";
   const offerDeadline = new Date(Date.now() + OFFER_WINDOW_MS);
   const offerDeadlineLabel = `${formatDeadlineJst(offerDeadline)}（日本時間）`;
   const documentUrl = SERVICE_DOCUMENT_URL;
@@ -165,31 +143,7 @@ export async function POST(request: Request) {
         `${OFFER_LABEL}の予約期限: ${offerDeadlineLabel}`,
         "",
       ];
-  const advisorDetails = [
-    `種別: ${leadLabel}`,
-    `会社名: ${company}`,
-    `社員数: ${employees || "未入力"}`,
-    `お名前: ${name}`,
-    `会社のメールアドレス: ${email}`,
-    `電話番号: ${phone}`,
-    `経路（utm_source）: ${advisorSource || "なし"}`,
-    "",
-    "相談したいこと:",
-    message || "未入力",
-  ].join("\n");
-  const escapedAdvisorDetails = `
-    <dl>
-      <dt>種別</dt><dd>${escapeHtml(leadLabel)}</dd>
-      <dt>会社名</dt><dd>${escapeHtml(company)}</dd>
-      <dt>社員数</dt><dd>${escapeHtml(employees || "未入力")}</dd>
-      <dt>お名前</dt><dd>${escapeHtml(name)}</dd>
-      <dt>会社のメールアドレス</dt><dd>${escapeHtml(email)}</dd>
-      <dt>電話番号</dt><dd>${escapeHtml(phone)}</dd>
-      <dt>経路（utm_source）</dt><dd>${escapeHtml(advisorSource || "なし")}</dd>
-      <dt>相談したいこと</dt><dd>${escapeHtml(message || "未入力").replaceAll("\n", "<br />")}</dd>
-    </dl>
-  `;
-  const submittedDetails = isAdvisorRequest ? advisorDetails : [
+  const submittedDetails = [
     ...submittedSeminarDetails,
     `会社名: ${company}`,
     `業種: ${industry || "未入力"}`,
@@ -203,7 +157,7 @@ export async function POST(request: Request) {
     "詳細:",
     message || "未入力",
   ].join("\n");
-  const escapedSubmittedDetails = isAdvisorRequest ? escapedAdvisorDetails : `
+  const escapedSubmittedDetails = `
     <dl>
       ${
         isSeminarApplication
@@ -240,42 +194,7 @@ export async function POST(request: Request) {
     ${escapedSubmittedDetails}
   `;
 
-  const advisorReplyText = [
-    `${name} 様`,
-    "",
-    "ZeimeeのAI顧問にご相談をお申し込みいただき、ありがとうございます。",
-    "",
-    "30分のオンライン相談の日時を、下記からお選びください。",
-    BOOKING_URL,
-    "",
-    "すでにご予約がお済みの場合は、このままお待ちください。",
-    "ご不明な点は、このメールにご返信ください。",
-    "",
-    "――――――――――",
-    "Zeimee担当者",
-    "Zeimee",
-  ].join("\n");
-  const advisorReplyHtml = `
-    <p>${escapeHtml(name)} 様</p>
-    <p>ZeimeeのAI顧問にご相談をお申し込みいただき、ありがとうございます。</p>
-    <p>
-      30分のオンライン相談の日時を、下記からお選びください。<br />
-      <a href="${BOOKING_URL}">${BOOKING_URL}</a>
-    </p>
-    <p>
-      すでにご予約がお済みの場合は、このままお待ちください。<br />
-      ご不明な点は、このメールにご返信ください。
-    </p>
-    <p>
-      ――――――――――<br />
-      Zeimee担当者<br />
-      Zeimee
-    </p>
-  `;
-
-  const autoReplyText = isAdvisorRequest
-    ? advisorReplyText
-    : isSeminarApplication
+  const autoReplyText = isSeminarApplication
     ? [
         "はじめまして。",
         "Zeimee担当者と申します。",
@@ -312,9 +231,7 @@ export async function POST(request: Request) {
         "Zeimee",
       ].join("\n");
 
-  const autoReplyHtml = isAdvisorRequest
-    ? advisorReplyHtml
-    : isSeminarApplication
+  const autoReplyHtml = isSeminarApplication
     ? `
       <p>
         はじめまして。<br />
@@ -375,9 +292,7 @@ export async function POST(request: Request) {
   const autoReplyResponse = await sendEmail(resendApiKey, {
     from,
     to: email,
-    subject: isAdvisorRequest
-      ? "【Zeimee】AI顧問のご相談を受け付けました"
-      : isSeminarApplication
+    subject: isSeminarApplication
       ? "【Zeimee】セミナー申し込みを受け付けました"
       : "【Zeimee】資料請求ありがとうございます（24時間以内のご予約で初期費用5万円割引）",
     text: autoReplyText,
@@ -396,9 +311,6 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     ok: true,
-    offerDeadline:
-      isSeminarApplication || isAdvisorRequest
-        ? null
-        : offerDeadline.toISOString(),
+    offerDeadline: isSeminarApplication ? null : offerDeadline.toISOString(),
   });
 }

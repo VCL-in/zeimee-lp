@@ -3,13 +3,13 @@
 import { useEffect } from "react";
 
 // ヘッダーの下線と、スマホの下に出す申し込みボタンの出し入れ。
-export function AdvisorEffects() {
+export function RenewalEffects() {
   useEffect(() => {
     const root = document.querySelector<HTMLElement>(".aia");
     if (!root) return;
     const header = root.querySelector<HTMLElement>(".aa-header");
     const mobileCta = root.querySelector<HTMLElement>(".aa-mcta");
-    const contact = root.querySelector<HTMLElement>("#aa-contact");
+    const contact = root.querySelector<HTMLElement>("#contact");
 
     const onScroll = () => {
       header?.classList.toggle("aa-on", window.scrollY > 40);
