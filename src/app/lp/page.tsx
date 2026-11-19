@@ -335,6 +335,27 @@ export default function LandingPage() {
                   <span className="aa-more">導入発表を読む</span>
                 </div>
               </a>
+              <article className="aa-post">
+                <figure className="aa-shot2">
+                  <Image
+                    src="/lp/case-rikimaru-dashboard.jpg"
+                    alt="顧問料と工数を一画面で見るダッシュボードの画面（デモ用の架空データ）"
+                    fill
+                    sizes="(max-width: 1000px) 100vw, 460px"
+                  />
+                </figure>
+                <div className="aa-txt">
+                  <p className="aa-meta">
+                    <span>福岡県</span>
+                    <span className="aa-chip">会計事務所</span>
+                  </p>
+                  <h3>力丸公認会計士事務所</h3>
+                  <p>
+                    顧問先・担当者ごとの顧問料と工数を、一画面で見られる事務所専用のツールを開発。2026年10月から、毎月の保守運用で改善を続けています。
+                  </p>
+                  <span className="aa-fine">※画面はデモ用の架空データです</span>
+                </div>
+              </article>
               <Link className="aa-post" href="/cases/field-development">
                 <figure className="aa-art">
                   <Image
