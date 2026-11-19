@@ -322,3 +322,8 @@
 @media (max-width:640px){.aia .aa-ax-notes li{grid-template-columns:30px 84px minmax(0,1fr)}}
 
 .aia #cases .aa-post figure.aa-art img{padding:clamp(28px,3.4vw,48px)}
+
+/* 導入事例のカード：白い画像が白地に溶けないよう、枠線で境目を出す。 */
+.aia #cases .aa-post{border:1px solid var(--line);background:#fff}
+.aia #cases .aa-post .aa-txt{background:var(--pale);border-top:1px solid var(--line)}
+.aia #cases .aa-post figure.aa-art{border-bottom:0}

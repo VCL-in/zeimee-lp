@@ -6,8 +6,6 @@ import { flyerEventProperties } from "@/lib/flyer-experiment";
 import {
   BOOKING_URL,
   LEAD_STORAGE_KEY,
-  OFFER_LABEL,
-  formatDeadlineJst,
   type DocumentLead,
 } from "@/lib/document-offer";
 
@@ -102,37 +100,8 @@ export function BookingOffer() {
     };
   }, []);
 
-  const deadline = lead?.offerDeadline ? Date.parse(lead.offerDeadline) : NaN;
-  const hasDeadline = Number.isFinite(deadline);
-  const remaining = hasDeadline && now !== null ? deadline - now : null;
-  const expired = remaining !== null && remaining <= 0;
-  const [h, m, s] = splitRemaining(remaining ?? 0);
-
   return (
     <>
-      {!expired && (
-        <section className="offer-box" aria-labelledby="offer-title">
-          <div className="offer-copy">
-            <p id="offer-title" className="offer-title">
-              24時間以内の面談予約で
-              <strong>{OFFER_LABEL}！</strong>
-            </p>
-            <p className="offer-note">
-              ※資料請求から24時間以内にご予約を完了された方が対象です。面談日は問いません。
-            </p>
-          </div>
-          {hasDeadline && (
-            <div className="offer-timer" aria-live="off">
-              <span>残り時間</span>
-              <p>
-                <b>{h}</b>:<b>{m}</b>:<b>{s}</b>
-              </p>
-              <small>期限 {formatDeadlineJst(new Date(deadline))}</small>
-            </div>
-          )}
-        </section>
-      )}
-
       {booked ? (
         <p className="booking-done" role="status">
           ご予約ありがとうございます。確認メールをお送りしましたので、ご確認ください。
