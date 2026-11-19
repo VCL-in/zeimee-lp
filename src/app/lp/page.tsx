@@ -536,7 +536,6 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="aa-end">
-            <p className="aa-tag">Zeimee</p>
             <p className="aa-copy">
               株式会社Zeimee　© {new Date().getFullYear()} Zeimee Inc.
             </p>

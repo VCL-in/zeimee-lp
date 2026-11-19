@@ -257,3 +257,5 @@
 .aia .aa-biz .aa-biz-lead{font-size:14px;color:var(--mute);margin-top:8px}
 .aia .aa-biz .aa-biz-desc{font-size:clamp(15px,1.15vw,17px);line-height:1.8;color:var(--sub);margin-top:auto;padding-top:28px}
 @media (max-width:800px){.aia .aa-biz{grid-template-columns:1fr}.aia .aa-biz article{min-height:0}}
+
+.aia footer .aa-end{margin-top:56px;justify-content:flex-end}
