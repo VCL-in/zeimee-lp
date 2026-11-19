@@ -137,11 +137,7 @@ const businesses = [
 
 const reasons = [
   {
-    title: "会計業務特化のFDE",
-    benefit: "会計実務がわかるから、課題がすぐに伝わる。",
-  },
-  {
-    title: "事務所専用のカスタマイズ開発",
+    title: "貴社専用のカスタマイズ開発",
     benefit: "いつもの業務に合う仕組みをつくれる。",
   },
   {
@@ -149,8 +145,8 @@ const reasons = [
     benefit: "現場を見ながら、細かな要望まで形に。",
   },
   {
-    title: "対面での徹底サポート",
-    benefit: "操作の不安を解消し、日々の業務に定着。",
+    title: "地方対面FDEの信頼と実績",
+    benefit: "広島の成和税理士法人など、地方の現場に入って開発してきました。",
   },
 ];
 
@@ -317,7 +313,7 @@ export default function LandingPage() {
               <br />
               選ばれる理由
             </h2>
-            <div className="aa-cards aa-four">
+            <div className="aa-cards">
               {reasons.map(({ title, benefit }, i) => (
                 <article className="aa-card" key={title}>
                   <p className="aa-n">0{i + 1}</p>
