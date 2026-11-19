@@ -448,11 +448,11 @@ export default function LandingPage() {
             <div>
               <p className="aa-eyebrow">会社情報</p>
               <h2 className="aa-h-l">
-                現場で働く人が、
+                諦めない、
                 <br />
-                もっと価値ある仕事に
+                確実に浸透する
                 <br />
-                集中できる社会へ。
+                AXを届ける。
               </h2>
             </div>
             <div>
