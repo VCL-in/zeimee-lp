@@ -90,10 +90,10 @@ export function AdvisorForm() {
         </div>
       </fieldset>
       <label htmlFor="aa-message">
-        相談したいこと<em className="aa-opt">任意</em>
+        相談したいこと<em>任意</em>
         <textarea id="aa-message" name="message" rows={3} maxLength={5000} placeholder="例：見積書を作るのに毎回1時間かかる" />
       </label>
-      <button className="aa-btn" type="submit" disabled={status === "sending" || status === "sent"}>
+      <button className="aa-pill aa-dark aa-arrow aa-lg" type="submit" disabled={status === "sending" || status === "sent"}>
         {status === "sending" ? "送信しています…" : "無料相談を申し込む"}
       </button>
       <div aria-live="polite" aria-atomic="true">
