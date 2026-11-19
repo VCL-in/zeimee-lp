@@ -292,3 +292,7 @@
 .aia .aa-flow ol{grid-template-columns:1fr;gap:36px}
 .aia .aa-flow li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-27px;margin:0 0 0 -9px;transform:rotate(90deg)}
 }
+
+/* 一番上の見出しは、明るい場面でも読めるように薄い影を付ける。 */
+.aia .aa-stage h1{text-shadow:0 2px 18px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.35)}
+.aia .aa-scroll{text-shadow:0 1px 6px rgba(0,0,0,.5)}
