@@ -262,18 +262,16 @@ export default function LandingPage() {
         <section className="aa-sec" id="business">
           <div className="aa-wrap">
             <h2 className="aa-h-l">事業内容</h2>
-            <ul className="aa-biz">
+            <div className="aa-biz">
               {businesses.map(({ name, lead, description }, i) => (
-                <li key={name}>
-                  <span className="aa-n">0{i + 1}</span>
-                  <div>
-                    <h3>{name}</h3>
-                    <p className="aa-biz-lead">{lead}</p>
-                  </div>
-                  <p>{description}</p>
-                </li>
+                <article key={name}>
+                  <p className="aa-n">0{i + 1}</p>
+                  <h3>{name}</h3>
+                  <p className="aa-biz-lead">{lead}</p>
+                  <p className="aa-biz-desc">{description}</p>
+                </article>
               ))}
-            </ul>
+            </div>
           </div>
         </section>
 
