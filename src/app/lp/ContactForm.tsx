@@ -81,13 +81,13 @@ export function ContactForm() {
     >
       <div className="form-field">
         <label htmlFor="company">
-          事務所名・法人名<span className="required">*</span>
+          会社名・事務所名<span className="required">*</span>
         </label>
         <input
           id="company"
           name="company"
           autoComplete="organization"
-          placeholder="例）〇〇税理士事務所"
+          placeholder="例）株式会社〇〇"
           required
           maxLength={200}
         />
@@ -105,7 +105,7 @@ export function ContactForm() {
           </select>
         </div>
         <div className="form-field">
-          <label htmlFor="clientCount">顧問先件数（任意）</label>
+          <label htmlFor="clientCount">顧問先件数（会計事務所の方・任意）</label>
           <input
             id="clientCount"
             name="clientCount"
@@ -197,7 +197,7 @@ export function ContactForm() {
           name="discoveryQuery"
           rows={2}
           maxLength={500}
-          placeholder="例）税理士事務所 AI 導入"
+          placeholder="例）AI 導入 支援"
         />
       </div>
       <div className="form-field">
@@ -211,7 +211,7 @@ export function ContactForm() {
         />
       </div>
       <p className="form-note">
-        ご入力いただいた情報は、資料の送付・ご連絡に利用します。顧問先の個人情報や取引情報の記入はお控えください。
+        ご入力いただいた情報は、資料の送付・ご連絡に利用します。お客様の個人情報や取引情報の記入はお控えください。
       </p>
       <button
         className="button button-dark"
