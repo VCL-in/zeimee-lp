@@ -18,6 +18,8 @@
 
 - 「AX専門部隊」の節のすぐ下に「事業内容」の節（`#business`）を足した。事業は岩﨑の指定で「AX Solution事業」「AI顧問」の2つ。それぞれの説明文は下書き。
 
+- 会社情報の節：メッセージを「現場で働く人が、もっと価値ある仕事に集中できる社会へ。」（下書き、岩﨑の確認待ち）に、事業内容の行を「AX Solution事業／AI顧問」に変えた。`/company` のページは今までのまま。
+
 ## Validation
 
 - `npm run build`: 成功。`npx eslint src/app/lp` と `npx tsc --noEmit`: エラーなし。

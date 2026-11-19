@@ -452,7 +452,7 @@ export default function LandingPage() {
             <div>
               <p className="aa-eyebrow">会社情報</p>
               <h2 className="aa-h-l">
-                会計に向き合う人が、
+                現場で働く人が、
                 <br />
                 もっと価値ある仕事に
                 <br />
@@ -480,14 +480,14 @@ export default function LandingPage() {
                 <div>
                   <dt>事業内容</dt>
                   <dd>
-                    月次経理AIエージェント「Zeimee」の開発・提供
+                    AX Solution事業
                     <br />
-                    会計事務所向けAI導入・FDE支援
+                    AI顧問
                   </dd>
                 </div>
               </dl>
               <a className="aa-pill aa-dark aa-arrow" href="#contact">
-                Zeimee・FDEの資料を受け取る
+                資料DL・面談予約
               </a>
             </div>
           </div>
