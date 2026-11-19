@@ -149,6 +149,8 @@
 
 .aia .aa-intro{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:end}
 .aia .aa-intro p{font-size:clamp(15px,1.25vw,18px);line-height:1.75;color:var(--sub)}
+.aia .aa-lead-sec .aa-pill{margin-top:32px}
+.aia .aa-lead-sec .aa-h-xl{font-size:clamp(32px,5.2vw,76px)}
 .aia .aa-people{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(40px,5vw,64px)}
 .aia .aa-person{background:var(--pale);border-radius:6px;overflow:hidden;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1fr)}
 .aia .aa-person figure{position:relative;min-height:320px;background:#E9E9E9}

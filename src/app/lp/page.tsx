@@ -284,8 +284,26 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="aa-sec" id="about">
-          <div className="aa-wrap" id="team">
+        <section className="aa-sec aa-pale aa-lead-sec" id="about">
+          <div className="aa-wrap aa-intro">
+            <h2 className="aa-h-xl">
+              あなたの会社の、
+              <br />
+              AX専門部隊になります。
+            </h2>
+            <div>
+              <p>
+                現場に入って業務を理解し、AI・システムの設計、開発、運用改善までを担います。作っておわりではなく、日々の業務に定着するところまで伴走します。
+              </p>
+              <a className="aa-pill aa-dark aa-arrow aa-lg" href="#contact">
+                資料DL・面談予約
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="aa-sec" id="team">
+          <div className="aa-wrap">
             <div className="aa-intro">
               <h2 className="aa-h-l">
                 AIに知見のある税理士と
