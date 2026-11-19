@@ -253,7 +253,6 @@ export default function LandingPage() {
               aria-hidden="true"
               tabIndex={-1}
             />
-            <div className="aa-shot aa-b" />
             <div className="aa-shade" />
             <h1>
               <span>全ての現場に、</span>
