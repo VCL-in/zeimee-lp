@@ -463,7 +463,11 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <dt>代表者</dt>
-                  <dd>代表取締役　佐次本 脩真</dd>
+                  <dd>
+                    代表取締役　岩﨑 琉晟
+                    <br />
+                    代表取締役　佐次本 脩真
+                  </dd>
                 </div>
                 <div>
                   <dt>所在地</dt>
