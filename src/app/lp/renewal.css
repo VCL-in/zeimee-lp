@@ -28,16 +28,13 @@
 .aia .aa-pill.aa-light:hover{background:var(--pale)}
 .aia .aa-pill.aa-arrow::after{content:"→"}
 .aia .aa-pill.aa-lg{height:52px;padding:0 26px;font-size:16px}
-.aia .aa-notice{background:#000;color:#fff;font-size:15px;line-height:1.5;text-align:center;padding:10px 16px;display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap}
-.aia .aa-notice a{color:#F4F4F4;font-weight:500}
-.aia .aa-notice a::after{content:" →"}
 .aia .aa-header{position:sticky;top:0;z-index:50;background:#fff;height:72px;display:flex;align-items:center;gap:40px;padding:0 var(--gut);transition:box-shadow .2s}
 .aia .aa-header.aa-on{box-shadow:0 1px 0 var(--line)}
 .aia .aa-header img{height:26px;width:auto}
 .aia .aa-header nav{display:flex;gap:6px;font-size:15px;font-weight:500;color:rgba(22,24,28,.7);margin-right:auto}
 .aia .aa-header nav a{padding:8px 12px;border-radius:6px;transition:background .2s,color .2s}
 .aia .aa-header nav a:hover{background:var(--pale);color:var(--ink)}
-.aia .aa-stage{position:relative;margin:0 8px 8px;height:calc(100vh - 124px);min-height:520px;max-height:860px;border-radius:14px;overflow:hidden;background:#111;color:#fff;isolation:isolate}
+.aia .aa-stage{position:relative;margin:0 8px 8px;height:calc(100vh - 80px);min-height:520px;max-height:860px;border-radius:14px;overflow:hidden;background:#111;color:#fff;isolation:isolate}
 .aia .aa-shot{position:absolute;inset:-4%;background:center/cover no-repeat;animation:aa-drift 18s ease-in-out infinite alternate}
 .aia .aa-shot.aa-a{background-image:url(/lp/seiwa-team.png);filter:grayscale(.5) contrast(1.05) brightness(.82)}
 .aia .aa-shot.aa-b{background-image:url(/images/hero-ui-flow-poster-aio-v1.jpg);mix-blend-mode:screen;opacity:0;filter:grayscale(1) invert(1) brightness(.9);animation:aa-drift 18s ease-in-out infinite alternate-reverse,aa-fadeb 9s ease-in-out infinite alternate}
@@ -120,10 +117,9 @@
 .aia footer .aa-cols > :first-child{grid-column:1/-1}
 }
 @media (max-width:640px){
-.aia .aa-notice{font-size:13px;gap:8px}
 .aia .aa-header{height:60px}
 .aia .aa-header img{height:22px}
-.aia .aa-stage{height:calc(100svh - 150px);min-height:440px;margin:0 6px 6px}
+.aia .aa-stage{height:calc(100svh - 110px);min-height:440px;margin:0 6px 6px}
 .aia .aa-list > li{grid-template-columns:112px minmax(0,1fr);gap:16px;padding:18px 0;align-items:start}
 .aia .aa-thumb{padding:8px}
 .aia .aa-thumb q{font-size:10.5px;padding:6px 8px}

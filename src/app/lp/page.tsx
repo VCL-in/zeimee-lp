@@ -243,12 +243,6 @@ export default function LandingPage() {
       <a className="aa-skip" href="#main">
         本文へ移動
       </a>
-      <div className="aa-notice">
-        <span>{news[0].title}しました</span>
-        <a href={news[0].url} target="_blank" rel="noopener noreferrer">
-          詳しく見る
-        </a>
-      </div>
       <header className="aa-header">
         <a href="#top" aria-label="Zeimee トップへ">
           <Logo />
