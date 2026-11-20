@@ -1,23 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Inter, Noto_Sans_JP } from "next/font/google";
+import { siteFontClass } from "@/lib/site-fonts";
 import { ContactForm } from "./ContactForm";
 import { RenewalEffects } from "./RenewalEffects";
 import "./renewal.css";
-
-const notoSansJp = Noto_Sans_JP({
-  weight: ["400", "500", "700"],
-  variable: "--font-noto-sans-jp",
-  display: "swap",
-  preload: false,
-});
-const inter = Inter({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "すべての現場に感動されるAXを届ける | 株式会社Zeimee",
@@ -212,7 +199,7 @@ function Logo() {
 
 export default function LandingPage() {
   return (
-    <div className={`aia ${notoSansJp.variable} ${inter.variable}`}>
+    <div className={`aia ${siteFontClass}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

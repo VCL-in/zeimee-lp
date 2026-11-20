@@ -72,7 +72,7 @@ export function BookingOffer() {
           guest_company: stored?.company,
           guest_name: stored?.name,
           guest_email: stored?.email,
-          primary_color: "#534dff",
+          primary_color: "#16181c",
           onBookingComplete: () => {
             setBooked(true);
             track("booking_complete", {
