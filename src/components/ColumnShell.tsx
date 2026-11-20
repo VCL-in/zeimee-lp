@@ -1,8 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
-import { SiteHeader } from "@/app/lp/SiteHeader";
-import { BrandLogo } from "@/app/lp/BrandLogo";
+import { siteFontClass } from "@/lib/site-fonts";
+import { SiteChromeFooter, SiteChromeHeader } from "./SiteChrome";
 import styles from "./column.module.css";
 
 export function ColumnShell({
@@ -13,15 +12,11 @@ export function ColumnShell({
   showBottomCta?: boolean;
 }) {
   return (
-    <div className={styles.page}>
+    <div className={`sc ${siteFontClass} ${styles.page}`}>
       <a className="skip-link" href="#column-main">
         本文へ移動
       </a>
-      <SiteHeader homePath="/">
-        <Link className="brand" href="/" aria-label="Zeimee トップへ">
-          <BrandLogo />
-        </Link>
-      </SiteHeader>
+      <SiteChromeHeader />
       <main id="column-main" className={styles.main}>
         <nav className={styles.breadcrumb} aria-label="パンくず">
           <Link href="/">ホーム</Link>
@@ -42,27 +37,13 @@ export function ColumnShell({
                 現場に合わせた業務改善の考え方と導入事例を、資料にまとめました。
               </p>
             </div>
-            <Link className={styles.ctaButton} href="/#contact">
-              資料DL・面談予約 <ArrowUpRight />
+            <Link className="sc-pill sc-lg sc-white sc-arrow" href="/#contact">
+              資料DL・面談予約
             </Link>
           </aside>
         )}
       </main>
-      <footer className={styles.footer}>
-        <Link
-          className={styles.footerBrand}
-          href="/"
-          aria-label="Zeimee トップへ"
-        >
-          <BrandLogo />
-        </Link>
-        <nav aria-label="フッターナビゲーション">
-          <Link href="/column">コラム</Link>
-          <Link href="/security">セキュリティ</Link>
-          <Link href="/#company-info">会社情報</Link>
-        </nav>
-        <small>© 2026 株式会社Zeimee</small>
-      </footer>
+      <SiteChromeFooter />
     </div>
   );
 }

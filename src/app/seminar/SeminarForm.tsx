@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
 const inputClass =
-  "mt-2 h-[52px] w-full rounded-[3px] border border-[#cad3df] bg-white px-4 text-[16px] font-bold text-[#17202c] outline-none transition placeholder:text-[#a4adba] focus:border-[#1155cc] focus:ring-3 focus:ring-[#1155cc]/12";
+  "mt-2 h-[52px] w-full rounded-[3px] border border-[#cad3df] bg-white px-4 text-[16px] font-bold text-[#17202c] outline-none transition placeholder:text-[#a4adba] focus:border-[#16181c] focus:ring-3 focus:ring-[#16181c]/12";
 
 function FieldLabel({
   children,
@@ -142,14 +142,14 @@ export function SeminarForm() {
           name="question"
           rows={4}
           placeholder="当日聞きたいことがあればご記入ください"
-          className="mt-2 w-full rounded-[3px] border border-[#cad3df] bg-white px-4 py-3 text-[16px] font-bold leading-7 text-[#17202c] outline-none transition placeholder:text-[#a4adba] focus:border-[#1155cc] focus:ring-3 focus:ring-[#1155cc]/12"
+          className="mt-2 w-full rounded-[3px] border border-[#cad3df] bg-white px-4 py-3 text-[16px] font-bold leading-7 text-[#17202c] outline-none transition placeholder:text-[#a4adba] focus:border-[#16181c] focus:ring-3 focus:ring-[#16181c]/12"
         />
       </div>
 
       <button
         type="submit"
         disabled={status === "sending"}
-        className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-[3px] bg-[#1155cc] px-7 text-[17px] font-extrabold text-white transition hover:bg-[#0d48af] disabled:cursor-not-allowed disabled:bg-[#8aa8e6]"
+        className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-full bg-[#161618] px-7 text-[17px] font-medium text-white transition hover:bg-[#0d48af] disabled:cursor-not-allowed disabled:bg-[#8aa8e6]"
       >
         {status === "sending" ? "送信中" : "申し込む"}
         <ArrowRight className="size-4" />

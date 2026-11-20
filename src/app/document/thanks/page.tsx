@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { BrandLogo } from "@/app/lp/BrandLogo";
+import { SiteChromeFooter, SiteChromeHeader } from "@/components/SiteChrome";
+import { siteFontClass } from "@/lib/site-fonts";
 import { BookingOffer } from "./BookingOffer";
 import {
   SERVICE_DOCUMENT_FILENAME,
@@ -14,14 +14,8 @@ export const metadata: Metadata = {
 
 export default function DocumentThanksPage() {
   return (
-    <>
-      <header className="thanks-header">
-        <div className="section-shell">
-          <Link className="brand" href="/" aria-label="Zeimee トップへ">
-            <BrandLogo />
-          </Link>
-        </div>
-      </header>
+    <div className={`sc thanks-renewal ${siteFontClass}`}>
+      <SiteChromeHeader />
       <main className="thanks-page section-shell">
         <p className="thanks-badge">Thank you</p>
         <h1>資料請求ありがとうございます</h1>
@@ -32,7 +26,7 @@ export default function DocumentThanksPage() {
         </p>
         <p className="thanks-download">
           <a
-            className="button button-dark"
+            className="sc-pill sc-lg"
             href={SERVICE_DOCUMENT_PATH}
             download={SERVICE_DOCUMENT_FILENAME}
           >
@@ -41,6 +35,7 @@ export default function DocumentThanksPage() {
         </p>
         <BookingOffer />
       </main>
-    </>
+      <SiteChromeFooter />
+    </div>
   );
 }

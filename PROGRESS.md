@@ -1,4 +1,13 @@
 # 2026-11-19: トップ（zeimee.com）の見た目を刷新
+## 2026-11-20: 下層ページをトップと同じ見た目に刷新
+
+- 共通のヘッダー・フッターを `src/components/SiteChrome.tsx` と `site-chrome.css`（`.sc` の中だけに効く）に作った。書体は `src/lib/site-fonts.ts` でトップと共有
+- ツール（`/tools/*`）・導入事例・セキュリティは `DetailShell` と `detail.module.css` を黒・白・薄い灰色に作り替えた。セキュリティも `DetailShell` に載せた
+- コラム（一覧・記事）は `ColumnShell` の枠を差し替え、`column.module.css` の紫系の色を黒・灰色に置き換えた。表紙（cover）だけは、書き出し済みの画像とイラストが紫なので元の配色のまま
+- セミナー・資料請求の完了ページも同じヘッダー・フッターと配色に合わせた
+- サイトタイトルを「すべての現場に感動されるAXを届ける | 株式会社Zeimee」に変更（PR #25）
+- 旧 `SiteHeader.tsx` / `BrandLogo.tsx` はどこからも使われなくなった（未削除）
+
 
 ## Result
 

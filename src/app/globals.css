@@ -2844,3 +2844,9 @@ details[open] .faq-toggle:after {
     padding-inline: 16px;
   }
 }
+
+/* 資料請求の完了ページ：トップと同じ黒・白・薄い灰色の見た目 */
+.thanks-renewal .thanks-page { margin-inline: auto; padding: clamp(56px, 7vw, 96px) 20px clamp(72px, 8vw, 120px); width: 100%; }
+.thanks-renewal .thanks-badge { background: none; color: #767676; padding: 0; font-size: 13px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
+.thanks-renewal .thanks-page h1 { margin: 20px 0 20px; font-size: clamp(28px, 4vw, 52px); font-weight: 500; line-height: 1.25; letter-spacing: -0.015em; }
+.thanks-renewal .thanks-lead { color: #505a63; line-height: 1.9; }
