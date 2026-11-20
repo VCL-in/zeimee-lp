@@ -20,12 +20,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "税理士・会計事務所のAI導入・開発支援｜Zeimee",
+  title: "すべての現場に感動されるAXを届ける | 株式会社Zeimee",
   description:
     "会計士・税理士事務所に特化したFDE。現場の業務理解からAI・システムの設計、実装、定着まで。事務所に合う仕事のしくみを、一緒につくります。",
   alternates: { canonical: "https://zeimee.com/" },
   openGraph: {
-    title: "税理士・会計事務所のAI導入・開発支援｜Zeimee",
+    title: "すべての現場に感動されるAXを届ける | 株式会社Zeimee",
     description:
       "会計士・税理士事務所のためのFDE。業務を理解し、つくり、使われるまで伴走する。",
     url: "https://zeimee.com/",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "税理士・会計事務所のAI導入・開発支援｜Zeimee",
+    title: "すべての現場に感動されるAXを届ける | 株式会社Zeimee",
     description:
       "会計士・税理士事務所のためのFDE。業務を理解し、つくり、使われるまで伴走する。",
   },

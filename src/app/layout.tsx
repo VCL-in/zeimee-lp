@@ -11,7 +11,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zeimee.com"),
-  title: "税理士・会計事務所のAI導入・開発支援｜Zeimee",
+  title: "すべての現場に感動されるAXを届ける | 株式会社Zeimee",
   description:
     "会計士事務所・税理士事務所に特化したFDE。現場の業務理解からAIの設計・実装、導入後の改善まで、Zeimeeが伴走します。",
   verification: {
