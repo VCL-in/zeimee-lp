@@ -99,21 +99,21 @@ const members = [
     name: "岩﨑 琉晟",
     role: "代表取締役CEO",
     title: "元LINEヤフーエンジニア",
-    image: "team-iwasaki-color.jpg",
+    image: "member-iwasaki.jpg",
     bio: "電気通信大学で情報工学を専攻。データエンジニアを経て、LINEヤフーでAIエージェント基盤の立ち上げに従事。AIを現場の業務に定着させるため、Zeimeeを共同で創業。",
   },
   {
     name: "佐次本 脩真",
     role: "代表取締役COO",
     title: "元メルカリエンジニア",
-    image: "team-ai-engineer.png",
+    image: "member-sajimoto-suit.jpg",
     bio: "電気通信大学大学院 情報理工学研究科を卒業。大学院ではソフトウェア開発やAI活用の知見を深め、2025年8月から2026年4月までメルカリにてSWEとしてプロダクト開発を経験。月次業務の実務負担をAIで減らすため、Zeimeeを立ち上げる。",
   },
   {
     name: "畠山 謙人",
     role: "アドバイザー",
     title: "公認会計士・税理士",
-    image: "team-tax-advisor.png",
+    image: "member-hatakeyama.jpg",
     bio: "大和工業で連結決算等を担当後、監査法人トーマツで国内監査に従事。サイバーエージェントでは連結決算やAbemaTV経理、決算早期化を担当。税理士法人赤坂共同事務所を経て、2025年に畠山謙人税理士事務所を開業。シードスタートアップを中心に支援している。",
   },
 ];
@@ -164,6 +164,18 @@ const reasons = [
 ];
 
 const news = [
+  {
+    date: "2026-11-19",
+    label: "資金調達",
+    title: "プレシリーズAでアイザックから4,000万円を調達",
+    url: "https://prtimes.jp/main/html/rd/p/000000216.000017594.html",
+  },
+  {
+    date: "2026-10-16",
+    label: "選出",
+    title: "B Dash Camp 2026 Fall in Fukuoka「Pitch Arena」のファイナリストに選出",
+    url: "https://thebridge.jp/2026/10/bdashcamp-zeimee-accounting-firm-ai-agent",
+  },
   {
     date: "2026-08-07",
     label: "受賞",

@@ -269,6 +269,9 @@
 @media (max-width:1000px){.aia #team .aa-people{grid-template-columns:1fr}.aia #team .aa-person figure{aspect-ratio:4/3}}
 
 .aia #team .aa-person figure{background:#F4F4F4}
+/* 写真の地色と節の地色が近く、カードの端が見えなかったので、線で囲む */
+.aia #team .aa-person{border:1px solid #DADADA}
+.aia #team .aa-person figure{border-bottom:1px solid var(--line)}
 
 .aia #cases .aa-news{grid-template-columns:repeat(3,minmax(0,1fr))}
 .aia #cases .aa-post figure.aa-shot2{padding:0;background:#fff;border-bottom:1px solid var(--line)}
