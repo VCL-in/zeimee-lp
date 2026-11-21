@@ -106,7 +106,7 @@ const members = [
     name: "佐次本 脩真",
     role: "代表取締役COO",
     title: "元メルカリエンジニア",
-    image: "member-sajimoto-suit.jpg",
+    image: "member-sajimoto-navy.jpg",
     bio: "電気通信大学大学院 情報理工学研究科を卒業。大学院ではソフトウェア開発やAI活用の知見を深め、2025年8月から2026年4月までメルカリにてSWEとしてプロダクト開発を経験。月次業務の実務負担をAIで減らすため、Zeimeeを立ち上げる。",
   },
   {
