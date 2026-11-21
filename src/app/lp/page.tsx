@@ -106,7 +106,7 @@ const members = [
     name: "佐次本 脩真",
     role: "代表取締役COO",
     title: "元メルカリエンジニア",
-    image: "member-sajimoto.jpg",
+    image: "member-sajimoto-suit.jpg",
     bio: "電気通信大学大学院 情報理工学研究科を卒業。大学院ではソフトウェア開発やAI活用の知見を深め、2025年8月から2026年4月までメルカリにてSWEとしてプロダクト開発を経験。月次業務の実務負担をAIで減らすため、Zeimeeを立ち上げる。",
   },
   {
@@ -164,6 +164,18 @@ const reasons = [
 ];
 
 const news = [
+  {
+    date: "2026-11-19",
+    label: "資金調達",
+    title: "プレシリーズAでアイザックから4,000万円を調達",
+    url: "https://prtimes.jp/main/html/rd/p/000000216.000017594.html",
+  },
+  {
+    date: "2026-10-16",
+    label: "選出",
+    title: "B Dash Camp 2026 Fall in Fukuoka「Pitch Arena」のファイナリストに選出",
+    url: "https://thebridge.jp/2026/10/bdashcamp-zeimee-accounting-firm-ai-agent",
+  },
   {
     date: "2026-08-07",
     label: "受賞",

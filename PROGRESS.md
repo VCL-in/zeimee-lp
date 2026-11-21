@@ -10,8 +10,12 @@
 # 2026-11-19: トップ（zeimee.com）の見た目を刷新
 ## 2026-11-21: メンバー写真の大きさをそろえた
 
-- トップの「メンバー」で、3人の写真の寄り方がばらばらだった（岩﨑は胸から上、佐次本は腿まで、畠山は腰まで）。目の高さと、目からあごまでの長さがそろうように切り出し直した `public/lp/member-iwasaki.jpg`・`member-sajimoto.jpg`・`member-hatakeyama.jpg`（1200×1080）に差し替えた
+- トップの「メンバー」で、3人の写真の寄り方がばらばらだった（岩﨑は胸から上、佐次本は腿まで、畠山は腰まで）。目の高さと、目からあごまでの長さがそろうように切り出し直した `public/lp/member-iwasaki.jpg`・`member-sajimoto-suit.jpg`・`member-hatakeyama.jpg`（1200×1080）に差し替えた
 - 元の `team-*.png` / `team-iwasaki-color.jpg` は残してある
+- 佐次本はパーカーの写真をやめ、スーツ姿の写真（`public/lp/team-sajimoto-suit.png` が元）に替えた
+- 写真の地色と節の地色が近くてカードの端が見えなかったので、カードを線で囲んだ
+- お知らせに、アイザックからの4,000万円の調達（2026-11-19、アイザック側のPR TIMES）を足した
+- お知らせに、B Dash Camp 2026 Fall in Fukuoka「Pitch Arena」のファイナリスト選出（2026-10-16、BRIDGEの記事）を足した
 
 ## 2026-11-20: 下層ページをトップと同じ見た目に刷新
 
