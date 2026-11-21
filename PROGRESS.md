@@ -1,3 +1,12 @@
+# 2026-11-21: FAXを見た人のための問い合わせページ（/fax/setsubi・/fax/sogo・/fax/oroshi）
+
+- 3業界向けFAX（設備工事・総合工事・卸）のQRコードの飛び先。文言はFAX原稿（zeimee-strategy の `2026-11-20-three-industry-fax/build.py`）に合わせ、`src/lib/fax-inquiry.ts` の1か所にまとめた。ページは `src/app/fax/[industry]/page.tsx` の共通の型。`/fax` 単体と知らない業界は404
+- 時間の数字はすべて「当社の試算」。実績・導入社数・値段は書いていない。3ページとも noindex、サイトマップとナビゲーションには入れていない
+- フォームは4項目（会社名・お名前・電話かメールのどちらか・ご希望）＋任意のひとこと。受け口は `/api/fax-inquiry`（既存の `/api/contact` は変えていない）。宛先は `/api/contact` と同じ決め方。件名は「【FAX／設備工事】お試し希望：株式会社〇〇」の形。問い合わせた人への自動返信は送らない
+- 人には見えない欄（ハニーポット）を入れた。回数制限は入れていない（既存の受け口にもない）
+- 計測：送信の完了で `fax_inquiry`（industry・wish つき）、送信後の予約ボタンで `fax_booking_click`。チラシA/Bの値（`flyer-experiment.ts`）は変えていない
+- 検証：`node --test tests/*.test.mjs`（15件成功）、`npx tsc --noEmit`、`npx eslint src tests`（エラー0、既存の警告3件）、`npm run build` 成功。ローカルの production build を375pxと1280pxで表示し、横はみ出しなし。フォームは、空・連絡先なしで弾かれること、送信先をモックして完了画面と予約リンクが出ることを確認。実メール送信はしていない
+
 # 2026-11-19: トップ（zeimee.com）の見た目を刷新
 ## 2026-11-20: 下層ページをトップと同じ見た目に刷新
 
